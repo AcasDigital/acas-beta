@@ -31,6 +31,21 @@
     display: block;
     padding: 0.125em 0.25em;
   }
+  form {
+    background: $white;
+    padding: 15px;
+    color: $black;
+    display: none;
+    clear: both;
+  }
+  .left-wrapper {
+    float: left;
+  }
+  .right-wrapper {
+    float: right;
+    cursor: pointer;
+    display: none;
+  }
 }
 
 @include bp(SM) {

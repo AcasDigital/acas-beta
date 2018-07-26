@@ -2659,14 +2659,32 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   display: block;
   padding: 0.125em 0.25em;
 }
+/* line 34, ../../src/scss/common/_feedback.scss */
+#feedback-form form {
+  background: #fff;
+  padding: 15px;
+  color: #000;
+  display: none;
+  clear: both;
+}
+/* line 41, ../../src/scss/common/_feedback.scss */
+#feedback-form .left-wrapper {
+  float: left;
+}
+/* line 44, ../../src/scss/common/_feedback.scss */
+#feedback-form .right-wrapper {
+  float: right;
+  cursor: pointer;
+  display: none;
+}
 
 @media (min-width: 768px) {
-  /* line 37, ../../src/scss/common/_feedback.scss */
+  /* line 52, ../../src/scss/common/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 40, ../../src/scss/common/_feedback.scss */
+  /* line 55, ../../src/scss/common/_feedback.scss */
   #feedback-form {
     font-size: 1em;
     max-width: 100%;

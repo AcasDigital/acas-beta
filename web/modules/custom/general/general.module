@@ -107,30 +107,18 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         '#weight' => 990,
       ];
     }
-    /*
-    if ($entity->get('field_useful')->value) {
-      $build['feedback'] = [
-        '#markup' => '<div id="feedback_wrapper"><div id="useful_wrapper"><span class="text">Did we answer your question?</span>&nbsp;<a href="/contact" nid="' . $entity->id() . '">Yes</a>&nbsp;<a href="/contact" nid="' . $entity->id() . '">No</a></div>',
-        '#weight' => 995,
-      ];
-      $build['feedback']['#attached']['library'][] = 'general/anything_wrong';
-    }
-    if ($entity->get('field_anything_wrong')->value) {
-      $form = \Drupal\webform\Entity\Webform::load('anything_wrong');
-      $result = \Drupal::service('path.alias_manager')->getAliasByPath(\Drupal::service('path.current')->getPath());
-      $values = ['data' => ['page_url' => 'https://' . $_SERVER['HTTP_HOST'] . $result]];
-      $form->getSubmissionForm($values);
-      $build['anything_wrong_link'] = [
-        '#markup' => '<div id="anything-wrong-wrapper"><a id="anything-wrong-link" href="#anything-wrong-link">Anything wrong with this page?</a><a id="anything-wrong-close" href="#anything-wrong-link">Close</a></div></div>',
-        '#weight' => 998,
-      ];
-      $build['anything_wrong'] = \Drupal::entityManager()
+    if ($entity->get('field_feedback_form')->value) {
+      $form = \Drupal\webform\Entity\Webform::load('no_feedback');
+      $build['no_feedback_form'] = \Drupal::entityManager()
         ->getViewBuilder('webform')
         ->view($form);
-      $build['anything_wrong']['#weight'] = 999;
-      $build['anything_wrong']['#attached']['library'][] = 'general/anything_wrong';
+      $build['no_feedback_form']['#weight'] = 999;
+      $form = \Drupal\webform\Entity\Webform::load('yes_feedback');
+      $build['yes_feedback_form'] = \Drupal::entityManager()
+        ->getViewBuilder('webform')
+        ->view($form);
+      $build['yes_feedback_form']['#weight'] = 999;
     }
-    */
     if ($entity->get('field_print_download')->value) {
       $print_guide = '';
       $download_guide = '';
@@ -461,7 +449,7 @@ function general_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     }else{
       $form['moderation_state']['widget'][0]['state']['#default_value'] = 'draft';
       $form['field_summary']['widget'][0]['summary']['#description'] = t('The summary does not appear on the page. It is shown on Landing Pages and in the search results and is the meta-description tag (for Google etc.)');
-      $form['revision_log']['widget'][0]['value']['#required'] = TRUE;
+      //$form['revision_log']['widget'][0]['value']['#required'] = TRUE;
     }
   }
   if ($form_id == 'content_moderation_entity_moderation_form') {

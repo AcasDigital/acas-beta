@@ -1,24 +1,43 @@
 (function ($, Drupal) {
   Drupal.behaviors.anythingWrongBehavior = {
     attach: function (context, settings) {
-      $("#anything-wrong-link").click(function() {
-        $("#anything-wrong-link").hide();
-        $("#anything-wrong-close").show();
-        $(".webform-submission-form").slideDown();
-        setTimeout(anythingWrongTextareaFocus,500);
+      $('#feedback-form').append($('.webform-submission-no-feedback-add-form'));
+      $('#feedback-form').append($('.webform-submission-yes-feedback-add-form'));
+      $("#feedback-form .form-url").val(location.origin + location.pathname);
+      $("#feedback-form #no").click(function() {
+        $("#feedback-form .right-wrapper").show();
+        $("#feedback-form .webform-submission-yes-feedback-form").slideUp();
+        $("#feedback-form .webform-submission-no-feedback-form").slideDown();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#footer").offset().top
+        }, 500);
+        return false;
       });
-      $("#anything-wrong-close").click(function() {
-        $("#anything-wrong-link").show();
-        $("#anything-wrong-close").hide();
-        $(".webform-submission-form").slideUp();
+      $("#feedback-form #yes").click(function() {
+        $("#feedback-form .right-wrapper").show();
+        $("#feedback-form .webform-submission-no-feedback-form").slideUp();
+        $("#feedback-form .webform-submission-yes-feedback-form").slideDown();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#footer").offset().top
+        }, 500);
+        return false;
       });
-      $(".form-item-page-url input").val(location.origin + location.pathname);
+      $("#feedback-form .right-wrapper").click(function() {
+        $("#feedback-form .right-wrapper").hide();
+        $("#feedback-form .webform-submission-form").slideUp();
+      });
+      $("#feedback-form .webform-button--submit").click(function() {
+        //$("#feedback-form .webform-submission-no-feedback-add-form").submit();
+      });
+      $("#feedback-form input[type='checkbox']").on('ifChanged', function (e) {
+        setTimeout(function(){ $("#feedback-form textarea").focus(); }, 500);
+      });
       var options = {
         beforeSubmit:  showAnythingWrongRequest,  // pre-submit callback
         success:       showAnythingWrongResponse  // post-submit callback
       };
-      $('.webform-submission-form').ajaxForm(options);
-
+      $('#feedback-form .webform-submission-form').ajaxForm(options);
+      /*
       $("#feedback-wrapper #feedback-form a").click(function() {
         jQuery.ajax({
           url: "/feedback/" + jQuery(this).attr('nid') + "/" + jQuery(this).text() ,
@@ -35,15 +54,14 @@
         });
         return false;
       });
+      */
       function showAnythingWrongRequest(formData, jqForm, options) {
-        $("#anything-wrong-wrapper").html("<span class='thsnk-you'>Thank you for your message</span>");
-        $(".webform-submission-form").slideUp();
+        $("#feedback-form .left-wrapper").html("<span class='text'>Thank you for your feedback</span>");
+        $("#feedback-form .right-wrapper").hide();
+        $("#feedback-form .webform-submission-form").slideUp();
       }
       function showAnythingWrongResponse(responseText, statusText, xhr, $form)  {
 
-      }
-      function anythingWrongTextareaFocus() {
-        $(".webform-submission-form .form-type-textarea .form-textarea").focus();
       }
     }
   };

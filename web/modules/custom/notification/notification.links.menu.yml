@@ -1,6 +1,0 @@
-notification.settings:
-  title: 'Acas'
-  description: 'Administer the Acas web services.'
-  route_name: notification.dynamics
-  parent: system.admin_config_services
-  weight: -1
