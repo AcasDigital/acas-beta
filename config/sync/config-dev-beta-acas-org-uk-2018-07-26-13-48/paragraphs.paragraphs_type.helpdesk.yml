@@ -1,9 +1,0 @@
-uuid: 45f05d37-31d2-4efe-b724-845ed840b0f8
-langcode: en
-status: true
-dependencies: {  }
-id: helpdesk
-label: Helpline
-icon_uuid: null
-description: ''
-behavior_plugins: {  }

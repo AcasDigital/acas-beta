@@ -11,6 +11,7 @@ composer.lock
 /composer.lock
 /web/robots.txt
 /web/acas_robots.txt
+/config/sync
 DEV
 UAT
 PROD

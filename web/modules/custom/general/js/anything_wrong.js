@@ -62,7 +62,7 @@
           },
           success: function(data){
             if (simple) {
-              $("#feedback-wrapper #feedback-form").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
+              $("#feedback-wrapper #feedback-form").html("<span class='text'>Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190</span>");
             }
           }
         });

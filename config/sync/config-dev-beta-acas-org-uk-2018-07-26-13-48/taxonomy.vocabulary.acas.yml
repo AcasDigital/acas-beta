@@ -1,9 +1,0 @@
-uuid: 2b6fcf8d-c059-4d31-a1d3-b705cca5f145
-langcode: en
-status: true
-dependencies: {  }
-name: Acas
-vid: acas
-description: 'Main Acas vocabulary'
-hierarchy: 0
-weight: 0

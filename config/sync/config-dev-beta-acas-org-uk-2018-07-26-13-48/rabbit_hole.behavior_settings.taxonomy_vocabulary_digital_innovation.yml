@@ -1,9 +1,0 @@
-uuid: f0be5582-563a-434b-9b94-02aea49d41c0
-langcode: en
-status: true
-dependencies: {  }
-id: taxonomy_vocabulary_digital_innovation
-action: display_page
-allow_override: 1
-redirect: ''
-redirect_code: 301
