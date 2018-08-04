@@ -32,3 +32,10 @@ general.invalidate:
   route_name: general.cloudfront-invalidate
   parent: general.production
   weight: 3
+  
+general.feedback_forms:
+  title: 'Feedback'
+  description: 'Feedback.'
+  route_name: general.feedback_forms
+  parent: system.admin_reports
+  weight: -1

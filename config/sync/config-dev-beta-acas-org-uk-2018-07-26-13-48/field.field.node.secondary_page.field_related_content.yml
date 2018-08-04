@@ -1,0 +1,23 @@
+uuid: 20e88ca0-6e46-4120-b4ce-398d2cbaabca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content
+    - node.type.secondary_page
+  module:
+    - link
+id: node.secondary_page.field_related_content
+field_name: field_related_content
+entity_type: node
+bundle: secondary_page
+label: 'Related content'
+description: 'Add links to the Related content block'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -2678,13 +2678,22 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   display: none;
 }
 
+/* line 51, ../../src/scss/common/_feedback.scss */
+.feedback-report .views-exposed-form {
+  clear: both;
+}
+/* line 53, ../../src/scss/common/_feedback.scss */
+.feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
+  display: inline-block;
+}
+
 @media (min-width: 768px) {
-  /* line 52, ../../src/scss/common/_feedback.scss */
+  /* line 60, ../../src/scss/common/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 55, ../../src/scss/common/_feedback.scss */
+  /* line 63, ../../src/scss/common/_feedback.scss */
   #feedback-form {
     font-size: 1em;
     max-width: 100%;

@@ -1,0 +1,9 @@
+uuid: 78c9f2a6-c282-4707-b70f-2fde8bd28d63
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_acas
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301

@@ -1,0 +1,33 @@
+uuid: d72d15a0-6ce4-4512-a0ba-30e5ad73366d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_in_page_not_found
+    - system
+  theme:
+    - acas
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: acas_breadcrumbs
+theme: acas
+region: content
+weight: -12
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  page_not_found_request:
+    id: page_not_found_request
+    page_not_found: 0
+    negate: false
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/guide-print/*'
+    negate: true
+    context_mapping: {  }

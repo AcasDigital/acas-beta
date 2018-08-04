@@ -1,0 +1,23 @@
+uuid: d2c53bb1-a78d-44cc-9285-7ef470cb9df7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recent_content
+    - node.type.home_page
+  module:
+    - link
+id: node.home_page.field_recent_content
+field_name: field_recent_content
+entity_type: node
+bundle: home_page
+label: 'Recent content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 1
+  title: 0
+field_type: link

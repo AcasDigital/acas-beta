@@ -1,0 +1,33 @@
+uuid: d578785d-b060-45c0-94ab-0898a9f20da2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - scheduler
+    - search_api_exclude
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: true
+    publish_past_date: error
+    publish_required: false
+    publish_revision: false
+    publish_touch: true
+    unpublish_enable: true
+    unpublish_required: false
+    unpublish_revision: false
+  search_api_exclude:
+    enabled: 0
+name: 'Support page'
+type: support_page
+description: "Allows detailed content to be shown.\r\n<p>Available Content Items</p>\r\n<ul>\r\n<li>All components</li>\r\n</ul>"
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

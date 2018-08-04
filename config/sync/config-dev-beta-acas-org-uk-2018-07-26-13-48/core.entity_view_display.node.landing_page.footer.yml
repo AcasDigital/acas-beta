@@ -1,0 +1,31 @@
+uuid: 67363b59-7c22-4da6-bfb3-750a1a3e8f00
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.footer
+    - field.field.node.landing_page.field_bottom_text
+    - field.field.node.landing_page.field_content
+    - field.field.node.landing_page.field_metatags
+    - field.field.node.landing_page.field_summary
+    - field.field.node.landing_page.field_taxonomy
+    - node.type.landing_page
+  module:
+    - user
+id: node.landing_page.footer
+targetEntityType: node
+bundle: landing_page
+mode: footer
+content: {  }
+hidden:
+  content_moderation_control: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_bottom_text: true
+  field_content: true
+  field_metatags: true
+  field_summary: true
+  field_taxonomy: true
+  langcode: true
+  links: true

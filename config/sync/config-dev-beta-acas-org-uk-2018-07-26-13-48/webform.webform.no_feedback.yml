@@ -1,0 +1,151 @@
+uuid: 6c8e5182-836b-4347-9b87-b75fcfea7116
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: no_feedback
+title: 'No feedback'
+description: 'detailed guidance. draft survey.'
+category: Feedback
+elements: "why_didnt_this_page_help_you:\n  '#type': webform_markup\n  '#access_create_roles':\n    - authenticated\n    - anonymous\n  '#access_update_roles':\n    - authenticated\n    - anonymous\n  '#access_view_roles':\n    - authenticated\n    - anonymous\n  '#markup': '<p>Please help us improve by giving us feedback. <strong>We will use your feedback to improve our advice.</strong></p>'\nwhy_didn_t_this_page_help_you_:\n  '#type': checkboxes\n  '#title': 'Why didn''t this page help you?'\n  '#description': 'Please tick any statements you agree with.'\n  '#title_display': before\n  '#description_display': before\n  '#icheck': square-aero\n  '#options':\n    'I don''t understand the information.': 'I don''t understand the information.'\n    'The information I''m looking for isn''t here.': 'The information I''m looking for isn''t here.'\n    'I can''t work out what to do next.': 'I can''t work out what to do next.'\n    Other: Other\n  '#access_create_roles':\n    - authenticated\n    - anonymous\n  '#access_update_roles':\n    - authenticated\n    - anonymous\n  '#access_view_roles':\n    - authenticated\n    - anonymous\ncontainer_for_detailed_feedback:\n  '#type': container\n  '#states':\n    visible-slide:\n      - ':input[name=\"why_didn_t_this_page_help_you_[Other]\"]':\n          checked: true\n      - or\n      - ':input[name=\"why_didn_t_this_page_help_you_[I can''t work out what to do next.]\"]':\n          checked: true\n      - or\n      - ':input[name=\"why_didn_t_this_page_help_you_[The information I''m looking for isn''t here.]\"]':\n          checked: true\n      - or\n      - ':input[name=\"why_didn_t_this_page_help_you_[I don''t understand the information.]\"]':\n          checked: true\n  tell_us_more_about_your_answer:\n    '#type': textarea\n    '#title': 'Tell us more about your answer'\n    '#description': 'Please do not include any personal information, for example email address or phone number.'\n    '#title_display': before\n    '#description_display': before\n    '#access_create_roles':\n      - authenticated\n      - anonymous\n    '#access_update_roles':\n      - authenticated\n      - anonymous\n    '#access_view_roles':\n      - authenticated\n      - anonymous\npage:\n  '#type': url\n  '#title': Page\n  '#title_display': invisible\n  '#description_display': invisible\n  '#default_value': current-page\n  '#wrapper_attributes':\n    style: 'display: none'\n  '#access_create_roles':\n    - authenticated\n    - anonymous\n  '#access_update_roles':\n    - authenticated\n    - anonymous\n  '#access_view_roles':\n    - authenticated\n    - anonymous"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: /no-feedback
+  page_confirm_path: /no-feedback/confirmation
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: true
+  form_disable_inline_errors: true
+  form_required: true
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }

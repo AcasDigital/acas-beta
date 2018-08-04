@@ -1,0 +1,76 @@
+uuid: e309f5c4-3526-477f-9511-6119f47c18d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.print_download
+    - field.field.node.secondary_page.field_anything_wrong
+    - field.field.node.secondary_page.field_content
+    - field.field.node.secondary_page.field_metatags
+    - field.field.node.secondary_page.field_print_download
+    - field.field.node.secondary_page.field_related_content
+    - field.field.node.secondary_page.field_social_share
+    - field.field.node.secondary_page.field_summary
+    - field.field.node.secondary_page.field_taxonomy
+    - field.field.node.secondary_page.field_useful
+    - field.field.node.secondary_page.field_weight
+    - node.type.secondary_page
+  module:
+    - entity_reference_revisions
+    - link
+    - metatag
+    - text
+    - user
+id: node.secondary_page.print_download
+targetEntityType: node
+bundle: secondary_page
+mode: print_download
+content:
+  field_content:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_metatags:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_related_content:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_summary:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  content_moderation_control: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_anything_wrong: true
+  field_print_download: true
+  field_social_share: true
+  field_taxonomy: true
+  field_useful: true
+  field_weight: true
+  langcode: true
+  links: true

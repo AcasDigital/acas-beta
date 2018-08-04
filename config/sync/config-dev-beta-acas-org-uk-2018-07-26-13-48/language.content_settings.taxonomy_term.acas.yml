@@ -1,0 +1,11 @@
+uuid: e65824f9-15cf-4685-bfe0-c01412739aa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.acas
+id: taxonomy_term.acas
+target_entity_type_id: taxonomy_term
+target_bundle: acas
+default_langcode: site_default
+language_alterable: false

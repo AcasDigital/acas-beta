@@ -1,0 +1,27 @@
+uuid: 58beff5a-2570-4359-9ed1-3e03faea5713
+langcode: en
+status: true
+dependencies: {  }
+name: document_browser
+label: 'Document Browser'
+display: modal
+display_configuration:
+  width: '950'
+  height: '600'
+  link_text: 'Select Documents'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  d00f0cb5-020c-42ec-a5bc-0b822dff7a2e:
+    settings:
+      upload_location: 'public://'
+      multiple: true
+      submit_text: 'Select files'
+      extensions: 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'
+    uuid: d00f0cb5-020c-42ec-a5bc-0b822dff7a2e
+    weight: 1
+    label: upload
+    id: upload

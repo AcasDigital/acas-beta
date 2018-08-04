@@ -1,0 +1,23 @@
+uuid: f11fa19a-7900-4775-8bac-0accf03aca0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_useful
+    - node.type.secondary_page
+id: node.secondary_page.field_useful
+field_name: field_useful
+entity_type: node
+bundle: secondary_page
+label: Useful
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

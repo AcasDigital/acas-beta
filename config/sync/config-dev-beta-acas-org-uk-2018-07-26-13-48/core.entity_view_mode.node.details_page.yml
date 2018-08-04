@@ -1,0 +1,10 @@
+uuid: 24f290b9-2232-4013-bc30-e8b113d3fdf6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.details_page
+label: 'Details page'
+targetEntityType: node
+cache: true

@@ -8,3 +8,7 @@
   display: inline-block;
   margin-right: 40px;
 }
+.feedback-form .form-type-date, .feedback-form .form-item-type {
+  display: inline-block;
+  margin-right: 15px;
+}

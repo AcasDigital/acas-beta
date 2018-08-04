@@ -1,0 +1,27 @@
+uuid: 9c0b1591-ed00-47b8-9971-9f34337be128
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - acas
+id: pagetitle
+theme: acas
+region: front_top_left
+weight: -11
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      home_page: home_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

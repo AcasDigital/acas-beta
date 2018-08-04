@@ -1,0 +1,53 @@
+uuid: 3da6e255-3e0a-4a29-adc5-8cf2bec23f60
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.details_page.field_anything_wrong
+    - field.field.node.details_page.field_content
+    - field.field.node.details_page.field_current_website
+    - field.field.node.details_page.field_metatags
+    - field.field.node.details_page.field_overview_title
+    - field.field.node.details_page.field_print_download
+    - field.field.node.details_page.field_related_content
+    - field.field.node.details_page.field_show_on_parent_page
+    - field.field.node.details_page.field_social_share
+    - field.field.node.details_page.field_summary
+    - field.field.node.details_page.field_taxonomy
+    - field.field.node.details_page.field_useful
+    - node.type.details_page
+  module:
+    - text
+    - user
+id: node.details_page.teaser
+targetEntityType: node
+bundle: details_page
+mode: teaser
+content:
+  field_summary:
+    type: text_summary_or_trimmed
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+hidden:
+  content_moderation_control: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_anything_wrong: true
+  field_content: true
+  field_current_website: true
+  field_metatags: true
+  field_overview_title: true
+  field_print_download: true
+  field_related_content: true
+  field_show_on_parent_page: true
+  field_social_share: true
+  field_taxonomy: true
+  field_useful: true
+  langcode: true
+  links: true

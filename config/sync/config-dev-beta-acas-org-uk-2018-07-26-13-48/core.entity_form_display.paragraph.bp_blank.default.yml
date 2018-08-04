@@ -1,0 +1,35 @@
+uuid: fae01c9d-6ea9-4801-b285-dfacf6cf3b4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bp_blank.bp_unrestricted
+    - paragraphs.paragraphs_type.bp_blank
+  module:
+    - content_moderation
+    - text
+_core:
+  default_config_hash: MWaSjU5ELVXZsdzT5T1fL57ZZFHGuFf-Zt7SBmR1W8k
+id: paragraph.bp_blank.default
+targetEntityType: paragraph
+bundle: bp_blank
+mode: default
+content:
+  bp_unrestricted:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

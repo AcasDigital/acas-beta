@@ -108,16 +108,18 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       ];
     }
     if ($entity->get('field_feedback_form')->value) {
-      $form = \Drupal\webform\Entity\Webform::load('no_feedback');
-      $build['no_feedback_form'] = \Drupal::entityManager()
-        ->getViewBuilder('webform')
-        ->view($form);
-      $build['no_feedback_form']['#weight'] = 999;
-      $form = \Drupal\webform\Entity\Webform::load('yes_feedback');
-      $build['yes_feedback_form'] = \Drupal::entityManager()
-        ->getViewBuilder('webform')
-        ->view($form);
-      $build['yes_feedback_form']['#weight'] = 999;
+      if ($form = \Drupal\webform\Entity\Webform::load('no_feedback')) {
+        $build['no_feedback_form'] = \Drupal::entityManager()
+          ->getViewBuilder('webform')
+          ->view($form);
+        $build['no_feedback_form']['#weight'] = 999;
+      }
+      if ($form = \Drupal\webform\Entity\Webform::load('yes_feedback')) {
+        $build['yes_feedback_form'] = \Drupal::entityManager()
+          ->getViewBuilder('webform')
+          ->view($form);
+        $build['yes_feedback_form']['#weight'] = 999;
+      }
     }
     if ($entity->get('field_print_download')->value) {
       $print_guide = '';
@@ -450,6 +452,17 @@ function general_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['moderation_state']['widget'][0]['state']['#default_value'] = 'draft';
       $form['field_summary']['widget'][0]['summary']['#description'] = t('The summary does not appear on the page. It is shown on Landing Pages and in the search results and is the meta-description tag (for Google etc.)');
       //$form['revision_log']['widget'][0]['value']['#required'] = TRUE;
+      if ($form_id == 'node_details_page_edit_form') {
+        if ($chapter_pages = general_reorder_chapter_pages()) {
+          $form['chapter_pages'] = $chapter_pages;
+          $form['chapter_pages']['#weight'] = 3;
+          foreach (array_keys($form['actions']) as $action) {
+            if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+              $form['actions'][$action]['#submit'][] = 'general_node_details_page_edit_form_submit';
+            }
+          }
+        }
+      }
     }
   }
   if ($form_id == 'content_moderation_entity_moderation_form') {
@@ -457,6 +470,60 @@ function general_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $form['#attached']['library'][] = 'general/content_moderation';
     $form['revision_log']['#required'] = TRUE;
   }
+}
+
+function general_reorder_chapter_pages() {
+  $form = [];
+  $found = FALSE;
+  $form['table-row'] = [
+    '#type' => 'table',
+    '#header' => [
+      t('Reorder Chapter pages'),
+      t('Weight'),
+    ],
+    '#empty' => t('Sorry, There are no items!'),
+    '#tabledrag' => [
+      [
+        'action' => 'order',
+        'relationship' => 'sibling',
+        'group' => 'table-sort-weight',
+      ],
+    ],
+  ];
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $query = \Drupal::database()->select('taxonomy_index', 'ti');
+    $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
+    $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
+    $query->leftJoin('node__field_weight', 'w' , 'w.entity_id = ti.nid');
+    $query->fields('ti', array('nid'));
+    $query->addField('nfd', 'title');
+    $query->addField('w', 'field_weight_value', 'weight');
+    $query->condition('ti.tid', $node->get('field_taxonomy')->target_id, '=');
+    $query->condition('nfd.type', 'secondary_page', '=');
+    $query->orderBy('w.field_weight_value', 'ASC');
+    $results = $query->execute();
+    foreach ($results as $row) {
+      $found = TRUE;
+      $form['table-row'][$row->nid]['#attributes']['class'][] = 'draggable';
+      $form['table-row'][$row->nid]['#weight'] = $row->weight;
+      $form['table-row'][$row->nid]['title'] = [
+        '#markup' => $row->title,
+      ];
+      // TableDrag: Weight column element.
+      $form['table-row'][$row->nid]['weight'] = [
+        '#type' => 'weight',
+        '#title' => t('Weight for @title', ['@title' => $row->title]),
+        '#title_display' => 'invisible',
+        '#default_value' => $row->weight,
+        // Classify the weight element for #tabledrag.
+        '#attributes' => ['class' => ['table-sort-weight']],
+      ];
+    }
+  }
+  if (!$found) {
+    $form = NULL;
+  }
+  return $form;
 }
 
 /**
@@ -593,6 +660,15 @@ function general_taxonomy_overview_terms_submit($form, &$form_state) {
   $args = $form_state->getBuildInfo()['args'];
   if ($args[0]->id() == 'acas') {
     general_menu_full_first_level();
+  }
+}
+
+function general_node_details_page_edit_form_submit($form, &$form_state) {
+  $rows = $form_state->getValue('table-row');
+  foreach($rows as $key => $value) {
+    $node = \Drupal\node\Entity\Node::load($key);
+    $node->field_weight->value = $value['weight'];
+    $node->save();
   }
 }
 

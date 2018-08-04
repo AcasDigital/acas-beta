@@ -1,0 +1,22 @@
+uuid: de8e894e-fa7f-44d1-884d-e61628d5817f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - acas
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: acas_messages
+theme: acas
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

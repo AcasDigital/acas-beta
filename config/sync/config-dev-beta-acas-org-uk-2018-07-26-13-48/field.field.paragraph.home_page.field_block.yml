@@ -1,0 +1,30 @@
+uuid: 0ff909dd-4d46-4b03-a15c-4c3f9ece1669
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_block
+    - paragraphs.paragraphs_type.home_page
+  module:
+    - block_field
+id: paragraph.home_page.field_block
+field_name: field_block
+entity_type: paragraph
+bundle: home_page
+label: Block
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    plugin_id: home_page_block
+    settings:
+      id: home_page_block
+      label: 'Home Page block'
+      provider: general
+      label_display: visible
+default_value_callback: ''
+settings:
+  plugin_ids:
+    home_page_block: home_page_block
+field_type: block_field

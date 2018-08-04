@@ -1,0 +1,9 @@
+uuid: 0c57784e-7bbc-48d4-8f24-29bd4c3debc5
+langcode: en
+status: true
+dependencies: {  }
+id: document_with_html
+label: 'Document{s} with HTML'
+icon_uuid: null
+description: 'Any document(s) type with conversion to html included on the page for indexing by the search engine and Google etc.'
+behavior_plugins: {  }

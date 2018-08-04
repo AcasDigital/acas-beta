@@ -1,0 +1,23 @@
+uuid: 13dcdc9c-b124-4be5-87f6-3e2b938e3cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_on_parent_page
+    - node.type.details_page
+id: node.details_page.field_show_on_parent_page
+field_name: field_show_on_parent_page
+entity_type: node
+bundle: details_page
+label: 'Show on parent page'
+description: 'Show the link to this page on the parent landing page'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

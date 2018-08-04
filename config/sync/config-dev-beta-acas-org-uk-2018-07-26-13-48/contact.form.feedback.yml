@@ -1,0 +1,14 @@
+uuid: e3da5d9a-5f29-47ce-a68d-7fa94066e6f7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - drupal@johnburch.co.uk
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

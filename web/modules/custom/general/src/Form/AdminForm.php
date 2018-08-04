@@ -33,13 +33,6 @@ class AdminForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('acas.settings');
     $cloudfront_config = $this->config('cloudfront.settings');
-    $form['feedback_email'] = array(
-      '#type' => 'textfield',
-      '#default_value' => $config->get('contact_email') ?: 'john@johnburch.co.uk',
-      '#title' => t('Feedback email'),
-      '#description' => t('Emails will be sent to this address when a user completes the feedback form.'),
-      '#size' => 100,
-    );
     $form['search_placeholder'] = array(
       '#type' => 'textfield',
       '#default_value' => $config->get('search_placeholder') ?: 'Search beta website',
@@ -113,7 +106,6 @@ class AdminForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     \Drupal::configFactory()->getEditable('acas.settings')
-    ->set('feedback_email', $form_state->getValue('feedback_email'))
     ->set('search_placeholder', $form_state->getValue('search_placeholder'))
     ->set('freeze', $form_state->getValue('freeze'))
     ->set('prod', $form_state->getValue('prod'))

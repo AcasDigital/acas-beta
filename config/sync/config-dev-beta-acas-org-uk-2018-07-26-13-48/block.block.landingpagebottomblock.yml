@@ -1,0 +1,28 @@
+uuid: 34745324-e3cc-407c-96ac-2552a71164a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - general
+    - node
+  theme:
+    - acas
+id: landingpagebottomblock
+theme: acas
+region: content
+weight: -1
+provider: null
+plugin: landing_page_bottom
+settings:
+  id: landing_page_bottom
+  label: 'Landing Page Bottom block'
+  provider: general
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      landing_page: landing_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

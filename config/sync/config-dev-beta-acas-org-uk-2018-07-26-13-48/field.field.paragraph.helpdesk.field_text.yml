@@ -1,0 +1,24 @@
+uuid: cf17a589-e212-470c-b9b5-4d08920066ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.helpdesk
+  module:
+    - text
+id: paragraph.helpdesk.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: helpdesk
+label: Text
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: "<p>Call the Acas helpline</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

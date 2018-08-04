@@ -1,0 +1,41 @@
+uuid: 70cb5e69-5147-43a2-9c44-d9020aafa5f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_in_page_not_found
+    - general
+    - node
+    - system
+  theme:
+    - acas
+id: inthissectionblock
+theme: acas
+region: content
+weight: -6
+provider: null
+plugin: in_this_section_block
+settings:
+  id: in_this_section_block
+  label: 'In this section block'
+  provider: general
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      details_page: details_page
+      secondary_page: secondary_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  page_not_found_request:
+    id: page_not_found_request
+    page_not_found: 0
+    negate: false
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: '/node/*/revisions'
+    negate: true
+    context_mapping: {  }

@@ -1,0 +1,17 @@
+uuid: b27e5f87-f853-4175-9f5e-97f1a907b178
+langcode: en
+status: true
+dependencies: {  }
+id: ready_for_review
+workflow: editorial
+transitions:
+  ready_for_review: ready_for_review
+roles:
+  content_approver: content_approver
+author: false
+emails: john@ideas.org
+subject: 'Content ready for review'
+body:
+  value: "<p>The following content is ready for review:<br />\r\n&nbsp;</p>\r\n"
+  format: basic_html
+label: 'Ready for review'

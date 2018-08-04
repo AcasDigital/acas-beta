@@ -1,0 +1,33 @@
+uuid: f2fa8795-4aff-4903-adc1-a411bbe94de4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.document_with_html.field_document
+    - paragraphs.paragraphs_type.document_with_html
+  module:
+    - content_moderation
+id: paragraph.document_with_html.default
+targetEntityType: paragraph
+bundle: document_with_html
+mode: default
+content:
+  field_document:
+    weight: 101
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

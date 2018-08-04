@@ -1,0 +1,17 @@
+uuid: a78566db-6350-4217-9a16-d2b0971874da
+langcode: en
+status: true
+dependencies: {  }
+id: rejected
+workflow: editorial
+transitions:
+  archived_draft: archived_draft
+roles:
+  content_editor: content_editor
+author: false
+emails: john@ideas.org
+subject: 'Content restored to Draft'
+body:
+  value: "<p>The following content has been restored to Draft</p>\r\n"
+  format: basic_html
+label: 'Restore to Draft'

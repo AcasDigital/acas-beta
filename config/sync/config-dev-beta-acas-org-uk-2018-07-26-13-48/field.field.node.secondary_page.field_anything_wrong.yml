@@ -1,0 +1,23 @@
+uuid: 27f2368e-413e-4431-8b63-4642c2a79cdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anything_wrong
+    - node.type.secondary_page
+id: node.secondary_page.field_anything_wrong
+field_name: field_anything_wrong
+entity_type: node
+bundle: secondary_page
+label: 'Anything wrong'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

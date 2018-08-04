@@ -1,0 +1,27 @@
+uuid: 019b1d64-75b0-46ff-8456-6743a29319c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - acas
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: acas_page_title
+theme: acas
+region: content
+weight: -10
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

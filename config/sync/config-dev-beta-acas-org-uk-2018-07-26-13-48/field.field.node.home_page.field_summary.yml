@@ -1,0 +1,27 @@
+uuid: 2e7d4d8e-aeca-4c5b-a769-797ea2e98e3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.home_page
+  module:
+    - required_summary
+    - show_summary
+    - text
+third_party_settings:
+  show_summary: 1
+  required_summary: 1
+id: node.home_page.field_summary
+field_name: field_summary
+entity_type: node
+bundle: home_page
+label: 'Introduction text'
+description: 'This is the first paragraph of the page after the title H1 tag.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

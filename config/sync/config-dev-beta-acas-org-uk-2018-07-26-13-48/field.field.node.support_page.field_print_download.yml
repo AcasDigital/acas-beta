@@ -1,0 +1,23 @@
+uuid: 594d20c8-213b-4086-a9f9-d7f0025767a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_print_download
+    - node.type.support_page
+id: node.support_page.field_print_download
+field_name: field_print_download
+entity_type: node
+bundle: support_page
+label: 'Print Download'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

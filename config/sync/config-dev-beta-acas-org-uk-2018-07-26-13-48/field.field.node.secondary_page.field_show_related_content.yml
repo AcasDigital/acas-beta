@@ -1,0 +1,23 @@
+uuid: 907d2a5d-920e-4f41-85fe-a8a5f4741f1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_related_content
+    - node.type.secondary_page
+id: node.secondary_page.field_show_related_content
+field_name: field_show_related_content
+entity_type: node
+bundle: secondary_page
+label: 'Related content'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

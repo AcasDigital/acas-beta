@@ -1,0 +1,29 @@
+uuid: 3b35ffb0-8dc3-428d-b293-0734e9ca3ca9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.details_page
+    - node.type.secondary_page
+    - node.type.support_page
+  module:
+    - entity_embed
+    - node
+_core:
+  default_config_hash: xgvZUh-eaMilacE1XYCQ9nLH-2-meOjCyofXSO82gqg
+label: Node
+id: node
+type_id: entity
+type_settings:
+  entity_type: node
+  bundles:
+    - secondary_page
+    - details_page
+    - support_page
+  display_plugins:
+    - 'view_mode:node.full'
+    - 'view_mode:node.teaser'
+  entity_browser: ''
+  entity_browser_settings:
+    display_review: false
+icon_uuid: null

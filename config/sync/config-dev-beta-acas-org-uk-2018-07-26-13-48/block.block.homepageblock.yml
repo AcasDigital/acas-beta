@@ -1,0 +1,28 @@
+uuid: 2e13be9d-d543-4f59-ab41-a8c27d936745
+langcode: en
+status: true
+dependencies:
+  module:
+    - general
+    - node
+  theme:
+    - acas
+id: homepageblock
+theme: acas
+region: content
+weight: -3
+provider: null
+plugin: home_page_block
+settings:
+  id: home_page_block
+  label: 'Home Page block'
+  provider: general
+  label_display: '0'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      home_page: home_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

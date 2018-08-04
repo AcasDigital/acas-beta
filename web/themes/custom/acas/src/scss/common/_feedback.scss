@@ -47,6 +47,14 @@
     display: none;
   }
 }
+.feedback-report {
+  .views-exposed-form {
+    clear: both;
+    .control-label, .form-type-date {
+      display: inline-block;
+    }
+  }
+}
 
 @include bp(SM) {
   #feedback-wrapper {

@@ -156,3 +156,11 @@ general.freeze:
     _controller: '\Drupal\general\Controller\GeneralController::freeze'
   requirements:
     _permission: 'administer site configuration'
+    
+general.feedback_forms:
+  path: '/admin/reports/feedback'
+  defaults:
+    _form: '\Drupal\general\Form\FeedbackForm'
+    _title: 'Feedback'
+  requirements:
+    _permission: 'administer site configuration'

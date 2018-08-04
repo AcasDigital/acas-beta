@@ -1,0 +1,23 @@
+uuid: 43b27f66-c741-4c23-92b9-b1d5d70dd934
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_enabled
+    - taxonomy.vocabulary.acas
+id: taxonomy_term.acas.field_enabled
+field_name: field_enabled
+entity_type: taxonomy_term
+bundle: acas
+label: Enabled
+description: 'If checked, will appear in the main menu and sitemap'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

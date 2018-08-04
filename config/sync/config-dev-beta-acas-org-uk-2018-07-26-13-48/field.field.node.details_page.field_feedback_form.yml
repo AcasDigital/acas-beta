@@ -1,0 +1,23 @@
+uuid: 6562d006-c225-4b8b-a933-5db35b9bdf98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feedback_form
+    - node.type.details_page
+id: node.details_page.field_feedback_form
+field_name: field_feedback_form
+entity_type: node
+bundle: details_page
+label: 'Feedback form'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,49 @@
+uuid: dad1e0d5-b099-4401-b542-47ad149be406
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.secondary_page.field_anything_wrong
+    - field.field.node.secondary_page.field_content
+    - field.field.node.secondary_page.field_metatags
+    - field.field.node.secondary_page.field_print_download
+    - field.field.node.secondary_page.field_related_content
+    - field.field.node.secondary_page.field_social_share
+    - field.field.node.secondary_page.field_summary
+    - field.field.node.secondary_page.field_taxonomy
+    - field.field.node.secondary_page.field_useful
+    - field.field.node.secondary_page.field_weight
+    - node.type.secondary_page
+  module:
+    - text
+    - user
+id: node.secondary_page.search_index
+targetEntityType: node
+bundle: secondary_page
+mode: search_index
+content:
+  field_summary:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_summary_or_trimmed
+    region: content
+hidden:
+  content_moderation_control: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_anything_wrong: true
+  field_content: true
+  field_metatags: true
+  field_print_download: true
+  field_related_content: true
+  field_social_share: true
+  field_taxonomy: true
+  field_useful: true
+  field_weight: true
+  langcode: true
+  links: true

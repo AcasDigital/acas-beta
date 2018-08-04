@@ -1,0 +1,23 @@
+uuid: 08bb1f4c-ff7e-4532-b034-85641b83f9d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.xeno_parallax
+    - paragraphs.paragraphs_type.xeno_hero
+  module:
+    - options
+_core:
+  default_config_hash: YlPJfGpAlVGEK4sLGFXKTgPqbfXl40fKVAX65Cj_ZKA
+id: paragraph.xeno_hero.xeno_parallax
+field_name: xeno_parallax
+entity_type: paragraph
+bundle: xeno_hero
+label: Parallax
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

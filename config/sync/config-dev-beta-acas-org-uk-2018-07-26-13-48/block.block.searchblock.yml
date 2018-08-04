@@ -1,0 +1,32 @@
+uuid: c38cef10-d3ba-4594-89f9-0c136a2b2ee9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_in_page_not_found
+    - general
+    - system
+  theme:
+    - acas
+id: searchblock
+theme: acas
+region: navigation_collapsible
+weight: -11
+provider: null
+plugin: search_block
+settings:
+  id: search_block
+  label: 'Search block'
+  provider: general
+  label_display: '0'
+visibility:
+  page_not_found_request:
+    id: page_not_found_request
+    page_not_found: 0
+    negate: false
+    context_mapping: {  }
+  request_path:
+    id: request_path
+    pages: "/guide-print/*\r\n/page-print/*"
+    negate: true
+    context_mapping: {  }

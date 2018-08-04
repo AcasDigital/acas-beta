@@ -1,0 +1,27 @@
+uuid: 632629f1-8947-4957-a441-fa56024d88dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.acas.field_enabled
+    - taxonomy.vocabulary.acas
+  module:
+    - text
+id: taxonomy_term.acas.default
+targetEntityType: taxonomy_term
+bundle: acas
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_enabled: true
+  langcode: true

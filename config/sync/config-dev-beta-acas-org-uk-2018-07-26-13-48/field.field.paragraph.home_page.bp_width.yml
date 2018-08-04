@@ -1,0 +1,21 @@
+uuid: d6940c47-00a6-4275-967f-6aa96e745284
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.bp_width
+    - paragraphs.paragraphs_type.home_page
+  module:
+    - options
+id: paragraph.home_page.bp_width
+field_name: bp_width
+entity_type: paragraph
+bundle: home_page
+label: Width
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

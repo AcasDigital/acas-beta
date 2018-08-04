@@ -1,0 +1,9 @@
+uuid: 89841a51-4c88-451c-a44f-a128c1d17474
+langcode: en
+status: true
+dependencies: {  }
+id: home_page
+label: 'Home Page'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

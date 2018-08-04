@@ -1,0 +1,39 @@
+uuid: 4ade12c1-dc52-44d5-b0d8-02c51ebacaa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.nested_paragraph.field_paragraphs_demo
+    - paragraphs.paragraphs_type.nested_paragraph
+  module:
+    - content_moderation
+    - paragraphs
+_core:
+  default_config_hash: koYYwlW52xb05AiGtIbUHVvueeTQi6lKOx4z8s2umt0
+id: paragraph.nested_paragraph.default
+targetEntityType: paragraph
+bundle: nested_paragraph
+mode: default
+content:
+  field_paragraphs_demo:
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
