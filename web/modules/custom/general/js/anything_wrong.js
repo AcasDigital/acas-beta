@@ -49,7 +49,7 @@
         });
       }
       function showAnythingWrongRequest(formData, jqForm, options) {
-        $("#feedback-form .left-wrapper .text").html("<span class='text'>Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
+        $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
         $("#feedback-form .right-wrapper").hide();
         $("#feedback-form .webform-submission-form").slideUp();
       }
