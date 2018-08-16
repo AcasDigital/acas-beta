@@ -10,6 +10,11 @@
     display: none;
   }
 }
+.path-webform.path-feedback {
+  .page-header {
+    display: block;
+  }
+}
 
 form#user-login-form {
   @extend .col-xs-12;

@@ -134,6 +134,10 @@ function acas_preprocess_html(&$variables) {
   if ((preg_match('/MSIE\s(?P<v>\d+)/i', @$_SERVER['HTTP_USER_AGENT'], $B) && $B['v'] <= 8) || \Drupal::request()->query->get('ie8')) {
     $variables['ie8'] = TRUE;
   }
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpbrk($current_path, 'feedback') !== FALSE) {
+    $variables['attributes']['class'][] = 'path-feedback';
+  }
 }
 
 function acas_preprocess_item_list(&$variables) {
@@ -189,6 +193,8 @@ function acas_preprocess_views_view(&$variables) {
     }
   }
 }
+
+
 
 
 /**

@@ -417,7 +417,7 @@ function general_form_header_search_alter(&$form, FormStateInterface $form_state
  * Implements hook_form_alter
  */
 
-function general_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && \Drupal::theme()->getActiveTheme()->getName() == 'acas') {
     $config = \Drupal::config('acas.settings');
     $form['keys']['#attributes']['placeholder'] = $config->get('search_placeholder');
@@ -469,6 +469,17 @@ function general_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $form['current']['#suffix'] = '<div id="close">X</div>';
     $form['#attached']['library'][] = 'general/content_moderation';
     $form['revision_log']['#required'] = TRUE;
+  }
+  if (strpos($form_id, 'feedback_add_form') !== FALSE) {
+    $form['#validate'][0] = 'general_feedback_form_validate';
+  }
+}
+
+function general_feedback_form_validate(&$form, &$form_state) {
+  if ($email = $form_state->getValue('email')) {
+    $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Do not enter anything in the Email field!');
+  }else{
+    $form_state->clearErrors();
   }
 }
 

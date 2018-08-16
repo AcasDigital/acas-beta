@@ -163,4 +163,4 @@ general.feedback_forms:
     _form: '\Drupal\general\Form\FeedbackForm'
     _title: 'Feedback'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'feedback report'

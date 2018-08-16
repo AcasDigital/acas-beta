@@ -6,6 +6,7 @@
         $('#feedback-form').append($('.webform-submission-yes-feedback-add-form'));
         $("#feedback-form #no").click(function() {
           $("#feedback-form .right-wrapper").show();
+          $("#feedback-form .left-wrapper .buttons").hide();
           $("#feedback-form .webform-submission-yes-feedback-form").slideUp();
           $("#feedback-form .webform-submission-no-feedback-form").slideDown();
           sendVote(this, false);
@@ -18,6 +19,7 @@
           $("#feedback-form .right-wrapper").show();
           $("#feedback-form .webform-submission-no-feedback-form").slideUp();
           $("#feedback-form .webform-submission-yes-feedback-form").slideDown();
+          $("#feedback-form .left-wrapper .buttons").hide();
           setTimeout(function(){ $("#feedback-form .webform-submission-yes-feedback-form textarea").focus(); }, 500);
           sendVote(this, false);
           $([document.documentElement, document.body]).animate({
@@ -28,6 +30,7 @@
         $("#feedback-form .right-wrapper").click(function() {
           $("#feedback-form .right-wrapper").hide();
           $("#feedback-form .webform-submission-form").slideUp();
+          $("#feedback-form .left-wrapper .buttons").show();
         });
         $("#feedback-form .webform-button--submit").click(function() {
           //$("#feedback-form .webform-submission-no-feedback-add-form").submit();
@@ -46,7 +49,7 @@
         });
       }
       function showAnythingWrongRequest(formData, jqForm, options) {
-        $("#feedback-form .left-wrapper").html("<span class='text'>Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190</span>");
+        $("#feedback-form .left-wrapper .text").html("<span class='text'>Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
         $("#feedback-form .right-wrapper").hide();
         $("#feedback-form .webform-submission-form").slideUp();
       }
@@ -62,7 +65,7 @@
           },
           success: function(data){
             if (simple) {
-              $("#feedback-wrapper #feedback-form").html("<span class='text'>Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190</span>");
+              $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
             }
           }
         });

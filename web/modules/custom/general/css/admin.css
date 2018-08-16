@@ -12,3 +12,6 @@
   display: inline-block;
   margin-right: 15px;
 }
+.node-page-form .field--name-field-test, .feedback-form .form-type-entity-autocomplete .description {
+  display: none;
+}

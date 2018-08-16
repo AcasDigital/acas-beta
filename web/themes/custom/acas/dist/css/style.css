@@ -1723,7 +1723,7 @@ strong, b {
 }
 
 /* line 102, ../../src/scss/_base.scss */
-.clearfix::after {
+.clearfix::after, .path-webform .webform-container-type-details .panel-body::after {
   content: "";
   clear: both;
   display: table;
@@ -1854,64 +1854,69 @@ strong, b {
 }
 
 /* line 14, ../../src/scss/drupal/_admin.scss */
+.path-webform.path-feedback .page-header {
+  display: block;
+}
+
+/* line 19, ../../src/scss/drupal/_admin.scss */
 form#user-login-form {
   margin-bottom: 2em;
 }
-/* line 17, ../../src/scss/drupal/_admin.scss */
+/* line 22, ../../src/scss/drupal/_admin.scss */
 form#user-login-form .control-label {
   clear: left;
   display: block;
   padding: .5em 0;
 }
-/* line 22, ../../src/scss/drupal/_admin.scss */
+/* line 27, ../../src/scss/drupal/_admin.scss */
 form#user-login-form .form-item {
   margin-bottom: 1em;
 }
-/* line 25, ../../src/scss/drupal/_admin.scss */
+/* line 30, ../../src/scss/drupal/_admin.scss */
 form#user-login-form .description {
   font-size: 0.85em;
   color: #999;
 }
 
-/* line 35, ../../src/scss/drupal/_admin.scss */
+/* line 40, ../../src/scss/drupal/_admin.scss */
 .views-exposed-form .control-label {
   display: none;
 }
-/* line 38, ../../src/scss/drupal/_admin.scss */
+/* line 43, ../../src/scss/drupal/_admin.scss */
 .views-exposed-form .form-type-textfield, .views-exposed-form .form-actions {
   display: inline-block;
 }
-/* line 41, ../../src/scss/drupal/_admin.scss */
+/* line 46, ../../src/scss/drupal/_admin.scss */
 .views-exposed-form .form-actions {
   position: relative;
 }
 
-/* line 46, ../../src/scss/drupal/_admin.scss */
+/* line 51, ../../src/scss/drupal/_admin.scss */
 .print__wrapper--pdf, .node_view {
   display: inline-block;
   vertical-align: top;
 }
 
-/* line 52, ../../src/scss/drupal/_admin.scss */
+/* line 57, ../../src/scss/drupal/_admin.scss */
 .page-node-type-home-page strong.node_view, .page-node-type-landing-page strong.node_view {
   display: none;
 }
 
-/* line 58, ../../src/scss/drupal/_admin.scss */
+/* line 63, ../../src/scss/drupal/_admin.scss */
 .page-node-type-details-page .field--name-field-taxonomy, .page-node-type-details-page .taxonomy-parent, .page-node-type-support-page .field--name-field-taxonomy, .page-node-type-support-page .taxonomy-parent {
   display: none;
 }
-/* line 61, ../../src/scss/drupal/_admin.scss */
+/* line 66, ../../src/scss/drupal/_admin.scss */
 .page-node-type-details-page article, .page-node-type-support-page article {
   margin-bottom: 20px;
 }
-/* line 64, ../../src/scss/drupal/_admin.scss */
+/* line 69, ../../src/scss/drupal/_admin.scss */
 .page-node-type-details-page .node_view ul.pre_link-colors li:first-child, .page-node-type-support-page .node_view ul.pre_link-colors li:first-child {
   background: none;
   padding: 0;
 }
 
-/* line 70, ../../src/scss/drupal/_admin.scss */
+/* line 75, ../../src/scss/drupal/_admin.scss */
 .chosen-container {
   border: 0 !important;
   padding: 0 !important;
@@ -1920,32 +1925,32 @@ form#user-login-form .description {
   -webkit-box-shadow: none !important;
 }
 
-/* line 79, ../../src/scss/drupal/_admin.scss */
+/* line 84, ../../src/scss/drupal/_admin.scss */
 .field--name-field-rate-this-content .field--label, .field--name-field-rate-this-content .field--item, .field--name-field-rate-this-content .form-type-select, .field--name-field-rate-this-content .button {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 83, ../../src/scss/drupal/_admin.scss */
+/* line 88, ../../src/scss/drupal/_admin.scss */
 .field--name-field-rate-this-content .field--label {
   margin-top: 14px;
   margin-right: 5px;
 }
-/* line 87, ../../src/scss/drupal/_admin.scss */
+/* line 92, ../../src/scss/drupal/_admin.scss */
 .field--name-field-rate-this-content .form-type-select {
   position: relative;
   top: 7px;
 }
-/* line 91, ../../src/scss/drupal/_admin.scss */
+/* line 96, ../../src/scss/drupal/_admin.scss */
 .field--name-field-rate-this-content .useful-rating {
   font-size: 2em;
 }
-/* line 94, ../../src/scss/drupal/_admin.scss */
+/* line 99, ../../src/scss/drupal/_admin.scss */
 .field--name-field-rate-this-content .select-wrapper:after {
   display: none;
 }
 
 /* Navigation Tabs for Admin Backend */
-/* line 108, ../../src/scss/drupal/_admin.scss */
+/* line 113, ../../src/scss/drupal/_admin.scss */
 .nav {
   margin-bottom: 0;
   padding-left: 0;
@@ -1960,76 +1965,76 @@ form#user-login-form .description {
 .nav:after {
   clear: both;
 }
-/* line 114, ../../src/scss/drupal/_admin.scss */
+/* line 119, ../../src/scss/drupal/_admin.scss */
 .nav > li {
   position: relative;
   display: block;
 }
-/* line 118, ../../src/scss/drupal/_admin.scss */
+/* line 123, ../../src/scss/drupal/_admin.scss */
 .nav > li > a {
   position: relative;
   display: block;
   padding: 10px 15px;
 }
-/* line 122, ../../src/scss/drupal/_admin.scss */
+/* line 127, ../../src/scss/drupal/_admin.scss */
 .nav > li > a:hover, .nav > li > a:focus {
   text-decoration: none;
   background-color: #eeeeee;
 }
-/* line 130, ../../src/scss/drupal/_admin.scss */
+/* line 135, ../../src/scss/drupal/_admin.scss */
 .nav > li.disabled > a {
   color: #F7F7F7;
 }
-/* line 133, ../../src/scss/drupal/_admin.scss */
+/* line 138, ../../src/scss/drupal/_admin.scss */
 .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
   color: #F7F7F7;
   text-decoration: none;
   background-color: transparent;
   cursor: not-allowed;
 }
-/* line 145, ../../src/scss/drupal/_admin.scss */
+/* line 150, ../../src/scss/drupal/_admin.scss */
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background-color: #eeeeee;
   border-color: #008C95;
 }
-/* line 158, ../../src/scss/drupal/_admin.scss */
+/* line 163, ../../src/scss/drupal/_admin.scss */
 .nav .nav-divider {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
-/* line 165, ../../src/scss/drupal/_admin.scss */
+/* line 170, ../../src/scss/drupal/_admin.scss */
 .nav > li > a > img {
   max-width: none;
 }
 
-/* line 175, ../../src/scss/drupal/_admin.scss */
+/* line 180, ../../src/scss/drupal/_admin.scss */
 nav.tabs {
   clear: left;
 }
 
-/* line 179, ../../src/scss/drupal/_admin.scss */
+/* line 184, ../../src/scss/drupal/_admin.scss */
 .nav-tabs {
   border-bottom: 1px solid #ddd;
 }
-/* line 181, ../../src/scss/drupal/_admin.scss */
+/* line 186, ../../src/scss/drupal/_admin.scss */
 .nav-tabs > li {
   float: left;
   margin-bottom: -1px;
 }
-/* line 187, ../../src/scss/drupal/_admin.scss */
+/* line 192, ../../src/scss/drupal/_admin.scss */
 .nav-tabs > li > a {
   margin-right: 2px;
   line-height: 1.42857;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
-/* line 192, ../../src/scss/drupal/_admin.scss */
+/* line 197, ../../src/scss/drupal/_admin.scss */
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #ddd;
 }
-/* line 199, ../../src/scss/drupal/_admin.scss */
+/* line 204, ../../src/scss/drupal/_admin.scss */
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #CCC;
   background-color: #fff;
@@ -2038,74 +2043,74 @@ nav.tabs {
   cursor: default;
 }
 
-/* line 221, ../../src/scss/drupal/_admin.scss */
+/* line 226, ../../src/scss/drupal/_admin.scss */
 .nav-pills > li {
   float: left;
 }
-/* line 225, ../../src/scss/drupal/_admin.scss */
+/* line 230, ../../src/scss/drupal/_admin.scss */
 .nav-pills > li > a {
   border-radius: 4px;
 }
-/* line 228, ../../src/scss/drupal/_admin.scss */
+/* line 233, ../../src/scss/drupal/_admin.scss */
 .nav-pills > li + li {
   margin-left: 2px;
 }
-/* line 234, ../../src/scss/drupal/_admin.scss */
+/* line 239, ../../src/scss/drupal/_admin.scss */
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #337ab7;
 }
 
-/* line 247, ../../src/scss/drupal/_admin.scss */
+/* line 252, ../../src/scss/drupal/_admin.scss */
 .nav-stacked > li {
   float: none;
 }
-/* line 249, ../../src/scss/drupal/_admin.scss */
+/* line 254, ../../src/scss/drupal/_admin.scss */
 .nav-stacked > li + li {
   margin-top: 2px;
   margin-left: 0;
 }
 
-/* line 263, ../../src/scss/drupal/_admin.scss */
+/* line 268, ../../src/scss/drupal/_admin.scss */
 .nav-justified, .nav-tabs.nav-justified {
   width: 100%;
 }
-/* line 266, ../../src/scss/drupal/_admin.scss */
+/* line 271, ../../src/scss/drupal/_admin.scss */
 .nav-justified > li, .nav-tabs.nav-justified > li {
   float: none;
 }
-/* line 268, ../../src/scss/drupal/_admin.scss */
+/* line 273, ../../src/scss/drupal/_admin.scss */
 .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
   text-align: center;
   margin-bottom: 5px;
 }
-/* line 274, ../../src/scss/drupal/_admin.scss */
+/* line 279, ../../src/scss/drupal/_admin.scss */
 .nav-justified > .dropdown .dropdown-menu {
   top: auto;
   left: auto;
 }
 @media (min-width: 768px) {
-  /* line 280, ../../src/scss/drupal/_admin.scss */
+  /* line 285, ../../src/scss/drupal/_admin.scss */
   .nav-justified > li, .nav-tabs.nav-justified > li {
     display: table-cell;
     width: 1%;
   }
-  /* line 283, ../../src/scss/drupal/_admin.scss */
+  /* line 288, ../../src/scss/drupal/_admin.scss */
   .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
     margin-bottom: 0;
   }
 }
 
-/* line 293, ../../src/scss/drupal/_admin.scss */
+/* line 298, ../../src/scss/drupal/_admin.scss */
 .nav-tabs-justified, .nav-tabs.nav-justified {
   border-bottom: 0;
 }
-/* line 296, ../../src/scss/drupal/_admin.scss */
+/* line 301, ../../src/scss/drupal/_admin.scss */
 .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
   margin-right: 0;
   border-radius: 4px;
 }
-/* line 302, ../../src/scss/drupal/_admin.scss */
+/* line 307, ../../src/scss/drupal/_admin.scss */
 .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
 .nav-tabs-justified > .active > a:hover,
 .nav-tabs.nav-justified > .active > a:hover,
@@ -2114,12 +2119,12 @@ nav.tabs {
   border: 1px solid #ddd;
 }
 @media (min-width: 768px) {
-  /* line 309, ../../src/scss/drupal/_admin.scss */
+  /* line 314, ../../src/scss/drupal/_admin.scss */
   .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
   }
-  /* line 313, ../../src/scss/drupal/_admin.scss */
+  /* line 318, ../../src/scss/drupal/_admin.scss */
   .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:hover,
@@ -2129,16 +2134,16 @@ nav.tabs {
   }
 }
 
-/* line 327, ../../src/scss/drupal/_admin.scss */
+/* line 332, ../../src/scss/drupal/_admin.scss */
 .tab-content > .tab-pane {
   display: none;
 }
-/* line 330, ../../src/scss/drupal/_admin.scss */
+/* line 335, ../../src/scss/drupal/_admin.scss */
 .tab-content > .active {
   display: block;
 }
 
-/* line 340, ../../src/scss/drupal/_admin.scss */
+/* line 345, ../../src/scss/drupal/_admin.scss */
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-right-radius: 0;
@@ -2679,21 +2684,26 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
 }
 
 /* line 51, ../../src/scss/common/_feedback.scss */
+.acas-feedback-form .form-type-email {
+  display: none;
+}
+
+/* line 56, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form {
   clear: both;
 }
-/* line 53, ../../src/scss/common/_feedback.scss */
+/* line 58, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
   display: inline-block;
 }
 
 @media (min-width: 768px) {
-  /* line 60, ../../src/scss/common/_feedback.scss */
+  /* line 65, ../../src/scss/common/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 63, ../../src/scss/common/_feedback.scss */
+  /* line 68, ../../src/scss/common/_feedback.scss */
   #feedback-form {
     font-size: 1em;
     max-width: 100%;
@@ -3801,14 +3811,19 @@ ul.breadcrumb--search li:first-child:after {
 }
 
 /* Form styles */
-/* line 2, ../../src/scss/common/_form.scss */
+/* line 7, ../../src/scss/common/_form.scss */
+.webform-submission-form.webform-submission-notification-prototype-form-1-form {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+/* line 12, ../../src/scss/common/_form.scss */
 .webform-submission-form .webform-progress-tracker {
   margin-left: 0;
 }
-/* line 5, ../../src/scss/common/_form.scss */
+/* line 16, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-control {
-  padding: .375rem .75rem;
-  font-size: 1rem;
+  padding: .375em .75em;
+  font-size: 1em;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -3817,50 +3832,50 @@ ul.breadcrumb--search li:first-child:after {
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-/* line 16, ../../src/scss/common/_form.scss */
+/* line 28, ../../src/scss/common/_form.scss */
 .webform-submission-form .control-label, .webform-submission-form .fieldset-legend {
-  display: block;
   color: #008C95;
-  font-weight: bold;
+  display: block;
+  font-family: "Open Sans Semibold", sans-serif;
   margin-bottom: .5rem;
   font-size: 1em;
 }
-/* line 23, ../../src/scss/common/_form.scss */
+/* line 36, ../../src/scss/common/_form.scss */
 .webform-submission-form .fieldset-legend, .webform-submission-form .form-type-textarea label, .webform-submission-form .form-item-employer-name label {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
-/* line 26, ../../src/scss/common/_form.scss */
+/* line 41, ../../src/scss/common/_form.scss */
 .webform-submission-form fieldset .control-label {
   color: #000;
   font-weight: normal;
   font-size: 1em;
 }
-/* line 31, ../../src/scss/common/_form.scss */
+/* line 48, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group, .webform-submission-form .webform-options-display-one-column {
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
 }
-/* line 34, ../../src/scss/common/_form.scss */
+/* line 51, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group .form-item .invalid, .webform-submission-form .webform-options-display-one-column .form-item .invalid {
   border: 4px solid #df3034;
 }
-/* line 37, ../../src/scss/common/_form.scss */
+/* line 54, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group .form-item .valid, .webform-submission-form .webform-options-display-one-column .form-item .valid {
   border: 4px solid #28a745;
 }
-/* line 42, ../../src/scss/common/_form.scss */
+/* line 59, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-type-checkbox, .webform-submission-form .form-type-radio {
   margin-bottom: 20px;
 }
-/* line 45, ../../src/scss/common/_form.scss */
+/* line 62, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-item-find-address {
   margin: 0;
 }
-/* line 48, ../../src/scss/common/_form.scss */
+/* line 65, ../../src/scss/common/_form.scss */
 .webform-submission-form .description {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-/* line 52, ../../src/scss/common/_form.scss */
+/* line 69, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-submit {
   color: #fff;
   background: #007C85;
@@ -3872,15 +3887,15 @@ ul.breadcrumb--search li:first-child:after {
   width: fit-content;
   cursor: pointer;
 }
-/* line 63, ../../src/scss/common/_form.scss */
+/* line 80, ../../src/scss/common/_form.scss */
 .webform-submission-form .btn-cta, .webform-submission-form form#user-login-form #edit-submit, form#user-login-form .webform-submission-form #edit-submit, .webform-submission-form .phone-callout {
   display: inline-block;
 }
-/* line 67, ../../src/scss/common/_form.scss */
+/* line 84, ../../src/scss/common/_form.scss */
 .webform-submission-form #employer_message a {
   cursor: pointer;
 }
-/* line 71, ../../src/scss/common/_form.scss */
+/* line 88, ../../src/scss/common/_form.scss */
 .webform-submission-form .invalid-feedback {
   border-left: 4px solid #df3034;
   padding-left: 16px;
@@ -3892,68 +3907,83 @@ ul.breadcrumb--search li:first-child:after {
   color: #df3034;
   display: none;
 }
-/* line 82, ../../src/scss/common/_form.scss */
+/* line 99, ../../src/scss/common/_form.scss */
 .webform-submission-form .panel-heading {
   display: none;
 }
-/* line 86, ../../src/scss/common/_form.scss */
+/* line 103, ../../src/scss/common/_form.scss */
 .webform-submission-form .webform-preview #check_employer, .webform-submission-form .webform-preview #acas_notification_form--find_address {
   display: none;
 }
-/* line 89, ../../src/scss/common/_form.scss */
+/* line 106, ../../src/scss/common/_form.scss */
 .webform-submission-form .webform-preview .panel-heading {
   display: block;
-  border-top: 1px solid #999;
-  padding-top: 10px;
+  padding-top: .5em;
 }
-/* line 96, ../../src/scss/common/_form.scss */
+/* line 112, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-item-employer-name .invalid-feedback {
   position: relative;
   top: -22px;
 }
-/* line 101, ../../src/scss/common/_form.scss */
+/* line 117, ../../src/scss/common/_form.scss */
 .webform-submission-form .g-recaptcha {
   margin-top: 40px;
 }
 
-/* line 106, ../../src/scss/common/_form.scss */
+/* line 122, ../../src/scss/common/_form.scss */
+.path-webform {
+  /* Retire */
+  /* Retire */
+}
+/* line 127, ../../src/scss/common/_form.scss */
 .path-webform .reference {
   font-weight: 500;
   font-size: 1.2em;
 }
-/* line 110, ../../src/scss/common/_form.scss */
-.path-webform .webform-submission {
-  margin-top: 40px;
-}
-/* line 113, ../../src/scss/common/_form.scss */
+/* line 132, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details {
+  border-top: 1px solid #999;
   position: relative;
+  padding: .25em 0;
 }
-/* line 115, ../../src/scss/common/_form.scss */
-.path-webform .webform-container-type-details .webform-wizard-pages-link {
-  position: absolute;
-  right: 5px;
-  bottom: 0;
-}
-/* line 120, ../../src/scss/common/_form.scss */
+/* line 136, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .form-item-employer-name label {
   font-size: 1em;
 }
-/* line 123, ../../src/scss/common/_form.scss */
+/* line 139, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-title {
-  text-decoration: none;
-  color: #008C95;
   cursor: default;
-  margin-bottom: 20px;
+  color: #008C95;
   display: block;
+  font-size: 1.25em;
   font-weight: bold;
-  font-size: 1.5em;
+  margin-bottom: 1em;
+  text-decoration: none;
 }
-/* line 132, ../../src/scss/common/_form.scss */
+/* line 148, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body {
-  margin-left: 40px;
+  margin-left: 1em;
 }
-/* line 136, ../../src/scss/common/_form.scss */
+/* line 151, ../../src/scss/common/_form.scss */
+.path-webform .webform-container-type-details .panel-body .control-label {
+  color: #000;
+}
+/* line 154, ../../src/scss/common/_form.scss */
+.path-webform .webform-container-type-details .panel-body .form-item {
+  float: left;
+  width: 80%;
+}
+/* line 158, ../../src/scss/common/_form.scss */
+.path-webform .webform-container-type-details .panel-body section.webform-wizard-page-edit.form-group {
+  float: right;
+  width: 15%;
+}
+/* line 162, ../../src/scss/common/_form.scss */
+.path-webform .webform-container-type-details .panel-body .webform-wizard-pages-link {
+  float: right;
+  margin: 0;
+}
+/* line 170, ../../src/scss/common/_form.scss */
 .path-webform #overlay {
   position: fixed;
   top: 0;
@@ -3963,7 +3993,7 @@ ul.breadcrumb--search li:first-child:after {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 145, ../../src/scss/common/_form.scss */
+/* line 181, ../../src/scss/common/_form.scss */
 .path-webform #modal {
   position: fixed;
   top: 50%;
@@ -3976,13 +4006,13 @@ ul.breadcrumb--search li:first-child:after {
   z-index: 10;
   border: 3px solid #CEDC00;
 }
-/* line 156, ../../src/scss/common/_form.scss */
+/* line 192, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper {
   overflow: auto;
   padding: 0 1em;
   border-bottom: 3px solid #CEDC00;
 }
-/* line 160, ../../src/scss/common/_form.scss */
+/* line 196, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper .title {
   float: left;
   font-size: 1.36em;
@@ -3994,7 +4024,7 @@ ul.breadcrumb--search li:first-child:after {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* line 171, ../../src/scss/common/_form.scss */
+/* line 207, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper .title:before {
   content: "";
   background: #CEDC00;
@@ -4005,18 +4035,25 @@ ul.breadcrumb--search li:first-child:after {
   left: 0;
   top: 8%;
 }
-/* line 182, ../../src/scss/common/_form.scss */
+/* line 218, ../../src/scss/common/_form.scss */
 .path-webform #modal .spinner-wrapper {
   text-align: center;
   margin: 20px 0;
 }
-/* line 186, ../../src/scss/common/_form.scss */
+/* line 222, ../../src/scss/common/_form.scss */
 .path-webform #modal .modal-description {
   text-align: center;
 }
-/* line 193, ../../src/scss/common/_form.scss */
+/* line 227, ../../src/scss/common/_form.scss */
 .path-webform .spinner {
   animation: rotator 1.4s linear infinite;
+}
+/* line 231, ../../src/scss/common/_form.scss */
+.path-webform .path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
 @keyframes rotator {
   0% {
@@ -4025,13 +4062,6 @@ ul.breadcrumb--search li:first-child:after {
   100% {
     transform: rotate(270deg);
   }
-}
-/* line 202, ../../src/scss/common/_form.scss */
-.path-webform .path {
-  stroke-dasharray: 187;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
 @keyframes colors {
   0% {
