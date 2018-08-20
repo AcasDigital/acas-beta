@@ -12,7 +12,20 @@ You can get the AWS account number running something like this:
 aws sts get-caller-identity --output text --query 'Account' --profile acas-pre-prod
 ```
 
-First, you will need to package up your changes so that they are ready
+## Validation
+
+You can do basic validation locally to ensure your change won't fail due to
+invalid formatting.
+
+```sh
+aws cloudformation validate-template \
+    --template-body file://$(pwd)/application/monitoring_stack.template \
+    --profile "acas-${ACAS_ENV}"
+```
+
+## Packaging
+
+You will need to package up your changes so that they are ready
 for deployment.
 
 ```sh
@@ -22,38 +35,78 @@ aws cloudformation package --template-file "$(pwd)/application/monitoring_stack.
     --profile "acas-${ACAS_ENV}"
 ```
 
-Next, deploy the stack. You might need to use `--parameter-overrides` to
+## Create change set
+
+A change set is a logical operation that AWS will try to execute which will
+take the infrastructure from the current state to the declared desired state.
+We use change sets since this is the safest way of introducing a feedback loop
+and checking that our code will have the intended effect.
+
+You might need to use `--parameter` to
 customise behaviour for different environments.
 
 ```sh
-aws cloudformation deploy --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
-    --template-file "$(pwd)/application/advice-monitoring-${ACAS_ENV}.packaged" \
-    --s3-bucket "acas-cfn-${ACAS_ACCOUNT}-eu-west-1" --s3-prefix "advice/$ACAS_ENV" \
-    --no-execute-changeset \
+aws cloudformation create-change-set \
+    --change-set-name "ACAS-advice-monitoring-${ACAS_ENV}" \
+    --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
+    --template-body  "file://$(pwd)/application/advice-monitoring-${ACAS_ENV}.packaged" \
     --capabilities CAPABILITY_NAMED_IAM \
     --profile "acas-${ACAS_ENV}"
 ```
 
-Take note of the change set name that it returned as use that:
+Parameter overrides look something like this:
+
+```sh
+--parameter ParameterKey=pSnsAppStack,ParameterValue=ACAS-ops-alerts-prod \
+ParameterKey=pRDSName,ParameterValue=production-cluster-1
+```
+
+You might find these commands useful to get the parameter values:
+
+### EC2 instance ID
+```sh
+aws ec2 describe-instances --profile "acas-${ACAS_ENV}" | jq ".Reservations|.[]|.Instances|.[]|.InstanceId"
+```
+
+### RDS Cluster name
+```sh
+aws rds describe-db-clusters --profile "acas-${ACAS_ENV}" | jq ".DBClusters|.[]|.DBClusterIdentifier"
+```
+
+### SNS Application Stack
+
+```sh
+aws cloudformation describe-stacks --profile "acas-${ACAS_ENV}" | jq ".Stacks|.[]|.StackName"
+```
+
+## View change set
+Once you've created your change set, you can then view the change set (or look
+at it in the AWS web console):
 
 ```sh
 aws cloudformation describe-change-set \
-    --change-set-name INSERT_CHANGE_SET_NAME
+    --change-set-name "ACAS-advice-monitoring-${ACAS_ENV}" \
+    --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
     --profile "acas-${ACAS_ENV}"
 ```
+## Execute change set
 
 If you wish to proceed, then execute the change set.
 
 ```sh
 aws cloudformation execute-change-set \
-    --change-set-name INSERT_CHANGE_SET_NAME
+    --change-set-name "ACAS-advice-monitoring-${ACAS_ENV}" \
+    --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
     --profile "acas-${ACAS_ENV}"
 ```
+
+## Delete change set
 
 Alternatively, delete the change set and try again.
 
 ```sh
 aws cloudformation delete-change-set \
-    --change-set-name INSERT_CHANGE_SET_NAME
+    --change-set-name "ACAS-advice-monitoring-${ACAS_ENV}" \
+    --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
     --profile "acas-${ACAS_ENV}"
 ```
