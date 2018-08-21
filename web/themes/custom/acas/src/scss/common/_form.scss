@@ -118,6 +118,26 @@
         margin-top: 40px;
     }
 }
+#yes-feedback, #no-feedback {
+  display: none;
+}
+.path-feedback-page {
+  #yes-feedback, #no-feedback {
+    display: block;
+    #edit-radios {
+      .control-label {
+        color: $black;
+      }
+    }
+  }
+  #yes-feedback {
+    .form-type-textarea {
+      .control-label {
+        display: none;
+      }
+    }
+  }
+}
 
 .path-webform {
 

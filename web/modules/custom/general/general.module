@@ -108,6 +108,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       ];
     }
     if ($entity->get('field_feedback_form')->value) {
+      /*
       if ($form = \Drupal\webform\Entity\Webform::load('no_feedback')) {
         $build['no_feedback_form'] = \Drupal::entityManager()
           ->getViewBuilder('webform')
@@ -120,6 +121,13 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           ->view($form);
         $build['yes_feedback_form']['#weight'] = 999;
       }
+      */
+      $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
+      $build['yes_feedback_form'] = $form;
+      $build['yes_feedback_form']['#weight'] = 999;
+      $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
+      $build['no_feedback_form'] = $form;
+      $build['no_feedback_form']['#weight'] = 999;
     }
     if ($entity->get('field_print_download')->value) {
       $print_guide = '';
@@ -470,8 +478,8 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
     $form['#attached']['library'][] = 'general/content_moderation';
     $form['revision_log']['#required'] = TRUE;
   }
-  if (strpos($form_id, 'feedback_add_form') !== FALSE) {
-    $form['#validate'][0] = 'general_feedback_form_validate';
+  if (strpos($form_id, '_feedback') !== FALSE) {
+    $form['#validate'][] = 'general_feedback_form_validate';
   }
 }
 
@@ -1110,18 +1118,19 @@ function general_cloudfront_invalidate($all = FALSE) {
  * Downgrades required libraries to versions compatible with IE8.
  */
 function general_library_info_alter(&$libraries, $extension) {
+  $user = \Drupal::currentUser();
   if ($extension === 'eu_cookie_compliance') {
     $lib = &$libraries['eu_cookie_compliance'];
     $js_options = end($lib['js']);
     if (is_array($js_options)) {
       $lib['version'] = 7;
-      $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/eu_cookie_compliance.js' => $js_options];
+      $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/ie8/eu_cookie_compliance.js' => $js_options];
     }
     $lib = &$libraries['eu_cookie_compliance_bare'];
     $js_options = end($lib['js']);
     if (is_array($js_options)) {
       $lib['version'] = 7;
-      $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/eu_cookie_compliance.js' => $js_options];
+      $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/ie8/eu_cookie_compliance.js' => $js_options];
     }
   }
   if ($extension === 'filter') {
@@ -1130,7 +1139,28 @@ function general_library_info_alter(&$libraries, $extension) {
     if (is_array($js_options)) {
       $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/filter.filter_html.admin.js' => $js_options];
     }
-  }    
+  }
+  
+  if ($extension === 'bootstrap') {
+    if (!$user->id()) {
+      $lib = &$libraries['drupal.bootstrap'];
+      $js_options = end($lib['js']);
+      if (is_array($js_options)) {
+        $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/ie8/drupal.bootstrap.js' => $js_options];
+      }
+    }
+  }
+  /*
+  if ($extension === 'core') {
+    if (!$user->id()) {
+      $lib = &$libraries['drupal.states'];
+      $js_options = end($lib['js']);
+      if (is_array($js_options)) {
+        $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/states.js' => $js_options];
+      }
+    }
+  }
+  */
 }
 
 /**
@@ -1159,6 +1189,18 @@ function general_entity_field_access($operation, \Drupal\Core\Field\FieldDefinit
     }
   }
   return $access;
+}
+
+function general_feedback_page($type, $nid) {
+  if ($type == 'yes') {
+    $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
+  }else{
+    $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
+  }
+  $form['#prefix'] = '<section id="feedback-form-section" class="block-in-this-section-block"><article class="page">';
+  $form['#suffix'] = '</article></section>';
+  $form['nid']['#value'] = $nid;
+  return $form;
 }
 
 

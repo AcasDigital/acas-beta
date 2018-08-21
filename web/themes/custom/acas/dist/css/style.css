@@ -2682,28 +2682,46 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   cursor: pointer;
   display: none;
 }
-
+/* line 49, ../../src/scss/common/_feedback.scss */
+#feedback-form .panel-heading {
+  display: block;
+}
 /* line 51, ../../src/scss/common/_feedback.scss */
-.acas-feedback-form .form-type-email {
+#feedback-form .panel-heading .panel-title {
+  font-size: 1.25em;
+  color: #008C95;
+  display: block;
+  font-family: "Open Sans Semibold", sans-serif;
+  margin-bottom: .5rem;
+}
+/* line 60, ../../src/scss/common/_feedback.scss */
+#feedback-form .panel-body .control-label {
+  color: #000;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+/* line 68, ../../src/scss/common/_feedback.scss */
+.acas-feedback-form .form-type-email, .webform-submission-yes-feedback-form .form-type-email, .webform-submission-no-feedback-form .form-type-email {
   display: none;
 }
 
-/* line 56, ../../src/scss/common/_feedback.scss */
+/* line 73, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form {
   clear: both;
 }
-/* line 58, ../../src/scss/common/_feedback.scss */
+/* line 75, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
   display: inline-block;
 }
 
 @media (min-width: 768px) {
-  /* line 65, ../../src/scss/common/_feedback.scss */
+  /* line 82, ../../src/scss/common/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 68, ../../src/scss/common/_feedback.scss */
+  /* line 85, ../../src/scss/common/_feedback.scss */
   #feedback-form {
     font-size: 1em;
     max-width: 100%;
@@ -3930,27 +3948,45 @@ ul.breadcrumb--search li:first-child:after {
   margin-top: 40px;
 }
 
-/* line 122, ../../src/scss/common/_form.scss */
+/* line 121, ../../src/scss/common/_form.scss */
+#yes-feedback, #no-feedback {
+  display: none;
+}
+
+/* line 125, ../../src/scss/common/_form.scss */
+.path-feedback-page #yes-feedback, .path-feedback-page #no-feedback {
+  display: block;
+}
+/* line 128, ../../src/scss/common/_form.scss */
+.path-feedback-page #yes-feedback #edit-radios .control-label, .path-feedback-page #no-feedback #edit-radios .control-label {
+  color: #000;
+}
+/* line 135, ../../src/scss/common/_form.scss */
+.path-feedback-page #yes-feedback .form-type-textarea .control-label {
+  display: none;
+}
+
+/* line 142, ../../src/scss/common/_form.scss */
 .path-webform {
   /* Retire */
   /* Retire */
 }
-/* line 127, ../../src/scss/common/_form.scss */
+/* line 147, ../../src/scss/common/_form.scss */
 .path-webform .reference {
   font-weight: 500;
   font-size: 1.2em;
 }
-/* line 132, ../../src/scss/common/_form.scss */
+/* line 152, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details {
   border-top: 1px solid #999;
   position: relative;
   padding: .25em 0;
 }
-/* line 136, ../../src/scss/common/_form.scss */
+/* line 156, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .form-item-employer-name label {
   font-size: 1em;
 }
-/* line 139, ../../src/scss/common/_form.scss */
+/* line 159, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-title {
   cursor: default;
   color: #008C95;
@@ -3960,30 +3996,30 @@ ul.breadcrumb--search li:first-child:after {
   margin-bottom: 1em;
   text-decoration: none;
 }
-/* line 148, ../../src/scss/common/_form.scss */
+/* line 168, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body {
   margin-left: 1em;
 }
-/* line 151, ../../src/scss/common/_form.scss */
+/* line 171, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body .control-label {
   color: #000;
 }
-/* line 154, ../../src/scss/common/_form.scss */
+/* line 174, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body .form-item {
   float: left;
   width: 80%;
 }
-/* line 158, ../../src/scss/common/_form.scss */
+/* line 178, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body section.webform-wizard-page-edit.form-group {
   float: right;
   width: 15%;
 }
-/* line 162, ../../src/scss/common/_form.scss */
+/* line 182, ../../src/scss/common/_form.scss */
 .path-webform .webform-container-type-details .panel-body .webform-wizard-pages-link {
   float: right;
   margin: 0;
 }
-/* line 170, ../../src/scss/common/_form.scss */
+/* line 190, ../../src/scss/common/_form.scss */
 .path-webform #overlay {
   position: fixed;
   top: 0;
@@ -3993,7 +4029,7 @@ ul.breadcrumb--search li:first-child:after {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 181, ../../src/scss/common/_form.scss */
+/* line 201, ../../src/scss/common/_form.scss */
 .path-webform #modal {
   position: fixed;
   top: 50%;
@@ -4006,13 +4042,13 @@ ul.breadcrumb--search li:first-child:after {
   z-index: 10;
   border: 3px solid #CEDC00;
 }
-/* line 192, ../../src/scss/common/_form.scss */
+/* line 212, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper {
   overflow: auto;
   padding: 0 1em;
   border-bottom: 3px solid #CEDC00;
 }
-/* line 196, ../../src/scss/common/_form.scss */
+/* line 216, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper .title {
   float: left;
   font-size: 1.36em;
@@ -4024,7 +4060,7 @@ ul.breadcrumb--search li:first-child:after {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* line 207, ../../src/scss/common/_form.scss */
+/* line 227, ../../src/scss/common/_form.scss */
 .path-webform #modal .title-wrapper .title:before {
   content: "";
   background: #CEDC00;
@@ -4035,20 +4071,20 @@ ul.breadcrumb--search li:first-child:after {
   left: 0;
   top: 8%;
 }
-/* line 218, ../../src/scss/common/_form.scss */
+/* line 238, ../../src/scss/common/_form.scss */
 .path-webform #modal .spinner-wrapper {
   text-align: center;
   margin: 20px 0;
 }
-/* line 222, ../../src/scss/common/_form.scss */
+/* line 242, ../../src/scss/common/_form.scss */
 .path-webform #modal .modal-description {
   text-align: center;
 }
-/* line 227, ../../src/scss/common/_form.scss */
+/* line 247, ../../src/scss/common/_form.scss */
 .path-webform .spinner {
   animation: rotator 1.4s linear infinite;
 }
-/* line 231, ../../src/scss/common/_form.scss */
+/* line 251, ../../src/scss/common/_form.scss */
 .path-webform .path {
   stroke-dasharray: 187;
   stroke-dashoffset: 0;

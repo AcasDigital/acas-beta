@@ -2661,27 +2661,45 @@ ul.breadcrumb, ul.breadcrumb--search {
   cursor: pointer;
   display: none;
 }
-
+/* line 49, ../../src/scss/common/_feedback.scss */
+#feedback-form .panel-heading {
+  display: block;
+}
 /* line 51, ../../src/scss/common/_feedback.scss */
-.acas-feedback-form .form-type-email {
+#feedback-form .panel-heading .panel-title {
+  font-size: 1.25em;
+  color: #008C95;
+  display: block;
+  font-family: "Open Sans Semibold", sans-serif;
+  margin-bottom: .5rem;
+}
+/* line 60, ../../src/scss/common/_feedback.scss */
+#feedback-form .panel-body .control-label {
+  color: #000;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+/* line 68, ../../src/scss/common/_feedback.scss */
+.acas-feedback-form .form-type-email, .webform-submission-yes-feedback-form .form-type-email, .webform-submission-no-feedback-form .form-type-email {
   display: none;
 }
 
-/* line 56, ../../src/scss/common/_feedback.scss */
+/* line 73, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form {
   clear: both;
 }
-/* line 58, ../../src/scss/common/_feedback.scss */
+/* line 75, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
   display: inline-block;
 }
 
-/* line 65, ../../src/scss/common/_feedback.scss */
+/* line 82, ../../src/scss/common/_feedback.scss */
 #feedback-wrapper {
   position: relative;
 }
 
-/* line 68, ../../src/scss/common/_feedback.scss */
+/* line 85, ../../src/scss/common/_feedback.scss */
 #feedback-form {
   font-size: 1em;
   max-width: 100%;

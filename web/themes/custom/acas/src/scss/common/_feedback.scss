@@ -46,8 +46,25 @@
     cursor: pointer;
     display: none;
   }
-}
-.acas-feedback-form {
+  .panel-heading {
+    display: block;
+    .panel-title {
+      font-size: 1.25em;
+      color: $acas-teal;
+      display: block;
+      font-family: $font-family-semibold;
+      margin-bottom: .5rem;
+    }
+  }
+  .panel-body {
+    .control-label {
+      color: $black;
+      font-weight: normal;
+      font-size: 1em;
+    }
+  }
+} 
+.acas-feedback-form, .webform-submission-yes-feedback-form, .webform-submission-no-feedback-form {
   .form-type-email {
     display: none;
   }

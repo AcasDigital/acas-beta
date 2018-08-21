@@ -157,6 +157,14 @@ general.freeze:
   requirements:
     _permission: 'administer site configuration'
     
+general.feedback-page:
+  path: '/feedback-page/{type}/{nid}'
+  defaults:
+    _controller: '\Drupal\general\Controller\GeneralController::feedback_page'
+    _title_callback: '\Drupal\general\Controller\GeneralController::feedback_title'
+  requirements:
+    _permission: 'access content'
+    
 general.feedback_forms:
   path: '/admin/reports/feedback'
   defaults:

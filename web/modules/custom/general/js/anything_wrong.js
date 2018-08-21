@@ -27,6 +27,13 @@
           }, 500);
           return false;
         });
+        if (!$("#feedback-form #edit-radios").val()) {
+          $("#feedback-form .no-feedback .form-item-answer").hide();
+        }
+        $("#feedback-form #edit-radios").change(function() {
+          $("#feedback-form .form-item-answer").slideDown();
+          $("#feedback-form .form-item-answer textarea").focus();
+        });
         $("#feedback-form .right-wrapper").click(function() {
           $("#feedback-form .right-wrapper").hide();
           $("#feedback-form .webform-submission-form").slideUp();

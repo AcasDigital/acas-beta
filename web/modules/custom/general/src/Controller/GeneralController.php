@@ -278,4 +278,16 @@ class GeneralController extends ControllerBase {
   public function freeze() {
     return array('#markup' => '<p>Content adding/editing is frozen on this site.</p><p>You can still add/edit content on the UAT site</p>');
   }
+  
+  public function feedback_page($type, $nid) {
+    return general_feedback_page($type, $nid);
+  }
+  
+  public function feedback_title($type, $nid) {
+    if ($type == 'no') {
+      return 'Please tell us why the information did not help';
+    }else{
+      return 'What you were looking for?';
+    }
+  }
 }
