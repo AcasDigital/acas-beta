@@ -42,23 +42,14 @@ take the infrastructure from the current state to the declared desired state.
 We use change sets since this is the safest way of introducing a feedback loop
 and checking that our code will have the intended effect.
 
-You might need to use `--parameter` to
-customise behaviour for different environments.
-
 ```sh
 aws cloudformation create-change-set \
     --change-set-name "ACAS-advice-monitoring-${ACAS_ENV}" \
     --stack-name "ACAS-advice-monitoring-${ACAS_ENV}" \
     --template-body  "file://$(pwd)/application/advice-monitoring-${ACAS_ENV}.packaged" \
     --capabilities CAPABILITY_NAMED_IAM \
+    --parameters "file://$(pwd)/application/parameters/${ACAS_ENV}.json" \
     --profile "acas-${ACAS_ENV}"
-```
-
-Parameter overrides look something like this:
-
-```sh
---parameter ParameterKey=pSnsAppStack,ParameterValue=ACAS-ops-alerts-prod \
-ParameterKey=pRDSName,ParameterValue=production-cluster-1
 ```
 
 You might find these commands useful to get the parameter values:

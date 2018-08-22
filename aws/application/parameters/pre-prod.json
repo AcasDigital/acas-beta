@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey": "pDrupalInstanceId",
+        "ParameterValue": "i-09b1fe0e8cb84fc05"
+    },
+    {
+        "ParameterKey": "pSnsAppStack",
+        "ParameterValue": "ACAS-ops-alerts-pre-prod"
+    }
+]
