@@ -678,7 +678,7 @@ Resources:
                   "title" : "Application ELB Queries Per Minute",
                   "annotations": {
                     "alarms": [
-                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RDSQueryLatencyOverThreshold}"
+                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RequestCountOverThreshold}"
                     ]
                   },
                   "view": "timeSeries",
