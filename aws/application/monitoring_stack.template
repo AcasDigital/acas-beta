@@ -4,6 +4,9 @@ Parameters:
   pAppName:
     Type: String
     Default: 'Advice'
+  pEnvironment:
+    Type: String
+    Default: ''
   pSnsAppStack:
     Description: Enter the AppStack name which Exports the SNS Topics
     Type: String
@@ -110,6 +113,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Commit-Latency-high-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/AWS%20Managed%20Service%20Unhealthy.docx?d=wf0ac9644917b4f4396fc45b6c9010aca
@@ -137,6 +141,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - EC2-memory-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/EC2%20MemoryUtilization%20above%20Threshold.docx?d=we179a6e785944846a980c0f7ebe18b8f
@@ -164,6 +169,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - EC2-disk-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/EC2%20DiskSpaceUtilization%20above%20Threshold.docx?d=w867c026e86234fd0bf93050d29e5260a
@@ -195,6 +201,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-CPU-high-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20CPUUtilization%20above%20Threshold.odt?d=w929b546b006042759101bca559419f48
@@ -222,6 +229,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Connections-high-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20DatabaseConnections%20above%20Threshold.docx?d=wf72184b618be4f1eb93e9d6a3cc82fbf
@@ -249,6 +257,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Free-Local-Storage-low-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20FreeLocalStorage%20above%20Threshold.docx?d=wfd3eee0de25c400ca92c36dd6fe0ddd9
@@ -276,6 +285,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-DML-Latency-high-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20DMLLatency%20above%20Threshold.docx?d=wcf572ddba927409682baf8c33f48e3da
@@ -303,6 +313,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Select-Latency-high-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20Select%20Latency%20above%20Threshold.docx?d=w26175f4ccdfb433ca9014c9213a68729
@@ -330,6 +341,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Query-Rate-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20Queries%20above%20Threshold.docx?d=wb345dbb4a8d147f5a81d9c287a184cd7
@@ -357,6 +369,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Replica-Lag-threshold-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/AWS%20Managed%20Service%20Unhealthy.docx?d=wf0ac9644917b4f4396fc45b6c9010aca
@@ -387,6 +400,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-target-response-time-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Backend%20Service%20Time%20above%20Threshold.docx?d=w6823a0756907411999aade31a9d4f7d2
@@ -414,6 +428,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-target-response-time-alarm-maximum
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Backend%20Service%20Time%20above%20Threshold.docx?d=w6823a0756907411999aade31a9d4f7d2
@@ -441,6 +456,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-request-count-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Request%20Count%20above%20Threshold.docx?d=w9a72ebb52ed645ac85d3a136303e057d
@@ -468,6 +484,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-unhealthy-hosts-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Unhealthy%20Hosts%20above%20Threshold.docx?d=wab0fa4f3c7b843988b6769b19dfc59d6
@@ -495,6 +512,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-rejected-connection-count-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Rejected%20Connection%20Count%20above%20Threshold.docx?d=w3caa2ca2fb344e0b97eff9572fddfe83
@@ -522,6 +540,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - http-5xx-error-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Target%20HTTP%205xx%20above%20Threshold.docx?d=w7632840e4b6744cc9e79244a35654826
@@ -549,6 +568,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-5xx-error-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/ALB%20HTTP%205xx%20above%20Threshold.docx?d=w39553cb6e6664c0ea0ff0b5511be8a0b
@@ -576,6 +596,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - http-4xx-error-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Target%20HTTP%204xx%20above%20Threshold.docx?d=we937a1ecdddf4556bc1dd4d6fc041010
@@ -603,6 +624,7 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-4xx-error-alarm
       AlarmDescription: >-
         https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/ALB%20HTTP%204xx%20above%20Threshold.docx?d=w09cb88ebc91244fbbc271512212907ac
