@@ -5,8 +5,6 @@
   font-size: .85em;
   font-weight: $font-weight-bold;
   margin-top: 1.5em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
   position: relative;
   a {
     color: $white;
@@ -22,51 +20,81 @@
       outline-color: $acas-lime;
     }
   }
-  .text, a {
-    font-size: 0.85em;
-  }
-  .text {
-    font-family: $font-family-semibold;
-    padding: 0.125em 0.25em;
-  }
-  form {
-    background: $white;
-    padding: 15px;
-    color: $black;
-    display: none;
-    clear: both;
-  }
-  .left-wrapper {
+  .feedback-question-wrapper, .feedback-close-wrapper {
     float: left;
+    padding-bottom: .25em;
+    padding-top: .25em;
   }
-  .right-wrapper {
-    float: right;
+  .feedback-question-wrapper {
+    width: 75%;
+  }
+  .feedback-close-wrapper {
     cursor: pointer;
     display: none;
+    text-align: right;
+    width: 25%;
+  }
+  .feedback-buttons, .feedback-question {
+    display: inline-block;
+  }
+  .feedback-question, a {
+    font-size: 0.85em;
+  }
+  .feedback-question {
+    font-family: $font-family-semibold;
+  }
+  .form {
+    padding: 1em;
+  }
+}
+
+#feedback-form-section, #feedback-form {
+  overflow: hidden;
+  form {
+    background: $white;
+    color: $black;
+    clear: both;
+    display: none;
+    .form-submit {
+      margin-top: 0;
+    }
+    textarea {
+      height: 3.5em;
+    }
+    .help-block {
+      font-size: .875em;
+      color: $gray-dark;
+    }
+  }
+  .control-label, .panel-title {
+    font-size: 1em;
+    color: $acas-teal;
+    display: block;
+    font-family: $font-family-semibold;
+    margin-bottom: .5em;
+  }
+  .panel {
+    margin: .5em;
   }
   .panel-heading {
     display: block;
-    .panel-title {
-      font-size: 1.25em;
-      color: $acas-teal;
-      display: block;
-      font-family: $font-family-semibold;
-      margin-bottom: .5rem;
-    }
   }
   .panel-body {
     .control-label {
       color: $black;
-      font-weight: normal;
+      font-family: $font-family-base;
       font-size: 1em;
     }
+    .iradio_square-aero {
+      margin-right: .25em;
+    }
   }
-}
-.acas-feedback-form, .webform-submission-yes-feedback-form, .webform-submission-no-feedback-form {
+
   .form-type-email {
     display: none;
   }
 }
+
 .feedback-report {
   .views-exposed-form {
     clear: both;
@@ -83,11 +111,22 @@
   #feedback-form {
     font-size: 1em;
     max-width: 100%;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
     text-align: left;
     a {
       border: none;
+    }
+    form {
+      background: $white;
+      padding: 1em;
+      color: $black;
+      display: none;
+      clear: both;
+      .form-submit {
+        margin-top: .5em;
+      }
+      textarea {
+        height: unset;
+      }
     }
   }
 }

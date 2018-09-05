@@ -109,7 +109,7 @@ class DeployForm extends FormBase {
       );
       $config = $this->config('acas.settings');
       $curl = curl_init();
-      curl_setopt($curl, CURLOPT_URL, 'https://dev-beta.acas.org.uk/deploy-update?XDEBUG_SESSION_START=john');
+      curl_setopt($curl, CURLOPT_URL, $config->get('prod') . '/deploy-update');
       curl_setopt($curl, CURLOPT_TIMEOUT, 30);
       curl_setopt($curl, CURLOPT_POST, 1);
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

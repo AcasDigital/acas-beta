@@ -181,7 +181,14 @@
   {% if useful %}
     <div id="feedback-wrapper">
       <div id="feedback-form">
-        <span class="left-wrapper"><span class="text">Did you get the information you need from this page?</span>&nbsp;<span class="buttons"><a id="yes" href="/feedback-page/yes/{{ nodeid }}" nid="{{ nodeid }}">Yes</a>&nbsp;<a id="no" href="/feedback-page/no/{{ nodeid }}" nid="{{ nodeid }}">No</a></span></span><span class="right-wrapper">Close</span>
+        <div class="feedback-question-wrapper">
+          <div class="feedback-question">Did you get the information you need from this page?</div>
+          <div class="feedback-buttons">
+            <a id="yes" href="/feedback-page/yes/{{ nodeid }}" nid="{{ nodeid }}">Yes</a>
+            <a id="no" href="/feedback-page/no/{{ nodeid }}" nid="{{ nodeid }}">No</a>
+          </div>
+        </div>
+        <div class="feedback-close-wrapper">&#x2715; Close</div>
       </div>
     </div>
   {% endif %}
