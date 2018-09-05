@@ -4,10 +4,13 @@ Parameters:
   pAppName:
     Type: String
     Default: 'Advice'
+  pEnvironment:
+    Type: String
+    Default: ''
   pSnsAppStack:
     Description: Enter the AppStack name which Exports the SNS Topics
     Type: String
-    Default: 'ACAS-ops-alerts-pre-prod'
+    Default: ''
 
   pLoadBalancerName:
     Description: Enter your Application Load Balancer name.
@@ -25,7 +28,10 @@ Parameters:
     Description: EC2 memory alarm threshold
     Type: Number
     Default: 90
-
+  pDrupalInstanceId:
+    Description: Enter the EC2 instance ID running Drupal
+    Type: String
+    Default: ''
 
   # Alarm thresholds
   pRDSCommitLatencyAlarmThreshold:
@@ -48,10 +54,14 @@ Parameters:
     Description: RDS Aurora Bin Log Replication Alarm Threshold
     Type: Number
     Default: '20'
-  pRDSQueryLatencyAlarmThreshold:
-    Description: RDS Query Latency Alarm Threshold
+  pRDSModifyLatencyAlarmThreshold:
+    Description: RDS Modify Latency Alarm Threshold
     Type: Number
-    Default: 10000
+    Default: 200
+  pRDSSelectLatencyAlarmThreshold:
+    Description: RDS Select Latency Alarm Threshold
+    Type: Number
+    Default: 200
   pRDSQueryRateAlarmThreshold:
     Description: RDS Query Rate/Throughput Alarm Threshold
     Type: Number
@@ -70,19 +80,19 @@ Parameters:
     Type: Number
     Default: '100'
   pALB5xxAlarmThreshold:
-    Description: ALB Originiating 5xx Alarm Threshold
+    Description: ALB Originating 5xx Alarm Threshold
     Type: Number
     Default: '10'
   pALBTarget5xxAlarmThreshold:
-    Description: ALB Target Originiating 5xx Alarm Threshold
+    Description: ALB Target Originating 5xx Alarm Threshold
     Type: Number
     Default: '10'
   pALB4xxAlarmThreshold:
-    Description: ALB Originiating 4xx Alarm Threshold
+    Description: ALB Originating 4xx Alarm Threshold
     Type: Number
     Default: '10'
   pALBTarget4xxAlarmThreshold:
-    Description: ALB Target Originiating 4xx Alarm Threshold
+    Description: ALB Target Originating 4xx Alarm Threshold
     Type: Number
     Default: '10'
   pALBTargetResponseTimeThreshold:
@@ -103,10 +113,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Commit-Latency-high-threshold-alarm
       AlarmDescription: >-
-        If the RDS Commit Latency exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/AWS%20Managed%20Service%20Unhealthy.docx?d=wf0ac9644917b4f4396fc45b6c9010aca
       Namespace: AWS/RDS
       MetricName: CommitLatency
       Statistic: Average
@@ -131,10 +141,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - EC2-memory-threshold-alarm
       AlarmDescription: >-
-        If the EC2 memory utilisation exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/EC2%20MemoryUtilization%20above%20Threshold.docx?d=we179a6e785944846a980c0f7ebe18b8f
       Namespace: System/Linux
       MetricName: MemoryUtilization
       Statistic: Average
@@ -150,7 +160,7 @@ Resources:
             !Sub "${pSnsAppStack}-alert-rSev5SnsTopicArn"
       Dimensions:
         - Name: InstanceId
-          Value: i-09b1fe0e8cb84fc05
+          Value: !Ref pDrupalInstanceId
       ComparisonOperator: GreaterThanThreshold
 
   EC2DiskThreshold:
@@ -159,10 +169,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - EC2-disk-threshold-alarm
       AlarmDescription: >-
-        If the EC2 disk utilisation exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/EC2%20DiskSpaceUtilization%20above%20Threshold.docx?d=w867c026e86234fd0bf93050d29e5260a
       Namespace: System/Linux
       MetricName: DiskSpaceUtilization
       Statistic: Average
@@ -178,7 +188,7 @@ Resources:
             !Sub "${pSnsAppStack}-alert-rSev5SnsTopicArn"
       Dimensions:
         - Name: InstanceId
-          Value: i-09b1fe0e8cb84fc05
+          Value: !Ref pDrupalInstanceId
         - Name: Filesystem
           Value: /dev/xvda1
         - Name: MountPath
@@ -191,10 +201,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-CPU-high-threshold-alarm
       AlarmDescription: >-
-        If the RDS-CPU exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20CPUUtilization%20above%20Threshold.odt?d=w929b546b006042759101bca559419f48
       Namespace: AWS/RDS
       MetricName: CPUUtilization
       Statistic: Average
@@ -219,10 +229,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Connections-high-threshold-alarm
       AlarmDescription: >-
-        If the RDS Connections exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20DatabaseConnections%20above%20Threshold.docx?d=wf72184b618be4f1eb93e9d6a3cc82fbf
       Namespace: AWS/RDS
       MetricName: DatabaseConnections
       Statistic: Average
@@ -247,10 +257,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Free-Local-Storage-low-threshold-alarm
       AlarmDescription: >-
-        If the RDS Free Local Storage falls below the predefined threshold, this alarm will trigger.
-        Please investigate with AWS.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20FreeLocalStorage%20above%20Threshold.docx?d=wfd3eee0de25c400ca92c36dd6fe0ddd9
       Namespace: AWS/RDS
       MetricName: FreeLocalStorage
       Statistic: Average
@@ -269,22 +279,50 @@ Resources:
           Value: !Ref pRDSName
       ComparisonOperator: LessThanThreshold
 
-  RDSQueryLatencyOverThreshold:
+  RDSModifyLatencyOverThreshold:
     Type: 'AWS::CloudWatch::Alarm'
     Properties:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-DML-Latency-high-threshold-alarm
       AlarmDescription: >-
-        If the RDS DML (select, insert, update etc SQL statements) exceeds the predefined threshold, this alarm will trigger.
-        Please investigate.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20DMLLatency%20above%20Threshold.docx?d=wcf572ddba927409682baf8c33f48e3da
       Namespace: AWS/RDS
       MetricName: DMLLatency
       ExtendedStatistic: p99
       Period: '60'
       EvaluationPeriods: '5'
-      Threshold: !Ref pRDSQueryLatencyAlarmThreshold
+      Threshold: !Ref pRDSModifyLatencyAlarmThreshold
+      TreatMissingData: breaching
+      AlarmActions:
+        - Fn::ImportValue:
+            !Sub "${pSnsAppStack}-alert-rSev5SnsTopicArn"
+      OKActions:
+        - Fn::ImportValue:
+            !Sub "${pSnsAppStack}-alert-rSev5SnsTopicArn"
+      Dimensions:
+        - Name: DBClusterIdentifier
+          Value: !Ref pRDSName
+      ComparisonOperator: GreaterThanThreshold
+
+  RDSSelectLatencyOverThreshold:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmName: !Join
+        - " | "
+        - - !Ref pAppName
+          - !Ref pEnvironment
+          - RDS-Select-Latency-high-threshold-alarm
+      AlarmDescription: >-
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20Select%20Latency%20above%20Threshold.docx?d=w26175f4ccdfb433ca9014c9213a68729
+      Namespace: AWS/RDS
+      MetricName: SelectLatency
+      ExtendedStatistic: p99
+      Period: '60'
+      EvaluationPeriods: '5'
+      Threshold: !Ref pRDSSelectLatencyAlarmThreshold
       TreatMissingData: breaching
       AlarmActions:
         - Fn::ImportValue:
@@ -303,10 +341,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Query-Rate-threshold-alarm
       AlarmDescription: >-
-        If the RDS Query Throughput exceeds the predefined threshold, this alarm will trigger.
-        Please investigate. We are not expecting this level of load on the service.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/RDS%20Queries%20above%20Threshold.docx?d=wb345dbb4a8d147f5a81d9c287a184cd7
       Namespace: AWS/RDS
       MetricName: Queries
       Statistic: Average
@@ -331,10 +369,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - RDS-Replica-Lag-threshold-alarm
       AlarmDescription: >-
-        If the RDS Replication Lag exceeds the predefined threshold, this alarm will trigger.
-        Please investigate with AWS.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/AWS%20Managed%20Service%20Unhealthy.docx?d=wf0ac9644917b4f4396fc45b6c9010aca
       Namespace: AWS/RDS
       MetricName: AuroraBinlogReplicaLag
       Statistic: Average
@@ -362,9 +400,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-target-response-time-alarm
       AlarmDescription: >-
-        The time elapsed, in seconds, after the request leaves the load balancer until a response from the target is received
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Backend%20Service%20Time%20above%20Threshold.docx?d=w6823a0756907411999aade31a9d4f7d2
       Namespace: AWS/ApplicationELB
       MetricName: TargetResponseTime
       ExtendedStatistic: p99
@@ -389,9 +428,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-target-response-time-alarm-maximum
       AlarmDescription: >-
-        The time elapsed, in seconds, after the request leaves the load balancer until a response from the target is received. Triggered if response is longer than 60s.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Backend%20Service%20Time%20above%20Threshold.docx?d=w6823a0756907411999aade31a9d4f7d2
       Namespace: AWS/ApplicationELB
       MetricName: TargetResponseTime
       Statistic: Maximum
@@ -416,9 +456,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-request-count-alarm
       AlarmDescription: >-
-        The number of requests per minute hitting the ALB
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Request%20Count%20above%20Threshold.docx?d=w9a72ebb52ed645ac85d3a136303e057d
       Namespace: AWS/ApplicationELB
       MetricName: RequestCount
       Statistic: Sum
@@ -443,9 +484,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-unhealthy-hosts-alarm
       AlarmDescription: >-
-        The unhealthy hosts alarm triggers if your load balancer recognises there is an unhealthy host and has been there for over 15 minutes.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Unhealthy%20Hosts%20above%20Threshold.docx?d=wab0fa4f3c7b843988b6769b19dfc59d6
       Namespace: AWS/ApplicationELB
       MetricName: UnHealthyHostCount
       Statistic: Average
@@ -470,9 +512,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-rejected-connection-count-alarm
       AlarmDescription: >-
-        There is no surge queue on ALB's. Alert triggers in ALB rejects too many requests, usually due to backend being busy.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Rejected%20Connection%20Count%20above%20Threshold.docx?d=w3caa2ca2fb344e0b97eff9572fddfe83
       Namespace: AWS/ApplicationELB
       MetricName: RejectedConnectionCount
       Statistic: Sum
@@ -497,9 +540,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - http-5xx-error-alarm
       AlarmDescription: >-
-        This alarm will trigger if we receive 4 5XX http alerts in a 5 minute period.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Target%20HTTP%205xx%20above%20Threshold.docx?d=w7632840e4b6744cc9e79244a35654826
       Namespace: AWS/ApplicationELB
       MetricName: HTTPCode_Target_5XX_Count
       Statistic: Sum
@@ -524,9 +568,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-5xx-error-alarm
       AlarmDescription: >-
-        This alarm will trigger if we receive 4 5XX elb alerts in a 5 minute period.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/ALB%20HTTP%205xx%20above%20Threshold.docx?d=w39553cb6e6664c0ea0ff0b5511be8a0b
       Namespace: AWS/ApplicationELB
       MetricName: HTTPCode_ELB_5XX_Count
       Statistic: Sum
@@ -551,9 +596,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - http-4xx-error-alarm
       AlarmDescription: >-
-        This alarm will trigger if we receive 4 4XX http alerts in a 5 minute period.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/Target%20HTTP%204xx%20above%20Threshold.docx?d=we937a1ecdddf4556bc1dd4d6fc041010
       Namespace: AWS/ApplicationELB
       MetricName: HTTPCode_Target_4XX_Count
       Statistic: Sum
@@ -578,9 +624,10 @@ Resources:
       AlarmName: !Join
         - " | "
         - - !Ref pAppName
+          - !Ref pEnvironment
           - alb-4xx-error-alarm
       AlarmDescription: >-
-        This alarm will trigger if we receive 4 4XX elb alerts in a 5 minute period.
+        https://acasorguk.sharepoint.com/sites/dtf/Documents/0.3%20Beta/Documenting%20Progress/Operations%20Manual/Alerts/ALB%20HTTP%204xx%20above%20Threshold.docx?d=w09cb88ebc91244fbbc271512212907ac
       Namespace: AWS/ApplicationELB
       MetricName: HTTPCode_ELB_4XX_Count
       Statistic: Sum
@@ -601,7 +648,18 @@ Resources:
 
 # Dashboard creation and configuration
   adviceDashboard:
-    DependsOn: [ApplicationELB4xxError, TargetResponseTime, http4xxError, ApplicationELB5xxError, http5xxError, RejectedConnectionCount, UnHealthyHosts, RDSCPUOverThreshold]
+    DependsOn:
+      - ApplicationELB4xxError
+      - ApplicationELB5xxError
+      - EC2DiskThreshold
+      - EC2MemoryThreshold
+      - RDSCPUOverThreshold
+      - RDSConnectionsOverThreshold
+      - RDSQueryRateOverThreshold
+      - RDSSelectLatencyOverThreshold
+      - RequestCountOverThreshold
+      - RejectedConnectionCount
+      - TargetResponseTime
     Type: AWS::CloudWatch::Dashboard
     Properties:
       DashboardName: !Join
@@ -675,7 +733,7 @@ Resources:
                   "title" : "Application ELB Queries Per Minute",
                   "annotations": {
                     "alarms": [
-                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RDSQueryLatencyOverThreshold}"
+                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RequestCountOverThreshold}"
                     ]
                   },
                   "view": "timeSeries",
@@ -726,10 +784,10 @@ Resources:
               "width" : 6,
               "height" : 6,
               "properties" : {
-                  "title" : "RDS Query Lataency",
+                  "title" : "RDS Select Latency",
                   "annotations": {
                     "alarms": [
-                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RDSQueryLatencyOverThreshold}"
+                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RDSSelectLatencyOverThreshold}"
                     ]
                   },
                   "view": "timeSeries",
@@ -748,6 +806,42 @@ Resources:
                   "annotations": {
                     "alarms": [
                       "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${RDSQueryRateOverThreshold}"
+                    ]
+                  },
+                  "view": "timeSeries",
+                  "region": "${AWS::Region}",
+                  "stacked": false
+              }
+            },
+            {
+              "type" : "metric",
+              "x" : 0,
+              "y" : 12,
+              "width" : 6,
+              "height" : 6,
+              "properties" : {
+                  "title" : "EC2 RAM Usage",
+                  "annotations": {
+                    "alarms": [
+                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${EC2MemoryThreshold}"
+                    ]
+                  },
+                  "view": "timeSeries",
+                  "region": "${AWS::Region}",
+                  "stacked": false
+              }
+            },
+            {
+              "type" : "metric",
+              "x" : 6,
+              "y" : 12,
+              "width" : 6,
+              "height" : 6,
+              "properties" : {
+                  "title" : "EC2 Disk Usage",
+                  "annotations": {
+                    "alarms": [
+                      "arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:${EC2DiskThreshold}"
                     ]
                   },
                   "view": "timeSeries",

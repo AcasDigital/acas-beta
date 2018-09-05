@@ -1,0 +1,18 @@
+[
+    {
+      "ParameterKey": "pDrupalInstanceId",
+      "ParameterValue": "i-0cfb085cd0f7f6e86"
+    },
+    {
+        "ParameterKey": "pEnvironment",
+        "ParameterValue": "Production"
+    },
+    {
+        "ParameterKey": "pSnsAppStack",
+        "ParameterValue": "ACAS-ops-alerts-prod"
+    },
+    {
+        "ParameterKey": "pRDSName",
+        "ParameterValue": "production-cluster-1"
+    }
+]
