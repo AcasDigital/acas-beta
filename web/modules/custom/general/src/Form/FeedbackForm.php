@@ -184,7 +184,7 @@ class FeedbackForm extends FormBase {
           if ($v->name == 'answer') {
             $text = $v->value;
           }
-          if ($v->name == 'radios') {
+          if ($v->name == 'radios' && $v->value) {
             $issue = $options[$v->value];
             $iid = $v->value;
           }

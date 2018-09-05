@@ -2637,16 +2637,16 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   position: relative;
-  text-align: center;
 }
-/* line 12, ../../src/scss/common/_feedback.scss */
+/* line 11, ../../src/scss/common/_feedback.scss */
 #feedback-form a {
   color: #fff;
   border-radius: 5px;
+  border: 1px solid white;
   display: inline-block;
   font-weight: 400;
-  margin: 0 .125em;
-  padding: 0 .125em;
+  margin: 0 .25em;
+  padding: 0 .5em;
   text-decoration: none;
 }
 /* line 20, ../../src/scss/common/_feedback.scss */
@@ -2659,12 +2659,10 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
 }
 /* line 28, ../../src/scss/common/_feedback.scss */
 #feedback-form .text {
-  float: left;
   font-family: "Open Sans Semibold", sans-serif;
-  display: block;
   padding: 0.125em 0.25em;
 }
-/* line 34, ../../src/scss/common/_feedback.scss */
+/* line 32, ../../src/scss/common/_feedback.scss */
 #feedback-form form {
   background: #fff;
   padding: 15px;
@@ -2672,21 +2670,21 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   display: none;
   clear: both;
 }
-/* line 41, ../../src/scss/common/_feedback.scss */
+/* line 39, ../../src/scss/common/_feedback.scss */
 #feedback-form .left-wrapper {
   float: left;
 }
-/* line 44, ../../src/scss/common/_feedback.scss */
+/* line 42, ../../src/scss/common/_feedback.scss */
 #feedback-form .right-wrapper {
   float: right;
   cursor: pointer;
   display: none;
 }
-/* line 49, ../../src/scss/common/_feedback.scss */
+/* line 47, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-heading {
   display: block;
 }
-/* line 51, ../../src/scss/common/_feedback.scss */
+/* line 49, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-heading .panel-title {
   font-size: 1.25em;
   color: #008C95;
@@ -2694,40 +2692,44 @@ ul.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
   font-family: "Open Sans Semibold", sans-serif;
   margin-bottom: .5rem;
 }
-/* line 60, ../../src/scss/common/_feedback.scss */
+/* line 58, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-body .control-label {
   color: #000;
   font-weight: normal;
   font-size: 1em;
 }
 
-/* line 68, ../../src/scss/common/_feedback.scss */
+/* line 66, ../../src/scss/common/_feedback.scss */
 .acas-feedback-form .form-type-email, .webform-submission-yes-feedback-form .form-type-email, .webform-submission-no-feedback-form .form-type-email {
   display: none;
 }
 
-/* line 73, ../../src/scss/common/_feedback.scss */
+/* line 71, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form {
   clear: both;
 }
-/* line 75, ../../src/scss/common/_feedback.scss */
+/* line 73, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
   display: inline-block;
 }
 
 @media (min-width: 768px) {
-  /* line 82, ../../src/scss/common/_feedback.scss */
+  /* line 80, ../../src/scss/common/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 85, ../../src/scss/common/_feedback.scss */
+  /* line 83, ../../src/scss/common/_feedback.scss */
   #feedback-form {
     font-size: 1em;
     max-width: 100%;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
     text-align: left;
+  }
+  /* line 89, ../../src/scss/common/_feedback.scss */
+  #feedback-form a {
+    border: none;
   }
 }
 /* line 1, ../../src/scss/common/_pagination.scss */
@@ -3848,9 +3850,10 @@ ul.breadcrumb--search li:first-child:after {
   background-clip: padding-box;
   border: 1px solid #cacaca;
   border-radius: .25rem;
+  max-width: 100%;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-/* line 28, ../../src/scss/common/_form.scss */
+/* line 29, ../../src/scss/common/_form.scss */
 .webform-submission-form .control-label, .webform-submission-form .fieldset-legend {
   color: #008C95;
   display: block;
@@ -3858,42 +3861,42 @@ ul.breadcrumb--search li:first-child:after {
   margin-bottom: .5rem;
   font-size: 1em;
 }
-/* line 36, ../../src/scss/common/_form.scss */
+/* line 37, ../../src/scss/common/_form.scss */
 .webform-submission-form .fieldset-legend, .webform-submission-form .form-type-textarea label, .webform-submission-form .form-item-employer-name label {
   font-size: 1.25em;
 }
-/* line 41, ../../src/scss/common/_form.scss */
+/* line 42, ../../src/scss/common/_form.scss */
 .webform-submission-form fieldset .control-label {
   color: #000;
   font-weight: normal;
   font-size: 1em;
 }
-/* line 48, ../../src/scss/common/_form.scss */
+/* line 49, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group, .webform-submission-form .webform-options-display-one-column {
   margin-bottom: 1em;
 }
-/* line 51, ../../src/scss/common/_form.scss */
+/* line 52, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group .form-item .invalid, .webform-submission-form .webform-options-display-one-column .form-item .invalid {
   border: 4px solid #df3034;
 }
-/* line 54, ../../src/scss/common/_form.scss */
+/* line 55, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-group .form-item .valid, .webform-submission-form .webform-options-display-one-column .form-item .valid {
   border: 4px solid #28a745;
 }
-/* line 59, ../../src/scss/common/_form.scss */
+/* line 60, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-type-checkbox, .webform-submission-form .form-type-radio {
   margin-bottom: 20px;
 }
-/* line 62, ../../src/scss/common/_form.scss */
+/* line 63, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-item-find-address {
   margin: 0;
 }
-/* line 65, ../../src/scss/common/_form.scss */
+/* line 66, ../../src/scss/common/_form.scss */
 .webform-submission-form .description {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-/* line 69, ../../src/scss/common/_form.scss */
+/* line 70, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-submit {
   color: #fff;
   background: #007C85;
@@ -3905,15 +3908,15 @@ ul.breadcrumb--search li:first-child:after {
   width: fit-content;
   cursor: pointer;
 }
-/* line 80, ../../src/scss/common/_form.scss */
+/* line 81, ../../src/scss/common/_form.scss */
 .webform-submission-form .btn-cta, .webform-submission-form form#user-login-form #edit-submit, form#user-login-form .webform-submission-form #edit-submit, .webform-submission-form .phone-callout {
   display: inline-block;
 }
-/* line 84, ../../src/scss/common/_form.scss */
+/* line 85, ../../src/scss/common/_form.scss */
 .webform-submission-form #employer_message a {
   cursor: pointer;
 }
-/* line 88, ../../src/scss/common/_form.scss */
+/* line 89, ../../src/scss/common/_form.scss */
 .webform-submission-form .invalid-feedback {
   border-left: 4px solid #df3034;
   padding-left: 16px;
@@ -3925,48 +3928,48 @@ ul.breadcrumb--search li:first-child:after {
   color: #df3034;
   display: none;
 }
-/* line 99, ../../src/scss/common/_form.scss */
+/* line 100, ../../src/scss/common/_form.scss */
 .webform-submission-form .panel-heading {
   display: none;
 }
-/* line 103, ../../src/scss/common/_form.scss */
+/* line 104, ../../src/scss/common/_form.scss */
 .webform-submission-form .webform-preview #check_employer, .webform-submission-form .webform-preview #acas_notification_form--find_address {
   display: none;
 }
-/* line 106, ../../src/scss/common/_form.scss */
+/* line 107, ../../src/scss/common/_form.scss */
 .webform-submission-form .webform-preview .panel-heading {
   display: block;
   padding-top: .5em;
 }
-/* line 112, ../../src/scss/common/_form.scss */
+/* line 113, ../../src/scss/common/_form.scss */
 .webform-submission-form .form-item-employer-name .invalid-feedback {
   position: relative;
   top: -22px;
 }
-/* line 117, ../../src/scss/common/_form.scss */
+/* line 118, ../../src/scss/common/_form.scss */
 .webform-submission-form .g-recaptcha {
   margin-top: 40px;
 }
 
-/* line 121, ../../src/scss/common/_form.scss */
+/* line 122, ../../src/scss/common/_form.scss */
 #yes-feedback, #no-feedback {
   display: none;
 }
 
-/* line 125, ../../src/scss/common/_form.scss */
+/* line 126, ../../src/scss/common/_form.scss */
 .path-feedback-page #yes-feedback, .path-feedback-page #no-feedback {
   display: block;
 }
-/* line 128, ../../src/scss/common/_form.scss */
+/* line 129, ../../src/scss/common/_form.scss */
 .path-feedback-page #yes-feedback #edit-radios .control-label, .path-feedback-page #no-feedback #edit-radios .control-label {
   color: #000;
 }
-/* line 135, ../../src/scss/common/_form.scss */
+/* line 136, ../../src/scss/common/_form.scss */
 .path-feedback-page #yes-feedback .form-type-textarea .control-label {
   display: none;
 }
 
-/* line 142, ../../src/scss/common/_form.scss */
+/* line 143, ../../src/scss/common/_form.scss */
 .path-webform {
   /* Retire */
   /* Retire */

@@ -19,19 +19,26 @@ general.sync:
   parent: general.production
   weight: 1
   
+general.deploy:
+  title: 'Deploy to Prod'
+  description: 'Deploy content from this site to Prod'
+  route_name: general.deploy
+  parent: general.production
+  weight: 2
+  
 general.test:
   title: 'Test content on Prod'
   description: 'Test content on Prod'
   route_name: general.test_prod
   parent: general.production
-  weight: 2
+  weight: 3
   
 general.invalidate:
-  title: 'Invalidate CloudFront'
-  description: 'Invalidate all CloudFront content'
+  title: 'Clear CloudFront Cache'
+  description: 'Clear all CloudFront cached content'
   route_name: general.cloudfront-invalidate
   parent: general.production
-  weight: 3
+  weight: 4
   
 general.feedback_forms:
   title: 'Feedback'

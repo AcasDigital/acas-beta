@@ -183,7 +183,7 @@ class GeneralController extends ControllerBase {
   * PROD
   * The base64 encoded zip file from UAT
   */
-  public function sync_update() {
+  public function sync_update($content_only = TRUE) {
     $uuid = \Drupal::config('system.site')->get('uuid');
     if ($uuid == $_POST['UUID']) {
       $config_factory = \Drupal::configFactory();
@@ -205,6 +205,11 @@ class GeneralController extends ControllerBase {
       unlink('/tmp/' . $_POST['file']);
       foreach($configs as $c) {
         $c->save(TRUE);
+      }
+      if (!$content_only) {
+        sync_cleanup();
+      }else{
+        general_cloudfront_invalidate(FALSE);
       }
       return new JsonResponse('ok');
     }
@@ -275,6 +280,37 @@ class GeneralController extends ControllerBase {
     }
   }
   
+  /**
+  * deploy_update().
+  * PROD
+  */
+  public function deploy_update() {
+    $uuid = \Drupal::config('system.site')->get('uuid');
+    if ($uuid == $_POST['UUID']) {
+      if ($data = json_decode(@$_POST['data'])) {
+        $nodeIds = [];
+        foreach($data as $d) {
+          if ($node = \Drupal\node\Entity\Node::load($d->nid)) {
+            if ($node->getType() == 'page') {
+              $node->setTitle($d->title);
+              $node->body->value = $d->content;
+              $node->body->summary = $d->summary;
+            }else{
+              $node->setTitle($d->title);
+              $node->field_summary->value = $d->content;
+              $node->field_summary->summary = $d->summary;
+            }
+            $node->save();
+            $nodeIds[] = $node->id();
+          }
+        }
+        general_cloudfront_invalidate(FALSE, $nodeIds);
+      }
+      return new JsonResponse('ok');
+    }
+    return new JsonResponse('error');
+  }
+  
   public function freeze() {
     return array('#markup' => '<p>Content adding/editing is frozen on this site.</p><p>You can still add/edit content on the UAT site</p>');
   }
@@ -285,9 +321,9 @@ class GeneralController extends ControllerBase {
   
   public function feedback_title($type, $nid) {
     if ($type == 'no') {
-      return 'Please tell us why the information did not help';
+      return 'Please tell us why the information did not help.';
     }else{
-      return 'What you were looking for?';
+      return 'What were you looking for?';
     }
   }
 }

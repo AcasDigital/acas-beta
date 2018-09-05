@@ -34,7 +34,7 @@ class YesFeedback extends FormBase {
     ];
     $form['answer'] = [
       '#type' => 'textarea',
-      '#title' => 'What you were looking for?',
+      '#title' => 'What were you looking for?',
       '#description' => 'Please do not include any personal information, for example email address or phone number.<br/><br/>',
       '#description_display' => 'before',
     ];

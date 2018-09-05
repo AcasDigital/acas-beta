@@ -939,7 +939,7 @@ function general_guide_page($nid) {
  * UAT
  * Zips a subset of the DB and posts the base64 encoded zip file to prod
  */
-function general_sync_prod() {
+function general_sync_prod($content_only = TRUE) {
   $config = \Drupal::config('acas.settings');
   $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
   $output = '';
@@ -968,7 +968,7 @@ function general_sync_prod() {
     'file' => $file,
   );
   $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $config->get('prod') . '/sync-update');
+  curl_setopt($curl, CURLOPT_URL, $config->get('prod') . '/sync-update/' . $content_only);
   curl_setopt($curl, CURLOPT_TIMEOUT, 30);
   curl_setopt($curl, CURLOPT_POST, 1);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -1053,19 +1053,27 @@ function general_download_css() {
   * Invalidate the CloudFront cache for new content
   * or if $all, invalidate all content
   */
-function general_cloudfront_invalidate($all = FALSE) {
+function general_cloudfront_invalidate($all = FALSE, $nodeIds = FALSE) {
   $config_factory = \Drupal::configFactory();
   $config = $config_factory->getEditable('cloudfront.settings');
+  $paths = '';
   if ((!$last = $config->get('last_sync')) || $all) {
     $last = 0;
   }
-  if (!$all) {
+  if ($nodeIds) {
+    foreach($nodeIds as $n) {
+      $path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $n);
+      $paths .= '<Path>' . $path . '</Path>';
+      if ($path == '/home') {
+        $paths .= '<Path>/</Path>';
+      }
+    }
+  }else if (!$all) {
     $query = \Drupal::database()->select('node_field_data', 'nfd');
     $query->fields('nfd', array('nid'));
     $query->condition('nfd.changed', $last, '>');
     $result = $query->execute();
     if ($nodeIds = $result->fetchCol()) {
-      $paths = '';
       foreach($nodeIds as $n) {
         $path = \Drupal::service('path.alias_manager')->getAliasByPath('/node/' . $n);
         $paths .= '<Path>' . $path . '</Path>';
@@ -1107,8 +1115,10 @@ function general_cloudfront_invalidate($all = FALSE) {
     $resp .= fgets($fp, 1024);
   }
   fclose($fp);
-  $config->set('last_sync', time());
-  $config->save();
+  if (!$nodeIds) {
+    $config->set('last_sync', time());
+    $config->save();
+  }
   return $resp;  
 }
 

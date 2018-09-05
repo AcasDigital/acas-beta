@@ -2616,16 +2616,16 @@ ul.breadcrumb, ul.breadcrumb--search {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   position: relative;
-  text-align: center;
 }
-/* line 12, ../../src/scss/common/_feedback.scss */
+/* line 11, ../../src/scss/common/_feedback.scss */
 #feedback-form a {
   color: #fff;
   border-radius: 5px;
+  border: 1px solid white;
   display: inline-block;
   font-weight: 400;
-  margin: 0 .125em;
-  padding: 0 .125em;
+  margin: 0 .25em;
+  padding: 0 .5em;
   text-decoration: none;
 }
 /* line 20, ../../src/scss/common/_feedback.scss */
@@ -2638,12 +2638,10 @@ ul.breadcrumb, ul.breadcrumb--search {
 }
 /* line 28, ../../src/scss/common/_feedback.scss */
 #feedback-form .text {
-  float: left;
   font-family: "Open Sans Semibold", sans-serif;
-  display: block;
   padding: 0.125em 0.25em;
 }
-/* line 34, ../../src/scss/common/_feedback.scss */
+/* line 32, ../../src/scss/common/_feedback.scss */
 #feedback-form form {
   background: #fff;
   padding: 15px;
@@ -2651,21 +2649,21 @@ ul.breadcrumb, ul.breadcrumb--search {
   display: none;
   clear: both;
 }
-/* line 41, ../../src/scss/common/_feedback.scss */
+/* line 39, ../../src/scss/common/_feedback.scss */
 #feedback-form .left-wrapper {
   float: left;
 }
-/* line 44, ../../src/scss/common/_feedback.scss */
+/* line 42, ../../src/scss/common/_feedback.scss */
 #feedback-form .right-wrapper {
   float: right;
   cursor: pointer;
   display: none;
 }
-/* line 49, ../../src/scss/common/_feedback.scss */
+/* line 47, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-heading {
   display: block;
 }
-/* line 51, ../../src/scss/common/_feedback.scss */
+/* line 49, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-heading .panel-title {
   font-size: 1.25em;
   color: #008C95;
@@ -2673,39 +2671,43 @@ ul.breadcrumb, ul.breadcrumb--search {
   font-family: "Open Sans Semibold", sans-serif;
   margin-bottom: .5rem;
 }
-/* line 60, ../../src/scss/common/_feedback.scss */
+/* line 58, ../../src/scss/common/_feedback.scss */
 #feedback-form .panel-body .control-label {
   color: #000;
   font-weight: normal;
   font-size: 1em;
 }
 
-/* line 68, ../../src/scss/common/_feedback.scss */
+/* line 66, ../../src/scss/common/_feedback.scss */
 .acas-feedback-form .form-type-email, .webform-submission-yes-feedback-form .form-type-email, .webform-submission-no-feedback-form .form-type-email {
   display: none;
 }
 
-/* line 73, ../../src/scss/common/_feedback.scss */
+/* line 71, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form {
   clear: both;
 }
-/* line 75, ../../src/scss/common/_feedback.scss */
+/* line 73, ../../src/scss/common/_feedback.scss */
 .feedback-report .views-exposed-form .control-label, .feedback-report .views-exposed-form .form-type-date {
   display: inline-block;
 }
 
-/* line 82, ../../src/scss/common/_feedback.scss */
+/* line 80, ../../src/scss/common/_feedback.scss */
 #feedback-wrapper {
   position: relative;
 }
 
-/* line 85, ../../src/scss/common/_feedback.scss */
+/* line 83, ../../src/scss/common/_feedback.scss */
 #feedback-form {
   font-size: 1em;
   max-width: 100%;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   text-align: left;
+}
+/* line 89, ../../src/scss/common/_feedback.scss */
+#feedback-form a {
+  border: none;
 }
 
 /* line 1, ../../src/scss/common/_pagination.scss */

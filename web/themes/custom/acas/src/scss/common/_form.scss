@@ -5,117 +5,118 @@
     @extend .col--centered !optional;
 
     &.webform-submission-notification-prototype-form-1-form {
-        padding-top: 2em;
-        padding-bottom: 2em;
+      padding-top: 2em;
+      padding-bottom: 2em;
     }
 
-    .webform-progress-tracker { 
-        margin-left: 0;
+    .webform-progress-tracker {
+      margin-left: 0;
     }
 
     .form-control {
-        padding: .375em .75em;
-        font-size: 1em;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid $gray-medium-light;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      padding: .375em .75em;
+      font-size: 1em;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid $gray-medium-light;
+      border-radius: .25rem;
+      max-width: 100%;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
 
     .control-label, .fieldset-legend {
-        color: $acas-teal;
-        display: block;
-        font-family: $font-family-semibold;
-        margin-bottom: .5rem;
-        font-size: 1em;
+      color: $acas-teal;
+      display: block;
+      font-family: $font-family-semibold;
+      margin-bottom: .5rem;
+      font-size: 1em;
     }
 
     .fieldset-legend, .form-type-textarea label, .form-item-employer-name label {
-        font-size: 1.25em;
+      font-size: 1.25em;
     }
 
     fieldset {
-        .control-label {
-        color: $black;
-        font-weight: normal;
-        font-size: 1em;
-        }
+      .control-label {
+      color: $black;
+      font-weight: normal;
+      font-size: 1em;
+      }
     }
 
     .form-group, .webform-options-display-one-column {
-        margin-bottom: 1em;
-        .form-item {
+      margin-bottom: 1em;
+      .form-item {
         .invalid {
-            border: 4px solid $red;
+          border: 4px solid $red;
         }
         .valid {
-            border: 4px solid $green;
-        } 
+          border: 4px solid $green;
         }
+      }
     }
     .form-type-checkbox, .form-type-radio {
-        margin-bottom: 20px;
+      margin-bottom: 20px;
     }
-    .form-item-find-address { 
-        margin: 0;
+    .form-item-find-address {
+      margin: 0;
     }
     .description {
-        margin-top: 10px;
-        margin-bottom: 20px;
+      margin-top: 10px;
+      margin-bottom: 20px;
     }
     .form-submit {
-        color: $white;
-        background: $acas-teal-dark;
-        display: inline-block;
-        padding: .75em;
-        margin: 1em 0;
-        text-align: center;
-        text-decoration: none;
-        width: fit-content;
-        cursor: pointer;
+      color: $white;
+      background: $acas-teal-dark;
+      display: inline-block;
+      padding: .75em;
+      margin: 1em 0;
+      text-align: center;
+      text-decoration: none;
+      width: fit-content;
+      cursor: pointer;
     }
     .btn-cta {
-        display: inline-block;
+      display: inline-block;
     }
     #employer_message {
-        a {
+      a {
         cursor: pointer;
-        }
+      }
     }
     .invalid-feedback {
-        border-left: 4px solid $red;
-        padding-left: 16px;
-        font-size: 19px;
-        line-height: 25px;
-        padding: 10px;
-        font-weight: 500;
-        margin: 10px 0px;
-        color: $red;
-        display: none;
+      border-left: 4px solid $red;
+      padding-left: 16px;
+      font-size: 19px;
+      line-height: 25px;
+      padding: 10px;
+      font-weight: 500;
+      margin: 10px 0px;
+      color: $red;
+      display: none;
     }
     .panel-heading {
-        display: none;
+      display: none;
     }
     .webform-preview {
-        #check_employer, #acas_notification_form--find_address {
+      #check_employer, #acas_notification_form--find_address {
         display: none;
-        }
-        .panel-heading {
+      }
+      .panel-heading {
         display: block;
         padding-top: .5em;
-        }
+      }
     }
     .form-item-employer-name {
-        .invalid-feedback {
+      .invalid-feedback {
         position: relative;
         top: -22px;
-        }
+      }
     }
     .g-recaptcha {
-        margin-top: 40px;
+      margin-top: 40px;
     }
 }
 #yes-feedback, #no-feedback {
@@ -140,7 +141,6 @@
 }
 
 .path-webform {
-
     $offset: 187;
     $duration: 1.4s;
 
@@ -210,10 +210,10 @@
         z-index: 10;
         border: 3px solid $acas-lime;
         .title-wrapper {
-        overflow: auto;
-        padding: 0 1em;
-        border-bottom: 3px solid $acas-lime;
-        .title {
+          overflow: auto;
+          padding: 0 1em;
+          border-bottom: 3px solid $acas-lime;
+          .title {
             float: left;
             font-size: 1.36em;
             line-height: 1.25;
@@ -223,8 +223,8 @@
             font-family: "Century Gothic Bold", "AppleGothic", sans-serif;
             margin-top: 10px;
             margin-bottom: 10px;
-        }
-        .title:before {
+          }
+          .title:before {
             content: "";
             background: $acas-lime;
             display: block;
@@ -233,7 +233,7 @@
             position: absolute;
             left: 0;
             top: 8%;
-        }
+          }
         }
         .spinner-wrapper {
         text-align: center;
@@ -253,7 +253,7 @@
         stroke-dashoffset: 0;
         transform-origin: center;
         animation:
-        dash $duration ease-in-out infinite, 
+        dash $duration ease-in-out infinite,
         colors ($duration*4) ease-in-out infinite;
     }
 

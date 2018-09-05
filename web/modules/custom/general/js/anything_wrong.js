@@ -31,6 +31,9 @@
           $("#feedback-form .no-feedback .form-item-answer").hide();
         }
         $("#feedback-form #edit-radios").change(function() {
+          var questions = JSON.parse($("[data-drupal-selector=edit-questions]").val());
+          var a = $("#feedback-form #edit-radios input:checked").val();
+          $(".form-item-answer .control-label").text(questions[a]);
           $("#feedback-form .form-item-answer").slideDown();
           $("#feedback-form .form-item-answer textarea").focus();
         });
@@ -56,9 +59,12 @@
         });
       }
       function showAnythingWrongRequest(formData, jqForm, options) {
-        $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
+        $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190.");
         $("#feedback-form .right-wrapper").hide();
         $("#feedback-form .webform-submission-form").slideUp();
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#feedback-wrapper").offset().top
+        }, 500);
       }
       function sendVote(element, simple) {
         jQuery.ajax({
@@ -72,7 +78,7 @@
           },
           success: function(data){
             if (simple) {
-              $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190");
+              $("#feedback-form .left-wrapper .text").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190.");
             }
           }
         });

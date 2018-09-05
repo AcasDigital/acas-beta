@@ -8,14 +8,14 @@
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   position: relative;
-  text-align: center;
   a {
     color: $white;
     border-radius: 5px;
+    border: 1px solid white;
     display: inline-block;
     font-weight: $font-weight-normal;
-    margin: 0 .125em;
-    padding: 0 .125em;
+    margin: 0 .25em;
+    padding: 0 .5em;
     text-decoration: none;
     &:hover, &:focus {
       @extend .outline;
@@ -26,9 +26,7 @@
     font-size: 0.85em;
   }
   .text {
-    float: left;
     font-family: $font-family-semibold;
-    display: block;
     padding: 0.125em 0.25em;
   }
   form {
@@ -63,7 +61,7 @@
       font-size: 1em;
     }
   }
-} 
+}
 .acas-feedback-form, .webform-submission-yes-feedback-form, .webform-submission-no-feedback-form {
   .form-type-email {
     display: none;
@@ -88,5 +86,8 @@
     padding-top: 0.25em;
     padding-bottom: 0.25em;
     text-align: left;
+    a {
+      border: none;
+    }
   }
 }

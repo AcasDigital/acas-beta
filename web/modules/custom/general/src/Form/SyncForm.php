@@ -41,6 +41,12 @@ class SyncForm extends ConfigFormBase {
       '#default_value' => TRUE,
       '#description' => 'If any CSS changes'
     ];
+    $form['content_only'] = [
+      '#type' => 'checkbox',
+      '#title' => 'Content only',
+      '#default_value' => TRUE,
+      '#description' => 'Syncronise only content, no code'
+    ];
     $form['#prefix'] = '<h2>Syncronise content to Production</h2>';
     $form['#action'] = '/admin/config/development/sync-prod';
     $form['#attached']['library'][] = 'general/sync_prod';

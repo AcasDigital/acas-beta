@@ -42,6 +42,10 @@ class NoFeedback extends FormBase {
       '#type' => 'radios',
       '#options' => [1 => 'I do not understand the information', 2 => 'I cannot find the information I\'m looking for', 3 => 'I cannot work out what to do next', 4 => 'Other'],
     ];
+    $form['questions'] = [
+      '#type' => 'hidden',
+      '#value' => json_encode([1 => 'What are you trying to find out?', 2 => 'What are you trying to find out?', 3 => 'What information are you looking for?', 4 => 'Tell us more about your answer']),
+    ];
     $form['answer'] = [
       '#type' => 'textarea',
       '#title' => 'Tell us more about your answer',

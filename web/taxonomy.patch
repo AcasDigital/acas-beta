@@ -1,0 +1,2161 @@
+diff --git a/core/modules/content_moderation/tests/src/Kernel/ContentModerationStateTest.php b/core/modules/content_moderation/tests/src/Kernel/ContentModerationStateTest.php
+index 8574ad6..ded462b 100644
+--- a/core/modules/content_moderation/tests/src/Kernel/ContentModerationStateTest.php
++++ b/core/modules/content_moderation/tests/src/Kernel/ContentModerationStateTest.php
+@@ -36,6 +36,7 @@ class ContentModerationStateTest extends KernelTestBase {
+     'media_test_source',
+     'image',
+     'file',
++    'taxonomy',
+     'field',
+     'content_moderation',
+     'user',
+@@ -66,6 +67,7 @@ protected function setUp() {
+     $this->installEntitySchema('block_content');
+     $this->installEntitySchema('media');
+     $this->installEntitySchema('file');
++    $this->installEntitySchema('taxonomy_term');
+     $this->installEntitySchema('content_moderation_state');
+     $this->installConfig('content_moderation');
+     $this->installSchema('file', 'file_usage');
+@@ -164,6 +166,9 @@ public function basicModerationTestCases() {
+       'Media' => [
+         'media',
+       ],
++      'Taxonomy term' => [
++        'taxonomy_term',
++      ],
+       'Test entity - revisions, data table, and published interface' => [
+         'entity_test_mulrevpub',
+       ],
+@@ -252,7 +257,7 @@ public function testContentModerationStateTranslationDataRemoval($entity_type_id
+       ConfigurableLanguage::createFromLangcode($langcode)
+         ->save();
+       $entity->save();
+-      $translation = $entity->addTranslation($langcode, ['title' => 'Titolo test']);
++      $translation = $entity->addTranslation($langcode, [$entity->getEntityType()->getKey('label') => 'Titolo test']);
+       // Make sure we add values for all of the required fields.
+       if ($entity_type_id == 'block_content') {
+         $translation->info = $this->randomString();
+diff --git a/core/modules/rest/tests/src/Functional/EntityResource/XmlEntityNormalizationQuirksTrait.php b/core/modules/rest/tests/src/Functional/EntityResource/XmlEntityNormalizationQuirksTrait.php
+index 3064ea3..a7e588a 100644
+--- a/core/modules/rest/tests/src/Functional/EntityResource/XmlEntityNormalizationQuirksTrait.php
++++ b/core/modules/rest/tests/src/Functional/EntityResource/XmlEntityNormalizationQuirksTrait.php
+@@ -14,6 +14,7 @@
+ use Drupal\options\Plugin\Field\FieldType\ListIntegerItem;
+ use Drupal\path\Plugin\Field\FieldType\PathItem;
+ use Drupal\Tests\rest\Functional\XmlNormalizationQuirksTrait;
++use Drupal\user\StatusItem;
+ 
+ /**
+  * Trait for EntityResourceTestBase subclasses testing $format='xml'.
+@@ -63,6 +64,9 @@ protected function applyXmlFieldDecodingQuirks(array $normalization) {
+       for ($i = 0; $i < count($normalization[$field_name]); $i++) {
+         switch ($field->getItemDefinition()->getClass()) {
+           case BooleanItem::class:
++          case StatusItem::class:
++            // @todo Remove the StatusItem case in
++            //   https://www.drupal.org/project/drupal/issues/2936864.
+             $value = &$normalization[$field_name][$i]['value'];
+             $value = $value === TRUE ? '1' : '0';
+             break;
+diff --git a/core/modules/system/tests/src/Functional/Entity/EntityReferenceSelection/EntityReferenceSelectionAccessTest.php b/core/modules/system/tests/src/Functional/Entity/EntityReferenceSelection/EntityReferenceSelectionAccessTest.php
+index 3772f3a..810b0e5 100644
+--- a/core/modules/system/tests/src/Functional/Entity/EntityReferenceSelection/EntityReferenceSelectionAccessTest.php
++++ b/core/modules/system/tests/src/Functional/Entity/EntityReferenceSelection/EntityReferenceSelectionAccessTest.php
+@@ -7,6 +7,8 @@
+ use Drupal\Core\Language\LanguageInterface;
+ use Drupal\comment\CommentInterface;
+ use Drupal\node\Entity\Node;
++use Drupal\taxonomy\Entity\Term;
++use Drupal\taxonomy\Entity\Vocabulary;
+ use Drupal\Tests\BrowserTestBase;
+ use Drupal\node\NodeInterface;
+ use Drupal\user\Entity\User;
+@@ -26,7 +28,7 @@ class EntityReferenceSelectionAccessTest extends BrowserTestBase {
+    *
+    * @var array
+    */
+-  public static $modules = ['node', 'comment'];
++  public static $modules = ['node', 'comment', 'taxonomy'];
+ 
+   protected function setUp() {
+     parent::setUp();
+@@ -507,4 +509,148 @@ public function testCommentHandler() {
+     $this->assertReferenceable($selection_options, $referenceable_tests, 'Comment handler (comment + node admin)');
+   }
+ 
++  /**
++   * Test the term-specific overrides of the selection handler.
++   */
++  public function testTermHandler() {
++    // Create a 'Tags' vocabulary.
++    Vocabulary::create([
++      'name' => 'Tags',
++      'description' => $this->randomMachineName(),
++      'vid' => 'tags',
++    ])->save();
++
++    $selection_options = [
++      'target_type' => 'taxonomy_term',
++      'handler' => 'default',
++      'target_bundles' => NULL,
++    ];
++
++    // Build a set of test data.
++    $term_values = [
++      'published1' => [
++        'vid' => 'tags',
++        'status' => 1,
++        'name' => 'Term published1',
++      ],
++      'published2' => [
++        'vid' => 'tags',
++        'status' => 1,
++        'name' => 'Term published2',
++      ],
++      'unpublished' => [
++        'vid' => 'tags',
++        'status' => 0,
++        'name' => 'Term unpublished',
++      ],
++      'published3' => [
++        'vid' => 'tags',
++        'status' => 1,
++        'name' => 'Term published3',
++        'parent' => 'unpublished',
++      ],
++      'published4' => [
++        'vid' => 'tags',
++        'status' => 1,
++        'name' => 'Term published4',
++        'parent' => 'published3',
++      ],
++    ];
++
++    $terms = [];
++    $term_labels = [];
++    foreach ($term_values as $key => $values) {
++      $term = Term::create($values);
++      if (isset($values['parent'])) {
++        $term->parent->entity = $terms[$values['parent']];
++      }
++      $term->save();
++      $terms[$key] = $term;
++      $term_labels[$key] = Html::escape($term->label());
++    }
++
++    // Test as a non-admin.
++    $normal_user = $this->drupalCreateUser(['access content']);
++    \Drupal::currentUser()->setAccount($normal_user);
++    $referenceable_tests = [
++      [
++        'arguments' => [
++          [NULL, 'CONTAINS'],
++        ],
++        'result' => [
++          'tags' => [
++            $terms['published1']->id() => $term_labels['published1'],
++            $terms['published2']->id() => $term_labels['published2'],
++          ],
++        ],
++      ],
++      [
++        'arguments' => [
++          ['published1', 'CONTAINS'],
++          ['Published1', 'CONTAINS'],
++        ],
++        'result' => [
++          'tags' => [
++            $terms['published1']->id() => $term_labels['published1'],
++          ],
++        ],
++      ],
++      [
++        'arguments' => [
++          ['published2', 'CONTAINS'],
++          ['Published2', 'CONTAINS'],
++        ],
++        'result' => [
++          'tags' => [
++            $terms['published2']->id() => $term_labels['published2'],
++          ],
++        ],
++      ],
++      [
++        'arguments' => [
++          ['invalid term', 'CONTAINS'],
++        ],
++        'result' => [],
++      ],
++      [
++        'arguments' => [
++          ['Term unpublished', 'CONTAINS'],
++        ],
++        'result' => [],
++      ],
++    ];
++    $this->assertReferenceable($selection_options, $referenceable_tests, 'Term handler');
++
++    // Test as an admin.
++    $admin_user = $this->drupalCreateUser(['access content', 'administer taxonomy']);
++    \Drupal::currentUser()->setAccount($admin_user);
++    $referenceable_tests = [
++      [
++        'arguments' => [
++          [NULL, 'CONTAINS'],
++        ],
++        'result' => [
++          'tags' => [
++            $terms['published1']->id() => $term_labels['published1'],
++            $terms['published2']->id() => $term_labels['published2'],
++            $terms['unpublished']->id() => $term_labels['unpublished'],
++            $terms['published3']->id() => '-' . $term_labels['published3'],
++            $terms['published4']->id() => '--' . $term_labels['published4'],
++          ],
++        ],
++      ],
++      [
++        'arguments' => [
++          ['Term unpublished', 'CONTAINS'],
++        ],
++        'result' => [
++          'tags' => [
++            $terms['unpublished']->id() => $term_labels['unpublished'],
++          ],
++        ],
++      ],
++    ];
++    $this->assertReferenceable($selection_options, $referenceable_tests, 'Term handler (admin)');
++  }
++
+ }
+diff --git a/core/modules/taxonomy/src/Entity/Term.php b/core/modules/taxonomy/src/Entity/Term.php
+index 77cefcc..949518a 100644
+--- a/core/modules/taxonomy/src/Entity/Term.php
++++ b/core/modules/taxonomy/src/Entity/Term.php
+@@ -2,12 +2,12 @@
+ 
+ namespace Drupal\taxonomy\Entity;
+ 
+-use Drupal\Core\Entity\ContentEntityBase;
+-use Drupal\Core\Entity\EntityChangedTrait;
++use Drupal\Core\Entity\EditorialContentEntityBase;
+ use Drupal\Core\Entity\EntityStorageInterface;
+ use Drupal\Core\Entity\EntityTypeInterface;
+ use Drupal\Core\Field\BaseFieldDefinition;
+ use Drupal\taxonomy\TermInterface;
++use Drupal\user\StatusItem;
+ 
+ /**
+  * Defines the taxonomy term entity.
+@@ -38,14 +38,23 @@
+  *   },
+  *   base_table = "taxonomy_term_data",
+  *   data_table = "taxonomy_term_field_data",
++ *   revision_table = "taxonomy_term_revision",
++ *   revision_data_table = "taxonomy_term_field_revision",
+  *   uri_callback = "taxonomy_term_uri",
+  *   translatable = TRUE,
+  *   entity_keys = {
+  *     "id" = "tid",
++ *     "revision" = "revision_id",
+  *     "bundle" = "vid",
+  *     "label" = "name",
+  *     "langcode" = "langcode",
+- *     "uuid" = "uuid"
++ *     "uuid" = "uuid",
++ *     "published" = "status",
++ *   },
++ *   revision_metadata_keys = {
++ *     "revision_user" = "revision_user",
++ *     "revision_created" = "revision_created",
++ *     "revision_log_message" = "revision_log_message",
+  *   },
+  *   bundle_entity_type = "taxonomy_vocabulary",
+  *   field_ui_base_route = "entity.taxonomy_vocabulary.overview_form",
+@@ -56,12 +65,13 @@
+  *     "edit-form" = "/taxonomy/term/{taxonomy_term}/edit",
+  *     "create" = "/taxonomy/term",
+  *   },
+- *   permission_granularity = "bundle"
++ *   permission_granularity = "bundle",
++ *   constraints = {
++ *     "TaxonomyHierarchy" = {}
++ *   }
+  * )
+  */
+-class Term extends ContentEntityBase implements TermInterface {
+-
+-  use EntityChangedTrait;
++class Term extends EditorialContentEntityBase implements TermInterface {
+ 
+   /**
+    * {@inheritdoc}
+@@ -116,6 +126,10 @@ public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+     /** @var \Drupal\Core\Field\BaseFieldDefinition[] $fields */
+     $fields = parent::baseFieldDefinitions($entity_type);
+ 
++    // @todo Remove the usage of StatusItem in
++    //   https://www.drupal.org/project/drupal/issues/2936864.
++    $fields['status']->getItemDefinition()->setClass(StatusItem::class);
++
+     $fields['tid']->setLabel(t('Term ID'))
+       ->setDescription(t('The term ID.'));
+ 
+@@ -129,6 +143,7 @@ public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+     $fields['name'] = BaseFieldDefinition::create('string')
+       ->setLabel(t('Name'))
+       ->setTranslatable(TRUE)
++      ->setRevisionable(TRUE)
+       ->setRequired(TRUE)
+       ->setSetting('max_length', 255)
+       ->setDisplayOptions('view', [
+@@ -145,6 +160,7 @@ public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+     $fields['description'] = BaseFieldDefinition::create('text_long')
+       ->setLabel(t('Description'))
+       ->setTranslatable(TRUE)
++      ->setRevisionable(TRUE)
+       ->setDisplayOptions('view', [
+         'label' => 'hidden',
+         'type' => 'text_default',
+@@ -171,7 +187,14 @@ public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+     $fields['changed'] = BaseFieldDefinition::create('changed')
+       ->setLabel(t('Changed'))
+       ->setDescription(t('The time that the term was last edited.'))
+-      ->setTranslatable(TRUE);
++      ->setTranslatable(TRUE)
++      ->setRevisionable(TRUE);
++
++    // @todo Keep this field hidden until we have a revision UI for terms.
++    // @see https://www.drupal.org/project/drupal/issues/2936995
++    $fields['revision_log_message']->setDisplayOptions('form', [
++      'region' => 'hidden',
++    ]);
+ 
+     return $fields;
+   }
+diff --git a/core/modules/taxonomy/src/Form/OverviewTerms.php b/core/modules/taxonomy/src/Form/OverviewTerms.php
+index f9e0d59..1fac422 100644
+--- a/core/modules/taxonomy/src/Form/OverviewTerms.php
++++ b/core/modules/taxonomy/src/Form/OverviewTerms.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\taxonomy\Form;
+ 
++use Drupal\Component\Utility\Unicode;
+ use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Entity\EntityManagerInterface;
+ use Drupal\Core\Form\FormBase;
+@@ -227,6 +228,56 @@ public function buildForm(array $form, FormStateInterface $form_state, Vocabular
+       }
+     }
+ 
++    $args = [
++      '%capital_name' => Unicode::ucfirst($taxonomy_vocabulary->label()),
++      '%name' => $taxonomy_vocabulary->label(),
++    ];
++    if ($this->currentUser()->hasPermission('administer taxonomy') || $this->currentUser()->hasPermission('edit terms in ' . $taxonomy_vocabulary->id())) {
++      switch ($taxonomy_vocabulary->getHierarchy()) {
++        case VocabularyInterface::HIERARCHY_DISABLED:
++          $help_message = $this->t('You can reorganize the terms in %capital_name using their drag-and-drop handles, and group terms under a parent term by sliding them under and to the right of the parent.', $args);
++          break;
++        case VocabularyInterface::HIERARCHY_SINGLE:
++          $help_message = $this->t('%capital_name contains terms grouped under parent terms. You can reorganize the terms in %capital_name using their drag-and-drop handles.', $args);
++          break;
++        case VocabularyInterface::HIERARCHY_MULTIPLE:
++          $help_message = $this->t('%capital_name contains terms with multiple parents. Drag and drop of terms with multiple parents is not supported, but you can re-enable drag-and-drop support by editing each term to include only a single parent.', $args);
++          break;
++      }
++    }
++    else {
++      switch ($taxonomy_vocabulary->getHierarchy()) {
++        case VocabularyInterface::HIERARCHY_DISABLED:
++          $help_message = $this->t('%capital_name contains the following terms.', $args);
++          break;
++        case VocabularyInterface::HIERARCHY_SINGLE:
++          $help_message = $this->t('%capital_name contains terms grouped under parent terms', $args);
++          break;
++        case VocabularyInterface::HIERARCHY_MULTIPLE:
++          $help_message = $this->t('%capital_name contains terms with multiple parents.', $args);
++          break;
++      }
++    }
++
++    // Get IDs of terms which have pending revisions.
++    $pending_term_ids = $this->storageController->getTermIDsWithPendingRevisions();
++    if ($pending_term_ids) {
++      $help_message = $this->formatPlural(
++        count($pending_term_ids),
++        '%capital_name contains 1 term with pending revisions. Drag and drop of terms with pending revisions is not supported, but you can re-enable drag-and-drop support by getting each term to a published state.',
++        '%capital_name contains @count terms with pending revisions. Drag and drop of terms with pending revisions is not supported, but you can re-enable drag-and-drop support by getting each term to a published state.',
++        ['%capital_name' => Unicode::ucfirst($taxonomy_vocabulary->label())]
++      );
++    }
++
++    $form['help'] = [
++      '#type' => 'container',
++      'message' => ['#markup' => $help_message],
++    ];
++    if ($pending_term_ids || $taxonomy_vocabulary->getHierarchy() === VocabularyInterface::HIERARCHY_MULTIPLE) {
++      $form['help']['#attributes']['class'] = ['messages', 'messages--warning'];
++    }
++
+     $errors = $form_state->getErrors();
+     $row_position = 0;
+     // Build the actual form.
+@@ -253,8 +304,8 @@ public function buildForm(array $form, FormStateInterface $form_state, Vocabular
+     $this->renderer->addCacheableDependency($form['terms'], $create_access);
+ 
+     // Only allow access to changing weights if the user has update access for
+-    // all terms.
+-    $change_weight_access = AccessResult::allowed();
++    // all terms, and if there no pending revisions.
++    $change_weight_access = AccessResult::allowedIf(empty($pending_term_ids));
+     foreach ($current_page as $key => $term) {
+       $form['terms'][$key] = [
+         'term' => [],
+@@ -277,7 +328,16 @@ public function buildForm(array $form, FormStateInterface $form_state, Vocabular
+         '#title' => $term->getName(),
+         '#url' => $term->urlInfo(),
+       ];
+-      if ($taxonomy_vocabulary->getHierarchy() != VocabularyInterface::HIERARCHY_MULTIPLE && count($tree) > 1) {
++
++      // Add a special class for terms with pending revision so we can highlight
++      // them in the form.
++      $form['terms'][$key]['#attributes']['class'] = [];
++      if (in_array($term->id(), $pending_term_ids)) {
++        $form['terms'][$key]['#attributes']['class'][] = 'color-warning';
++        $form['terms'][$key]['#attributes']['class'][] = 'taxonomy-term-pending-revision';
++      }
++
++      if ($change_weight_access->isAllowed() && $taxonomy_vocabulary->getHierarchy() != VocabularyInterface::HIERARCHY_MULTIPLE && count($tree) > 1) {
+         $parent_fields = TRUE;
+         $form['terms'][$key]['term']['tid'] = [
+           '#type' => 'hidden',
+@@ -308,7 +368,7 @@ public function buildForm(array $form, FormStateInterface $form_state, Vocabular
+       $update_access = $term->access('update', NULL, TRUE);
+       $change_weight_access = $change_weight_access->andIf($update_access);
+ 
+-      if ($update_access->isAllowed()) {
++      if ($change_weight_access->isAllowed()) {
+         $form['terms'][$key]['weight'] = [
+           '#type' => 'weight',
+           '#delta' => $delta,
+@@ -326,7 +386,6 @@ public function buildForm(array $form, FormStateInterface $form_state, Vocabular
+         ];
+       }
+ 
+-      $form['terms'][$key]['#attributes']['class'] = [];
+       if ($parent_fields) {
+         $form['terms'][$key]['#attributes']['class'][] = 'draggable';
+       }
+@@ -487,17 +546,28 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
+       $hierarchy = $term->parents[0] != 0 ? VocabularyInterface::HIERARCHY_SINGLE : $hierarchy;
+     }
+ 
+-    // Save all updated terms.
+-    foreach ($changed_terms as $term) {
+-      $term->save();
+-    }
++    if (!empty($changed_terms)) {
++      $pending_term_ids = $this->storageController->getTermIDsWithPendingRevisions();
+ 
+-    // Update the vocabulary hierarchy to flat or single hierarchy.
+-    if ($vocabulary->getHierarchy() != $hierarchy) {
+-      $vocabulary->setHierarchy($hierarchy);
+-      $vocabulary->save();
++      // Force a form rebuild if any of the changed terms has a pending
++      // revision.
++      if (array_intersect_key(array_flip($pending_term_ids), $changed_terms)) {
++        $form_state->setRebuild();
++      }
++      else {
++        // Save all updated terms.
++        foreach ($changed_terms as $term) {
++          $term->save();
++        }
++
++        // Update the vocabulary hierarchy to flat or single hierarchy.
++        if ($vocabulary->getHierarchy() != $hierarchy) {
++          $vocabulary->setHierarchy($hierarchy);
++          $vocabulary->save();
++        }
++        $this->messenger()->addStatus($this->t('The configuration options have been saved.'));
++      }
+     }
+-    $this->messenger()->addStatus($this->t('The configuration options have been saved.'));
+   }
+ 
+   /**
+diff --git a/core/modules/taxonomy/src/Plugin/EntityReferenceSelection/TermSelection.php b/core/modules/taxonomy/src/Plugin/EntityReferenceSelection/TermSelection.php
+index a312111..0592250 100644
+--- a/core/modules/taxonomy/src/Plugin/EntityReferenceSelection/TermSelection.php
++++ b/core/modules/taxonomy/src/Plugin/EntityReferenceSelection/TermSelection.php
+@@ -59,10 +59,17 @@ public function getReferenceableEntities($match = NULL, $match_operator = 'CONTA
+     $bundles = $this->entityManager->getBundleInfo('taxonomy_term');
+     $bundle_names = $this->getConfiguration()['target_bundles'] ?: array_keys($bundles);
+ 
++    $has_admin_access = $this->currentUser->hasPermission('administer taxonomy');
++    $unpublished_terms = [];
+     foreach ($bundle_names as $bundle) {
+       if ($vocabulary = Vocabulary::load($bundle)) {
++        /** @var \Drupal\taxonomy\TermInterface[] $terms */
+         if ($terms = $this->entityManager->getStorage('taxonomy_term')->loadTree($vocabulary->id(), 0, NULL, TRUE)) {
+           foreach ($terms as $term) {
++            if (!$has_admin_access && (!$term->isPublished() || in_array($term->parent->target_id, $unpublished_terms))) {
++              $unpublished_terms[] = $term->id();
++              continue;
++            }
+             $options[$vocabulary->id()][$term->id()] = str_repeat('-', $term->depth) . Html::escape($this->entityManager->getTranslationFromContext($term)->label());
+           }
+         }
+@@ -72,4 +79,63 @@ public function getReferenceableEntities($match = NULL, $match_operator = 'CONTA
+     return $options;
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public function countReferenceableEntities($match = NULL, $match_operator = 'CONTAINS') {
++    if ($match) {
++      return parent::countReferenceableEntities($match, $match_operator);
++    }
++
++    $total = 0;
++    $referenceable_entities = $this->getReferenceableEntities($match, $match_operator, 0);
++    foreach ($referenceable_entities as $bundle => $entities) {
++      $total += count($entities);
++    }
++    return $total;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function buildEntityQuery($match = NULL, $match_operator = 'CONTAINS') {
++    $query = parent::buildEntityQuery($match, $match_operator);
++
++    // Adding the 'taxonomy_term_access' tag is sadly insufficient for terms:
++    // core requires us to also know about the concept of 'published' and
++    // 'unpublished'.
++    if (!$this->currentUser->hasPermission('administer taxonomy')) {
++      $query->condition('status', 1);
++    }
++    return $query;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function createNewEntity($entity_type_id, $bundle, $label, $uid) {
++    $term = parent::createNewEntity($entity_type_id, $bundle, $label, $uid);
++
++    // In order to create a referenceable term, it needs to published.
++    /** @var \Drupal\taxonomy\TermInterface $term */
++    $term->setPublished();
++
++    return $term;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function validateReferenceableNewEntities(array $entities) {
++    $entities = parent::validateReferenceableNewEntities($entities);
++    // Mirror the conditions checked in buildEntityQuery().
++    if (!$this->currentUser->hasPermission('administer taxonomy')) {
++      $entities = array_filter($entities, function ($term) {
++        /** @var \Drupal\taxonomy\TermInterface $term */
++        return $term->isPublished();
++      });
++    }
++    return $entities;
++  }
++
+ }
+diff --git a/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraint.php b/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraint.php
+new file mode 100644
+index 0000000..93abb07
+--- /dev/null
++++ b/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraint.php
+@@ -0,0 +1,31 @@
++<?php
++
++namespace Drupal\taxonomy\Plugin\Validation\Constraint;
++
++use Drupal\Core\Entity\Plugin\Validation\Constraint\CompositeConstraintBase;
++
++/**
++ * Validation constraint for changing the term hierarchy in pending revisions.
++ *
++ * @Constraint(
++ *   id = "TaxonomyHierarchy",
++ *   label = @Translation("Taxonomy term hierarchy.", context = "Validation"),
++ * )
++ */
++class TaxonomyTermHierarchyConstraint extends CompositeConstraintBase {
++
++  /**
++   * The default violation message.
++   *
++   * @var string
++   */
++  public $message = 'You can only change the hierarchy for the <em>published</em> version of this term.';
++
++  /**
++   * {@inheritdoc}
++   */
++  public function coversFields() {
++    return ['parent', 'weight'];
++  }
++
++}
+diff --git a/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraintValidator.php b/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraintValidator.php
+new file mode 100644
+index 0000000..804ddb8
+--- /dev/null
++++ b/core/modules/taxonomy/src/Plugin/Validation/Constraint/TaxonomyTermHierarchyConstraintValidator.php
+@@ -0,0 +1,68 @@
++<?php
++
++namespace Drupal\taxonomy\Plugin\Validation\Constraint;
++
++use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Symfony\Component\DependencyInjection\ContainerInterface;
++use Symfony\Component\Validator\Constraint;
++use Symfony\Component\Validator\ConstraintValidator;
++
++/**
++ * Constraint validator for changing term parents in pending revisions.
++ */
++class TaxonomyTermHierarchyConstraintValidator extends ConstraintValidator implements ContainerInjectionInterface {
++
++  /**
++   * The entity type manager.
++   *
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
++   */
++  private $entityTypeManager;
++
++  /**
++   * Creates a new TaxonomyTermHierarchyConstraintValidator instance.
++   *
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
++   *   The entity type manager.
++   */
++  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
++    $this->entityTypeManager = $entity_type_manager;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container) {
++    return new static(
++      $container->get('entity_type.manager')
++    );
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function validate($entity, Constraint $constraint) {
++    if ($entity && !$entity->isNew() && !$entity->isDefaultRevision()) {
++      /** @var \Drupal\taxonomy\TermStorageInterface $term_storage */
++      $term_storage = $this->entityTypeManager->getStorage($entity->getEntityTypeId());
++
++      $new_parents = array_column($entity->parent->getValue(), 'target_id');
++      $original_parents = array_keys($term_storage->loadParents($entity->id())) ?: [0];
++      if ($new_parents != $original_parents) {
++        $this->context->buildViolation($constraint->message)
++          ->atPath('parent')
++          ->addViolation();
++      }
++
++      /** @var \Drupal\taxonomy\TermInterface $original */
++      $original = $term_storage->loadUnchanged($entity->id());
++      if (!$entity->weight->equals($original->weight)) {
++        $this->context->buildViolation($constraint->message)
++          ->atPath('weight')
++          ->addViolation();
++      }
++    }
++  }
++
++}
+diff --git a/core/modules/taxonomy/src/TermAccessControlHandler.php b/core/modules/taxonomy/src/TermAccessControlHandler.php
+index 1d48463..b25dca4 100644
+--- a/core/modules/taxonomy/src/TermAccessControlHandler.php
++++ b/core/modules/taxonomy/src/TermAccessControlHandler.php
+@@ -18,19 +18,37 @@ class TermAccessControlHandler extends EntityAccessControlHandler {
+    * {@inheritdoc}
+    */
+   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
++    if ($account->hasPermission('administer taxonomy')) {
++      return AccessResult::allowed()->cachePerPermissions();
++    }
++
+     switch ($operation) {
+       case 'view':
+-        return AccessResult::allowedIfHasPermission($account, 'access content');
++        $access_result = AccessResult::allowedIf($account->hasPermission('access content') && $entity->isPublished())
++          ->cachePerPermissions()
++          ->addCacheableDependency($entity);
++        if (!$access_result->isAllowed()) {
++          $access_result->setReason("The 'access content' permission is required and the taxonomy term must be published.");
++        }
++        return $access_result;
+ 
+       case 'update':
+-        return AccessResult::allowedIfHasPermissions($account, ["edit terms in {$entity->bundle()}", 'administer taxonomy'], 'OR');
++        if ($account->hasPermission("edit terms in {$entity->bundle()}")) {
++          return AccessResult::allowed()->cachePerPermissions();
++        }
++
++        return AccessResult::neutral()->setReason("The following permissions are required: 'edit terms in {$entity->bundle()}' OR 'administer taxonomy'.");
+ 
+       case 'delete':
+-        return AccessResult::allowedIfHasPermissions($account, ["delete terms in {$entity->bundle()}", 'administer taxonomy'], 'OR');
++        if ($account->hasPermission("delete terms in {$entity->bundle()}")) {
++          return AccessResult::allowed()->cachePerPermissions();
++        }
++
++        return AccessResult::neutral()->setReason("The following permissions are required: 'delete terms in {$entity->bundle()}' OR 'administer taxonomy'.");
+ 
+       default:
+         // No opinion.
+-        return AccessResult::neutral();
++        return AccessResult::neutral()->cachePerPermissions();
+     }
+   }
+ 
+diff --git a/core/modules/taxonomy/src/TermForm.php b/core/modules/taxonomy/src/TermForm.php
+index 95909bd..d00d197 100644
+--- a/core/modules/taxonomy/src/TermForm.php
++++ b/core/modules/taxonomy/src/TermForm.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\taxonomy;
+ 
+ use Drupal\Core\Entity\ContentEntityForm;
++use Drupal\Core\Entity\EntityConstraintViolationListInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ 
+ /**
+@@ -123,6 +124,29 @@ public function buildEntity(array $form, FormStateInterface $form_state) {
+   /**
+    * {@inheritdoc}
+    */
++  protected function getEditedFieldNames(FormStateInterface $form_state) {
++    return array_merge(['parent', 'weight'], parent::getEditedFieldNames($form_state));
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function flagViolations(EntityConstraintViolationListInterface $violations, array $form, FormStateInterface $form_state) {
++    // Manually flag violations of fields not handled by the form display.
++    // @see ::form()
++    foreach ($violations->getByField('parent') as $violation) {
++      $form_state->setErrorByName('parent', $violation->getMessage());
++    }
++    foreach ($violations->getByField('weight') as $violation) {
++      $form_state->setErrorByName('weight', $violation->getMessage());
++    }
++
++    parent::flagViolations($violations, $form, $form_state);
++  }
++
++  /**
++   * {@inheritdoc}
++   */
+   public function save(array $form, FormStateInterface $form_state) {
+     $term = $this->entity;
+ 
+diff --git a/core/modules/taxonomy/src/TermInterface.php b/core/modules/taxonomy/src/TermInterface.php
+index 4cde8f4..bbab26c 100644
+--- a/core/modules/taxonomy/src/TermInterface.php
++++ b/core/modules/taxonomy/src/TermInterface.php
+@@ -4,11 +4,13 @@
+ 
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\EntityChangedInterface;
++use Drupal\Core\Entity\EntityPublishedInterface;
++use Drupal\Core\Entity\RevisionLogInterface;
+ 
+ /**
+  * Provides an interface defining a taxonomy term entity.
+  */
+-interface TermInterface extends ContentEntityInterface, EntityChangedInterface {
++interface TermInterface extends ContentEntityInterface, EntityChangedInterface, EntityPublishedInterface, RevisionLogInterface {
+ 
+   /**
+    * Gets the term's description.
+diff --git a/core/modules/taxonomy/src/TermStorage.php b/core/modules/taxonomy/src/TermStorage.php
+index f3e8ecb..81c453c 100644
+--- a/core/modules/taxonomy/src/TermStorage.php
++++ b/core/modules/taxonomy/src/TermStorage.php
+@@ -360,6 +360,38 @@ public function getNodeTerms(array $nids, array $vocabs = [], $langcode = NULL)
+   /**
+    * {@inheritdoc}
+    */
++  public function getTermIDsWithPendingRevisions() {
++    $table_mapping = $this->getTableMapping();
++    $id_field = $table_mapping->getColumnNames($this->entityType->getKey('id'))['value'];
++    $revision_field = $table_mapping->getColumnNames($this->entityType->getKey('revision'))['value'];
++    $rta_field = $table_mapping->getColumnNames($this->entityType->getKey('revision_translation_affected'))['value'];
++    $langcode_field = $table_mapping->getColumnNames($this->entityType->getKey('langcode'))['value'];
++    $revision_default_field = $table_mapping->getColumnNames($this->entityType->getRevisionMetadataKey('revision_default'))['value'];
++
++    $query = $this->database->select($this->getRevisionDataTable(), 'tfr');
++    $query->fields('tfr', [$id_field]);
++    $query->addExpression("MAX(tfr.$revision_field)", $revision_field);
++
++    $query->join($this->getRevisionTable(), 'tr', "tfr.$revision_field = tr.$revision_field AND tr.$revision_default_field = 0");
++
++    $inner_select = $this->database->select($this->getRevisionDataTable(), 't');
++    $inner_select->condition("t.$rta_field", '1');
++    $inner_select->fields('t', [$id_field, $langcode_field]);
++    $inner_select->addExpression("MAX(t.$revision_field)", $revision_field);
++    $inner_select
++      ->groupBy("t.$id_field")
++      ->groupBy("t.$langcode_field");
++
++    $query->join($inner_select, 'mr', "tfr.$revision_field = mr.$revision_field AND tfr.$langcode_field = mr.$langcode_field");
++
++    $query->groupBy("tfr.$id_field");
++
++    return $query->execute()->fetchAllKeyed(1, 0);
++  }
++
++  /**
++   * {@inheritdoc}
++   */
+   public function __sleep() {
+     $vars = parent::__sleep();
+     // Do not serialize static cache.
+diff --git a/core/modules/taxonomy/src/TermStorageInterface.php b/core/modules/taxonomy/src/TermStorageInterface.php
+index 4d7b5cc..47dac24 100644
+--- a/core/modules/taxonomy/src/TermStorageInterface.php
++++ b/core/modules/taxonomy/src/TermStorageInterface.php
+@@ -126,4 +126,15 @@ public function resetWeights($vid);
+    */
+   public function getNodeTerms(array $nids, array $vocabs = [], $langcode = NULL);
+ 
++  /**
++   * Gets a list of terms with pending revisions.
++   *
++   * @return int[]
++   *   An array of term IDs which have pending revisions, keyed by their
++   *   revision IDs.
++   *
++   * @internal
++   */
++  public function getTermIDsWithPendingRevisions();
++
+ }
+diff --git a/core/modules/taxonomy/src/TermStorageSchema.php b/core/modules/taxonomy/src/TermStorageSchema.php
+index 2b49ee2..aa5e1e6 100644
+--- a/core/modules/taxonomy/src/TermStorageSchema.php
++++ b/core/modules/taxonomy/src/TermStorageSchema.php
+@@ -17,7 +17,7 @@ class TermStorageSchema extends SqlContentEntityStorageSchema {
+   protected function getEntitySchema(ContentEntityTypeInterface $entity_type, $reset = FALSE) {
+     $schema = parent::getEntitySchema($entity_type, $reset = FALSE);
+ 
+-    $schema['taxonomy_term_field_data']['indexes'] += [
++    $schema[$entity_type->getDataTable()]['indexes'] += [
+       'taxonomy_term__tree' => ['vid', 'weight', 'name'],
+       'taxonomy_term__vid_name' => ['vid', 'name'],
+     ];
+diff --git a/core/modules/taxonomy/taxonomy.install b/core/modules/taxonomy/taxonomy.install
+index c1a18bc..bcc0a21 100644
+--- a/core/modules/taxonomy/taxonomy.install
++++ b/core/modules/taxonomy/taxonomy.install
+@@ -5,6 +5,8 @@
+  * Install, update and uninstall functions for the taxonomy module.
+  */
+ 
++use Drupal\Core\Field\BaseFieldDefinition;
++
+ /**
+  * Convert the custom taxonomy term hierarchy storage to a default storage.
+  */
+@@ -126,3 +128,83 @@ function taxonomy_update_8503() {
+     }
+   }
+ }
++
++/**
++ * Add the publishing status fields to taxonomy terms.
++ */
++function taxonomy_update_8601() {
++  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
++  $entity_type = $definition_update_manager->getEntityType('taxonomy_term');
++
++  // Add the 'published' entity key to the taxonomy_term entity type.
++  $entity_keys = $entity_type->getKeys();
++  $entity_keys['published'] = 'status';
++  $entity_type->set('entity_keys', $entity_keys);
++
++  $definition_update_manager->updateEntityType($entity_type);
++
++  // Add the status field.
++  $status = BaseFieldDefinition::create('boolean')
++    ->setLabel(t('Publishing status'))
++    ->setDescription(t('A boolean indicating the published state.'))
++    ->setRevisionable(TRUE)
++    ->setTranslatable(TRUE)
++    ->setDefaultValue(TRUE);
++
++  $has_content_translation_status_field = \Drupal::moduleHandler()->moduleExists('content_translation') && $definition_update_manager->getFieldStorageDefinition('content_translation_status', 'taxonomy_term');
++  if ($has_content_translation_status_field) {
++    $status->setInitialValueFromField('content_translation_status', TRUE);
++  }
++  else {
++    $status->setInitialValue(TRUE);
++  }
++  $definition_update_manager->installFieldStorageDefinition('status', 'taxonomy_term', 'taxonomy_term', $status);
++
++  // Uninstall the 'content_translation_status' field if needed.
++  if ($has_content_translation_status_field) {
++    $content_translation_status = $definition_update_manager->getFieldStorageDefinition('content_translation_status', 'taxonomy_term');
++    $definition_update_manager->uninstallFieldStorageDefinition($content_translation_status);
++  }
++
++  return t('The publishing status field has been added to taxonomy terms.');
++}
++
++/**
++ * Add the revisionable metadata fields to taxonomy terms.
++ */
++function taxonomy_update_8602() {
++  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
++  $entity_type = $definition_update_manager->getEntityType('taxonomy_term');
++
++  // Add the revisionable metadata fields to the taxonomy_term entity type.
++  $revision_metadata_keys = [
++    'revision_user' => 'revision_user',
++    'revision_created' => 'revision_created',
++    'revision_log_message' => 'revision_log_message',
++  ];
++  $entity_type->set('revision_metadata_keys', $revision_metadata_keys);
++  $definition_update_manager->updateEntityType($entity_type);
++
++  // Add the revision metadata fields.
++  $revision_created = BaseFieldDefinition::create('created')
++    ->setLabel(t('Revision create time'))
++    ->setDescription(t('The time that the current revision was created.'))
++    ->setRevisionable(TRUE);
++  $definition_update_manager->installFieldStorageDefinition('revision_created', 'taxonomy_term', 'taxonomy_term', $revision_created);
++
++  $revision_user = BaseFieldDefinition::create('entity_reference')
++    ->setLabel(t('Revision user'))
++    ->setDescription(t('The user ID of the author of the current revision.'))
++    ->setSetting('target_type', 'user')
++    ->setRevisionable(TRUE);
++  $definition_update_manager->installFieldStorageDefinition('revision_user', 'taxonomy_term', 'taxonomy_term', $revision_user);
++
++  $revision_log_message = BaseFieldDefinition::create('string_long')
++    ->setLabel(t('Revision log message'))
++    ->setDescription(t('Briefly describe the changes you have made.'))
++    ->setRevisionable(TRUE)
++    ->setDefaultValue('');
++  $definition_update_manager->installFieldStorageDefinition('revision_log_message', 'taxonomy_term', 'taxonomy_term', $revision_log_message);
++
++  return t('The revision metadata fields have been added to taxonomy terms.');
++}
+diff --git a/core/modules/taxonomy/taxonomy.module b/core/modules/taxonomy/taxonomy.module
+index 179487d..dbbdaba 100644
+--- a/core/modules/taxonomy/taxonomy.module
++++ b/core/modules/taxonomy/taxonomy.module
+@@ -6,7 +6,6 @@
+  */
+ 
+ use Drupal\Component\Utility\Tags;
+-use Drupal\Component\Utility\Unicode;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
+ use Drupal\Core\Render\Element;
+@@ -78,29 +77,6 @@ function taxonomy_help($route_name, RouteMatchInterface $route_match) {
+     case 'entity.taxonomy_vocabulary.collection':
+       $output = '<p>' . t('Taxonomy is for categorizing content. Terms are grouped into vocabularies. For example, a vocabulary called "Fruit" would contain the terms "Apple" and "Banana".') . '</p>';
+       return $output;
+-
+-    case 'entity.taxonomy_vocabulary.overview_form':
+-      $vocabulary = $route_match->getParameter('taxonomy_vocabulary');
+-      if (\Drupal::currentUser()->hasPermission('administer taxonomy') || \Drupal::currentUser()->hasPermission('edit terms in ' . $vocabulary->id())) {
+-        switch ($vocabulary->getHierarchy()) {
+-          case VocabularyInterface::HIERARCHY_DISABLED:
+-            return '<p>' . t('You can reorganize the terms in %capital_name using their drag-and-drop handles, and group terms under a parent term by sliding them under and to the right of the parent.', ['%capital_name' => Unicode::ucfirst($vocabulary->label()), '%name' => $vocabulary->label()]) . '</p>';
+-          case VocabularyInterface::HIERARCHY_SINGLE:
+-            return '<p>' . t('%capital_name contains terms grouped under parent terms. You can reorganize the terms in %capital_name using their drag-and-drop handles.', ['%capital_name' => Unicode::ucfirst($vocabulary->label()), '%name' => $vocabulary->label()]) . '</p>';
+-          case VocabularyInterface::HIERARCHY_MULTIPLE:
+-            return '<p>' . t('%capital_name contains terms with multiple parents. Drag and drop of terms with multiple parents is not supported, but you can re-enable drag-and-drop support by editing each term to include only a single parent.', ['%capital_name' => Unicode::ucfirst($vocabulary->label())]) . '</p>';
+-        }
+-      }
+-      else {
+-        switch ($vocabulary->getHierarchy()) {
+-          case VocabularyInterface::HIERARCHY_DISABLED:
+-            return '<p>' . t('%capital_name contains the following terms.', ['%capital_name' => Unicode::ucfirst($vocabulary->label())]) . '</p>';
+-          case VocabularyInterface::HIERARCHY_SINGLE:
+-            return '<p>' . t('%capital_name contains terms grouped under parent terms', ['%capital_name' => Unicode::ucfirst($vocabulary->label())]) . '</p>';
+-          case VocabularyInterface::HIERARCHY_MULTIPLE:
+-            return '<p>' . t('%capital_name contains terms with multiple parents.', ['%capital_name' => Unicode::ucfirst($vocabulary->label())]) . '</p>';
+-        }
+-      }
+   }
+ }
+ 
+diff --git a/core/modules/taxonomy/taxonomy.post_update.php b/core/modules/taxonomy/taxonomy.post_update.php
+index ce1d870..c0774e4 100644
+--- a/core/modules/taxonomy/taxonomy.post_update.php
++++ b/core/modules/taxonomy/taxonomy.post_update.php
+@@ -5,6 +5,11 @@
+  * Post update functions for Taxonomy.
+  */
+ 
++use Drupal\Core\Config\Entity\ConfigEntityUpdater;
++use Drupal\Core\Entity\Sql\SqlContentEntityStorageSchemaConverter;
++use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
++use Drupal\views\ViewExecutable;
++
+ /**
+  * Clear caches due to updated taxonomy entity views data.
+  */
+@@ -18,3 +23,138 @@ function taxonomy_post_update_clear_views_data_cache() {
+ function taxonomy_post_update_clear_entity_bundle_field_definitions_cache() {
+   // An empty update will flush caches.
+ }
++
++/**
++ * Add a 'published' = TRUE filter for all Taxonomy term views and converts
++ * existing ones that were using the 'content_translation_status' field.
++ */
++function taxonomy_post_update_handle_publishing_status_addition_in_views(&$sandbox = NULL) {
++  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
++  $entity_type = $definition_update_manager->getEntityType('taxonomy_term');
++  $published_key = $entity_type->getKey('published');
++
++  $status_filter = [
++    'id' => 'status',
++    'table' => 'taxonomy_term_field_data',
++    'field' => $published_key,
++    'relationship' => 'none',
++    'group_type' => 'group',
++    'admin_label' => '',
++    'operator' => '=',
++    'value' => '1',
++    'group' => 1,
++    'exposed' => FALSE,
++    'expose' => [
++      'operator_id' => '',
++      'label' => '',
++      'description' => '',
++      'use_operator' => FALSE,
++      'operator' => '',
++      'identifier' => '',
++      'required' => FALSE,
++      'remember' => FALSE,
++      'multiple' => FALSE,
++      'remember_roles' => [
++        'authenticated' => 'authenticated',
++        'anonymous' => '0',
++        'administrator' => '0',
++      ],
++    ],
++    'is_grouped' => FALSE,
++    'group_info' => [
++      'label' => '',
++      'description' => '',
++      'identifier' => '',
++      'optional' => TRUE,
++      'widget' => 'select',
++      'multiple' => FALSE,
++      'remember' => FALSE,
++      'default_group' => 'All',
++      'default_group_multiple' => [],
++      'group_items' => [],
++    ],
++    'entity_type' => 'taxonomy_term',
++    'entity_field' => $published_key,
++    'plugin_id' => 'boolean',
++  ];
++
++  \Drupal::classResolver(ConfigEntityUpdater::class)->update($sandbox, 'view', function ($view) use ($published_key, $status_filter) {
++    /** @var \Drupal\views\ViewEntityInterface $view */
++    // Only alter taxonomy term views.
++    if ($view->get('base_table') !== 'taxonomy_term_field_data') {
++      return FALSE;
++    }
++
++    $displays = $view->get('display');
++    foreach ($displays as $display_name => &$display) {
++      // Update any existing 'content_translation_status fields.
++      $fields = isset($display['display_options']['fields']) ? $display['display_options']['fields'] : [];
++      foreach ($fields as $id => $field) {
++        if (isset($field['field']) && $field['field'] == 'content_translation_status') {
++          $fields[$id]['field'] = $published_key;
++        }
++      }
++      $display['display_options']['fields'] = $fields;
++
++      // Update any existing 'content_translation_status sorts.
++      $sorts = isset($display['display_options']['sorts']) ? $display['display_options']['sorts'] : [];
++      foreach ($sorts as $id => $sort) {
++        if (isset($sort['field']) && $sort['field'] == 'content_translation_status') {
++          $sorts[$id]['field'] = $published_key;
++        }
++      }
++      $display['display_options']['sorts'] = $sorts;
++
++      // Update any existing 'content_translation_status' filters or add a new
++      // one if necessary.
++      $filters = isset($display['display_options']['filters']) ? $display['display_options']['filters'] : [];
++      $has_status_filter = FALSE;
++      foreach ($filters as $id => $filter) {
++        if (isset($filter['field']) && $filter['field'] == 'content_translation_status') {
++          $filters[$id]['field'] = $published_key;
++          $has_status_filter = TRUE;
++        }
++      }
++
++      if (!$has_status_filter) {
++        $status_filter['id'] = ViewExecutable::generateHandlerId($published_key, $filters);
++        $filters[$status_filter['id']] = $status_filter;
++      }
++      $display['display_options']['filters'] = $filters;
++    }
++    $view->set('display', $displays);
++
++    return TRUE;
++  });
++}
++
++/**
++ * Update taxonomy terms to be revisionable.
++ */
++function taxonomy_post_update_make_taxonomy_term_revisionable(&$sandbox) {
++  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
++  $entity_type = $definition_update_manager->getEntityType('taxonomy_term');
++
++  // Bail out early if the entity type is not using a SQL storage class.
++  if (!is_a($entity_type->getStorageClass(), SqlEntityStorageInterface::class, TRUE)) {
++    return t('Taxonomy term data has not been converted to be revisionable.');
++  }
++
++  $schema_converter = new SqlContentEntityStorageSchemaConverter(
++    'taxonomy_term',
++    \Drupal::entityTypeManager(),
++    \Drupal::entityDefinitionUpdateManager(),
++    \Drupal::service('entity.last_installed_schema.repository'),
++    \Drupal::keyValue('entity.storage_schema.sql'),
++    \Drupal::database()
++  );
++
++  $schema_converter->convertToRevisionable(
++    $sandbox,
++    [
++      'name',
++      'description',
++      'changed',
++    ]
++  );
++}
+diff --git a/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2880149.php b/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2880149.php
+new file mode 100644
+index 0000000..b29b288
+--- /dev/null
++++ b/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2880149.php
+@@ -0,0 +1,32 @@
++<?php
++
++/**
++ * @file
++ * Contains database additions to drupal-8.filled.standard.php.gz for testing
++ * the upgrade path of https://www.drupal.org/node/2880149.
++ */
++
++use Drupal\Core\Database\Database;
++use Drupal\Core\Serialization\Yaml;
++
++$connection = Database::getConnection();
++
++$view_file = __DIR__ . '/views.view.test_taxonomy_term_view_with_content_translation_status.yml';
++$view_with_cts_config = Yaml::decode(file_get_contents($view_file));
++
++$view_file = __DIR__ . '/views.view.test_taxonomy_term_view_without_content_translation_status.yml';
++$view_without_cts_config = Yaml::decode(file_get_contents($view_file));
++
++$connection->insert('config')
++  ->fields(['collection', 'name', 'data'])
++  ->values([
++    'collection' => '',
++    'name' => 'views.view.test_taxonomy_term_view_with_content_translation_status',
++    'data' => serialize($view_with_cts_config),
++  ])
++  ->values([
++    'collection' => '',
++    'name' => 'views.view.test_taxonomy_term_view_without_content_translation_status',
++    'data' => serialize($view_without_cts_config),
++  ])
++  ->execute();
+diff --git a/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2981887.php b/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2981887.php
+new file mode 100644
+index 0000000..13374db
+--- /dev/null
++++ b/core/modules/taxonomy/tests/fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2981887.php
+@@ -0,0 +1,32 @@
++<?php
++
++/**
++ * @file
++ * Contains database additions to drupal-8.filled.standard.php.gz for testing
++ * the upgrade path of https://www.drupal.org/project/drupal/issues/2981887.
++ */
++
++use Drupal\Core\Database\Database;
++use Drupal\Core\Serialization\Yaml;
++
++$connection = Database::getConnection();
++
++$view_file = __DIR__ . '/views.view.test_taxonomy_term_view_with_content_translation_status.yml';
++$view_with_cts_config = Yaml::decode(file_get_contents($view_file));
++
++$view_file = __DIR__ . '/views.view.test_taxonomy_term_view_without_content_translation_status.yml';
++$view_without_cts_config = Yaml::decode(file_get_contents($view_file));
++
++$connection->insert('config')
++  ->fields(['collection', 'name', 'data'])
++  ->values([
++    'collection' => '',
++    'name' => 'views.view.test_taxonomy_term_view_with_content_translation_status',
++    'data' => serialize($view_with_cts_config),
++  ])
++  ->values([
++    'collection' => '',
++    'name' => 'views.view.test_taxonomy_term_view_without_content_translation_status',
++    'data' => serialize($view_without_cts_config),
++  ])
++  ->execute();
+diff --git a/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_with_content_translation_status.yml b/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_with_content_translation_status.yml
+new file mode 100644
+index 0000000..f4cc45b
+--- /dev/null
++++ b/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_with_content_translation_status.yml
+@@ -0,0 +1,250 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - taxonomy
++    - user
++id: test_taxonomy_term_view_with_content_translation_status
++label: 'Test taxonomy term view with content translation status'
++module: views
++description: ''
++tag: ''
++base_table: taxonomy_term_field_data
++base_field: tid
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: none
++        options:
++          offset: 0
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        name:
++          id: name
++          table: taxonomy_term_field_data
++          field: name
++          entity_type: taxonomy_term
++          entity_field: name
++          label: ''
++          alter:
++            alter_text: false
++            make_link: false
++            absolute: false
++            trim: false
++            word_boundary: false
++            ellipsis: false
++            strip_tags: false
++            html: false
++          hide_empty: false
++          empty_zero: false
++          type: string
++          settings:
++            link_to_entity: true
++          plugin_id: term_name
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exclude: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_alter_empty: true
++          click_sort_column: value
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          convert_spaces: false
++        content_translation_status:
++          id: content_translation_status
++          table: taxonomy_term_field_data
++          field: content_translation_status
++          relationship: none
++          group_type: group
++          admin_label: ''
++          label: ''
++          exclude: false
++          alter:
++            alter_text: false
++            text: ''
++            make_link: false
++            path: ''
++            absolute: false
++            external: false
++            replace_spaces: false
++            path_case: none
++            trim_whitespace: false
++            alt: ''
++            rel: ''
++            link_class: ''
++            prefix: ''
++            suffix: ''
++            target: ''
++            nl2br: false
++            max_length: 0
++            word_boundary: true
++            ellipsis: true
++            more_link: false
++            more_link_text: ''
++            more_link_path: ''
++            strip_tags: false
++            trim: false
++            preserve_tags: ''
++            html: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: false
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_empty: false
++          empty_zero: false
++          hide_alter_empty: true
++          click_sort_column: value
++          type: boolean
++          settings:
++            format: true-false
++            format_custom_true: ''
++            format_custom_false: ''
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          entity_type: taxonomy_term
++          entity_field: content_translation_status
++          plugin_id: field
++      filters:
++        content_translation_status:
++          id: content_translation_status
++          table: taxonomy_term_field_data
++          field: content_translation_status
++          relationship: none
++          group_type: group
++          admin_label: ''
++          operator: '='
++          value: All
++          group: 1
++          exposed: true
++          expose:
++            operator_id: ''
++            label: 'Translation status'
++            description: ''
++            use_operator: false
++            operator: content_translation_status_op
++            identifier: content_translation_status
++            required: false
++            remember: false
++            multiple: false
++            remember_roles:
++              authenticated: authenticated
++              anonymous: '0'
++              administrator: '0'
++          is_grouped: false
++          group_info:
++            label: ''
++            description: ''
++            identifier: ''
++            optional: true
++            widget: select
++            multiple: false
++            remember: false
++            default_group: All
++            default_group_multiple: {  }
++            group_items: {  }
++          entity_type: taxonomy_term
++          entity_field: content_translation_status
++          plugin_id: boolean
++      sorts:
++        content_translation_status:
++          id: content_translation_status
++          table: taxonomy_term_field_data
++          field: content_translation_status
++          relationship: none
++          group_type: group
++          admin_label: ''
++          order: ASC
++          exposed: false
++          expose:
++            label: ''
++          entity_type: taxonomy_term
++          entity_field: content_translation_status
++          plugin_id: standard
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - url
++        - user.permissions
++      tags: {  }
+diff --git a/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_without_content_translation_status.yml b/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_without_content_translation_status.yml
+new file mode 100644
+index 0000000..53eb09c
+--- /dev/null
++++ b/core/modules/taxonomy/tests/fixtures/update/views.view.test_taxonomy_term_view_without_content_translation_status.yml
+@@ -0,0 +1,128 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - taxonomy
++    - user
++id: test_taxonomy_term_view_without_content_translation_status
++label: 'Test taxonomy term view without content translation status'
++module: views
++description: ''
++tag: ''
++base_table: taxonomy_term_field_data
++base_field: tid
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: none
++        options:
++          offset: 0
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        name:
++          id: name
++          table: taxonomy_term_field_data
++          field: name
++          entity_type: taxonomy_term
++          entity_field: name
++          label: ''
++          alter:
++            alter_text: false
++            make_link: false
++            absolute: false
++            trim: false
++            word_boundary: false
++            ellipsis: false
++            strip_tags: false
++            html: false
++          hide_empty: false
++          empty_zero: false
++          type: string
++          settings:
++            link_to_entity: true
++          plugin_id: term_name
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exclude: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_alter_empty: true
++          click_sort_column: value
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          convert_spaces: false
++      filters: {  }
++      sorts: {  }
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - user.permissions
++      tags: {  }
+diff --git a/core/modules/taxonomy/tests/src/Functional/Rest/TermResourceTestBase.php b/core/modules/taxonomy/tests/src/Functional/Rest/TermResourceTestBase.php
+index 7e5144e..8a4695d 100644
+--- a/core/modules/taxonomy/tests/src/Functional/Rest/TermResourceTestBase.php
++++ b/core/modules/taxonomy/tests/src/Functional/Rest/TermResourceTestBase.php
+@@ -156,6 +156,9 @@ protected function getExpectedNormalizedEntity() {
+       'tid' => [
+         ['value' => 1],
+       ],
++      'revision_id' => [
++        ['value' => 1],
++      ],
+       'uuid' => [
+         ['value' => $this->entity->uuid()],
+       ],
+@@ -200,6 +203,21 @@ protected function getExpectedNormalizedEntity() {
+           'langcode' => 'en',
+         ],
+       ],
++      'status' => [
++        [
++          'value' => TRUE,
++        ],
++      ],
++      'revision_created' => [
++        $this->formatExpectedTimestampItemValues((int) $this->entity->getRevisionCreationTime()),
++      ],
++      'revision_user' => [],
++      'revision_log_message' => [],
++      'revision_translation_affected' => [
++        [
++          'value' => TRUE,
++        ],
++      ],
+     ];
+   }
+ 
+@@ -237,7 +255,7 @@ protected function getExpectedUnauthorizedAccessMessage($method) {
+ 
+     switch ($method) {
+       case 'GET':
+-        return "The 'access content' permission is required.";
++        return "The 'access content' permission is required and the taxonomy term must be published.";
+       case 'POST':
+         return "The following permissions are required: 'create terms in camelids' OR 'administer taxonomy'.";
+       case 'PATCH':
+@@ -348,4 +366,13 @@ public function providerTestGetTermWithParent() {
+     ];
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  protected function getExpectedUnauthorizedAccessCacheability() {
++    // @see \Drupal\taxonomy\TermAccessControlHandler::checkAccess()
++    return parent::getExpectedUnauthorizedAccessCacheability()
++      ->addCacheTags(['taxonomy_term:1']);
++  }
++
+ }
+diff --git a/core/modules/taxonomy/tests/src/Functional/TaxonomyTermContentModerationTest.php b/core/modules/taxonomy/tests/src/Functional/TaxonomyTermContentModerationTest.php
+new file mode 100644
+index 0000000..a7426c0
+--- /dev/null
++++ b/core/modules/taxonomy/tests/src/Functional/TaxonomyTermContentModerationTest.php
+@@ -0,0 +1,204 @@
++<?php
++
++namespace Drupal\Tests\taxonomy\Functional;
++
++use Drupal\Tests\content_moderation\Traits\ContentModerationTestTrait;
++use Drupal\workflows\Entity\Workflow;
++
++/**
++ * Tests taxonomy terms with Content Moderation.
++ *
++ * @group content_moderation
++ * @group taxonomy
++ */
++class TaxonomyTermContentModerationTest extends TaxonomyTestBase {
++
++  use ContentModerationTestTrait;
++
++  /**
++   * The vocabulary used for creating terms.
++   *
++   * @var \Drupal\taxonomy\VocabularyInterface
++   */
++  protected $vocabulary;
++
++  /**
++   * Modules to install.
++   *
++   * @var array
++   */
++  public static $modules = ['taxonomy', 'content_moderation'];
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp() {
++    parent::setUp();
++
++    $this->createEditorialWorkflow();
++
++    $this->drupalLogin($this->drupalCreateUser([
++      'administer taxonomy',
++      'use editorial transition create_new_draft',
++      'use editorial transition publish',
++      'view any unpublished content',
++      'view latest version',
++    ]));
++
++    // Create a vocabulary.
++    $this->vocabulary = $this->createVocabulary();
++
++    // Set the vocabulary as moderated.
++    $workflow = Workflow::load('editorial');
++    $workflow->getTypePlugin()->addEntityTypeAndBundle('taxonomy_term', $this->vocabulary->id());
++    $workflow->save();
++  }
++
++  /**
++   * Tests taxonomy term parents on a moderated vocabulary.
++   */
++  public function testTaxonomyTermParents() {
++    // Create a simple hierarchy in the vocabulary, a root term and three parent
++    // terms.
++    $root = $this->createTerm($this->vocabulary, ['langcode' => 'en', 'moderation_state' => 'published']);
++    $parent_1 = $this->createTerm($this->vocabulary, ['langcode' => 'en', 'moderation_state' => 'published', 'parent' => $root->id()]);
++    $parent_2 = $this->createTerm($this->vocabulary, ['langcode' => 'en', 'moderation_state' => 'published', 'parent' => $root->id()]);
++    $parent_3 = $this->createTerm($this->vocabulary, ['langcode' => 'en', 'moderation_state' => 'published', 'parent' => $root->id()]);
++
++    // Create a child term and assign one of the parents above.
++    $child = $this->createTerm($this->vocabulary, ['langcode' => 'en', 'moderation_state' => 'published', 'parent' => $parent_1->id()]);
++
++    $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
++    $validation_message = 'You can only change the hierarchy for the published version of this term.';
++
++    // Add a pending revision without changing the term parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, ['moderation_state[0][state]' => 'draft'], 'Save');
++
++    $this->assertSession()->pageTextNotContains($validation_message);
++
++    // Add a pending revision and change the parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'parent[]' => [$parent_2->id()],
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    // Check that parents were not changed.
++    $this->assertSession()->pageTextContains($validation_message);
++    $taxonomy_storage->resetCache();
++    $this->assertEquals([$parent_1->id()], array_keys($taxonomy_storage->loadParents($child->id())));
++
++    // Add a pending revision and add a new parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'parent[]' => [$parent_1->id(), $parent_3->id()],
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    // Check that parents were not changed.
++    $this->assertSession()->pageTextContains($validation_message);
++    $taxonomy_storage->resetCache();
++    $this->assertEquals([$parent_1->id()], array_keys($taxonomy_storage->loadParents($child->id())));
++
++    // Add a pending revision and use the root term as a parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'parent[]' => [$root->id()],
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    // Check that parents were not changed.
++    $this->assertSession()->pageTextContains($validation_message);
++    $taxonomy_storage->resetCache();
++    $this->assertEquals([$parent_1->id()], array_keys($taxonomy_storage->loadParents($child->id())));
++
++    // Add a pending revision and remove the parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'parent[]' => [],
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    // Check that parents were not changed.
++    $this->assertSession()->pageTextContains($validation_message);
++    $taxonomy_storage->resetCache();
++    $this->assertEquals([$parent_1->id()], array_keys($taxonomy_storage->loadParents($child->id())));
++
++    // Add a published revision and change the parent.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'parent[]' => [$parent_2->id()],
++      'moderation_state[0][state]' => 'published',
++    ], 'Save');
++
++    // Check that parents were changed.
++    $this->assertSession()->pageTextNotContains($validation_message);
++    $taxonomy_storage->resetCache();
++    $this->assertEquals([$parent_2->id()], array_keys($taxonomy_storage->loadParents($child->id())));
++
++    // Add a pending revision and change the weight.
++    $this->drupalGet('taxonomy/term/' . $child->id() . '/edit');
++    $this->drupalPostForm(NULL, [
++      'weight' => 10,
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    // Check that weight was not changed.
++    $this->assertSession()->pageTextContains($validation_message);
++
++    // Add a new term without any parent and publish it.
++    $edit = [
++      'name[0][value]' => $this->randomMachineName(),
++      'moderation_state[0][state]' => 'published',
++    ];
++    $this->drupalPostForm("admin/structure/taxonomy/manage/{$this->vocabulary->id()}/add", $edit, 'Save');
++    // Add a pending revision without any changes.
++    $terms = taxonomy_term_load_multiple_by_name($edit['name[0][value]']);
++    $term = reset($terms);
++    $this->drupalPostForm('taxonomy/term/' . $term->id() . '/edit', ['moderation_state[0][state]' => 'draft'], 'Save');
++    $this->assertSession()->pageTextNotContains($validation_message);
++  }
++
++  /**
++   * Tests changing field values in pending revisions of taxonomy terms.
++   */
++  public function testTaxonomyTermPendingRevisions() {
++    $default_term_name = 'term - default revision';
++    $default_term_description = 'The default revision of a term.';
++    $term = $this->createTerm($this->vocabulary, [
++      'name' => $default_term_name,
++      'description' => $default_term_description,
++      'langcode' => 'en',
++      'moderation_state' => 'published',
++    ]);
++
++    // Add a pending revision without changing the term parent.
++    $this->drupalGet('taxonomy/term/' . $term->id() . '/edit');
++    $this->assertSession()->pageTextContains($default_term_name);
++    $this->assertSession()->pageTextContains($default_term_description);
++
++    // Check the revision log message field does not appear on the term edit
++    // page.
++    $this->drupalGet('taxonomy/term/' . $term->id() . '/edit');
++    $this->assertSession()->fieldNotExists('revision_log_message[0][value]');
++
++    $pending_term_name = 'term - pending revision';
++    $pending_term_description = 'The pending revision of a term.';
++    $this->drupalPostForm(NULL, [
++      'name[0][value]' => $pending_term_name,
++      'description[0][value]' => $pending_term_description,
++      'moderation_state[0][state]' => 'draft',
++    ], 'Save');
++
++    $this->assertSession()->pageTextContains($pending_term_name);
++    $this->assertSession()->pageTextContains($pending_term_description);
++    $this->assertSession()->pageTextNotContains($default_term_description);
++
++    // Check that the default revision of the term contains the correct values.
++    $this->drupalGet('taxonomy/term/' . $term->id());
++    $this->assertSession()->pageTextContains($default_term_name);
++    $this->assertSession()->pageTextContains($default_term_description);
++  }
++
++}
+diff --git a/core/modules/taxonomy/tests/src/Functional/TermAccessTest.php b/core/modules/taxonomy/tests/src/Functional/TermAccessTest.php
+new file mode 100644
+index 0000000..4836fcd
+--- /dev/null
++++ b/core/modules/taxonomy/tests/src/Functional/TermAccessTest.php
+@@ -0,0 +1,124 @@
++<?php
++
++namespace Drupal\Tests\taxonomy\Functional;
++
++use Drupal\taxonomy\Entity\Term;
++use Drupal\taxonomy\TermInterface;
++use Drupal\Tests\system\Functional\Cache\AssertPageCacheContextsAndTagsTrait;
++
++/**
++ * Tests the taxonomy term access permissions.
++ *
++ * @group taxonomy
++ */
++class TermAccessTest extends TaxonomyTestBase {
++
++  use AssertPageCacheContextsAndTagsTrait;
++
++  /**
++   * Test access control functionality for taxonomy terms.
++   */
++  public function testTermAccess() {
++    $assert_session = $this->assertSession();
++
++    $vocabulary = $this->createVocabulary();
++
++    // Create two terms.
++    $published_term = Term::create([
++      'vid' => $vocabulary->id(),
++      'name' => 'Published term',
++      'status' => 1,
++    ]);
++    $published_term->save();
++    $unpublished_term = Term::create([
++      'vid' => $vocabulary->id(),
++      'name' => 'Unpublished term',
++      'status' => 0,
++    ]);
++    $unpublished_term->save();
++
++    // Start off logged in as admin.
++    $this->drupalLogin($this->drupalCreateUser(['administer taxonomy']));
++
++    // Test the 'administer taxonomy' permission.
++    $this->drupalGet('taxonomy/term/' . $published_term->id());
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($published_term, 'view', TRUE);
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id());
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($unpublished_term, 'view', TRUE);
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id() . '/edit');
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($published_term, 'update', TRUE);
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id() . '/edit');
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($unpublished_term, 'update', TRUE);
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id() . '/delete');
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($published_term, 'delete', TRUE);
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id() . '/delete');
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($unpublished_term, 'delete', TRUE);
++
++    // Test the 'access content' permission.
++    $this->drupalLogin($this->drupalCreateUser(['access content']));
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id());
++    $assert_session->statusCodeEquals(200);
++    $this->assertTermAccess($published_term, 'view', TRUE);
++
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id());
++    $assert_session->statusCodeEquals(403);
++    $this->assertTermAccess($unpublished_term, 'view', FALSE, "The 'access content' permission is required and the taxonomy term must be published.");
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id() . '/edit');
++    $assert_session->statusCodeEquals(403);
++    $this->assertTermAccess($published_term, 'update', FALSE, "The following permissions are required: 'edit terms in {$vocabulary->id()}' OR 'administer taxonomy'.");
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id() . '/edit');
++    $assert_session->statusCodeEquals(403);
++    $this->assertTermAccess($unpublished_term, 'update', FALSE, "The following permissions are required: 'edit terms in {$vocabulary->id()}' OR 'administer taxonomy'.");
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id() . '/delete');
++    $assert_session->statusCodeEquals(403);
++    $this->assertTermAccess($published_term, 'delete', FALSE, "The following permissions are required: 'delete terms in {$vocabulary->id()}' OR 'administer taxonomy'.");
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id() . '/delete');
++    $assert_session->statusCodeEquals(403);
++    $this->assertTermAccess($unpublished_term, 'delete', FALSE, "The following permissions are required: 'delete terms in {$vocabulary->id()}' OR 'administer taxonomy'.");
++
++    // Install the Views module and repeat the checks for the 'view' permission.
++    \Drupal::service('module_installer')->install(['views'], TRUE);
++    $this->rebuildContainer();
++
++    $this->drupalGet('taxonomy/term/' . $published_term->id());
++    $assert_session->statusCodeEquals(200);
++
++    // @todo Change this assertion to expect a 403 status code when
++    //   https://www.drupal.org/project/drupal/issues/2983070 is fixed.
++    $this->drupalGet('taxonomy/term/' . $unpublished_term->id());
++    $assert_session->statusCodeEquals(404);
++  }
++
++  /**
++   * Checks access on taxonomy term.
++   *
++   * @param \Drupal\taxonomy\TermInterface $term
++   *   A taxonomy term entity.
++   * @param $access_operation
++   *   The entity operation, e.g. 'view', 'edit', 'delete', etc.
++   * @param bool $access_allowed
++   *   Whether the current use has access to the given operation or not.
++   * @param string $access_reason
++   *   (optional) The reason of the access result.
++   */
++  protected function assertTermAccess(TermInterface $term, $access_operation, $access_allowed, $access_reason = '') {
++    $access_result = $term->access($access_operation, NULL, TRUE);
++    $this->assertSame($access_allowed, $access_result->isAllowed());
++
++    if ($access_reason) {
++      $this->assertSame($access_reason, $access_result->getReason());
++    }
++  }
++
++}
+diff --git a/core/modules/taxonomy/tests/src/Functional/Update/TaxonomyTermUpdatePathTest.php b/core/modules/taxonomy/tests/src/Functional/Update/TaxonomyTermUpdatePathTest.php
+new file mode 100644
+index 0000000..b96da8b
+--- /dev/null
++++ b/core/modules/taxonomy/tests/src/Functional/Update/TaxonomyTermUpdatePathTest.php
+@@ -0,0 +1,126 @@
++<?php
++
++namespace Drupal\Tests\taxonomy\Functional\Update;
++
++use Drupal\FunctionalTests\Update\UpdatePathTestBase;
++use Drupal\user\Entity\User;
++use Drupal\views\Entity\View;
++
++/**
++ * Tests the upgrade path for taxonomy terms.
++ *
++ * @group taxonomy
++ * @group Update
++ * @group legacy
++ */
++class TaxonomyTermUpdatePathTest extends UpdatePathTestBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setDatabaseDumpFiles() {
++    $this->databaseDumpFiles = [
++      __DIR__ . '/../../../../../system/tests/fixtures/update/drupal-8.filled.standard.php.gz',
++      __DIR__ . '/../../../fixtures/update/drupal-8.views-taxonomy-term-publishing-status-2981887.php',
++    ];
++  }
++
++  /**
++   * Tests the conversion of taxonomy terms to be publishable.
++   *
++   * @see taxonomy_update_8601()
++   */
++  public function testPublishable() {
++    $this->runUpdates();
++
++    // Log in as user 1.
++    $account = User::load(1);
++    $account->passRaw = 'drupal';
++    $this->drupalLogin($account);
++
++    // Make sure our vocabulary exists.
++    $this->drupalGet('admin/structure/taxonomy/manage/test_vocabulary/overview');
++
++    // Make sure our terms exist.
++    $assert_session = $this->assertSession();
++    $assert_session->pageTextContains('Test root term');
++    $assert_session->pageTextContains('Test child term');
++
++    $this->drupalGet('taxonomy/term/3');
++    $assert_session->statusCodeEquals('200');
++
++    // Make sure the terms are still translated.
++    $this->drupalGet('taxonomy/term/2/translations');
++    $assert_session->linkExists('Test root term - Spanish');
++
++    $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
++
++    // Check that the 'content_translation_status' field has been updated
++    // correctly.
++    /** @var \Drupal\taxonomy\TermInterface $term */
++    $term = $storage->load(2);
++    $translation = $term->getTranslation('es');
++    $this->assertTrue($translation->isPublished());
++
++    // Check that taxonomy terms can be created, saved and then loaded.
++    $term = $storage->create([
++      'name' => 'Test term',
++      'vid' => 'tags',
++    ]);
++    $term->save();
++
++    $term = $storage->loadUnchanged($term->id());
++
++    $this->assertEquals('Test term', $term->label());
++    $this->assertEquals('tags', $term->bundle());
++    $this->assertTrue($term->isPublished());
++  }
++
++  /**
++   * Tests handling of the publishing status in taxonomy term views updates.
++   *
++   * @see taxonomy_post_update_handle_publishing_status_addition_in_views()
++   */
++  public function testPublishingStatusUpdateForTaxonomyTermViews() {
++    // Check that the test view was previously using the
++    // 'content_translation_status' field.
++    $config = \Drupal::config('views.view.test_taxonomy_term_view_with_content_translation_status');
++    $display_options = $config->get('display.default.display_options');
++    $this->assertEquals('content_translation_status', $display_options['fields']['content_translation_status']['field']);
++    $this->assertEquals('content_translation_status', $display_options['filters']['content_translation_status']['field']);
++    $this->assertEquals('content_translation_status', $display_options['sorts']['content_translation_status']['field']);
++
++    // Check a test view without any filter.
++    $config = \Drupal::config('views.view.test_taxonomy_term_view_without_content_translation_status');
++    $display_options = $config->get('display.default.display_options');
++    $this->assertEmpty($display_options['filters']);
++
++    $this->runUpdates();
++
++    // Check that a view which had a field, filter and a sort on the
++    // 'content_translation_status' field has been updated to use the new
++    // 'status' field.
++    $view = View::load('test_taxonomy_term_view_with_content_translation_status');
++    foreach ($view->get('display') as $display) {
++      $this->assertEquals('status', $display['display_options']['fields']['content_translation_status']['field']);
++      $this->assertEquals('status', $display['display_options']['sorts']['content_translation_status']['field']);
++      $this->assertEquals('status', $display['display_options']['filters']['content_translation_status']['field']);
++    }
++
++    // Check that a view without any filters has been updated to include a
++    // filter for the 'status' field.
++    $view = View::load('test_taxonomy_term_view_without_content_translation_status');
++    foreach ($view->get('display') as $display) {
++      $this->assertNotEmpty($display['display_options']['filters']);
++      $this->assertEquals('status', $display['display_options']['filters']['status']['field']);
++    }
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function replaceUser1() {
++    // Do not replace the user from our dump.
++  }
++
++}

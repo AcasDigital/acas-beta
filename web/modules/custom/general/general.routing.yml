@@ -31,7 +31,7 @@ general.test_prod:
     _permission: 'sync to prod'
     
 general.sync_update:
-  path: '/sync-update'
+  path: '/sync-update/{content_only}'
   defaults:
     _controller: '\Drupal\general\Controller\GeneralController::sync_update'
     _title: 'Syncronise to Production'
@@ -52,6 +52,22 @@ general.sync_prod_data:
     _controller: '\Drupal\general\Controller\GeneralController::sync_prod_data'
   requirements:
     _permission: 'sync to prod'
+    
+general.deploy:
+  path: '/admin/config/development/deploy'
+  defaults:
+    _form: '\Drupal\general\Form\DeployForm'
+    _title: 'Deploy content to Production'
+  requirements:
+    _permission: 'administer site configuration'
+    
+general.deploy_update:
+  path: '/deploy-update'
+  defaults:
+    _controller: '\Drupal\general\Controller\GeneralController::deploy_update'
+    _title: 'Deploy to Production'
+  requirements:
+    _permission: 'access content'
     
 general.searchheader:
   path: '/searchheader'
@@ -172,3 +188,4 @@ general.feedback_forms:
     _title: 'Feedback'
   requirements:
     _permission: 'feedback report'
+    

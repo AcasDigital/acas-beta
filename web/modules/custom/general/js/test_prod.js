@@ -17,6 +17,8 @@ Drupal.behaviors.test_prod = {
       success: function(data){
         prod = data.prod
         nodes = data.nodes;
+        getPage(nodes[i]);
+        /*
         if (location.pathname.indexOf('sync-prod') != -1) {
           jQuery("#test-target").html('<div class="target">Running git pull, composer update, clearing caches and rebuilding config on Production. Please wait...</div>');
           jQuery.ajax({
@@ -37,6 +39,7 @@ Drupal.behaviors.test_prod = {
           jQuery("#test-target").html('');
           getPage(nodes[i]);
         }
+        */
       }
     });
   }
