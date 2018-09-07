@@ -24,6 +24,10 @@ class DeployForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    if (!_is_site('uat')) {
+      drupal_set_message("Deploy to Production can only be run from the UAT site!", 'error');
+      return array('#markup' => '<h3>Not allowed</h3>');
+    }
     $header = array(
       'date' => t('Modified'),
       'title' => t('Title'),
