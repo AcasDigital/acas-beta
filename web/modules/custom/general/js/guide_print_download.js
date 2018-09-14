@@ -24,7 +24,7 @@ Drupal.behaviors.guide_print_download = {
       closeModals();
       return false;
     });
-
+    
     // Download modal
     jQuery(".print-download-email .download-opener").click(function() {
       jQuery(".print-download-email #guide_print_download_overlay").show();
@@ -32,9 +32,13 @@ Drupal.behaviors.guide_print_download = {
       return false;
     });
     jQuery(".print-download-email .download-page .btn-panel--download-page").click(function() {
+      var d = new Date();
+      jQuery(this).attr('href', jQuery(this).attr('href') + "?" + d.getTime());
       closeModals();
     });
     jQuery(".print-download-email .download-guide .btn-panel--download-guide").click(function() {
+      var d = new Date();
+      jQuery(this).attr('href', jQuery(this).attr('href') + "?" + d.getTime());
       closeModals();
     });
 

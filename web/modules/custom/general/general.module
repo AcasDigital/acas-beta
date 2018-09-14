@@ -122,12 +122,15 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $build['yes_feedback_form']['#weight'] = 999;
       }
       */
-      $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
-      $build['yes_feedback_form'] = $form;
-      $build['yes_feedback_form']['#weight'] = 999;
-      $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
-      $build['no_feedback_form'] = $form;
-      $build['no_feedback_form']['#weight'] = 999;
+      $current_path = \Drupal::service('path.current')->getPath();
+      if (strpos($current_path, '/node/preview') === FALSE) {
+        $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
+        $build['yes_feedback_form'] = $form;
+        $build['yes_feedback_form']['#weight'] = 999;
+        $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
+        $build['no_feedback_form'] = $form;
+        $build['no_feedback_form']['#weight'] = 999;
+      }
     }
     if ($entity->get('field_print_download')->value) {
       $print_guide = '';
@@ -136,13 +139,13 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
             <li>
-              <a class="btn-cta btn-cta--print print-opener" href="/guide-print/' . $parent . '">Print</a>
+              <a class="btn-save btn-save--print print-opener" href="/guide-print/' . $parent . '"><span>Print</span></a>
             </li>
             <li>
-              <a class="btn-cta btn-cta--download download-opener" href="/guide-download/' . $parent . '">Download</a>
+              <a class="btn-save btn-save--download download-opener" href="/guide-download/' . $parent . '"><span>Download</span></a>
             </li>
             <li>
-              <a class="btn-cta btn-cta--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '">Email</a>
+              <a class="btn-save btn-save--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '"><span>Email</span></a>
             </li>
             <div id="guide_print_download_overlay" class="hidden"></div>
             <div id="guide_print_modal" class="modal hidden">
@@ -166,13 +169,13 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
               <div class="title-wrapper"><span class="title">Download</span><span class="close">close<span class="x">X</span></span></div>
               <div class="body-wrapper">
                 <div class="action download-page">
-                  <a class="btn-panel btn-panel--download-page" nid="' . $parent . '" href="/page-download/' . $entity->id() . '">
+                  <a class="btn-panel btn-panel--download-page" nid="' . $parent . '" href="/page-download/' . $entity->id() . '?' . time() . '">
                     <div class="icon"></div>
                     <span>Download this page</span>
                   </a>
                 </div>
                 <div class="action download-guide">
-                  <a class="btn-panel btn-panel--download-guide" nid="' . $parent . '" href="/guide-download/' . $parent . '">
+                  <a class="btn-panel btn-panel--download-guide" nid="' . $parent . '" href="/guide-download/' . $parent . '?' . time() . '">
                     <div class="icon"></div>
                     <span>Download entire guide</span>
                   </a>
@@ -185,17 +188,17 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $build['print_download_email']['#attached']['library'][] = 'general/guide_print_download';
       }else{
         if ($entity->getType() == 'support_page' && $entity->getTitle() == 'Report a problem with the beta website') {
-          $email = '<a class="btn-cta btn-cta--email" href="mailto:digitaladvice@acas.org.uk?subject=Beta website feedback&body=Please provide the title or web address of the page you were on, what you were trying to do, why you couldn\'t do it.">Email</a>';
+          $email = '<a class="btn-save btn-save--email" href="mailto:digitaladvice@acas.org.uk?subject=Beta website feedback&body=Please provide the title or web address of the page you were on, what you were trying to do, why you couldn\'t do it."><span>Email</span></a>';
         }else{
-          $email = '<a class="btn-cta btn-cta--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '">Email</a>';
+          $email = '<a class="btn-save btn-save--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '"><span>Email</span></a>';
         }
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
           <li>
-            <a class="btn-cta btn-cta--print print" href="/page-print/' . $entity->id() . '">Print</a>
+            <a class="btn-save btn-save--print print" href="/page-print/' . $entity->id() . '"><span>Print</span></a>
           </li>
           <li>
-            <a class="btn-cta btn-cta--download" href="/page-download/' . $entity->id() . '">Download</a>
+            <a class="btn-save btn-save--download" href="/page-download/' . $entity->id() . '"><span>Download</span></a>
           </li>
           <li>
             ' . $email . '
@@ -244,7 +247,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           '#weight' => 991,
         ];
       }
-      
+
     }
     if ($entity->getType() == 'secondary_page') {
       //$term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($entity->get('field_taxonomy')->target_id);
@@ -939,43 +942,55 @@ function general_guide_page($nid) {
  * UAT
  * Zips a subset of the DB and posts the base64 encoded zip file to prod
  */
-function general_sync_prod($content_only = TRUE) {
+function general_sync_prod($sync_type = 1, $cloudfront = FALSE) {
   $config = \Drupal::config('acas.settings');
-  $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
-  $output = '';
-  $file = 'DB_' . time() . '.sql';
-  $path = '/tmp/' . $file;
-  $exclude = preg_split('/\r\n|\r|\n/', $config->get('tables'));
-  $tables = '';
-  $database = $connection['database'];
-  foreach($exclude as $t) {
-    $tables .= " --ignore-table=$database.$t";
+  if ($sync_type < 3) {
+    $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
+    $output = '';
+    $file = 'DB_' . time() . '.sql';
+    $path = '/tmp/' . $file;
+    $exclude = preg_split('/\r\n|\r|\n/', $config->get('tables'));
+    $tables = '';
+    $database = $connection['database'];
+    foreach($exclude as $t) {
+      $tables .= " --ignore-table=$database.$t";
+    }
+    $cmd = 'mysqldump -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . $tables . ' > ' . $path;
+    exec($cmd);
+    // Zip, Base64, curl to prod
+    $zip_file = str_replace('.sql', '.zip', $path);
+    $zip = new ZipArchive();
+    $zip->open($zip_file, constant("ZipArchive::CREATE"));
+    $zip->addFile($path, $file);
+    $zip->close();
+    $encoded = base64_encode(file_get_contents($zip_file));
+    unlink($path);
+    unlink($zip_file);
+  }else{
+    // Code only
+    $encoded = '';
+    $file = '';
   }
-  $cmd = 'mysqldump -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . $tables . ' > ' . $path;
-  exec($cmd);
-  // Zip, Base64, curl to prod
-  $zip_file = str_replace('.sql', '.zip', $path);
-  $zip = new ZipArchive();
-  $zip->open($zip_file, constant("ZipArchive::CREATE"));
-  $zip->addFile($path, $file);
-  $zip->close();
-  $encoded = base64_encode(file_get_contents($zip_file));
-  unlink($path);
-  unlink($zip_file);
   $POST_DATA = array(
     'data' => $encoded,
     'UUID' => \Drupal::config('system.site')->get('uuid'),
     'file' => $file,
   );
   $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, $config->get('prod') . '/sync-update/' . $content_only);
+  curl_setopt($curl, CURLOPT_URL, $config->get('prod') . '/sync-update/' . $sync_type . '/' . $cloudfront);
   curl_setopt($curl, CURLOPT_TIMEOUT, 30);
   curl_setopt($curl, CURLOPT_POST, 1);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($curl, CURLOPT_POSTFIELDS, $POST_DATA);
   $response = curl_exec($curl);
   curl_close ($curl);
-  drupal_set_message('Finished syncing content to Production');
+  if ($sync_type == 1) {
+    drupal_set_message('Finished syncing content (no code) to Production');
+  }else if ($sync_type == 2){
+    drupal_set_message('Finished syncing content and code to Production');
+  }else {
+    drupal_set_message('Finished syncing code (no content) to Production');
+  }
 }
 
 function _is_site($site = 'beta') {
@@ -1103,7 +1118,7 @@ function general_cloudfront_invalidate($all = FALSE, $nodeIds = FALSE) {
   $msg .= "Authorization: AWS {$access_key}:{$sig}\r\n";
   $msg .= "Content-Length: {$len}\r\n\r\n";
   $msg .= $xml;
-  $fp = fsockopen('ssl://cloudfront.amazonaws.com', 443, 
+  $fp = fsockopen('ssl://cloudfront.amazonaws.com', 443,
     $errno, $errstr, 30
   );
   if (!$fp) {
@@ -1119,7 +1134,7 @@ function general_cloudfront_invalidate($all = FALSE, $nodeIds = FALSE) {
     $config->set('last_sync', time());
     $config->save();
   }
-  return $resp;  
+  return $resp;
 }
 
 /**
@@ -1150,7 +1165,7 @@ function general_library_info_alter(&$libraries, $extension) {
       $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/filter.filter_html.admin.js' => $js_options];
     }
   }
-  
+
   if ($extension === 'bootstrap') {
     if (!$user->id()) {
       $lib = &$libraries['drupal.bootstrap'];

@@ -12,7 +12,6 @@ use Drupal\Core\Url;
  */
 class DeployForm extends FormBase {
 
-
   /**
    * {@inheritdoc}
    */

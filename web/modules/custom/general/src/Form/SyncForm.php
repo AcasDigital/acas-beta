@@ -31,21 +31,21 @@ class SyncForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     if (!_is_site('uat')) {
-      drupal_set_message("Sync to Production can only be run from the UAT site!", 'error');
-      return array('#markup' => '<h3>Not allowed</h3>');
+      //drupal_set_message("Sync to Production can only be run from the UAT site!", 'error');
+      //return array('#markup' => '<h3>Not allowed</h3>');
     }
     $config = $this->config('acas.settings');
-    $form['invalidate'] = [
+    $form['cloudfront'] = array(
       '#type' => 'checkbox',
-      '#title' => 'Invalidate CloudFront content',
       '#default_value' => TRUE,
-      '#description' => 'If any CSS changes'
-    ];
-    $form['content_only'] = [
-      '#type' => 'checkbox',
-      '#title' => 'Content only',
-      '#default_value' => TRUE,
-      '#description' => 'Syncronise only content, no code'
+      '#title' => t('Clear CloudFront cache'),
+      '#description' => t('When checked the CloudFront cache will be cleared for updated content (if sync type is for content). If un-checked eg. for testing, you will have to manually clear the cache'),
+    );
+    $form['sync_type'] = [
+      '#type' => 'radios',
+      '#title' => 'Sync type',
+      '#options' => [1 => 'Content only', 2 => 'Content and code', 3 => 'Code only'],
+      '#default_value' => 1,
     ];
     $form['#prefix'] = '<h2>Syncronise content to Production</h2>';
     $form['#action'] = '/admin/config/development/sync-prod';

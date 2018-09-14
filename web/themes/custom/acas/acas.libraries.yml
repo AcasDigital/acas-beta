@@ -1,10 +1,11 @@
 global-styling:
   css:
     theme:
-      dist/css/style.css: {}
+      dist/css/main.css: {}
   js:
-    src/js/acas.js: {}
+    dist/js/acas.min.js: {}
     
+
 
 # bootstrap-scripts:
 #   js:

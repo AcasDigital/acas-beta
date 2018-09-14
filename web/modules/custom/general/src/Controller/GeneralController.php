@@ -162,7 +162,15 @@ class GeneralController extends ControllerBase {
   }
   
   public function sync_prod() {
-    general_sync_prod();
+    $sync_type = 1;
+    if (isset($_POST['sync_type'])) {
+      $sync_type = (int)$_POST['sync_type'];
+    }
+    $cloudfront = FALSE;
+    if (isset($_POST['cloudfront'])) {
+      $cloudfront = (int)$_POST['cloudfront'];
+    }
+    general_sync_prod($sync_type, $cloudfront);
     return array(
       '#markup' => '<h3>Finished.</h3><h3>Now testing Production site</h3><div id="test-target"><div class="target">Starting processes. Please wait... </div></div>',
     );
@@ -183,33 +191,42 @@ class GeneralController extends ControllerBase {
   * PROD
   * The base64 encoded zip file from UAT
   */
-  public function sync_update($content_only = TRUE) {
+  public function sync_update($sync_type = 1, $cloudfront = FALSE) {
     $uuid = \Drupal::config('system.site')->get('uuid');
     if ($uuid == $_POST['UUID']) {
       $config_factory = \Drupal::configFactory();
       $config = \Drupal::config('acas.settings');
-      $configs = [];
-      $exclude = preg_split('/\r\n|\r|\n/', $config->get('config'));
-      foreach($exclude as $e) {
-        $configs[] = $config_factory->getEditable($e);
-      }
-      file_put_contents('/tmp/sync.zip', base64_decode($_POST['data']));
-      $zip = new ZipArchive();
-      $zip->open('/tmp/sync.zip');
-      $zip->extractTo('/tmp/');
-      $zip->close();
-      $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
-      $cmd = 'mysql -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . ' < /tmp/' . $_POST['file'];
-      exec($cmd);
-      unlink('/tmp/sync.zip');
-      unlink('/tmp/' . $_POST['file']);
-      foreach($configs as $c) {
-        $c->save(TRUE);
-      }
-      if (!$content_only) {
-        sync_cleanup();
+      if ($sync_type < 3) {
+        $configs = [];
+        $exclude = preg_split('/\r\n|\r|\n/', $config->get('config'));
+        foreach($exclude as $e) {
+          $configs[] = $config_factory->getEditable($e);
+        }
+        file_put_contents('/tmp/sync.zip', base64_decode($_POST['data']));
+        $zip = new ZipArchive();
+        $zip->open('/tmp/sync.zip');
+        $zip->extractTo('/tmp/');
+        $zip->close();
+        $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
+        $cmd = 'mysql -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . ' < /tmp/' . $_POST['file'];
+        exec($cmd);
+        unlink('/tmp/sync.zip');
+        unlink('/tmp/' . $_POST['file']);
+        foreach($configs as $c) {
+          $c->save(TRUE);
+        }
+        if ($sync_type == 2) {
+          sync_cleanup($cloudfront);
+        }else if ($cloudfront){
+          general_cloudfront_invalidate(FALSE);
+        }
       }else{
-        general_cloudfront_invalidate(FALSE);
+        // Code only
+        $old_path = getcwd();
+        chdir('/var/www/html/');
+        shell_exec('./git_pull.sh');
+        chdir($old_path);
+        drupal_flush_all_caches();
       }
       return new JsonResponse('ok');
     }
@@ -224,14 +241,16 @@ class GeneralController extends ControllerBase {
   * to pull or 1 if any changes. If 1 then invalidate all content on CloudFront
   * in case of any CSS changes else invalidate only new/changed content.
   */
-  public function sync_cleanup() {
+  public function sync_cleanup($cloudfront) {
     $old_path = getcwd();
     chdir('/var/www/html/');
     $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
     chdir($old_path);
     drupal_flush_all_caches();
     \Drupal::service('simple_sitemap.generator')->generateSitemap();
-    general_cloudfront_invalidate($invalidate_all);
+    if ($cloudfront) {
+      general_cloudfront_invalidate($invalidate_all);
+    }
     return new JsonResponse('ok');
   }
   

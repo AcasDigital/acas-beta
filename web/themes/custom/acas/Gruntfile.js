@@ -2,58 +2,12 @@
 
 module.exports = function (grunt) {
 
+  const acasdigital_frontend = './node_modules/@acasdigital/acas-frontend/';
+
   grunt.initConfig({
-    watch: {
-      options: {
-        livereload: true
-      },
-      sass: {
-        files: ['src/scss/{,**/}*.{scss,sass}', 'src/bootstrap/assets/stylesheets/bootstrap/*.scss'],
-        tasks: ['compass:dev'],
-        options: {
-          livereload: false
-        }
-      },
-      registry: {
-        files: ['*.info', '{,**}/*.{php,inc}'],
-        tasks: ['shell'],
-        options: {
-          livereload: false
-        }
-      },
-      images: {
-        files: ['images/**']
-      },
-      css: {
-        files: ['css/{,**/}*.css']
-      },
-      js: {
-        files: ['src/js/{,**/}*.js', '!js/{,**/}*.min.js'],
-
-      }
-    },
-
     shell: {
       all: {
         command: 'drush cache-clear theme-registry'
-      }
-    },
-
-    compass: {
-      options: {
-        config: 'config.rb',
-        bundleExec: true,
-        force: true
-      },
-      dev: {
-        options: {
-          environment: 'development'
-        }
-      },
-      dist: {
-        options: {
-          environment: 'production'
-        }
       }
     },
 
@@ -62,7 +16,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: 'src',
+          cwd: acasdigital_frontend,
           dest: 'dist',
           src: [
             '*.{ico,png,txt}',
@@ -80,6 +34,18 @@ module.exports = function (grunt) {
       all: ['src/js/{,**/}*.js', '!js/{,**/}*.min.js']
     },
 
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: acasdigital_frontend + 'scss',
+          dest: 'dist/css',
+          src: [ '**/*.scss' ],
+          ext: '.css'
+        }]
+      }
+    },
+
     uglify: {
       dev: {
         options: {
@@ -90,7 +56,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'src/js',
+          cwd: acasdigital_frontend + 'js',
           dest: 'dist/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
@@ -104,14 +70,11 @@ module.exports = function (grunt) {
   	  jshint: {
   		  all: [
   			'Gruntfile.js',
-  			'src/**/*.js',
-  			'test/**/*.js',
-  			'!test/mocha.js',
-  			'!test/expect.js'
+  			acasdigital_frontend + '**/*.js',
   		  ],
   		  options: {
-  			jshintrc: '.jshintrc',
-  			jshintignore: '.jshintignore'
+    			jshintrc: '.jshintrc',
+    			jshintignore: '.jshintignore'
   		  }
   		},
       dist: {
@@ -122,7 +85,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           flatten: true,
-          cwd: 'src/js',
+          cwd: acasdigital_frontend + 'js',
           dest: 'dist/js',
           src: ['**/*.js', '!**/*.min.js'],
           rename: function(dest, src) {
@@ -137,7 +100,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -145,7 +108,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'uglify:dev',
-    'compass:dev',
+    'sass:dist',
     'copy:dist'
   ]);
 

@@ -31,7 +31,7 @@ general.test_prod:
     _permission: 'sync to prod'
     
 general.sync_update:
-  path: '/sync-update/{content_only}'
+  path: '/sync-update/{sync_type}/{cloudfront}'
   defaults:
     _controller: '\Drupal\general\Controller\GeneralController::sync_update'
     _title: 'Syncronise to Production'

@@ -9,6 +9,11 @@ Drupal.behaviors.print = {
       });
       return false;
     });
+    // Download page
+    jQuery(".print-download-email .btn-save--download").click(function() {
+      var d = new Date();
+      jQuery(this).attr('href', jQuery(this).attr('href') + "?" + d.getTime());
+    });
   }
 };
 

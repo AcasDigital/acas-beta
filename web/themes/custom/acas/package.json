@@ -1,19 +1,20 @@
 {
   "name": "acas",
   "version": "1.0.0",
-  "description": "Acas theme",
-  "author": "John Burch",
-  "homepage": "https://github.com/cmclaurin/acasbeta1#readme",
+  "description": "Acas Digital Advice theme",
+  "author": "Acas Digital Innovation Team",
+  "homepage": "https://github.com/acasdigital/acas-beta-site#readme",
   "license": "ISC",
   "engines": {
     "node": ">= 0.8.0"
   },
   "devDependencies": {
+    "@acasdigital/acas-frontend": "^1.1.4",
     "grunt": "^1.0.2",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-sass": "latest",
     "grunt-contrib-uglify": "^3.2.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-shell": "^2.1.0"
@@ -23,9 +24,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/cmclaurin/acasbeta1.git"
+    "url": "git+ssh://git@github.com/digitaladvice/acas-beta-site.git"
   },
   "bugs": {
-    "url": "https://github.com/cmclaurin/acasbeta1/issues"
+    "url": "https://github.com/acasdigital/acas-beta-site/issues"
   }
 }
