@@ -211,12 +211,12 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
     }
     if ($entity->hasField('field_current_website')) {
       if ($url = $entity->field_current_website->uri) {
-        $title = 'view a version of this page';
+        $title = 'archived version of this advice';
         if ($entity->field_current_website->title) {
           $title = $entity->field_current_website->title;
         }
         $build['current_website'] = [
-          '#markup' => '<div class="callout-beta"><p>This is our beta website, pages are being tested and improved. You can <a href="' . $url . '">' . $title . '</a> on the current website.</p></div>',
+          '#markup' => '<div class="inset-text--beta"><p>This is our beta website. Pages are being tested and improved. You can view the <a href="' . $url . '">' . $title . '</a> on The National Archives website.</p></div>',
           '#weight' => 999,
         ];
       }
