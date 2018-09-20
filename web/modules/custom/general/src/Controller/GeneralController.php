@@ -215,10 +215,18 @@ class GeneralController extends ControllerBase {
         foreach($configs as $c) {
           $c->save(TRUE);
         }
+        // Clear search index and re-index
+        $old_path = getcwd();
+        chdir('/var/www/html/');
+        shell_exec('drush search-api-reindex');
+        shell_exec('drush cron');
+        chdir($old_path);
+        // Clear the cloudfront cache
         if ($sync_type == 2) {
           sync_cleanup($cloudfront);
         }else if ($cloudfront){
-          general_cloudfront_invalidate(FALSE);
+          // Clear the entire cache
+          general_cloudfront_invalidate(TRUE);
         }
       }else{
         // Code only
