@@ -1,0 +1,4 @@
+sync to prod:
+  title: 'Sync Prod'
+  description: 'Syncronise content to Prod.'
+  restrict access: TRUE

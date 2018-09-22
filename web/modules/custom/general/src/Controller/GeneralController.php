@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains \Drupal\general\Controller\SolanaceaeController.
+ * Contains \Drupal\general\Controller\GeneralController.
  */
 
 namespace Drupal\general\Controller;
@@ -9,7 +9,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\votingapi\Entity\Vote;
 use Drupal\votingapi\Entity\VoteType;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use ZipArchive;
 use Dompdf\Dompdf;
 use Drupal\Component\Utility\Html;
 
@@ -159,183 +158,6 @@ class GeneralController extends ControllerBase {
     return array(
       '#markup' => '',
     );
-  }
-  
-  public function sync_prod() {
-    $sync_type = 1;
-    if (isset($_POST['sync_type'])) {
-      $sync_type = (int)$_POST['sync_type'];
-    }
-    $cloudfront = FALSE;
-    if (isset($_POST['cloudfront'])) {
-      $cloudfront = (int)$_POST['cloudfront'];
-    }
-    general_sync_prod($sync_type, $cloudfront);
-    return array(
-      '#markup' => '<h3>Finished.</h3><h3>Now testing Production site</h3><div id="test-target"><div class="target">Starting processes. Please wait... </div></div>',
-    );
-  }
-  
-  public function test_prod() {
-    if (!_is_site('uat')) {
-      drupal_set_message("Test Production can only be run from the UAT site!", 'error');
-      return array('#markup' => '<h3>Not allowed</h3>');
-    }
-    return array(
-      '#markup' => '<h3>Testing content on Production site is the same as UAT</h3><div id="test-target"><div class="target">Starting processes. Please wait... </div></div>',
-    );
-  }
-  
-  /**
-  * sync_update().
-  * PROD
-  * The base64 encoded zip file from UAT
-  */
-  public function sync_update($sync_type = 1, $cloudfront = FALSE) {
-    $uuid = \Drupal::config('system.site')->get('uuid');
-    if ($uuid == $_POST['UUID']) {
-      $config_factory = \Drupal::configFactory();
-      $config = \Drupal::config('acas.settings');
-      if ($sync_type < 3) {
-        $configs = [];
-        $exclude = preg_split('/\r\n|\r|\n/', $config->get('config'));
-        foreach($exclude as $e) {
-          $configs[] = $config_factory->getEditable($e);
-        }
-        file_put_contents('/tmp/sync.zip', base64_decode($_POST['data']));
-        $zip = new ZipArchive();
-        $zip->open('/tmp/sync.zip');
-        $zip->extractTo('/tmp/');
-        $zip->close();
-        $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
-        $cmd = 'mysql -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . ' < /tmp/' . $_POST['file'];
-        exec($cmd);
-        unlink('/tmp/sync.zip');
-        unlink('/tmp/' . $_POST['file']);
-        foreach($configs as $c) {
-          $c->save(TRUE);
-        }
-        // Clear search index and re-index
-        $old_path = getcwd();
-        chdir('/var/www/html/');
-        shell_exec('drush search-api-reindex');
-        shell_exec('drush cron');
-        chdir($old_path);
-        // Clear the cloudfront cache
-        if ($sync_type == 2) {
-          sync_cleanup($cloudfront);
-        }else if ($cloudfront){
-          // Clear the entire cache
-          general_cloudfront_invalidate(TRUE);
-        }
-      }else{
-        // Code only
-        $old_path = getcwd();
-        chdir('/var/www/html/');
-        shell_exec('./git_pull.sh');
-        chdir($old_path);
-        drupal_flush_all_caches();
-      }
-      return new JsonResponse('ok');
-    }
-    return new JsonResponse('error');
-  }
-  
-  /**
-  * sync_cleanup().
-  * PROD
-  * Called after the DB update from UAT
-  * Runs git_pull.sh that performs a "git pull origin master" that returns 0 if nothing
-  * to pull or 1 if any changes. If 1 then invalidate all content on CloudFront
-  * in case of any CSS changes else invalidate only new/changed content.
-  */
-  public function sync_cleanup($cloudfront) {
-    $old_path = getcwd();
-    chdir('/var/www/html/');
-    $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
-    chdir($old_path);
-    drupal_flush_all_caches();
-    \Drupal::service('simple_sitemap.generator')->generateSitemap();
-    if ($cloudfront) {
-      general_cloudfront_invalidate($invalidate_all);
-    }
-    return new JsonResponse('ok');
-  }
-  
-  /**
-  * sync_prod_data().
-  * UAT
-  * Builds the Json data for testing that all content has been synced
-  */
-  public function sync_prod_data() {
-    $config_factory = \Drupal::configFactory();
-    $config = $config_factory->getEditable('acas.settings');
-    $nodes = \Drupal\node\Entity\Node::loadMultiple();
-    $return = ['prod' => $config->get('prod')];
-    foreach($nodes as $node) {
-      if ($node->isPublished()) {
-        $return['nodes'][] = [
-          'title' => $node->getTitle(),
-          'url' => $node->toUrl()->toString(),
-          'changed' => $node->getChangedTime(),
-        ];
-      }
-    }
-    return new JsonResponse($return);
-  }
-  
-  /**
-  * cloudfront_invalidate().
-  * PROD
-  * Invalidate all content in CloudFront
-  */
-  public function cloudfront_invalidate() {
-    $output = '<h1>Invalidate all CloudFront content</h1>';
-    $result = general_cloudfront_invalidate(TRUE);
-    if (strpos($result, '<?xml version="1.0"?>') !== FALSE) {
-      $a = explode('<?xml version="1.0"?>', $result);
-      $b = explode('<InvalidationBatch>', $a[1]);
-      if (count($b) > 1) {
-        $c = explode('<CallerReference>', $b[1]);
-        $data = str_replace('Path', 'div', $c[0]);
-        return array('#markup' => $output . '<h2>Invalidated paths</h2><div class="code">' . $data . '</div><br />');
-      }else{
-        return array('#markup' => $output . $result);
-      }
-    }else{
-      return array('#markup' => $output . $result);
-    }
-  }
-  
-  /**
-  * deploy_update().
-  * PROD
-  */
-  public function deploy_update() {
-    $uuid = \Drupal::config('system.site')->get('uuid');
-    if ($uuid == $_POST['UUID']) {
-      if ($data = json_decode(@$_POST['data'])) {
-        $nodeIds = [];
-        foreach($data as $d) {
-          if ($node = \Drupal\node\Entity\Node::load($d->nid)) {
-            if ($node->getType() == 'page') {
-              $node->setTitle($d->title);
-              $node->body->value = $d->content;
-              $node->body->summary = $d->summary;
-            }else{
-              $node->setTitle($d->title);
-              $node->field_summary->value = $d->content;
-              $node->field_summary->summary = $d->summary;
-            }
-            $node->save();
-            $nodeIds[] = $node->id();
-          }
-        }
-        general_cloudfront_invalidate(FALSE, $nodeIds);
-      }
-      return new JsonResponse('ok');
-    }
-    return new JsonResponse('error');
   }
   
   public function freeze() {

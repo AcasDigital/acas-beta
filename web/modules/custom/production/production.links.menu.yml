@@ -1,0 +1,41 @@
+production.settings:
+  title: 'Acas settings'
+  description: 'Administer the Acas site.'
+  route_name: production.settings
+  parent: system.admin_config_system
+  weight: -1
+  
+production.production:
+  title: 'Acas Production'
+  description: 'Acas Production'
+  route_name: production.production
+  parent: system.admin_config_development
+  weight: -1
+  
+production.sync:
+  title: 'Syncronise to Prod'
+  description: 'Export all content from this site to Prod'
+  route_name: production.sync
+  parent: production.production
+  weight: 1
+  
+production.deploy:
+  title: 'Deploy to Prod'
+  description: 'Deploy content from this site to Prod'
+  route_name: production.deploy
+  parent: production.production
+  weight: 2
+  
+production.test:
+  title: 'Test content on Prod'
+  description: 'Test content on Prod'
+  route_name: production.test_prod
+  parent: production.production
+  weight: 3
+  
+production.invalidate:
+  title: 'Clear CloudFront Cache'
+  description: 'Clear all CloudFront cached content'
+  route_name: production.cloudfront-invalidate
+  parent: production.production
+  weight: 4

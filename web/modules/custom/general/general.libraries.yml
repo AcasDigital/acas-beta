@@ -39,22 +39,6 @@ details_page:
     - core/jquery
     - core/jquery.once
     
-sync_prod:
-  js:
-    js/sync_prod.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-    
-test_prod:
-  css:
-    theme:
-      css/test_prod.css: {}
-  js:
-    js/test_prod.js: {}
-  dependencies:
-    - core/jquery
-    
 search_results:
   js:
     js/search_results.js: {}

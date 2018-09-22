@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\general\Access;
+namespace Drupal\production\Access;
 
 use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Routing\Access\AccessInterface;
@@ -17,7 +17,7 @@ class SyncAccessCheck implements AccessInterface {
    *   Run access checks for this account.
    */
   public function appliesTo() {
-    return '_general_access_check';
+    return '_production_access_check';
   }
   
   public function access(AccountInterface $account) {

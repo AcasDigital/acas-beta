@@ -1,0 +1,86 @@
+production.settings:
+  path: '/admin/config/system/acas'
+  defaults:
+    _form: '\Drupal\production\Form\AdminForm'
+    _title: 'Acas Settings'
+  requirements:
+    _permission: 'administer site configuration'
+    
+production.sync:
+  path: '/admin/config/development/sync'
+  defaults:
+    _form: '\Drupal\production\Form\SyncForm'
+    _title: 'Sync to Prod'
+  requirements:
+    _permission: 'sync to prod'
+    
+production.sync_prod:
+  path: '/admin/config/development/sync-prod'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::sync_prod'
+    _title: 'Syncronise to Production'
+  requirements:
+    _permission: 'sync to prod'
+    
+production.test_prod:
+  path: '/admin/config/development/test-prod'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::test_prod'
+    _title: 'Test Production'
+  requirements:
+    _permission: 'sync to prod'
+    
+production.sync_update:
+  path: '/sync-update/{sync_type}/{cloudfront}'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::sync_update'
+    _title: 'Syncronise to Production'
+  requirements:
+    _permission: 'access content'
+    
+production.sync_cleanup:
+  path: '/sync-cleanup'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::sync_cleanup'
+    _title: 'Syncronise to Production'
+  requirements:
+    _permission: 'access content'
+    
+production.sync_prod_data:
+  path: '/sync-prod-data'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::sync_prod_data'
+  requirements:
+    _permission: 'sync to prod'
+    
+production.deploy:
+  path: '/admin/config/development/deploy'
+  defaults:
+    _form: '\Drupal\production\Form\DeployForm'
+    _title: 'Deploy content to Production'
+  requirements:
+    _permission: 'administer site configuration'
+    
+production.deploy_update:
+  path: '/deploy-update'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::deploy_update'
+    _title: 'Deploy to Production'
+  requirements:
+    _permission: 'access content'
+    
+production.production:
+  path: '/admin/config/development/production'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Production'
+  requirements:
+    _permission: 'access administration pages'
+
+production.cloudfront-invalidate:
+  path: '/admin/config/development/cloudfront-invalidate'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::cloudfront_invalidate'
+    _title: ''
+  requirements:
+    _permission: 'access administration pages'
