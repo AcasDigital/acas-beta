@@ -47,7 +47,7 @@ class SyncForm extends ConfigFormBase {
       '#options' => [1 => 'Content only', 2 => 'Content and code', 3 => 'Code only'],
       '#default_value' => 1,
     ];
-    $form['#prefix'] = '<h2>Syncronise content to Production</h2>';
+    $form['#prefix'] = '<h2>Syncronise content to Production</h2><p class="red">Clear cache first before running this synchronisation!!!</p>';
     $form['#action'] = '/admin/config/development/sync-prod';
     $form['#attached']['library'][] = 'production/sync_prod';
     $form['#attributes']['onsubmit'] = 'return syncProd()';
