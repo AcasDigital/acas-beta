@@ -17,7 +17,9 @@ Drupal.behaviors.test_prod = {
       success: function(data){
         prod = data.prod
         nodes = data.nodes;
-        getPage(nodes[i]);
+        setTimeout(function() {
+          getPage(nodes[i]);
+        }, 5000)
         /*
         if (location.pathname.indexOf('sync-prod') != -1) {
           jQuery("#test-target").html('<div class="target">Running git pull, composer update, clearing caches and rebuilding config on Production. Please wait...</div>');
