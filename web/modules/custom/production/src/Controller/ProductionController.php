@@ -119,14 +119,11 @@ class ProductionController extends ControllerBase {
     $old_path = getcwd();
     chdir('/var/www/html/');
     $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
-    if (!$invalidate_all) {
-      $invalidate_all = FALSE;
-    }
     chdir($old_path);
     drupal_flush_all_caches();
     \Drupal::service('simple_sitemap.generator')->generateSitemap();
     if ($cloudfront) {
-      $this->production_cloudfront_invalidate($invalidate_all);
+      $this->production_cloudfront_invalidate(TRUE);
     }
     \Drupal::logger('acas_sync')->notice('Sync cleanup 2. invalidate_all = ' . $invalidate_all . ', cloudfront = ' . $cloudfront);
     return new JsonResponse('ok');
