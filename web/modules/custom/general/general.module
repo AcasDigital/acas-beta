@@ -427,7 +427,6 @@ function general_form_header_search_alter(&$form, FormStateInterface $form_state
 /**
  * Implements hook_form_alter
  */
-
 function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && \Drupal::theme()->getActiveTheme()->getName() == 'acas') {
     $config = \Drupal::config('acas.settings');
@@ -562,10 +561,6 @@ function general_page_attachments_alter(&$build) {
   }
   if ($node instanceof \Drupal\node\NodeInterface && ($node->getType() == 'details_page' || $node->getType() == 'support_page')) {
     $build['#attached']['library'][] = 'general/details_page';
-  }
-  $route_name = \Drupal::routeMatch()->getRouteName();
-  if ($route_name == 'general.sync_prod' || $route_name == 'general.test_prod') {
-    $build['#attached']['library'][] = 'general/test_prod';
   }
   if ($theme == 'acas') {
     $user = \Drupal::currentUser();
