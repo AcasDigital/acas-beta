@@ -52,6 +52,7 @@ class ProductionController extends ControllerBase {
   * The base64 encoded zip file from UAT
   */
   public function sync_update($sync_type = 1, $cloudfront = FALSE) {
+    \Drupal::logger('acas_sync')->notice('Sync update. sync_type = ' . $sync_type . ', cloudfront = ' . $cloudfront);
     $uuid = \Drupal::config('system.site')->get('uuid');
     if ($uuid == $_POST['UUID']) {
       $config_factory = \Drupal::configFactory();
@@ -101,6 +102,7 @@ class ProductionController extends ControllerBase {
       }
       return new JsonResponse('ok');
     }
+    \Drupal::logger('acas_sync')->error('UUID does not match!');
     return new JsonResponse('error');
   }
   
@@ -113,6 +115,7 @@ class ProductionController extends ControllerBase {
   * in case of any CSS changes else invalidate only new/changed content.
   */
   public function sync_cleanup($cloudfront) {
+    \Drupal::logger('acas_sync')->notice('Sync cleanup. cloudfront = ' . $cloudfront);
     $old_path = getcwd();
     chdir('/var/www/html/');
     $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
@@ -122,6 +125,7 @@ class ProductionController extends ControllerBase {
     if ($cloudfront) {
       $this->production_cloudfront_invalidate($invalidate_all);
     }
+    \Drupal::logger('acas_sync')->notice('Sync cleanup. invalidate_all = ' . $invalidate_all . ', cloudfront = ' . $cloudfront);
     return new JsonResponse('ok');
   }
   
@@ -209,6 +213,7 @@ class ProductionController extends ControllerBase {
   * Zips a subset of the DB and posts the base64 encoded zip file to prod
   */
   private function production_sync_prod($sync_type = 1, $cloudfront = FALSE) {
+    \Drupal::logger('acas_sync')->notice('Sync prod. sync_type = ' . $sync_type . ', cloudfront = ' . $cloudfront);
     $config = \Drupal::config('acas.settings');
     if ($sync_type < 3) {
       $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
@@ -265,6 +270,7 @@ class ProductionController extends ControllerBase {
   * or if $all, invalidate all content
   */
   private function production_cloudfront_invalidate($all = FALSE, $nodeIds = FALSE) {
+    \Drupal::logger('acas_sync')->notice('Cloudfront invalidate. all = ' . $all);
     $config_factory = \Drupal::configFactory();
     $config = $config_factory->getEditable('cloudfront.settings');
     $paths = '';
