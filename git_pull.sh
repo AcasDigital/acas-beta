@@ -1,5 +1,9 @@
 #!/bin/bash
 cd /var/www/html
+file=".git/index.lock"
+if [ -f $file ] ; then
+  rm -f $file
+fi
 FILE="/var/log/git_pull.log"
 cmd_output=$(sudo -u ubuntu /usr/bin/git pull origin master 2>&1)
 echo $cmd_output >> $FILE

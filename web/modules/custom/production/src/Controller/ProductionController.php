@@ -94,7 +94,7 @@ class ProductionController extends ControllerBase {
         chdir('/var/www/html/');
         $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
         chdir($old_path);
-        if ($invalidate_all) {
+        if ($invalidate_all && $cloudfront) {
           $this->production_cloudfront_invalidate(TRUE);
         }
         drupal_flush_all_caches();
