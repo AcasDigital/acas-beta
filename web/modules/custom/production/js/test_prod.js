@@ -1,7 +1,6 @@
 var i = 0;
 var nodes;
 var prod;
-var d = new Date();
 
 Drupal.behaviors.test_prod = {
   attach: function(context, settings) {
@@ -17,14 +16,12 @@ Drupal.behaviors.test_prod = {
       success: function(data){
         prod = data.prod
         nodes = data.nodes;
-        setTimeout(function() {
-          getPage(nodes[i]);
-        }, 5000)
+        getPage(nodes[i]);
         /*
         if (location.pathname.indexOf('sync-prod') != -1) {
           jQuery("#test-target").html('<div class="target">Running git pull, composer update, clearing caches and rebuilding config on Production. Please wait...</div>');
           jQuery.ajax({
-            url: prod + "/sync-cleanup?" + d.getTime(),
+            url: prod + "/sync-cleanup",
             type: "GET",
             dataType: "json",
             cache: false,
@@ -56,7 +53,7 @@ function getPage(node) {
     node: node,
     timeout: 60000,
     error: function(XMLHttpRequest, textStatus, errorThrown){
-      jQuery("#test-target").html(jQuery("#test-target").html() + '<div class="result"><span class="title">' + node.title + '</span>&nbsp;<span class="red">BAD</span><br />Check the <a href="https://beta.acas.org.uk/admin/reports/dblog">Production log</a> for any PHP SQL deadlock errors (messages beginning with "Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE"). You will have to run the sync again.</div>');
+      jQuery("#test-target").html(jQuery("#test-target").html() + '<div class="result"><span class="title">' + node.title + '</span>&nbsp;<span class="red">BAD</span><br />Check the <a href="https://beta.acas.org.uk/admin/reports/dblog">Production log</a> for any PHP SQL deadlock errors (messages beginig with "Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE"). You will have to run the sync again.</div>');
     },
     success: function(data){
       var a1 = data.split('last-changed="');
