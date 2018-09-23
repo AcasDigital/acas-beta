@@ -115,17 +115,20 @@ class ProductionController extends ControllerBase {
   * in case of any CSS changes else invalidate only new/changed content.
   */
   public function sync_cleanup($cloudfront) {
-    \Drupal::logger('acas_sync')->notice('Sync cleanup. cloudfront = ' . $cloudfront);
+    \Drupal::logger('acas_sync')->notice('Sync cleanup 1. cloudfront = ' . $cloudfront);
     $old_path = getcwd();
     chdir('/var/www/html/');
     $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
+    if (!$invalidate_all) {
+      $invalidate_all = FALSE;
+    }
     chdir($old_path);
     drupal_flush_all_caches();
     \Drupal::service('simple_sitemap.generator')->generateSitemap();
     if ($cloudfront) {
       $this->production_cloudfront_invalidate($invalidate_all);
     }
-    \Drupal::logger('acas_sync')->notice('Sync cleanup. invalidate_all = ' . $invalidate_all . ', cloudfront = ' . $cloudfront);
+    \Drupal::logger('acas_sync')->notice('Sync cleanup 2. invalidate_all = ' . $invalidate_all . ', cloudfront = ' . $cloudfront);
     return new JsonResponse('ok');
   }
   
