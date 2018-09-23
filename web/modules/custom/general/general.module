@@ -1097,8 +1097,8 @@ function general_feedback_page($type, $nid) {
 /**
  *
  * Health check
- * Called by Amazon Route53 health checks
+ * Called by health checks
  */
 function general_health() {
-  return '<p>All checks passed</p>';
+  return '<div class="clearfix" style="clear: both; padding-left: 15px;"><p>All checks passed</p></div>';
 }
