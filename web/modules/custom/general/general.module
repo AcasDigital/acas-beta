@@ -1100,5 +1100,5 @@ function general_feedback_page($type, $nid) {
  * Called by Amazon Route53 health checks
  */
 function general_health() {
-  return '<h1>All checks passed</h1>';
+  return '<p>All checks passed</p>';
 }

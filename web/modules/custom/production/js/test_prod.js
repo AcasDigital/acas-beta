@@ -47,7 +47,7 @@ Drupal.behaviors.test_prod = {
 
 function getPage(node) {
   jQuery.ajax({
-    url: prod + node.url + "?" + d.getTime(),
+    url: prod + node.url,
     type: "GET",
     dataType: "html",
     cache: false,

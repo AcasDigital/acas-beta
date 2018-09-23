@@ -324,6 +324,7 @@ class ProductionController extends ControllerBase {
       $errno, $errstr, 30
     );
     if (!$fp) {
+      \Drupal::logger('acas_sync')->error('Cloudfront invalidate. Connection failed to cloudfront.amazonaws.com Error = ' . $errstr);
       return "Connection failed: {$errno} {$errstr}\n";
     }
     fwrite($fp, $msg);
