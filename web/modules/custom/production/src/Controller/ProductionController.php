@@ -18,7 +18,7 @@ class ProductionController extends ControllerBase {
     if (isset($_POST['sync_type'])) {
       $sync_type = (int)$_POST['sync_type'];
     }
-    $cloudfront = FALSE;
+    $cloudfront = 0;
     if (isset($_POST['cloudfront'])) {
       $cloudfront = (int)$_POST['cloudfront'];
     }
@@ -212,7 +212,7 @@ class ProductionController extends ControllerBase {
   * UAT
   * Zips a subset of the DB and posts the base64 encoded zip file to prod
   */
-  private function production_sync_prod($sync_type = 1, $cloudfront = FALSE) {
+  private function production_sync_prod($sync_type = 1, $cloudfront = 0) {
     \Drupal::logger('acas_sync')->notice('Sync prod. sync_type = ' . $sync_type . ', cloudfront = ' . $cloudfront);
     $config = \Drupal::config('acas.settings');
     if ($sync_type < 3) {
