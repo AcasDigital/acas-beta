@@ -93,9 +93,9 @@ class ProductionController extends ControllerBase {
         // Code only
         $old_path = getcwd();
         chdir('/var/www/html/');
-        $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
+        $invalidate_all = (int)trim(shell_exec('./git_pull.sh'));
         chdir($old_path);
-        if ($invalidate_all && $cloudfront) {
+        if ($invalidate_all == 2 && $cloudfront) {
           $this->production_cloudfront_invalidate(TRUE);
         }
         drupal_flush_all_caches();
@@ -118,7 +118,7 @@ class ProductionController extends ControllerBase {
     \Drupal::logger('acas_sync')->notice('Sync cleanup 1. cloudfront = ' . $cloudfront);
     $old_path = getcwd();
     chdir('/var/www/html/');
-    $invalidate_all = (bool)trim(shell_exec('./git_pull.sh'));
+    $invalidate_all = (int)trim(shell_exec('./git_pull.sh'));
     chdir($old_path);
     drupal_flush_all_caches();
     \Drupal::service('simple_sitemap.generator')->generateSitemap();
