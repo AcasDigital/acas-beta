@@ -80,7 +80,15 @@ production.production:
 production.cloudfront-invalidate:
   path: '/admin/config/development/cloudfront-invalidate'
   defaults:
-    _controller: '\Drupal\production\Controller\ProductionController::cloudfront_invalidate'
-    _title: ''
+    _form: '\Drupal\production\Form\CloudFrontForm'
+    _title: 'Clear CloudFront Cache'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'sync to prod'
+    
+production.cloudfront-invalidate-do:
+  path: '/admin/config/development/cloudfront-invalidate-do/{nodeids}'
+  defaults:
+    _controller: '\Drupal\production\Controller\ProductionController::cloudfront_invalidate'
+    _title: 'Clear CloudFront Cache'
+  requirements:
+    _permission: 'sync to prod'

@@ -168,37 +168,39 @@ class FeedbackForm extends FormBase {
     $rows = [];
     foreach ($result as $row) {
       if ($entity = \Drupal\node\Entity\Node::load($row->entity_id)) {
-        $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($entity->get('field_taxonomy')->target_id);
-        foreach($parents as $parent) {
-          $taxonomy = $parent->getName();
-          $tid = $parent->id();
-        }
-        $query = \Drupal::database()->select('webform_submission_data', 'wsd');
-        $query->fields('wsd', ['name', 'value']);
-        $query->condition('wsd.sid', $row->sid);
-        $result2 = $query->execute()->fetchAll();
-        $issue = '';
-        $iid = 0;
-        $text = '';
-        foreach ($result2 as $v) {
-          if ($v->name == 'answer') {
-            $text = $v->value;
+        if ($entity->hasField('field_taxonomy')) {
+          $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($entity->get('field_taxonomy')->target_id);
+          foreach($parents as $parent) {
+            $taxonomy = $parent->getName();
+            $tid = $parent->id();
           }
-          if ($v->name == 'radios' && $v->value) {
-            $issue = $options[$v->value];
-            $iid = $v->value;
+          $query = \Drupal::database()->select('webform_submission_data', 'wsd');
+          $query->fields('wsd', ['name', 'value']);
+          $query->condition('wsd.sid', $row->sid);
+          $result2 = $query->execute()->fetchAll();
+          $issue = '';
+          $iid = 0;
+          $text = '';
+          foreach ($result2 as $v) {
+            if ($v->name == 'answer') {
+              $text = $v->value;
+            }
+            if ($v->name == 'radios' && $v->value) {
+              $issue = $options[$v->value];
+              $iid = $v->value;
+            }
           }
+          $rows[$row->sid] = [
+            'created' => format_date($row->created, 'short'),
+            'uri' => new FormattableMarkup('<a href="' . $row->uri . '">' . $row->uri . '</a>', []),
+            'type' => ($row->webform_id == 'yes_feedback' ? 'Yes' : 'No'),
+            'issue' => $issue,
+            'text' => $text,
+            'taxonomy' => $taxonomy,
+            'iid' => $iid,
+            'tid' => $tid,
+          ];
         }
-        $rows[$row->sid] = [
-          'created' => format_date($row->created, 'short'),
-          'uri' => new FormattableMarkup('<a href="' . $row->uri . '">' . $row->uri . '</a>', []),
-          'type' => ($row->webform_id == 'yes_feedback' ? 'Yes' : 'No'),
-          'issue' => $issue,
-          'text' => $text,
-          'taxonomy' => $taxonomy,
-          'iid' => $iid,
-          'tid' => $tid,
-        ];
       }
       // Now remove if issues or text
       if ($values) {

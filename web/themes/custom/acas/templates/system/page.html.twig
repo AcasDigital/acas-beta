@@ -97,31 +97,6 @@
   {% endblock %}
 {% endif %}
 
-{% if page.front_top_left and is_front %}
-
-<section id="header-front-page">
-  <div role="banner" class=container {{ container }} js-quickedit-front_top-content">
-    <div class="row">
-    {% block front_top_left %}
-      <div class="col-xs-12 col-md-7">
-        <div class="row">
-          {{ page.front_top_left }}
-        </div>
-      </div>
-    {% endblock %}
-    {% block front_top_right %}
-      <div class="col-xs-12 col-md-5">
-        <div class="row">
-          {{ page.front_top_right }}
-        </div>
-      </div>
-    {% endblock %}
-    </div>
-  </div>
-</section>
-
-{% endif %}
-
 {# Main #}
 {% block main %}
   <main class="main__content" role="main">

@@ -10,9 +10,6 @@ regions:
   top_bar: 'Top Bar'
   branding_bar: 'Branding Bar'
   navigation_collapsible: 'Navigation (Collapsible)'
-  front_top_left: 'Front Top Left'
-  front_top_right: 'Front Top Right'
-  highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'
   sidebar_first: 'Primary'
@@ -23,4 +20,3 @@ regions:
 
 libraries:
   - 'acas/global-styling'
-#  - 'acas/bootstrap-scripts'

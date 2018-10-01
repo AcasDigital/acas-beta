@@ -211,7 +211,6 @@
         "drupal/node_revision_delete": "^1.0",
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.0",
-        "drupal/printable": "^1.0",
         "drupal/rabbit_hole": "^1.0",
         "drupal/real_aes": "^2.0",
         "drupal/recaptcha": "^2.2",

@@ -156,9 +156,13 @@ class ProductionController extends ControllerBase {
   * PROD
   * Invalidate all content in CloudFront
   */
-  public function cloudfront_invalidate() {
-    $output = '<h1>Invalidate all CloudFront content</h1>';
-    $result = $this->production_cloudfront_invalidate(TRUE);
+  public function cloudfront_invalidate($nodeids = 0) {
+    $output = '<h1>Clear CloudFront cached content</h1>';
+    if ($nodeids) {
+      $result = $this->production_cloudfront_invalidate(FALSE, [$nodeids]);
+    }else{
+      $result = $this->production_cloudfront_invalidate(TRUE);
+    }
     if (strpos($result, '<?xml version="1.0"?>') !== FALSE) {
       $a = explode('<?xml version="1.0"?>', $result);
       $b = explode('<InvalidationBatch>', $a[1]);
