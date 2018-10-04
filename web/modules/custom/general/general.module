@@ -138,15 +138,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       if ($parent = _is_guide($entity)) {
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
-            <li>
-              <a class="btn-save btn-save--print print-opener" href="/guide-print/' . $parent . '"><span>Print</span></a>
-            </li>
-            <li>
-              <a class="btn-save btn-save--download download-opener" href="/guide-download/' . $parent . '"><span>Download</span></a>
-            </li>
-            <li>
-              <a class="btn-save btn-save--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '"><span>Email</span></a>
-            </li>
+            <a class="btn-save btn-save--print print-opener" href="/guide-print/' . $parent . '"><span>Print</span></a>
+            <a class="btn-save btn-save--download download-opener" href="/guide-download/' . $parent . '"><span>Download</span></a>
             <div id="guide_print_download_overlay" class="hidden"></div>
             <div id="guide_print_modal" class="modal hidden">
               <div class="title-wrapper"><span class="title">Print</span><span class="close">close<span class="x">X</span></span></div>
@@ -187,22 +180,10 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         ];
         $build['print_download_email']['#attached']['library'][] = 'general/guide_print_download';
       }else{
-        if ($entity->getType() == 'support_page' && $entity->getTitle() == 'Report a problem with the beta website') {
-          $email = '<a class="btn-save btn-save--email" href="mailto:digitaladvice@acas.org.uk?subject=Beta website feedback&body=Please provide the title or web address of the page you were on, what you were trying to do, why you couldn\'t do it."><span>Email</span></a>';
-        }else{
-          $email = '<a class="btn-save btn-save--email" href="mailto:?subject=' . $entity->getTitle() . '&body=Check out this site ' . ($entity->id() ? $entity->toUrl('canonical', ['absolute' => TRUE])->toString() : '') . '"><span>Email</span></a>';
-        }
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
-          <li>
             <a class="btn-save btn-save--print print" href="/page-print/' . $entity->id() . '"><span>Print</span></a>
-          </li>
-          <li>
             <a class="btn-save btn-save--download" href="/page-download/' . $entity->id() . '"><span>Download</span></a>
-          </li>
-          <li>
-            ' . $email . '
-          </li>
           </div>',
           '#weight' => 992,
         ];

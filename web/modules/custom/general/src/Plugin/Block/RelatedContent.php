@@ -50,9 +50,7 @@ class RelatedContent extends BlockBase {
         <h3 id="nav-related__title">
           Related content
         </h3>
-        <ul id="section-nav-list" tabindex="-1">
-          <li>
-
+        <div class="nav-related__list" tabindex="-1">
             <ul>';
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
         $path = $url;
@@ -93,7 +91,7 @@ class RelatedContent extends BlockBase {
             }
           }
         }
-        $output .= '</ul></li></ul></nav>';
+        $output .= '</ul></div></nav>';
       }else if ($node->getType() == 'support_page') {
         if ($node->hasField('field_related_content')) {
           $links = '';

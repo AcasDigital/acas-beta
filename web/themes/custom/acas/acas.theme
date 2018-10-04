@@ -138,6 +138,13 @@ function acas_preprocess_html(&$variables) {
   if (strpbrk($current_path, 'feedback') !== FALSE) {
     $variables['attributes']['class'][] = 'path-feedback';
   }
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node instanceof \Drupal\node\NodeInterface && ($node->getType() == 'details_page' || $node->getType() == 'secondary_page')) {
+      if (_is_guide($node)) {
+        $variables['attributes']['class'][] = 'has-chapters';
+      }
+    }
+  }
 }
 
 function acas_preprocess_item_list(&$variables) {
