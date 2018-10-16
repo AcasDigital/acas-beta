@@ -554,6 +554,17 @@ function general_page_attachments_alter(&$build) {
       unset($build['#attached']['html_head'][$key]);
     }
   }
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/page-print/') !== FALSE || strpos($current_path, '/guide-print/') !== FALSE || strpos($current_path, '/page-download/') !== FALSE || strpos($current_path, '/guide-download/') !== FALSE) {
+    $noindex = [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'robots',
+        'content' => 'noindex',
+      ],
+    ];
+    $build['#attached']['html_head'][] = [$noindex, 'noindex'];
+  }
 }
 
 /**
