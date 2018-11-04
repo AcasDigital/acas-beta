@@ -108,20 +108,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       ];
     }
     if ($entity->get('field_feedback_form')->value) {
-      /*
-      if ($form = \Drupal\webform\Entity\Webform::load('no_feedback')) {
-        $build['no_feedback_form'] = \Drupal::entityManager()
-          ->getViewBuilder('webform')
-          ->view($form);
-        $build['no_feedback_form']['#weight'] = 999;
-      }
-      if ($form = \Drupal\webform\Entity\Webform::load('yes_feedback')) {
-        $build['yes_feedback_form'] = \Drupal::entityManager()
-          ->getViewBuilder('webform')
-          ->view($form);
-        $build['yes_feedback_form']['#weight'] = 999;
-      }
-      */
       $current_path = \Drupal::service('path.current')->getPath();
       if (strpos($current_path, '/node/preview') === FALSE) {
         $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
@@ -190,18 +176,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $build['print_download_email']['#attached']['library'][] = 'general/print';
       }
     }
-    if ($entity->hasField('field_current_website')) {
-      if ($url = $entity->field_current_website->uri) {
-        $title = 'archived version of this advice';
-        if ($entity->field_current_website->title) {
-          $title = $entity->field_current_website->title;
-        }
-        $build['current_website'] = [
-          '#markup' => '<div class="inset-text--beta"><p>This is our beta website. Pages are being tested and improved. You can view the <a href="' . $url . '">' . $title . '</a> on The National Archives website.</p></div>',
-          '#weight' => 999,
-        ];
-      }
-    }
     if ($entity->getType() == 'details_page') {
       $query = \Drupal::database()->select('taxonomy_index', 'ti');
       $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
@@ -215,8 +189,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       if ($nodeIds = $result->fetchCol()) {
         $node = \Drupal\node\Entity\Node::load($nodeIds[0]);
         $next = '<a class="next" href="' . $node->toUrl()->toString() . '">
-            <div class="details_wrapper">
-              <div class="right_arrow"></div>
+            <div class="details-wrapper">
               <div class="details">
                 <div class="text">Next</div>
                 <div class="title">' . $node->getTitle() . '</div>
@@ -228,7 +201,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           '#weight' => 991,
         ];
       }
-
     }
     if ($entity->getType() == 'secondary_page') {
       //$term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($entity->get('field_taxonomy')->target_id);
@@ -265,8 +237,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
               $class = 'no-next';
             }
             $previous = '<a class="previous ' . $class . '" href="' . $node->toUrl()->toString() . '">
-              <div class="details_wrapper">
-                <div class="left_arrow"></div>
+              <div class="details-wrapper">
                 <div class="details">
                   <div class="text">Previous</div>
                   <div class="title">' . $node->getTitle() . '</div>
@@ -285,8 +256,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           if ($nid = $result2->fetchCol()) {
             if ($node2 = \Drupal\node\Entity\Node::load($nid[0])) {
               $previous = '<a class="previous" href="' . $node2->toUrl()->toString() . '">
-                <div class="details_wrapper">
-                  <div class="left_arrow"></div>
+                <div class="details-wrapper">
                   <div class="details">
                     <div class="text">Previous</div>
                     <div class="title">' . $node2->get('field_overview_title')->value . '</div>
@@ -303,8 +273,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
             $class = 'no-previous';
           }
           $next = '<a class="next ' . $class . '" href="' . $node->toUrl()->toString() . '">
-            <div class="details_wrapper">
-              <div class="right_arrow"></div>
+            <div class="details-wrapper">
               <div class="details">
                 <div class="text">Next</div>
                 <div class="title">' . $node->getTitle() . '</div>
@@ -466,6 +435,12 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   }
 }
 
+/**
+ * Implements general_feedback_form_validate()
+ * Validates the feedback forms
+ * There is a hidden, required email field that a bot would
+ * complete. If this field has a value then likely submitted by a bot
+ */
 function general_feedback_form_validate(&$form, &$form_state) {
   if ($email = $form_state->getValue('email')) {
     $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Do not enter anything in the Email field!');
@@ -474,6 +449,11 @@ function general_feedback_form_validate(&$form, &$form_state) {
   }
 }
 
+/**
+ * Implements general_reorder_chapter_pages()
+ * Returns the form for reordering chapter pages
+ * when the parent guide page is being edited
+ */
 function general_reorder_chapter_pages() {
   $form = [];
   $found = FALSE;
@@ -656,6 +636,10 @@ function general_pathauto_alias_alter(&$alias, array &$context) {
   }
 }
 
+/**
+ * Implements general_taxonomy_path().
+ * sanitise a title into a valid string for a path/alias
+ */
 function general_taxonomy_path($name) {
   $name = str_replace('/', ' ', strtolower($name));
   $name = str_replace(':', '', $name);
@@ -665,6 +649,10 @@ function general_taxonomy_path($name) {
   return $name;
 }
 
+/**
+ * Implements general_taxonomy_overview_terms_submit().
+ * If the Acas vocabulary, rebuild the naviagation menu
+ */
 function general_taxonomy_overview_terms_submit($form, &$form_state) {
   $args = $form_state->getBuildInfo()['args'];
   if ($args[0]->id() == 'acas') {
@@ -672,6 +660,10 @@ function general_taxonomy_overview_terms_submit($form, &$form_state) {
   }
 }
 
+/**
+ * Implements general_node_details_page_edit_form_submit().
+ * Assign the weights of chapter pages of this guide page
+ */
 function general_node_details_page_edit_form_submit($form, &$form_state) {
   $rows = $form_state->getValue('table-row');
   foreach($rows as $key => $value) {
@@ -683,6 +675,7 @@ function general_node_details_page_edit_form_submit($form, &$form_state) {
 
 /**
  * Implements hook_taxonomy_term_update().
+ * If the Acas vocabulary, rebuild the naviagation menu
  */
 function general_taxonomy_term_update($term) {
   if ($term->getVocabularyId() == 'acas') {
@@ -691,8 +684,8 @@ function general_taxonomy_term_update($term) {
 }
 
 /**
- * general_menu_full_first_level().
- * Builds the Main navigation menu
+ * Implements general_menu_full_first_level().
+ * Builds the Main navigation menu first level
  * Called whenever Taxonomy changes
  */
  function general_menu_full_first_level() {
@@ -714,7 +707,7 @@ function general_taxonomy_term_update($term) {
   $query->condition('ti.tid', $termIds, 'IN');
   $query->orderBy('fd.weight', 'ASC');
   $result = $query->execute();
-  $weight = 0;
+  $weight = 1; // Home has a weight of 0
   if($nodeIds = $result->fetchCol()){
     $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
     foreach($nodes as $node) {
@@ -732,6 +725,12 @@ function general_taxonomy_term_update($term) {
   }
 }
 
+/**
+ * Implements general_menu_full_second_level().
+ * Builds the secondary level menus, called recursively to build
+ * unlimited sub-menus
+ * Called whenever Taxonomy changes
+ */
 function general_menu_full_second_level($first_level, $tid, &$weight) {
   if ($children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($tid)) {
     foreach ($children as $key => $value) {
@@ -782,6 +781,12 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
   }
 }
 
+/**
+ * Implements general_menu_secondary_pages().
+ * Builds a secondary menu of any chapter pages of
+ * a parent guide page
+ * Called whenever Taxonomy changes
+ */
 function general_menu_secondary_pages($first_level, $node, $weight) {
   $query = \Drupal::database()->select('taxonomy_index', 'ti');
   $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
@@ -924,6 +929,10 @@ function general_guide_page($nid) {
   return $build;
 }
 
+/**
+ * Implements _is_site().
+ * Returns TRUE if the site parameter matches this site
+ */
 function _is_site($site = 'beta') {
   $a = explode('.', $_SERVER['HTTP_HOST']);
   if (strpos($a[0], $site) !== FALSE) {
@@ -932,6 +941,12 @@ function _is_site($site = 'beta') {
   return FALSE;
 }
 
+/**
+ * Implements _is_guide().
+ * If a chapter page, return the parent guide page NID
+ * else if a guide page and has chapters, return the NID
+ * else return FALSE
+ */
 function _is_guide($entity) {
   if ($entity->getType() == 'secondary_page') {
     // Get the parent details page
@@ -1073,6 +1088,10 @@ function general_entity_field_access($operation, \Drupal\Core\Field\FieldDefinit
   return $access;
 }
 
+/**
+ * Implements general_feedback_page().
+ * If JS is disabled then return the feedback form as a page
+ */
 function general_feedback_page($type, $nid) {
   if ($type == 'yes') {
     $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');

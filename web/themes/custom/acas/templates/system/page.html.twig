@@ -157,13 +157,15 @@
     <div id="feedback-wrapper">
       <div id="feedback-form">
         <div class="feedback-question-wrapper">
-          <div class="feedback-question">Did you get the information you need from this page?</div>
-          <div class="feedback-buttons">
+          <div class="feedback-question">
+            <span>Did you get the information you need from this page?</span>
             <a id="yes" href="/feedback-page/yes/{{ nodeid }}" nid="{{ nodeid }}">Yes</a>
             <a id="no" href="/feedback-page/no/{{ nodeid }}" nid="{{ nodeid }}">No</a>
           </div>
         </div>
-        <div class="feedback-close-wrapper">&#x2715; Close</div>
+        <div class="feedback-close-wrapper">
+          <span>&#x2715; Close</span>
+        </div>
       </div>
     </div>
   {% endif %}

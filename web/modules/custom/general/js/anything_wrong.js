@@ -6,7 +6,7 @@
         $('#feedback-form').append($('.webform-submission-yes-feedback-add-form'));
         $("#feedback-form #no").click(function() {
           $("#feedback-form .feedback-close-wrapper").show();
-          $("#feedback-form .feedback-question-wrapper .feedback-buttons").hide();
+          $("#feedback-form .feedback-question-wrapper a").hide();
           $("#feedback-form .webform-submission-yes-feedback-form").slideUp();
           $("#feedback-form .webform-submission-no-feedback-form").slideDown();
           sendVote(this, false);
@@ -19,7 +19,7 @@
           $("#feedback-form .feedback-close-wrapper").show();
           $("#feedback-form .webform-submission-no-feedback-form").slideUp();
           $("#feedback-form .webform-submission-yes-feedback-form").slideDown();
-          $("#feedback-form .feedback-question-wrapper .feedback-buttons").hide();
+          $("#feedback-form .feedback-question-wrapper a").hide();
           setTimeout(function(){ $("#feedback-form .webform-submission-yes-feedback-form textarea").focus(); }, 500);
           sendVote(this, false);
           $([document.documentElement, document.body]).animate({
@@ -40,7 +40,7 @@
         $("#feedback-form .feedback-close-wrapper").click(function() {
           $("#feedback-form .feedback-close-wrapper").hide();
           $("#feedback-form .webform-submission-form").slideUp();
-          $("#feedback-form .feedback-question-wrapper .feedback-buttons").show();
+          $("#feedback-form .feedback-question-wrapper a").show();
         });
         $("#feedback-form .webform-button--submit").click(function() {
           //$("#feedback-form .webform-submission-no-feedback-add-form").submit();

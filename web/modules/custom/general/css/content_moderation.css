@@ -1,5 +1,7 @@
 .content-moderation-entity-moderation-form {
   position: relative;
+  width: 100% !important;
+  font-size: 0.8em;
 }
 .content-moderation-entity-moderation-form #close {
   position: absolute;

@@ -39,15 +39,15 @@ class SyncForm extends ConfigFormBase {
       '#type' => 'checkbox',
       '#default_value' => TRUE,
       '#title' => t('Clear CloudFront cache'),
-      '#description' => t('When checked the CloudFront cache will be cleared for updated content (if sync type is for content). If un-checked eg. for testing, you will have to manually clear the cache'),
+      '#description' => t('When checked the CloudFront cache will be cleared for updated content (if sync type is for database). If un-checked eg. for testing, you will have to manually clear the cache'),
     );
     $form['sync_type'] = [
       '#type' => 'radios',
       '#title' => 'Sync type',
-      '#options' => [1 => 'Content only', 2 => 'Content and code', 3 => 'Code only'],
+      '#options' => [1 => 'Database only', 2 => 'Database and code', 3 => 'Code only'],
       '#default_value' => 1,
     ];
-    $form['#prefix'] = '<h2>Syncronise content to Production</h2>';
+    $form['#prefix'] = '<h2>Syncronise database to Production</h2>';
     $form['#action'] = '/admin/config/development/sync-prod';
     $form['#attached']['library'][] = 'production/sync_prod';
     $form['#attributes']['onsubmit'] = 'return syncProd()';

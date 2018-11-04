@@ -90,10 +90,11 @@ function acas_preprocess_block(&$variables) {
       }
     }
   }
-  if ($variables['plugin_id'] == 'landing_pages_block' || $variables['plugin_id'] == 'related_content_block' || $variables['plugin_id'] == 'in_this_section_block' || $variables['plugin_id'] == 'landing_page_bottom') {
+  // Do not cache these blocks
+  if ($variables['plugin_id'] == 'landing_pages_block' || $variables['plugin_id'] == 'related_content_block' || $variables['plugin_id'] == 'in_this_section_block' || $variables['plugin_id'] == 'landing_page_bottom' || $variables['plugin_id'] == 'current_website') {
     $variables['#cache']['max-age'] = 0;
   }
-  //if ($variables['plugin_id'] == 'in_this_section_block' || $variables['plugin_id'] == 'landing_page_bottom') {
+  // If no markup, do not display anything
   if (@$variables['content']) {
     if (isset($variables['content']['#markup'])) {
       if (!$variables['content']['#markup']) {

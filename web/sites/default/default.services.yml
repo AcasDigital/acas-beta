@@ -160,33 +160,15 @@ parameters:
    # Note: By default the configuration is disabled.
   cors.config:
     enabled: false
-    # Specify allowed headers and sets the Access-Control-Allow-Headers header.
-    # For example, ['X-Custom-Header']. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
+    # Specify allowed headers, like 'x-allowed-header'.
     allowedHeaders: []
-    # Specify allowed request methods and sets the Access-Control-Allow-Methods
-    # header. For example, ['POST', 'GET', 'OPTIONS'] or ['*'] to allow all.
-    # Note the wildcard is not yet implemented in all browsers. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
     allowedMethods: []
     # Configure requests allowed from specific origins.
-    # Configure requests allowed from specific origins and sets the
-    # Access-Control-Allow-Origin header. For example,
-    # ['https://www.drupal.org'] or ['*'] to allow any resource to access your
-    # resource. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
     allowedOrigins: ['*']
-    # Sets the Access-Control-Expose-Headers header. The default is false which
-    # means the header will not be set. To set the header use a comma delimited
-    # list within square brackets. For example, ['Content-Type', 'Expires'] or
-    # ['*'] for all headers. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers
+    # Sets the Access-Control-Expose-Headers header.
     exposedHeaders: false
-    # Sets the Access-Control-Max-Age header if set to an integer. This is the
-    # maximum number of seconds the results can be cached. For example, 600 to
-    # cache results of a preflight request for 10 minutes. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age
+    # Sets the Access-Control-Max-Age header.
     maxAge: false
-    # Sets the Access-Control-Allow-Credentials header if set to true. See
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
+    # Sets the Access-Control-Allow-Credentials header.
     supportsCredentials: false
