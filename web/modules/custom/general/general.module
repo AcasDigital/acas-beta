@@ -165,7 +165,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           '#weight' => 992,
         ];
         $build['print_download_email']['#attached']['library'][] = 'general/guide_print_download';
-      }else{
+      }
+      else {
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
             <a class="btn-save btn-save--print print" href="/page-print/' . $entity->id() . '"><span>Print</span></a>
@@ -245,7 +246,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
               </div>
             </a>';
           }
-        }else{
+        }
+        else {
           $query2 = \Drupal::database()->select('taxonomy_index', 'ti');
           $query2->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
           $query2->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
@@ -288,7 +290,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         unset($build['field_taxonomy']);
       }
     }
-  }elseif ($view_mode == 'search_index' && $entity instanceof \Drupal\node\NodeInterface) {
+  }
+  elseif ($view_mode == 'search_index' && $entity instanceof \Drupal\node\NodeInterface) {
     if ($entity->hasField('field_taxonomy')) {
       $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadAllParents($entity->get('field_taxonomy')->target_id);
       $parents = array_reverse($parents, TRUE);
@@ -298,7 +301,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         if ($entity->getType() == 'secondary_page') {
           $url = '/' . general_taxonomy_path($parent->getName());
           $section .= '<li><a href="' . $url . '">' . $parent->getName() . '</a></li>';
-        }else{
+        }
+        else {
           if ($entity->get('field_taxonomy')->target_id != $parent->id()) {
             $url = '/' . general_taxonomy_path($parent->getName());
             $section .= '<li><a href="' . $url . '">' . $parent->getName() . '</a></li>';
@@ -408,7 +412,8 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
     if ($config->get('freeze')) {
       $response = new RedirectResponse('/admin/freeze');
       $response->send();
-    }else{
+    }
+    else {
       $form['moderation_state']['widget'][0]['state']['#default_value'] = 'draft';
       $form['field_summary']['widget'][0]['summary']['#description'] = t('The summary does not appear on the page. It is shown on Landing Pages and in the search results and is the meta-description tag (for Google etc.)');
       //$form['revision_log']['widget'][0]['value']['#required'] = TRUE;
@@ -444,7 +449,8 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
 function general_feedback_form_validate(&$form, &$form_state) {
   if ($email = $form_state->getValue('email')) {
     $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Do not enter anything in the Email field!');
-  }else{
+  }
+  else {
     $form_state->clearErrors();
   }
 }
@@ -627,7 +633,8 @@ function general_pathauto_alias_alter(&$alias, array &$context) {
         $alias .= '/' . general_taxonomy_path($entity->getTitle());
       }
       */
-    }else if ($context['bundle'] === 'secondary_page') {
+    }
+    elseif ($context['bundle'] === 'secondary_page') {
       if ($nid = _is_guide($entity)) {
         $node = \Drupal\node\Entity\Node::load($nid);
         $alias = '/' . general_taxonomy_path($node->getTitle()) . '/' . general_taxonomy_path($entity->getTitle());
@@ -759,7 +766,8 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
               general_menu_secondary_pages($second_level, $node, $weight);
             }
           }
-        }else if ($first_level){
+        }
+        elseif ($first_level){
           /*
           // No node. See if have link to external site
           $second_level = MenuLinkContent::create([
@@ -960,7 +968,8 @@ function _is_guide($entity) {
     if ($nid = $result->fetchCol()) {
       return $nid[0];
     }
-  }else if ($entity->getType() == 'details_page') {
+  }
+  elseif ($entity->getType() == 'details_page') {
     // See if has secondary pages
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
@@ -1073,7 +1082,8 @@ function general_entity_field_access($operation, \Drupal\Core\Field\FieldDefinit
       // Can they edit ANY Node or Any of this entity type?
       if ($account->hasPermission('edit any ' . $type . ' content') || $account->hasPermission('"bypass entity access"')) {
         $access = AccessResult::allowed();
-      } else {
+      }
+      else {
         // Does the user own this entity, and can they edit their own entity of this type?
         $owner_id = $entity->getOwnerId();
         if ($owner_id == $account->id() && $account->hasPermission('edit own ' . $type . ' content')) {
@@ -1095,7 +1105,8 @@ function general_entity_field_access($operation, \Drupal\Core\Field\FieldDefinit
 function general_feedback_page($type, $nid) {
   if ($type == 'yes') {
     $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
-  }else{
+  }
+  else {
     $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
   }
   $form['#prefix'] = '<section id="feedback-form-section" class="block-in-this-section-block"><article class="page">';

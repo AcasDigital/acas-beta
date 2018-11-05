@@ -22,7 +22,8 @@ class BetaBanner extends BlockBase {
     $a = explode('.', $_SERVER['HTTP_HOST']);
     if (strpos($a[0], 'dev') !== FALSE) {
       $site .= 'DEV ';
-    }else if (strpos($a[0], 'uat') !== FALSE) {
+    }
+    elseif (strpos($a[0], 'uat') !== FALSE) {
       $site .= 'UAT ';
     }
     if ($site) {

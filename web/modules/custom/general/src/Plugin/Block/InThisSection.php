@@ -35,7 +35,8 @@ class InThisSection extends BlockBase {
       if($nodeIds = $result->fetchCol()) {
         if ($node->getType() == 'details_page') {
           $output .= '<li class="active">' . $node->get('field_overview_title')->value . '</li>';
-        }else{
+        }
+        else {
           $query2 = \Drupal::database()->select('taxonomy_index', 'ti');
           $query2->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
           $query2->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
@@ -53,7 +54,8 @@ class InThisSection extends BlockBase {
         foreach($nodes as $n) {
           if ($node->id() == $n->id()) {
             $output .= '<li class="active">' . $n->getTitle() . '</li>';
-          }else{
+          }
+          else {
             $output .= '<li><a href="' . $n->toUrl()->toString() . '">' . $n->getTitle() . '</a></li>';
           }
         }

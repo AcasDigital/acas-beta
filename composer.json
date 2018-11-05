@@ -142,7 +142,6 @@
         }
     ],
     "require": {
-        "alexacrm/dynamics-webapi-toolkit": "dev-master",
         "aws/aws-php-sns-message-validator": "^1.4",
         "cloudconvert/cloudconvert-php": "^2.2",
         "composer/installers": "^1.5",

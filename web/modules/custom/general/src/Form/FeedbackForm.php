@@ -143,14 +143,17 @@ class FeedbackForm extends FormBase {
     if ($values) {
       if ($values['from_date'] && $values['to_date']) {
         $query->condition('ws.created', [strtotime($values['from_date']), strtotime($values['to_date'])], 'BETWEEN');
-      }else if ($values['from_date']) {
+      }
+      elseif ($values['from_date']) {
         $query->condition('ws.created', strtotime($values['from_date']), '>=');
-      }else if ($values['to_date']) {
+      }
+      elseif ($values['to_date']) {
         $query->condition('ws.created', strtotime($values['to_date']), '<=');
       }
       if ($values['type'] == 1) {
         $query->condition('ws.webform_id', 'yes_feedback');
-      }else if ($values['type'] == 2) {
+      }
+      elseif ($values['type'] == 2) {
         $query->condition('ws.webform_id', 'no_feedback');
       }
       /*
@@ -251,7 +254,8 @@ class FeedbackForm extends FormBase {
       }
       fclose($output);
       exit(0);
-    }else{
+    }
+    else {
       $limit = 10;
       pager_default_initialize(count($rows), $limit);
       $page = pager_find_page();

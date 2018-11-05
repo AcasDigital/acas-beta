@@ -22,7 +22,8 @@ class GeneralController extends ControllerBase {
   public function feedback($entity_id, $value) {
     if ($value == 'Yes') {
       $vote_value = 1;
-    }else{
+    }
+    else {
       $vote_value = -1;
     }
     
@@ -171,7 +172,8 @@ class GeneralController extends ControllerBase {
   public function feedback_title($type, $nid) {
     if ($type == 'no') {
       return 'Please tell us why the information did not help.';
-    }else{
+    }
+    else {
       return 'What were you looking for?';
     }
   }

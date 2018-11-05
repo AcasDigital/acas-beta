@@ -61,7 +61,8 @@ class RelatedContent extends BlockBase {
               $url = '/' . general_taxonomy_path($term->name);
               if ($node->get('field_taxonomy')->target_id != $term->tid) {
                 $output .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
-              }else{
+              }
+              else {
                 //$output .= '<li class="active">' . $term->name . '</li>';
               }
             }
@@ -79,7 +80,8 @@ class RelatedContent extends BlockBase {
                 $title = $b[0];
               }
               $output .= '<li class="extra"><a class="external-link" href="' . $url . '">' . $title . '</a></li>';
-            }else{
+            }
+            else {
               $params = $link->getUrl()->getRouteParameters();
               $entity_type = key($params);
               if ($entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type])) {
@@ -106,7 +108,8 @@ class RelatedContent extends BlockBase {
                 $title = $b[0];
               }
               $output .= '<li class="extra"><a class="external-link" href="' . $url . '">' . $title . '</a></li>';
-            }else{
+            }
+            else {
               $params = $link->getUrl()->getRouteParameters();
               $entity_type = key($params);
               if ($entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type])) {
