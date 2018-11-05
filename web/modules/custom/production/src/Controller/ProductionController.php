@@ -85,11 +85,13 @@ class ProductionController extends ControllerBase {
         // Clear the cloudfront cache
         if ($sync_type == 2) {
           $this->sync_cleanup($cloudfront);
-        }else if ($cloudfront){
+        }
+        elseif ($cloudfront){
           // Clear the entire cache
           $this->production_cloudfront_invalidate(TRUE);
         }
-      }else{
+      }
+      else {
         // Code only
         $old_path = getcwd();
         chdir('/var/www/html/');
@@ -160,7 +162,8 @@ class ProductionController extends ControllerBase {
     $output = '<h1>Clear CloudFront cached content</h1>';
     if ($nodeids) {
       $result = $this->production_cloudfront_invalidate(FALSE, [$nodeids]);
-    }else{
+    }
+    else {
       $result = $this->production_cloudfront_invalidate(TRUE);
     }
     if (strpos($result, '<?xml version="1.0"?>') !== FALSE) {
@@ -170,10 +173,12 @@ class ProductionController extends ControllerBase {
         $c = explode('<CallerReference>', $b[1]);
         $data = str_replace('Path', 'div', $c[0]);
         return array('#markup' => $output . '<h2>Invalidated paths</h2><div class="code">' . $data . '</div><br />');
-      }else{
+      }
+      else {
         return array('#markup' => $output . $result);
       }
-    }else{
+    }
+    else {
       return array('#markup' => $output . $result);
     }
   }
@@ -193,7 +198,8 @@ class ProductionController extends ControllerBase {
               $node->setTitle($d->title);
               $node->body->value = $d->content;
               $node->body->summary = $d->summary;
-            }else{
+            }
+            else {
               $node->setTitle($d->title);
               $node->field_summary->value = $d->content;
               $node->field_summary->summary = $d->summary;
@@ -241,7 +247,8 @@ class ProductionController extends ControllerBase {
       $encoded = base64_encode(file_get_contents($zip_file));
       unlink($path);
       unlink($zip_file);
-    }else{
+    }
+    else {
       // Code only
       $encoded = '';
       $file = '';
@@ -261,9 +268,11 @@ class ProductionController extends ControllerBase {
     curl_close ($curl);
     if ($sync_type == 1) {
       drupal_set_message('Finished syncing content (no code) to Production');
-    }else if ($sync_type == 2){
+    }
+    elseif ($sync_type == 2){
       drupal_set_message('Finished syncing content and code to Production');
-    }else {
+    }
+    else {
       drupal_set_message('Finished syncing code (no content) to Production');
     }
   }
@@ -289,7 +298,8 @@ class ProductionController extends ControllerBase {
           $paths .= '<Path>/</Path>';
         }
       }
-    }else if (!$all) {
+    }
+    elseif (!$all) {
       $query = \Drupal::database()->select('node_field_data', 'nfd');
       $query->fields('nfd', array('nid'));
       $query->condition('nfd.changed', $last, '>');
@@ -302,10 +312,12 @@ class ProductionController extends ControllerBase {
             $paths .= '<Path>/</Path>';
           }
         }
-      }else{
+      }
+      else {
         return 'Nothing to invalidate';
       }
-    }else{
+    }
+    else {
       $paths = '<Path>/*</Path>';
     }
     $distribution = $config->get('id');
