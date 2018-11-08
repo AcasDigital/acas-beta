@@ -1,9 +1,9 @@
 <?php
 
+
 /**
  * @file
- * Contains general.module.
- * Hooks & general code for the Acas site
+ * Contains general.module. Hooks & general code for the Acas site.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -11,12 +11,11 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use \CloudConvert\Api;
-use Sunra\PhpSimple\HtmlDomParser;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
-use \Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResult;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -44,6 +43,7 @@ function general_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
   }
 }
 
+
 /**
  * Implements hook_entity_delete().
  */
@@ -63,7 +63,7 @@ function general_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
   if ($entity->getEntityTypeId() == 'taxonomy_term' && $entity->bundle() == 'acas') {
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
-    $query->fields('ti', array('nid'));
+    $query->fields('ti', ['nid']);
     $query->condition('ti.tid', $entity->id(), '=');
     $result = $query->execute();
     if ($nid = $result->fetchCol()) {
@@ -297,7 +297,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       $parents = array_reverse($parents, TRUE);
       $section = '<ul class="breadcrumb--search"><li>In:</li>';
       $url = '';
-      foreach($parents as $parent) {
+      foreach ($parents as $parent) {
         if ($entity->getType() == 'secondary_page') {
           $url = '/' . general_taxonomy_path($parent->getName());
           $section .= '<li><a href="' . $url . '">' . $parent->getName() . '</a></li>';
@@ -339,12 +339,12 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
     }
   }
   if ($view_mode == 'default' && $entity instanceof \Drupal\node\NodeInterface && $entity->getType() == 'details_page') {
-    // Include all chapter pages for internal search as they are excluded
+    // Include all chapter pages for internal search as they are excluded.
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
     $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-    $query->join('node__field_weight', 'w' , 'w.entity_id = ti.nid');
-    $query->fields('ti', array('nid'));
+    $query->join('node__field_weight', 'w', 'w.entity_id = ti.nid');
+    $query->fields('ti', ['nid']);
     $query->condition('ti.tid', $entity->get('field_taxonomy')->target_id, '=');
     $query->condition('nfd.type', 'secondary_page', '=');
     $query->orderBy('w.field_weight_value', 'ASC');
@@ -353,7 +353,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
       $chapters = '';
       $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
-      foreach($nodes as $node) {
+      foreach ($nodes as $node) {
         $view = $view_builder->view($node, 'full');
         $chapters .= drupal_render($view);
       }
@@ -416,7 +416,6 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
     else {
       $form['moderation_state']['widget'][0]['state']['#default_value'] = 'draft';
       $form['field_summary']['widget'][0]['summary']['#description'] = t('The summary does not appear on the page. It is shown on Landing Pages and in the search results and is the meta-description tag (for Google etc.)');
-      //$form['revision_log']['widget'][0]['value']['#required'] = TRUE;
       if ($form_id == 'node_details_page_edit_form') {
         if ($chapter_pages = general_reorder_chapter_pages()) {
           $form['chapter_pages'] = $chapter_pages;
@@ -444,7 +443,7 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
  * Implements general_feedback_form_validate()
  * Validates the feedback forms
  * There is a hidden, required email field that a bot would
- * complete. If this field has a value then likely submitted by a bot
+ * complete. If this field has a value then likely submitted by a bot.
  */
 function general_feedback_form_validate(&$form, &$form_state) {
   if ($email = $form_state->getValue('email')) {
@@ -482,8 +481,8 @@ function general_reorder_chapter_pages() {
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
     $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-    $query->leftJoin('node__field_weight', 'w' , 'w.entity_id = ti.nid');
-    $query->fields('ti', array('nid'));
+    $query->leftJoin('node__field_weight', 'w', 'w.entity_id = ti.nid');
+    $query->fields('ti', ['nid']);
     $query->addField('nfd', 'title');
     $query->addField('w', 'field_weight_value', 'weight');
     $query->condition('ti.tid', $node->get('field_taxonomy')->target_id, '=');
@@ -603,6 +602,7 @@ function general_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
       drupal_set_message($e->getMessage(), 'error');
       return;
     }
+    
     // As the converted html file is displayed in a iframe, it might not be loaded when search
     // engines index the page. Get the html file and embed the text of the body in a hidden field
     $url = file_create_url(str_replace('.' . $type, '.html', $file->getFileUri()));
@@ -673,7 +673,7 @@ function general_taxonomy_overview_terms_submit($form, &$form_state) {
  */
 function general_node_details_page_edit_form_submit($form, &$form_state) {
   $rows = $form_state->getValue('table-row');
-  foreach($rows as $key => $value) {
+  foreach ($rows as $key => $value) {
     $node = \Drupal\node\Entity\Node::load($key);
     $node->field_weight->value = $value['weight'];
     $node->save();
@@ -710,14 +710,14 @@ function general_taxonomy_term_update($term) {
   }
   $query = \Drupal::database()->select('taxonomy_index', 'ti');
   $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
-  $query->fields('ti', array('nid'));
+  $query->fields('ti', ['nid']);
   $query->condition('ti.tid', $termIds, 'IN');
   $query->orderBy('fd.weight', 'ASC');
   $result = $query->execute();
   $weight = 1; // Home has a weight of 0
   if($nodeIds = $result->fetchCol()){
     $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
-    foreach($nodes as $node) {
+    foreach ($nodes as $node) {
       $first_level = MenuLinkContent::create([
         'title' => $node->getTitle(),
         'link' => ['uri' => 'internal:' . $node->toUrl()->toString()],
@@ -767,7 +767,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
             }
           }
         }
-        elseif ($first_level){
+        elseif ($first_level) {
           /*
           // No node. See if have link to external site
           $second_level = MenuLinkContent::create([
@@ -799,14 +799,14 @@ function general_menu_secondary_pages($first_level, $node, $weight) {
   $query = \Drupal::database()->select('taxonomy_index', 'ti');
   $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
   $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-  $query->fields('ti', array('nid'));
+  $query->fields('ti', ['nid']);
   $query->condition('ti.tid', $node->get('field_taxonomy')->target_id, '=');
   $query->condition('nfd.type', 'secondary_page', '=');
   $query->orderBy('fd.weight', 'ASC');
   $result = $query->execute();
-  if($nodeIds = $result->fetchCol()){
+  if ($nodeIds = $result->fetchCol()) {
     $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
-    foreach($nodes as $node) {
+    foreach ($nodes as $node) {
       $second_level = MenuLinkContent::create([
         'title' => $node->getTitle(),
         'link' => ['uri' => 'internal:' . $node->toUrl()->toString()],
@@ -875,7 +875,7 @@ function general_guide_page($nid) {
       $query = \Drupal::database()->select('taxonomy_index', 'ti');
       $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
       $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-      $query->fields('ti', array('nid'));
+      $query->fields('ti', ['nid']);
       $query->condition('ti.tid', $node->get('field_taxonomy')->target_id, '=');
       $query->condition('nfd.type', 'details_page', '=');
       $result = $query->execute();
@@ -914,7 +914,7 @@ function general_guide_page($nid) {
       $result = $query->execute();
       if($nodeIds = $result->fetchCol()) {
         $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
-        foreach($nodes as $n) {
+        foreach ($nodes as $n) {
           $a = $n->get('field_summary')->getValue();
           $b = explode('<h2>', $a[0]['value']);
           if (count($b) == 1) {
@@ -961,7 +961,7 @@ function _is_guide($entity) {
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
     $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-    $query->fields('ti', array('nid'));
+    $query->fields('ti', ['nid']);
     $query->condition('ti.tid', $entity->get('field_taxonomy')->target_id, '=');
     $query->condition('nfd.type', 'details_page', '=');
     $result = $query->execute();
@@ -974,11 +974,11 @@ function _is_guide($entity) {
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
     $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
     $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
-    $query->fields('ti', array('nid'));
+    $query->fields('ti', ['nid']);
     $query->condition('ti.tid', $entity->get('field_taxonomy')->target_id, '=');
     $query->condition('nfd.type', 'secondary_page', '=');
     $result = $query->execute();
-    if($nodeIds = $result->fetchCol()) {
+    if ($nodeIds = $result->fetchCol()) {
       return $entity->id();
     }
   }
@@ -1002,8 +1002,8 @@ function general_content_moderation_notification_mail_data_alter($entity, &$data
   $vids = \Drupal::entityManager()->getStorage('node')->revisionIds($entity);
   $vid = array_pop($vids);
   $node_revision = \Drupal::entityTypeManager()
-  ->getStorage('node')
-  ->loadRevision($vid);
+    ->getStorage('node')
+    ->loadRevision($vid);
   $data['params']['message'] .= '<br /><p>Last log message: <b>' . $node_revision->get('revision_log')->value . '</b></p>';
 }
 
