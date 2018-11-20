@@ -142,6 +142,7 @@
         }
     ],
     "require": {
+        "alexacrm/dynamics-webapi-toolkit": "dev-master",
         "aws/aws-php-sns-message-validator": "^1.4",
         "cloudconvert/cloudconvert-php": "^2.2",
         "composer/installers": "^1.5",
@@ -192,6 +193,7 @@
         "drupal/ga_login": "^1.0@alpha",
         "drupal/google_analytics": "^2.2",
         "drupal/google_analytics_reports": "^3.0",
+        "drupal/google_optimize": "^1.0",
         "drupal/google_tag": "^1.0",
         "drupal/ie8": "^0.1",
         "drupal/image_widget_crop": "^2.1",

@@ -72,9 +72,9 @@ table {
   font-family: "Century Gothic Bold";
   src: url("../fonts/b247e158-e647-4a3d-9637-944de5124043.eot?#iefix");
   src: url("../fonts/b247e158-e647-4a3d-9637-944de5124043.eot?#iefix") format("eot"), url("../fonts/bc0668e2-e5c8-45ce-954d-3b998c6b6803.woff2") format("woff2"), url("../fonts/2ef5ecda-1772-45e2-843f-a13f5d76ed3a.woff") format("woff"), url("../fonts/33cf10ca-a6bb-4888-a320-d38720c9847b.ttf") format("truetype"), url("../fonts/3428a0e6-cb4d-408a-8331-cc78554ab49c.svg#3428a0e6-cb4d-408a-8331-cc78554ab49c") format("svg"); }
-.text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message .text, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button, .form-description, .fieldset-wrapper .description, .webform-element-description, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
+.text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message .text, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
-#feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, #block-landingpagesblock article .article__content, .block-home-page-block article .article__content, a.menu-secondary__link, .btn-save, .nav-related .nav-related__list, #social-share .text, form#user-login-form .description, .prescribed .guidance-text {
+#feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, #block-landingpagesblock article .article__content, .block-home-page-block article .article__content, a.menu-secondary__link, .btn-save, .nav-related .nav-related__list, #social-share .text, form#user-login-form .description, .prescribed .guidance-text {
   font-size: 0.85rem; }
 
 .text-tiny, .inset-text--beta, #footer__inner {
@@ -267,7 +267,7 @@ h6 a:hover,
 h6 a:focus, .h6 a:hover, .h6 a:focus {
   text-decoration: underline; }
 
-h1, h2, .h1, .h2, .print-download-email .modal .title {
+h1, .h1 {
   border-left: 5px solid #CEDC00;
   line-height: 1.25;
   position: relative;
@@ -291,10 +291,6 @@ h5 {
 h6 {
   font-size: 1em; }
 
-#block-landingpagesblock article h2, .block-home-page-block article h2, .view-solr-search-content .views-row h2 {
-  border-left: none;
-  padding-left: 0; }
-
 @media (min-width: 992px) {
   h1, .h1 {
     font-size: 2.42em; }
@@ -308,8 +304,14 @@ a {
   color: #007C85;
   text-decoration: underline; }
   a:hover, a:focus {
-    color: #008C95;
     text-decoration: none; }
+
+.search-index a, .link--back, .back--link, .btn-primary, .btn-secondary, .webform-button--preview, .webform-button--previous:not(.back--link),
+.webform-button--next:not(.back--link), .webform-wizard-pages-link, form#user-login-form #edit-submit {
+  text-decoration: none; }
+
+.search-index a:hover, .search-index a:focus {
+  text-decoration: underline; }
 
 /* External Links */
 a.link--external:not(.btn-save--email):after {
@@ -424,7 +426,7 @@ button,
 #social-share li {
   margin-right: 5px; }
 
-ul li, ol li,
+ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 #social-share {
   padding-top: 5px; }
 
@@ -474,7 +476,7 @@ li.menu-secondary__title,
 #social-share {
   padding-right: 10px; }
 
-h4 {
+h4, .block-in-this-section-block h2 {
   margin-bottom: 15px; }
 
 .find-address-wrapper a, .print-download-email .modal .x {
@@ -511,7 +513,7 @@ form#user-login-form #edit-submit,
 .prescribed .webform-wizard-pages-link {
   margin-top: 20px; }
 
-h3, .chapters--search h2, .form-description, .fieldset-wrapper .description, .webform-element-description, .webform-preview .form-group, .fieldgroup .form-group, #block-landingpagesblock article, .block-home-page-block article, .js-pager__items, #block-searchblock, form#user-login-form .form-item, .page-node-type-details-page article, .page-node-type-support-page article,
+h3, .chapters--search h2, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .webform-preview .form-group, .fieldgroup .form-group, #block-landingpagesblock article, .block-home-page-block article, .js-pager__items, #block-searchblock, form#user-login-form .form-item, .page-node-type-details-page article, .page-node-type-support-page article,
 .btn-primary,
 .btn-secondary,
 .webform-button--preview,
@@ -585,6 +587,12 @@ ul, ol, h2, .link--back, .back--link, .inset-text, .callout,
 
 ul, ol, .webform-container-type-details .panel-body {
   margin-left: 30px; }
+
+.view-empty {
+  padding-top: 30px; }
+
+.view-empty {
+  padding-bottom: 30px; }
 
 .previous .text {
   padding-left: 30px; }
@@ -1350,8 +1358,7 @@ main.main__content {
   padding-left: 14px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #000;
-  text-decoration: none; }
+  border-bottom: 1px solid #000; }
   .link--back:before, .back--link:before {
     display: block;
     width: 0;
@@ -1376,7 +1383,7 @@ main.main__content {
   overflow: auto; }
 
 .block-beta-banner {
-  color: #666;
+  color: #4d4d4d;
   width: 100%; }
 
 .beta-icon {
@@ -1390,7 +1397,7 @@ main.main__content {
     display: inline-block;
     position: relative; }
     .breadcrumb li a, ul.breadcrumb--search li a {
-      color: #666;
+      color: #4d4d4d;
       position: relative; }
     .breadcrumb li:after, ul.breadcrumb--search li:after {
       content: "";
@@ -1419,7 +1426,6 @@ main.main__content {
   padding: .75em;
   min-width: 7em;
   text-align: center;
-  text-decoration: none;
   width: fit-content; }
   .btn-primary:hover, .btn-secondary:hover, .webform-button--preview:hover, .webform-button--previous:hover:not(.back--link),
   .webform-button--next:hover:not(.back--link), .webform-wizard-pages-link:hover, form#user-login-form #edit-submit:hover, .btn-primary:focus, .btn-secondary:focus, .webform-button--preview:focus, .webform-button--previous:focus:not(.back--link),
@@ -1440,8 +1446,8 @@ main.main__content {
   display: inline-block; }
 
 .inset-text, .callout {
-  border-left: 7px solid #cacaca;
-  color: #666;
+  border-left: 7px solid #CEDC00;
+  color: #4d4d4d;
   font-size: 1.25em;
   max-width: 30em;
   padding: .25em .75em; }
@@ -1546,7 +1552,7 @@ section#block-currentwebsiteblock:after {
   max-width: 10rem; }
 
 #footer__inner a {
-  color: #666;
+  color: #4d4d4d;
   display: block;
   padding: .25rem 0;
   text-decoration: none; }
@@ -1686,9 +1692,10 @@ select {
   min-height: 40px;
   padding: .25em .5em; }
 
-.form-description, .fieldset-wrapper .description, .webform-element-description {
-  color: #666; }
+.form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description {
+  color: #4d4d4d; }
 
+/* Form Upload */
 /**
  * @file
  * GOV.UK Webform date composite styles.
@@ -1709,7 +1716,7 @@ select {
   -webkit-appearance: none; }
 
 .form-name {
-  color: #666;
+  color: #4d4d4d;
   padding-bottom: .75em;
   padding-top: .75em; }
 
@@ -1738,7 +1745,7 @@ select {
     padding-right: 9em; } }
 .form-progress, .text--progress {
   clear: both;
-  color: #666;
+  color: #4d4d4d;
   display: inline-block;
   text-align: right; }
   .form-progress p, .text--progress p {
@@ -1859,7 +1866,7 @@ select {
     #feedback-form-section form textarea, #feedback-form form textarea {
       height: 3.5em; }
     #feedback-form-section form .help-block, #feedback-form form .help-block {
-      color: #666; }
+      color: #4d4d4d; }
   #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title {
     display: block;
     font-family: "Open Sans Semibold", sans-serif;
@@ -1890,15 +1897,10 @@ select {
     #feedback-form form textarea {
       height: unset; } }
 .block-in-this-section-block {
-  margin-top: -50px;
   clear: left; }
-  .block-in-this-section-block .section__wrapper {
-    border-left: 5px solid #cacaca;
-    padding-left: 1em;
-    padding-top: 1em; }
   .block-in-this-section-block h2 {
     border-left: none;
-    color: #666;
+    color: #4d4d4d;
     font-family: "Open Sans", sans-serif;
     font-size: 1em;
     padding-left: 0; }
@@ -1959,7 +1961,7 @@ select {
 
 /* Menu icon styles */
 .menu-primary__icon {
-  color: #666;
+  color: #4d4d4d;
   font-size: 2em;
   float: right;
   text-decoration: none;
@@ -2363,15 +2365,10 @@ li.menu-primary__item.menu-primary__item--active a.menu-primary__link:after {
 .nav-related {
   max-width: 20em; }
   .nav-related .nav-related__list ul a {
-    color: #666;
+    color: #4d4d4d;
     display: inline-block; }
 
 /* Base search page styles */
-.search-index a {
-  text-decoration: none; }
-  .search-index a:hover, .search-index a:focus {
-    text-decoration: underline; }
-
 /* Search */
 .path-solr-search .field--name-field-rate-this-content, .path-solr-search .field--name-field-taxonomy, .path-solr-search .print__wrapper--pdf {
   display: none; }
@@ -2410,9 +2407,6 @@ li.menu-primary__item.menu-primary__item--active a.menu-primary__link:after {
       text-decoration: none; }
 
 /* No results */
-.view-empty {
-  padding: 1.5em 0; }
-
 /* Search Breadcrumbs */
 ul.breadcrumb--search {
   margin-left: 0;
@@ -2445,7 +2439,7 @@ ul.breadcrumb--search {
   padding: .25em .5em;
   width: 100%; }
 #views-exposed-form-solr-search-content-page-1 button, #views-exposed-form-search-content-page-1 button, #block-exposedformsearch-contentpage-1 button, #search-form button {
-  background-color: #666;
+  background-color: #4d4d4d;
   border: none;
   color: #fff;
   height: 2.25em;
@@ -2585,7 +2579,7 @@ form#user-login-form .control-label {
   display: block;
   padding: .5em 0; }
 form#user-login-form .description {
-  color: #666; }
+  color: #4d4d4d; }
 
 .views-exposed-form .control-label {
   display: none; }
@@ -2682,7 +2676,7 @@ nav.tabs {
       .nav-tabs > li > a:hover {
         border-color: #F7F7F7 #F7F7F7 #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #CCC;
+      color: #cacaca;
       background-color: #fff;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
@@ -2696,7 +2690,7 @@ nav.tabs {
     margin-left: 2px; }
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     color: #000;
-    background-color: #CCC; }
+    background-color: #cacaca; }
 
 .nav-stacked > li {
   float: none; }
@@ -2812,7 +2806,7 @@ nav.tabs {
   color: white;
   padding: 1em 0; }
 .prescribed .guidance-text, .prescribed .text--guidance {
-  border-color: #666; }
+  border-color: #4d4d4d; }
 .prescribed .btn-primary, .prescribed .btn-secondary, .prescribed .webform-button--preview, .prescribed .webform-button--previous:not(.back--link),
 .prescribed .webform-button--next:not(.back--link), .prescribed .webform-wizard-pages-link, .prescribed form#user-login-form #edit-submit, form#user-login-form .prescribed #edit-submit {
   cursor: pointer;
