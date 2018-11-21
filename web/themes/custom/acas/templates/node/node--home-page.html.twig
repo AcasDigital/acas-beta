@@ -75,33 +75,7 @@
   ]
 %}
 <article{{ attributes.addClass(classes) }} last-changed="{{ changed }}">
-{% if view_mode == "teaser" %}
-  <a href="{{ url }}" rel="bookmark">
-{% endif %}
-  <div class="article__wrapper">
-    {{ title_prefix }}
-    {% if view_mode == "teaser" %}
-      <h2{{ title_attributes }}>
-        {{ label }}
-      </h2>
-    {% endif %}
-    {{ title_suffix }}
 
-    {% if display_submitted %}
-      <footer>
-        {{ author_picture }}
-        <div{{ author_attributes.addClass('author') }}>
-          {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-          {{ metadata }}
-        </div>
-      </footer>
-    {% endif %}
+  {{ content }}
 
-    <div{{ content_attributes.addClass('article__content') }}>
-      {{ content }}
-    </div>
-  </div>
-  {% if view_mode == "teaser" %}
-    </a>
-  {% endif %}
 </article>
