@@ -46,12 +46,7 @@ class RelatedContent extends BlockBase {
     }
     if ($node->get('field_show_related_content')->value) {
       if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
-        $output .= '<nav class="nav-related" aria-labelledby="nav-related__title">
-        <h3 id="nav-related__title">
-          Related content
-        </h3>
-        <div class="nav-related__list" tabindex="-1">
-            <ul>';
+        $html = '';
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
         $path = $url;
         foreach($terms as $term) {
@@ -60,10 +55,10 @@ class RelatedContent extends BlockBase {
             if ($t->get('field_enabled')->value) {
               $url = '/' . general_taxonomy_path($term->name);
               if ($node->get('field_taxonomy')->target_id != $term->tid) {
-                $output .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
+                $html .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
               }
               else {
-                //$output .= '<li class="active">' . $term->name . '</li>';
+                //$html .= '<li class="active">' . $term->name . '</li>';
               }
             }
           }
@@ -79,7 +74,7 @@ class RelatedContent extends BlockBase {
                 $b = explode('</h1>', $a[1]);
                 $title = $b[0];
               }
-              $output .= '<li class="extra"><a class="external-link" href="' . $url . '">' . $title . '</a></li>';
+              $html .= '<li class="extra"><a class="external-link" href="' . $url . '">' . $title . '</a></li>';
             }
             else {
               $params = $link->getUrl()->getRouteParameters();
@@ -88,12 +83,21 @@ class RelatedContent extends BlockBase {
                 if (!$title) {
                   $title = $entity->getTitle();
                 }
-                $output .= '<li class="extra"><a href="' . $url . '">' . $title . '</a></li>';
+                $html .= '<li class="extra"><a href="' . $url . '">' . $title . '</a></li>';
               }
             }
           }
         }
-        $output .= '</ul></div></nav>';
+        if ($html) {
+          $output .= '<nav class="nav-related" aria-labelledby="nav-related__title">
+            <h3 id="nav-related__title">
+              Related content
+            </h3>
+            <div class="nav-related__list" tabindex="-1">
+                <ul>' . $html . '</ul>
+            </div>
+          </nav>';
+        }
       }else if ($node->getType() == 'support_page') {
         if ($node->hasField('field_related_content')) {
           $links = '';

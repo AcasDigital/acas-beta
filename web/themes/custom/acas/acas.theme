@@ -162,10 +162,12 @@ function acas_preprocess_breadcrumb(&$variables) {
     $parents = array_reverse($parents, TRUE);
     array_pop($parents);
     foreach($parents as $parent) {
-      $variables['breadcrumb'][] = [
-        'text' => $parent->getName(),
-        'url' => '/' . general_taxonomy_path($parent->getName()),
-      ];
+      if ((int) $parent->get('field_enabled')->value) {
+        $variables['breadcrumb'][] = [
+          'text' => $parent->getName(),
+          'url' => '/' . general_taxonomy_path($parent->getName()),
+        ];
+      }
     }
     if ($node->getType() == 'secondary_page' && $nid = _is_guide($node)) {
       $node = \Drupal\node\Entity\Node::load($nid);
