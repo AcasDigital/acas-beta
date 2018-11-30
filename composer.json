@@ -236,6 +236,7 @@
         "drupal/taxonomy_menu": "^3.0",
         "drupal/text_summary_options": "^1.0",
         "drupal/tfa": "^1.0",
+        "drupal/twig_xdebug": "^1.0",
         "drupal/typed_data": "^1.0",
         "drupal/url_embed": "^1.0",
         "drupal/username_enumeration_prevention": "^1.0",

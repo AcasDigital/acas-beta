@@ -15,3 +15,6 @@
 .node-page-form .field--name-field-test, .feedback-form .form-type-entity-autocomplete .description {
   display: none;
 }
+.toolbar-icon-entity-taxonomy-vocabulary-add-form {
+  display: none !important;
+}
