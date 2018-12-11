@@ -38,11 +38,11 @@ class FeedbackForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('feedback.settings');
-    $form['filters'] = array(
+    $form['filters'] = [
       '#type' => 'fieldset',
       '#title' => t('Filters'),
       '#collapsible' => TRUE,
-    );
+    ];
     $form['filters']['from_date'] = [
       '#type' => 'date',
       '#title' => 'From date',

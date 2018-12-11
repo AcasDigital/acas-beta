@@ -40,7 +40,8 @@ Labels for single checkboxes/radios contain the element itself and thus have
 always to be rendered regardless of whether they have a title or not.
 #}
 {%- if title is not empty or is_checkbox or is_radio -%}
-  <label{{ attributes.addClass(classes) }}>{{ element }}{{ title }}
+  <label{{ attributes.addClass(classes) }}>{{ element }}
+    <span>{{ title }}</span>
     {%- if description -%}
       <p class="help-block">{{ description }}</p>
     {%- endif -%}

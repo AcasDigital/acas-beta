@@ -33,6 +33,37 @@ class AdminForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('acas.settings');
     $cloudfront_config = $this->config('cloudfront.settings');
+    $form['enable_feedback_email'] = array(
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('enable_feedback_email') ?: 0,
+      '#title' => t('Enable feedback emails'),
+    );
+    $form['feedback'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Feedback email'),
+      '#collapsible' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="enable_feedback_email"]' => array('checked' => TRUE),
+        ],
+      ],
+    );
+    $form['feedback']['site_email'] = array(
+      '#type' => 'checkbox',
+      '#default_value' => $config->get('site_email') ?: 0,
+      '#title' => t('Use the site email address'),
+    );
+    $form['feedback']['feedback_email'] = array(
+      '#type' => 'textfield',
+      '#default_value' => $config->get('feedback_email') ?: '',
+      '#title' => t('Feedback email address'),
+      '#size' => 100,
+      '#states' => [
+        'visible' => [
+          ':input[name="site_email"]' => array('checked' => FALSE),
+        ],
+      ],
+    );
     $form['search_placeholder'] = array(
       '#type' => 'textfield',
       '#default_value' => $config->get('search_placeholder') ?: 'Search beta website',
@@ -111,6 +142,8 @@ class AdminForm extends ConfigFormBase {
     ->set('prod', $form_state->getValue('prod'))
     ->set('tables', $form_state->getValue('tables'))
     ->set('config', $form_state->getValue('config'))
+    ->set('site_email', $form_state->getValue('site_email'))
+    ->set('feedback_email', $form_state->getValue('feedback_email'))
     ->save();
     
     \Drupal::configFactory()->getEditable('cloudfront.settings')

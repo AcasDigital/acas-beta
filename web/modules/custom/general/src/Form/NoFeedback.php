@@ -126,6 +126,29 @@ class NoFeedback extends FormBase {
       'delta' => 0,
     ];
     \Drupal::database()->insert('webform_submission_data')->fields($fields)->execute();
+    
+    // Send email
+    $config = \Drupal::config('acas.settings');
+    if ($config->get('enable_feedback_email')) {
+      if ($config->get('site_email')) {
+        $to = \Drupal::config('system.site')->get('mail');
+      }
+      else {
+        $to = $config->get('feedback_email');
+      }
+      $questions = [1 => 'I do not understand the information', 2 => 'I cannot find the information I\'m looking for', 3 => 'I cannot work out what to do next', 4 => 'Other'];
+      $mailManager = \Drupal::service('plugin.manager.mail');
+      $module = 'general';
+      $key = 'feedback';
+      $params['body'][] = $questions[(int) $values['radios']];
+      $params['body'][] = 'What are you trying to find out?';
+      $params['body'][] = $values['answer'];
+      $params['subject'] = 'No feedback';
+      $langcode = \Drupal::currentUser()->getPreferredLangcode();
+      $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
+    }
+    
+    // Redirect for JS disabled
     $form_state->setRedirectUrl(url::fromUserInput('/feedback-thankyou'));
   }
 }

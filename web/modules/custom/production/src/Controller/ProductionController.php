@@ -68,11 +68,17 @@ class ProductionController extends ControllerBase {
         $zip->open('/tmp/sync.zip');
         $zip->extractTo('/tmp/');
         $zip->close();
+        // Put site off-line as access during the db update causes all types of problems
+        // This can be the health check as all others are served by CloudFront
+        // Easiest way is to rename index.php
+        exec('mv /var/www/html/web/index.php /var/www/html/web/index.bak');
         $connection = \Drupal\Core\Database\Database::getConnection()->getConnectionOptions();
         $cmd = 'mysql -u ' . $connection['username'] . ' -p' . $connection['password'] . ' -h ' . $connection['host'] . ' ' . $connection['database'] . ' < /tmp/' . $_POST['file'];
         exec($cmd);
         unlink('/tmp/sync.zip');
         unlink('/tmp/' . $_POST['file']);
+        // Re-enable site
+        exec('mv /var/www/html/web/index.bak /var/www/html/web/index.php');
         foreach($configs as $c) {
           $c->save(TRUE);
         }

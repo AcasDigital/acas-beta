@@ -994,6 +994,18 @@ function general_user_login_submit($form, &$form_state) {
 }
 
 /**
+ * Implementation of hook_mail().
+ */
+function general_mail($key, &$message, $params) {
+  switch($key) {
+    default:
+      $message['subject'] = $params['subject'];
+      $message['body'] = $params['body'];
+      break;
+    }
+}
+
+/**
  * Implements hook_content_moderation_notification_mail_data_alter().
  * Add the changed content URL to the notification email
  */

@@ -101,6 +101,27 @@ class YesFeedback extends FormBase {
       'delta' => 0,
     ];
     \Drupal::database()->insert('webform_submission_data')->fields($fields)->execute();
+    
+    // Send email
+    $config = \Drupal::config('acas.settings');
+    if ($config->get('enable_feedback_email')) {
+      if ($config->get('site_email')) {
+        $to = \Drupal::config('system.site')->get('mail');
+      }
+      else {
+        $to = $config->get('feedback_email');
+      }
+      $mailManager = \Drupal::service('plugin.manager.mail');
+      $module = 'general';
+      $key = 'feedback';
+      $params['body'][] = 'What were you looking for?';
+      $params['body'][] = $values['answer'];
+      $params['subject'] = 'Yes feedback';
+      $langcode = \Drupal::currentUser()->getPreferredLangcode();
+      $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
+    }
+    
+    // Redirect for JS disabled
     $form_state->setRedirectUrl(url::fromUserInput('/feedback-thankyou'));
   }
 }

@@ -37,7 +37,8 @@
           $("#feedback-form .form-item-answer").slideDown();
           $("#feedback-form .form-item-answer textarea").focus();
         });
-        $("#feedback-form .feedback-close-wrapper").click(function() {
+        $("#feedback-form .feedback-close-wrapper a").click(function(e) {
+          e.preventDefault();
           $("#feedback-form .feedback-close-wrapper").hide();
           $("#feedback-form .webform-submission-form").slideUp();
           $("#feedback-form .feedback-question-wrapper a").show();
