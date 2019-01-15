@@ -27,6 +27,7 @@
           }, 500);
           return false;
         });
+        
         if (!$("#feedback-form #edit-radios").val()) {
           $("#feedback-form .no-feedback .form-item-answer").hide();
         }
@@ -84,6 +85,11 @@
           }
         });
       }
+      
+      var txt = jQuery('#feedback-form .feedback-question span:first').text();
+      jQuery('#feedback-form .feedback-question #yes').attr('aria-label', txt + ': Yes. This link opens new content.');
+      jQuery('#feedback-form .feedback-question #no').attr('aria-label', txt + ': No. This link opens new content.');
+
     }
   };
 })(jQuery, Drupal);
