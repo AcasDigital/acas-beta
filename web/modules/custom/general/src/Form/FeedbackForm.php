@@ -105,7 +105,7 @@ class FeedbackForm extends FormBase {
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => t('Apply'),
-      '#attributes' => ['class' => ['button, button--primary']],
+      '#attributes' => ['class' => ['btn-primary']],
     ];
     $form['actions']['reset'] = [
       '#type' => 'submit',
@@ -113,12 +113,11 @@ class FeedbackForm extends FormBase {
       '#attributes' => ['class' => ['button']],
       '#submit' => array('::submitFormReset'),
     ];
-    $form['#attached']['library'][] = "general/icheck";
     $form['actions']['reset']['#suffix'] = '<br /><br />' . $this->table($form_state, $options);
     $form['reset'] = [
       '#type' => 'submit',
       '#value' => t('Download CSV File'),
-      '#attributes' => ['class' => ['button, button--primary']],
+      '#attributes' => ['class' => ['btn-primary']],
       '#submit' => array('::submitDownload'),
     ];
     return $form;

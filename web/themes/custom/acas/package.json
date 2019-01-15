@@ -9,7 +9,6 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "@acasdigital/acas-frontend": "^1.5.4",
     "grunt": "^1.0.3",
     "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-copy": "^1.0.0",
@@ -20,6 +19,7 @@
     "grunt-shell": "^2.1.0"
   },
   "dependencies": {
+    "@acas-digital-innovation/acas-frontend": "^1.0.4",
     "os-tmpdir": "^1.0.2"
   },
   "repository": {

@@ -191,7 +191,7 @@ function acas_preprocess_views_view(&$variables) {
   if ($variables['id'] == 'solr_search_content') {
     $view = $variables['view'];
     $exposed_input = $view->getExposedInput();
-    $search_term = $exposed_input['keys'];
+    $search_term = @$exposed_input['keys'];
     if ($view->total_rows === 0) {
       $text = $variables['empty']['area']['#text'];
       $text = str_replace('KEYS', $search_term, $text);

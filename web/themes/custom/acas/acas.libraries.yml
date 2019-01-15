@@ -3,10 +3,9 @@ global-styling:
     theme:
       dist/css/main.css: {}
   js:
+    dist/js/drupal-overrides.min.js: {}
     dist/js/acas.min.js: {}
     
-
-
 # bootstrap-scripts:
 #   js:
 #     bootstrap/assets/javascripts/bootstrap/affix.js: {}

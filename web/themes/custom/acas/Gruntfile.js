@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-  const acasdigital_frontend = './node_modules/@acasdigital/acas-frontend/';
+  const acasdigital_frontend = './node_modules/@acas-digital-innovation/acas-frontend/';
 
   grunt.initConfig({
     shell: {
@@ -16,12 +16,12 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: acasdigital_frontend,
+          cwd: acasdigital_frontend + 'assets/',
           dest: 'dist',
           src: [
             '*.{ico,png,txt}',
             'images/{,*/}*.{png,jpeg,jpg,gif,webp,svg}',
-            'fonts/{,*/}*.{ttf,otf,woff,eot}'
+            'fonts/{,*/}*.{ttf,otf,woff,woff2,eot}'
           ]
         }]
       }
