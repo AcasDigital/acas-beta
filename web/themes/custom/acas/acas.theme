@@ -231,7 +231,3 @@ function acas_theme_suggestions_page_alter(&$suggestions, $variables, $hook) {
     }
   }
 }
-
-function acas_preprocess_webform_submission(&$variables) {
-  
-}

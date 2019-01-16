@@ -31,8 +31,8 @@ class SyncForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     if (!_is_site('uat')) {
-      drupal_set_message("Sync to Production can only be run from the UAT site!", 'error');
-      return array('#markup' => '<h3>Not allowed</h3>');
+      //drupal_set_message("Sync to Production can only be run from the UAT site!", 'error');
+      //return array('#markup' => '<h3>Not allowed</h3>');
     }
     $config = $this->config('acas.settings');
     $form['cloudfront'] = array(
@@ -51,6 +51,7 @@ class SyncForm extends ConfigFormBase {
     $form['#action'] = '/admin/config/development/sync-prod';
     $form['#attached']['library'][] = 'production/sync_prod';
     $form['#attributes']['onsubmit'] = 'return syncProd()';
+    
     $form['#suffix'] = '<div id="sync_progress" class="hidden">Sync to Production has started, this might take several minutes. Please wait...</div>';
     return parent::buildForm($form, $form_state);
   }

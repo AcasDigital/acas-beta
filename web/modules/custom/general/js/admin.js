@@ -25,6 +25,9 @@
       $("#block-seven-primary-local-tasks nav .tabs__tab a:contains('View')").parent().hide();
       $("#edit-relations summary").text("Place in site structure");
       $("#edit-relations .form-select").attr("size", "10");
+      if ($("#sync_progress").length) {
+        $('<iframe width="560" height="315" src="https://www.youtube.com/embed/vCadcBR95oU?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>').insertAfter("#sync_progress");
+      }
     }
   };
 })(jQuery, Drupal);
