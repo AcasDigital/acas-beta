@@ -411,7 +411,7 @@ a.share.link-external {
 #feedback-form .feedback-close-wrapper {
   margin-top: 5px; }
 
-.nav-justified > li > a, .nav-tabs.nav-justified > li > a,
+.block-in-this-section-block h2, .nav-justified > li > a, .nav-tabs.nav-justified > li > a,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
   margin-bottom: 5px; }
@@ -473,7 +473,7 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 .next .details-wrapper {
   padding-right: 10px; }
 
-h4, .block-in-this-section-block h2 {
+h4 {
   margin-bottom: 15px; }
 
 .print-download-email .modal .x {
