@@ -9,6 +9,9 @@
 
 use Drupal\Core\Link;
 
+/**
+ * Implements hook_preprocess_page().
+ */
 function acas_preprocess_page(&$variables) {
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     if (is_numeric($node)) {
@@ -22,6 +25,9 @@ function acas_preprocess_page(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_menu().
+ */
 function acas_preprocess_menu(&$variables) {
   if ($variables['menu_name'] == 'main') {
     unset($variables['items']['standard.front_page']);
@@ -61,6 +67,9 @@ function acas_preprocess_field(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_views_view_field().
+ */
 function acas_preprocess_views_view_field(&$variables) {
   if ($variables['field']->realField == 'pageTitle') {
     $a=$variables['field']->getValue($variables['row']);
@@ -68,6 +77,9 @@ function acas_preprocess_views_view_field(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_block().
+ */
 function acas_preprocess_block(&$variables) {
   if ($variables['plugin_id'] == 'local_tasks_block') {
     if ($node = \Drupal::routeMatch()->getParameter('node')) {
@@ -107,10 +119,16 @@ function acas_preprocess_block(&$variables) {
   //}
 }
 
+/**
+ * Implements hook_preprocess_node().
+ */
 function acas_preprocess_node(&$variables) {
   $variables['changed'] = $variables['node']->getChangedTime();
 }
 
+/**
+ * Implements hook_preprocess_container().
+ */
 function acas_preprocess_container(&$variables) {
   $variables['no_display'] = FALSE;
   if (@$variables['element']['#export_type'] == 'pdf') {
@@ -126,11 +144,17 @@ function acas_preprocess_container(&$variables) {
   }
 }
 
+/**
+ * Implements hook_bootstrap_iconize_text_alte().
+ */
 function acas_bootstrap_iconize_text_alter(array &$texts) {
   $texts['matches'][t('Print')->render()] = 'print';
   $texts['contains']['Print'] = 'print';
 }
 
+/**
+ * Implements hook_preprocess_html().
+ */
 function acas_preprocess_html(&$variables) {
   if ((preg_match('/MSIE\s(?P<v>\d+)/i', @$_SERVER['HTTP_USER_AGENT'], $B) && $B['v'] <= 8) || \Drupal::request()->query->get('ie8')) {
     $variables['ie8'] = TRUE;
@@ -149,12 +173,18 @@ function acas_preprocess_html(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_item_list().
+ */
 function acas_preprocess_item_list(&$variables) {
   if ($variables['title'] == 'Did you mean') {
     $variables['did_you_mean'] = TRUE;
   }
 }
 
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
 function acas_preprocess_breadcrumb(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node instanceof \Drupal\node\NodeInterface && $node->hasField('field_taxonomy')) {
@@ -180,6 +210,9 @@ function acas_preprocess_breadcrumb(&$variables) {
   }
 }
 
+/**
+ * Implements hook_theme_suggestions_input_alter().
+ */
 function acas_theme_suggestions_input_alter(&$suggestions, array $variables) {
   $element = $variables['element'];
   if ($element['#type'] == 'submit' && ($element['#id'] == 'edit-submit-solr-search-content' || $element['#id'] == 'edit-submit-search-content' || $element['#id'] == 'edit-submit-search')) {
@@ -187,6 +220,9 @@ function acas_theme_suggestions_input_alter(&$suggestions, array $variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_views_view().
+ */
 function acas_preprocess_views_view(&$variables) {
   if ($variables['id'] == 'solr_search_content') {
     $view = $variables['view'];
@@ -204,9 +240,6 @@ function acas_preprocess_views_view(&$variables) {
     }
   }
 }
-
-
-
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().

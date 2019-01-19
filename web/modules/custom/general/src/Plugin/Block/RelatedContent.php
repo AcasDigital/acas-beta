@@ -6,6 +6,9 @@ use Drupal\Core\Block\BlockBase;
 
 /**
  * Provides a 'RelatedContent' block.
+ *
+ * Also builds the social share block
+ * 
  * @Block(
  *   id = "related_content_block",
  *   admin_label = @Translation("Related Content block"),

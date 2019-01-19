@@ -456,6 +456,7 @@ function general_feedback_form_validate(&$form, &$form_state) {
 
 /**
  * Implements general_reorder_chapter_pages()
+ * 
  * Returns the form for reordering chapter pages
  * when the parent guide page is being edited
  */
@@ -645,6 +646,7 @@ function general_pathauto_alias_alter(&$alias, array &$context) {
 
 /**
  * Implements general_taxonomy_path().
+ * 
  * sanitise a title into a valid string for a path/alias
  */
 function general_taxonomy_path($name) {
@@ -658,6 +660,7 @@ function general_taxonomy_path($name) {
 
 /**
  * Implements general_taxonomy_overview_terms_submit().
+ * 
  * If the Acas vocabulary, rebuild the naviagation menu
  */
 function general_taxonomy_overview_terms_submit($form, &$form_state) {
@@ -669,6 +672,7 @@ function general_taxonomy_overview_terms_submit($form, &$form_state) {
 
 /**
  * Implements general_node_details_page_edit_form_submit().
+ * 
  * Assign the weights of chapter pages of this guide page
  */
 function general_node_details_page_edit_form_submit($form, &$form_state) {
@@ -682,6 +686,7 @@ function general_node_details_page_edit_form_submit($form, &$form_state) {
 
 /**
  * Implements hook_taxonomy_term_update().
+ * 
  * If the Acas vocabulary, rebuild the naviagation menu
  */
 function general_taxonomy_term_update($term) {
@@ -692,6 +697,7 @@ function general_taxonomy_term_update($term) {
 
 /**
  * Implements general_menu_full_first_level().
+ * 
  * Builds the Main navigation menu first level
  * Called whenever Taxonomy changes
  */
@@ -734,6 +740,7 @@ function general_taxonomy_term_update($term) {
 
 /**
  * Implements general_menu_full_second_level().
+ * 
  * Builds the secondary level menus, called recursively to build
  * unlimited sub-menus
  * Called whenever Taxonomy changes
@@ -791,6 +798,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
 
 /**
  * Implements general_menu_secondary_pages().
+ * 
  * Builds a secondary menu of any chapter pages of
  * a parent guide page
  * Called whenever Taxonomy changes
@@ -864,6 +872,7 @@ function general_ckeditor_css_alter(&$css, $editor) {
 
 /**
  * general_guide_page()
+ * 
  * Build the entire guide page for print or download
  */
 function general_guide_page($nid) {
@@ -939,6 +948,7 @@ function general_guide_page($nid) {
 
 /**
  * Implements _is_site().
+ * 
  * Returns TRUE if the site parameter matches this site
  */
 function _is_site($site = 'beta') {
@@ -951,6 +961,7 @@ function _is_site($site = 'beta') {
 
 /**
  * Implements _is_guide().
+ * 
  * If a chapter page, return the parent guide page NID
  * else if a guide page and has chapters, return the NID
  * else return FALSE
@@ -987,6 +998,7 @@ function _is_guide($entity) {
 
 /**
  * general_user_login_submit().
+ * 
  * Redirect the user to their workbench after login
  */
 function general_user_login_submit($form, &$form_state) {
@@ -1007,6 +1019,7 @@ function general_mail($key, &$message, $params) {
 
 /**
  * Implements hook_content_moderation_notification_mail_data_alter().
+ * 
  * Add the changed content URL to the notification email
  */
 function general_content_moderation_notification_mail_data_alter($entity, &$data) {
@@ -1120,6 +1133,7 @@ function general_entity_field_access($operation, \Drupal\Core\Field\FieldDefinit
 
 /**
  * Implements general_feedback_page().
+ * 
  * If JS is disabled then return the feedback form as a page
  */
 function general_feedback_page($type, $nid) {
@@ -1137,8 +1151,8 @@ function general_feedback_page($type, $nid) {
 
 
 /**
- *
- * Health check
+ * Implements general_health().
+ * 
  * Called by health checks
  */
 function general_health() {
