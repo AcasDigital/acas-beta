@@ -58,6 +58,7 @@ class ProductionController extends ControllerBase {
       $config_factory = \Drupal::configFactory();
       $config = \Drupal::config('acas.settings');
       if ($sync_type < 3) {
+        // Save the configs to restore
         $configs = [];
         $exclude = preg_split('/\r\n|\r|\n/', $config->get('config'));
         foreach($exclude as $e) {
@@ -79,6 +80,7 @@ class ProductionController extends ControllerBase {
         unlink('/tmp/' . $_POST['file']);
         // Re-enable site
         exec('mv /var/www/html/web/index.bak /var/www/html/web/index.php');
+        // Restore the configs
         foreach($configs as $c) {
           $c->save(TRUE);
         }

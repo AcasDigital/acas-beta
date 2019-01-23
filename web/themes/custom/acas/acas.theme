@@ -164,6 +164,9 @@ function acas_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'path-feedback';
   }
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if (is_numeric($node)) {
+      $node = \Drupal\node\Entity\Node::load($node);
+    }
     $variables['page_type'] = str_replace(' ', '-', strtolower(node_type_load($node->bundle())->label()));
     if ($node instanceof \Drupal\node\NodeInterface && ($node->getType() == 'details_page' || $node->getType() == 'secondary_page')) {
       if (_is_guide($node)) {
