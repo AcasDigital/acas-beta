@@ -189,9 +189,10 @@ function acas_preprocess_item_list(&$variables) {
  * Implements hook_preprocess_breadcrumb().
  */
 function acas_preprocess_breadcrumb(&$variables) {
+  $variables['breadcrumb'] = [];
+  $variables['breadcrumb'][] = ['text' => 'Home', 'url' => '/'];
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node instanceof \Drupal\node\NodeInterface && $node->hasField('field_taxonomy')) {
-    $variables['breadcrumb'] = [];
     $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadAllParents($node->get('field_taxonomy')->target_id);
     $parents = array_reverse($parents, TRUE);
     array_pop($parents);
