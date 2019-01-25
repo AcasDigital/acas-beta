@@ -75,7 +75,7 @@ table {
 .invalid-feedback, .error-summary .error-summary__list {
   font: 500 1em "Open Sans Semibold", sans-serif; }
 
-.text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
+.text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, #social-share .text, form#user-login-form .description, .prescribed .guidance-text {
   font-size: 0.85rem; }
@@ -252,11 +252,11 @@ table {
   .row:after, #block-searchblock:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .col-md-4, article.teaser, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, article.teaser, .col-md-6, #block-currentwebsiteblock, .col-lg-6, .col-xs-7, .col-sm-7, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-lg-7, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .path-webform header#block-acas-page-title,
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, article.teaser, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, article.teaser, .col-md-6, #block-currentwebsiteblock, .col-lg-6, .col-xs-7, .col-sm-7, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-lg-7, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
-#block-conciliationpreviewfootermessage, .col-xs-8, .col-sm-8, .eu-cookie-compliance-banner .eu-cookie-compliance-message, #block-searchblock form, .col-md-8, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .path-webform header#block-acas-page-title,
+#block-conciliationpreviewfootermessage, .col-xs-8, .col-sm-8, #block-searchblock form, .col-md-8, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
-#block-conciliationpreviewfootermessage, .col-lg-8, .col-xs-9, .col-sm-9, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .col-md-9, article.home-page.search-index, article.page.search-index, article.secondary-page.search-index, article.details-page.search-index, article.support-page.search-index, article.thank-you-page.search-index, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
+#block-conciliationpreviewfootermessage, .col-lg-8, .col-xs-9, .col-sm-9, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .col-md-9, article.home-page.search-index, article.page.search-index, article.secondary-page.search-index, article.details-page.search-index, article.support-page.search-index, article.thank-you-page.search-index, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
@@ -264,7 +264,7 @@ table {
   padding-left: 15px;
   padding-right: 15px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   float: left; }
@@ -302,7 +302,7 @@ table {
 .col-xs-11 {
   width: 91.66667%; }
 
-.col-xs-12, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
+.col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   width: 100%; }
@@ -425,7 +425,7 @@ table {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .col-sm-5, .col-sm-6, article.teaser, .col-sm-7, #block-currentwebsiteblock, .col-sm-8, .eu-cookie-compliance-banner .eu-cookie-compliance-message, #block-searchblock form, .col-sm-9, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, article.teaser, .col-sm-7, #block-currentwebsiteblock, .col-sm-8, #block-searchblock form, .col-sm-9, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left; }
 
   .col-sm-1 {
@@ -437,7 +437,7 @@ table {
   .col-sm-3 {
     width: 25%; }
 
-  .col-sm-4, .eu-cookie-compliance-banner .eu-cookie-compliance-buttons {
+  .col-sm-4 {
     width: 33.33333%; }
 
   .col-sm-5 {
@@ -449,7 +449,7 @@ table {
   .col-sm-7, #block-currentwebsiteblock {
     width: 58.33333%; }
 
-  .col-sm-8, .eu-cookie-compliance-banner .eu-cookie-compliance-message, #block-searchblock form {
+  .col-sm-8, #block-searchblock form {
     width: 66.66667%; }
 
   .col-sm-9, header.block-page-title-block, article.home-page.full, article.page.full, article.secondary-page.full, article.details-page.full, article.support-page.full, article.thank-you-page.full {
@@ -1087,7 +1087,7 @@ button,
 .breadcrumb li, ul.breadcrumb--search li, #footer__inner ul li, .block-in-this-section-block .section__wrapper ul li, .menu-primary li, .menu-secondary li, .nav-related .nav-related__list ul li, #social-share ul li {
   padding: 0px; }
 
-.eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert > p + p, .find-address-wrapper .find_address, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
+.alert > p + p, .find-address-wrapper .find_address, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
   margin-top: 5px; }
@@ -1103,7 +1103,7 @@ button,
 #social-share li {
   margin-right: 5px; }
 
-ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
+ul li, ol li, .eu-cookie-compliance-banner .eu-cookie-compliance-content, .block-in-this-section-block .section__wrapper ul li,
 #footer__inner a,
 #social-share {
   padding-top: 5px; }
@@ -1136,10 +1136,7 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 #feedback-form .feedback-question a {
   margin-left: 10px; }
 
-.eu-cookie-compliance-banner .eu-cookie-compliance-buttons button:first-child {
-  margin-right: 10px; }
-
-.eu-cookie-compliance-banner .eu-cookie-compliance-buttons button, .invalid-feedback, .js-pager__items .pager__item a {
+.invalid-feedback, .js-pager__items .pager__item a {
   padding: 10px; }
 
 .example-block,
@@ -1147,7 +1144,7 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 .nav-related {
   padding-top: 10px; }
 
-#feedback-form-section .panel, #feedback-form .panel,
+.eu-cookie-compliance-banner .eu-cookie-compliance-content, #feedback-form-section .panel, #feedback-form .panel,
 .region.region-top-bar,
 .nav-related {
   padding-bottom: 10px; }
@@ -1207,7 +1204,6 @@ a.menu-secondary__link,
 .webform-button--next:not(.back--link),
 .webform-wizard-pages-link,
 form#user-login-form #edit-submit,
-.eu-cookie-compliance-banner .eu-cookie-compliance-content,
 .alert,
 #modal .title-wrapper .title,
 #modal .spinner-wrapper,
@@ -1231,7 +1227,6 @@ h3, .chapters--search h2, .example-block, .form-description, .upload-wrapper .de
 .webform-button--next:not(.back--link),
 .webform-wizard-pages-link,
 form#user-login-form #edit-submit,
-.eu-cookie-compliance-banner .eu-cookie-compliance-content,
 .alert,
 #modal .title-wrapper .title,
 #modal .spinner-wrapper,
@@ -1503,25 +1498,14 @@ form#user-login-form [disabled]#edit-submit {
 .eu-cookie-compliance-banner {
   background-color: #007C85;
   overflow: auto; }
+  .eu-cookie-compliance-banner, .eu-cookie-compliance-banner a {
+    color: #fff; }
   .eu-cookie-compliance-banner .eu-cookie-compliance-content {
-    color: #fff;
-    font-style: normal;
     max-width: 100%; }
   .eu-cookie-compliance-banner .eu-cookie-compliance-message {
-    max-width: 100%; }
-    .eu-cookie-compliance-banner .eu-cookie-compliance-message p {
-      display: inline-block;
-      font-family: "Open Sans", sans-serif;
-      vertical-align: middle; }
-  .eu-cookie-compliance-banner .eu-cookie-compliance-buttons button {
-    cursor: pointer;
-    background: #fff;
-    border: 1px solid transparent;
-    color: #007C85;
-    font-family: "Century Gothic Bold", "AppleGothic", sans-serif;
-    min-width: 8em;
-    position: relative;
-    text-align: center; }
+    width: 100%; }
+    .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
+      display: inline-block; }
 
 .example-block {
   border-left: 10px solid #cacaca; }
@@ -2040,8 +2024,11 @@ article.teaser .article__content {
     bottom: 1em;
     left: 0;
     overflow: hidden;
-    padding: 0 1.5em;
+    padding: 0 20px;
     position: absolute; } }
+@media (min-width: 1200px) {
+  .article.teaser .article__wrapper {
+    min-height: 11em; } }
 #header-main #block-acas-main-menu {
   background-color: #F7F7F7; }
 
@@ -2237,12 +2224,11 @@ li.menu-primary__item.menu-primary__item--active a.menu-primary__link:after {
 
   li.menu-primary__item.menu-primary__item--has-dropdown a.menu-primary__link:after {
     display: inline-block;
-    height: .5em;
     margin-left: 1em;
     position: relative;
     right: 0;
     top: 0;
-    width: 1em; } }
+    width: .875em; } }
 .secondary-page-navigation {
   overflow: auto; }
 
@@ -2338,10 +2324,10 @@ li.menu-primary__item.menu-primary__item--active a.menu-primary__link:after {
   display: none; }
 
 .btn-save {
-  color: #000;
+  color: #007C85;
   display: block;
   padding: .25em;
-  padding-right: 2em;
+  padding-left: 2em;
   position: relative; }
   .btn-save:before {
     content: "";

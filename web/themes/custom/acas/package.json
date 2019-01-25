@@ -19,7 +19,7 @@
     "grunt-shell": "^2.1.0"
   },
   "dependencies": {
-    "@acas-digital-innovation/acas-frontend": "^1.0.8",
+    "@acas-digital-innovation/acas-frontend": "^1.0.12",
     "os-tmpdir": "^1.0.2"
   },
   "repository": {
