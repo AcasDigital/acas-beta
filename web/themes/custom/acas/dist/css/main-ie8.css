@@ -310,23 +310,6 @@ a {
 .footer-logo:hover, #header-main #block-sitebranding a:hover, .footer-logo:focus, #header-main #block-sitebranding a:focus {
   background: transparent; }
 
-/* External Links */
-a.link-external {
-  background-image: url(../images/icons/icon-external-link.svg);
-  background-repeat: no-repeat;
-  background-position: center right;
-  background-size: 12px auto; }
-  a.link-external:focus {
-    background-image: url(../images/icons/icon-external-link-white.svg); }
-a.share.link-external {
-  background-image: none; }
-
-#print-preview a.link-external,
-.path-guide-print a.link-external,
-.path-page-print a.link-external,
-.print a.link-external {
-  background-image: none; }
-
 .form-number::-webkit-inner-spin-button, .form-number::-webkit-outer-spin-button, .govuk-webform-elements--wrapper input[type=number]::-webkit-inner-spin-button,
 .govuk-webform-elements--wrapper input[type=number]::-webkit-outer-spin-button, .col-centered, .alert, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
@@ -403,10 +386,7 @@ button,
 .breadcrumb li, ul.breadcrumb--search li, #footer__inner ul li, .block-in-this-section-block .section__wrapper ul li, .menu-primary li, .menu-secondary li, .nav-related .nav-related__list ul li {
   padding: 0px; }
 
-a.share.link-external {
-  padding-right: 0px; }
-
-.eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert > p + p, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
+.eu-cookie-compliance-banner .eu-cookie-compliance-buttons, .alert > p + p, .find-address-wrapper .find_address, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
   margin-top: 5px; }
@@ -424,10 +404,12 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 #footer__inner a {
   padding-bottom: 5px; }
 
+.find-address-wrapper .find_address,
 .menu-primary__icon,
 .view-solr-search-content .views-row {
   padding-left: 5px; }
 
+.find-address-wrapper .find_address,
 .menu-primary__icon,
 .view-solr-search-content .views-row {
   padding-right: 5px; }
@@ -436,7 +418,7 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 .invalid-feedback {
   margin-top: 10px; }
 
-.example-block ul, .fieldset-legend, .control-label, #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title, .nav-related .nav-related__list ul a, .view-empty p, #block-exposedformsolr-search-contentpage-1-3,
+.example-block ul, .example-block p, .fieldset-legend, .control-label, #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title, .nav-related .nav-related__list ul a, .view-empty p, #block-exposedformsolr-search-contentpage-1-3,
 .fieldgroup legend,
 .invalid-feedback {
   margin-bottom: 10px; }
@@ -485,6 +467,7 @@ h4 {
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance,
+article.teaser .article__wrapper,
 a.menu-primary__link,
 a.menu-secondary__link,
 .previous .details-wrapper,
@@ -494,6 +477,7 @@ a.menu-secondary__link,
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance,
+article.teaser .article__wrapper,
 a.menu-primary__link,
 a.menu-secondary__link,
 .previous .details-wrapper,
@@ -502,9 +486,6 @@ a.menu-secondary__link,
 
 .invalid-feedback {
   padding-left: 15px; }
-
-a.link-external {
-  padding-right: 15px; }
 
 #block-exposedformsolr-search-contentpage-1-3,
 .btn-primary,
@@ -562,17 +543,19 @@ form#user-login-form #edit-submit,
 .error-summary, #feedback-form-section form, #feedback-form form, .print-download-email .modal .title-wrapper, .print-download-email .btn-panel, .node-preview-container {
   padding: 20px; }
 
-article.teaser .article__wrapper {
+.find-address-wrapper .find_address {
   padding-top: 20px; }
 
-article.teaser .article__wrapper {
+.find-address-wrapper .find_address {
   padding-bottom: 20px; }
 
 #modal .title-wrapper,
+article.teaser .article__wrapper,
 a.menu-secondary__link {
   padding-left: 20px; }
 
 #modal .title-wrapper,
+article.teaser .article__wrapper,
 a.menu-secondary__link {
   padding-right: 20px; }
 
@@ -581,14 +564,12 @@ p, .guidance-text, .text--guidance, .prescribed .text--guidance {
 
 .guidance-text,
 .text--guidance,
-.prescribed .text--guidance,
-article.teaser .article__wrapper {
+.prescribed .text--guidance {
   padding-left: 25px; }
 
 .guidance-text,
 .text--guidance,
-.prescribed .text--guidance,
-article.teaser .article__wrapper {
+.prescribed .text--guidance {
   padding-right: 25px; }
 
 .print-download-email, ul.breadcrumb--search,
@@ -772,7 +753,7 @@ form#user-login-form [disabled]#edit-submit {
     border: 1px solid #007C85; }
 
 .inset-text, .callout {
-  border-left: 7px solid #CEDC00;
+  border-left: 10px solid #CEDC00;
   color: #4d4d4d;
   font-size: 1.25em;
   max-width: 30em;
@@ -809,7 +790,8 @@ form#user-login-form [disabled]#edit-submit {
   margin-bottom: -30px; }
 
 .eu-cookie-compliance-banner {
-  background-color: #007C85; }
+  background-color: #007C85;
+  overflow: auto; }
   .eu-cookie-compliance-banner .eu-cookie-compliance-content {
     color: #fff;
     font-style: normal;
@@ -831,7 +813,7 @@ form#user-login-form [disabled]#edit-submit {
     text-align: center; }
 
 .example-block {
-  border-left: 15px solid #F7F7F7; }
+  border-left: 10px solid #cacaca; }
 
 .alert {
   border: 1px solid transparent;
@@ -932,8 +914,6 @@ select {
 .find-address-wrapper input, .find-address-wrapper a {
   display: inline-block;
   max-width: 12em; }
-.find-address-wrapper a {
-  padding: .275em 1em; }
 
 #address_results select {
   max-width: 100%; }
@@ -1328,6 +1308,8 @@ select {
 #header-main .region-branding-bar {
   padding-bottom: 0.75em; }
 
+article.teaser h2 {
+  font-size: 1em; }
 article.teaser .article__wrapper {
   border: 4px solid #CEDC00;
   border-radius: 6px;
@@ -1341,7 +1323,7 @@ article.teaser .article__content {
     margin-bottom: 0; }
 
 article.teaser .article__wrapper {
-  min-height: 15em; }
+  min-height: 12em; }
 article.teaser .article__content {
   bottom: 1em;
   left: 0;
@@ -1349,20 +1331,6 @@ article.teaser .article__content {
   padding: 0 1.5em;
   position: absolute; }
 
-article.teaser .article__wrapper {
-  min-height: 12em; }
-
-article.teaser.alternative h2 {
-  font-size: 1em; }
-article.teaser.alternative .article-wrapper {
-  padding-bottom: 15px;
-  padding-top: 15px;
-  padding-left: 20px;
-  padding-right: 20px; }
-
-@media (min-width: 768px) {
-  article.teaser.alternative .article__wrapper {
-    min-height: 12em; } }
 #header-main #block-acas-main-menu {
   background-color: #F7F7F7; }
 
@@ -1647,7 +1615,8 @@ li.menu-primary__item.menu-primary__item--has-dropdown a.menu-primary__link:afte
 .btn-save {
   color: #000;
   display: block;
-  padding: .25em 0 .25em 2em;
+  padding: .25em;
+  padding-right: 2em;
   position: relative; }
   .btn-save:before {
     content: "";
@@ -2859,10 +2828,6 @@ nav.tabs {
 
 #print-preview .btn-cta--helpline, .path-guide-print .btn-cta--helpline, .print .btn-cta--helpline {
   display: none; }
-#print-preview .link-external, .path-guide-print .link-external, .print .link-external {
-  padding-right: 0; }
-  #print-preview .link-external:after, .path-guide-print .link-external:after, .print .link-external:after {
-    display: none; }
 
 .path-webform header#block-acas-page-title:before, .path-webform header#block-acas-page-title:after,
 .path-webform .webform-submission-form:before,

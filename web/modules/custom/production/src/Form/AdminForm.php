@@ -35,7 +35,7 @@ class AdminForm extends ConfigFormBase {
     $cloudfront_config = $this->config('cloudfront.settings');
     $form['enable_feedback_email'] = array(
       '#type' => 'checkbox',
-      '#default_value' => $config->get('enable_feedback_email') ?: 0,
+      '#default_value' => $config->get('enable_feedback_email'),
       '#title' => t('Enable feedback emails'),
     );
     $form['feedback'] = array(
@@ -50,7 +50,7 @@ class AdminForm extends ConfigFormBase {
     );
     $form['feedback']['site_email'] = array(
       '#type' => 'checkbox',
-      '#default_value' => $config->get('site_email') ?: 0,
+      '#default_value' => $config->get('site_email'),
       '#title' => t('Use the site email address'),
     );
     $form['feedback']['feedback_email'] = array(

@@ -18,14 +18,11 @@
 #}
 
 <div class="eu-cookie-compliance-banner eu-cookie-compliance-banner-info">
-  <div class ="popup-content info eu-cookie-compliance-content">
+  <div class="popup-content info eu-cookie-compliance-content">
     <div id="popup-text" class="eu-cookie-compliance-message">
       {{ message }}
-    </div>
-    <div id="popup-buttons" class="eu-cookie-compliance-buttons">
-      <button type="button" class="agree-button eu-cookie-compliance-agree-button">{{ agree_button }}</button>
       {% if disagree_button %}
-        <button type="button" class="find-more-button eu-cookie-compliance-more-button">{{ disagree_button }}</button>
+        <a class="find-more-button eu-cookie-compliance-more-button">{{ disagree_button }}</a>
       {% endif %}
     </div>
   </div>
