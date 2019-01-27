@@ -48,7 +48,7 @@ class RelatedContent extends BlockBase {
       $output .= '<div id="social-share">' . drupal_render($render) . '</div>';
     }
     if ($node->get('field_show_related_content')->value) {
-      if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
+      if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page' || $node->getType() == 'publications_page') {
         $html = '';
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
         $path = $url;
@@ -57,7 +57,7 @@ class RelatedContent extends BlockBase {
             $t = \Drupal\taxonomy\Entity\Term::load($term->tid);
             if ($t->get('field_enabled')->value) {
               $url = '/' . general_taxonomy_path($term->name);
-              if ($node->get('field_taxonomy')->target_id != $term->tid) {
+              if ($node->get('field_taxonomy')->target_id != $term->tid || $node->getType() == 'publications_page') {
                 $html .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
               }
               else {

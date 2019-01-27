@@ -1,14 +1,9 @@
 .node-landing-page-form .field--name-title, .node-landing-page-edit-form .field--name-title,
 .node-details-page-form .field--name-title, .node-details-page-edit-form .field--name-title,
 .media-form .field--name-field-file-html, .media-form .field--name-field-html-body,
-.field--widget-paragraphs,
 .filter-wrapper {
   display: none;
 }
-.page-node-type-page .field--widget-paragraphs {
-  display: block;
-}
-
 #group-bottom-elements .field--type-boolean {
   display: inline-block;
   margin-right: 40px;

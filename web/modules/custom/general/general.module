@@ -529,6 +529,9 @@ function general_page_attachments_alter(&$build) {
   if ($node instanceof \Drupal\node\NodeInterface && ($node->getType() == 'details_page' || $node->getType() == 'support_page')) {
     $build['#attached']['library'][] = 'general/details_page';
   }
+  if ($node instanceof \Drupal\node\NodeInterface && ($node->getType() == 'publications_page')) {
+    $build['#attached']['library'][] = 'general/publications_page';
+  }
   if ($theme == 'acas') {
     $user = \Drupal::currentUser();
     if ($user->id()) {
@@ -554,86 +557,12 @@ function general_page_attachments_alter(&$build) {
 }
 
 /**
- * Implements hook_entity_presave().
- *
- * Convert the file to html via the CloudConvert service
- * https://cloudconvert.com
- */
-function general_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
-  if ($entity->getEntityTypeId() == 'media' && $entity->bundle() == 'file') {
-    $apiKey = \Drupal::config('cloudconvert.settings')->get('api_key');
-    $scheme = Drupal::service('flysystem_factory')->getSchemes();
-    $settings = Settings::get('flysystem', []);
-    $config = $settings[$scheme[0]]['config'];
-    $bundle = $entity->get('field_media_file')->referencedEntities();
-    $file = $bundle[0];
-    $filepath = str_replace($scheme[0] . '://', '', $file->getFileUri());
-    $type = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
-    $path = pathinfo($filepath, PATHINFO_DIRNAME);
-    $url = 'https://s3-' . $config['region'] . '.amazonaws.com/' . $config['bucket'] . '/' . str_replace('.' . $type, '.html', $filepath);
-    $entity->field_html_url->setValue($url);
-
-    $api = new Api($apiKey);
-    $cmd = [
-      "inputformat" => $type,
-      "outputformat" => "html",
-      "input" => [
-        "s3" => [
-          "accesskeyid" => $config['key'],
-          "secretaccesskey" => $config['secret'],
-          "bucket" => $config['bucket'],
-          "region" => $config['region'],
-        ],
-      ],
-      "file" => $filepath,
-      "output" => [
-        "s3" => [
-          "accesskeyid" => $config['key'],
-          "secretaccesskey" => $config['secret'],
-          "bucket" => $config['bucket'],
-          "region" => $config['region'],
-          "path" => $path . '/',
-          "acl" => "public-read",
-        ],
-      ],
-    ];
-    try {
-      $result = $api->convert($cmd)->wait();
-    }catch (\Exception $e) {
-      drupal_set_message($e->getMessage(), 'error');
-      return;
-    }
-    
-    // As the converted html file is displayed in a iframe, it might not be loaded when search
-    // engines index the page. Get the html file and embed the text of the body in a hidden field
-    $url = file_create_url(str_replace('.' . $type, '.html', $file->getFileUri()));
-    if ($html = file_get_contents($url)) {
-      $a = explode('<body>', str_replace('</body>', '', $html));
-      $text = preg_replace("/[^A-Za-z0-9 ]/", ' ', strip_tags($a[1]));
-      $entity->field_html_body->setValue($text);
-    }
-  }
-}
-
-/**
  * Implements hook_pathauto_alias_alter().
  */
 function general_pathauto_alias_alter(&$alias, array &$context) {
   if ($entity = @$context['data']['node']) {
     if (($context['bundle'] === 'details_page' || $context['bundle'] === 'landing_page') && ($context['op'] == 'insert' || $context['op'] == 'update')) {
       $alias = '/' . general_taxonomy_path($entity->getTitle());
-      /*
-      $entity = $context['data']['node'];
-      $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadAllParents($entity->get('field_taxonomy')->target_id);
-      $parents = array_reverse($parents, TRUE);
-      $alias = '';
-      foreach($parents as $parent) {
-        $alias .= '/' . general_taxonomy_path($parent->getName());
-      }
-      if ($context['bundle'] === 'secondary_page') {
-        $alias .= '/' . general_taxonomy_path($entity->getTitle());
-      }
-      */
     }
     elseif ($context['bundle'] === 'secondary_page') {
       if ($nid = _is_guide($entity)) {

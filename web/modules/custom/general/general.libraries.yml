@@ -19,19 +19,19 @@ anything_wrong:
     - core/jquery
     - core/drupal
     
-media.file:
-  css:
-    theme:
-      css/media_file.css: {}
-  js:
-    js/media_file.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal
-    
 details_page:
   js:
     js/details_page.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    
+publications_page:
+  css:
+    theme:
+      css/publications_page.css: {}
+  js:
+    js/publications_page.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once

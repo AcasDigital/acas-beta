@@ -32,15 +32,22 @@ class LandingPages extends BlockBase {
     $query->orderBy('fd.weight', 'ASC');
     $result = $query->execute();
     $output = '';
+    $extra = '';
     if($nodeIds = $result->fetchCol()){
       $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
       $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
       foreach($nodes as $node) {
         $view = $view_builder->view($node, 'teaser');
-        $output .= drupal_render($view);
+        if ($node->getType() == 'publications_page') {
+          // Always last in the block
+          $extra .= drupal_render($view);
+        }
+        else {
+          $output .= drupal_render($view);
+        }
       }
     }
-    return ['#markup' => $output];
+    return ['#markup' => $output . $extra];
   }
   
   
