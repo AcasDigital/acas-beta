@@ -225,6 +225,13 @@ function acas_theme_suggestions_input_alter(&$suggestions, array $variables) {
 }
 
 /**
+ * Implements hook_preprocess_file_link().
+ */
+function acas_preprocess_file_link(&$variables) {
+  $variables['ext'] = strtoupper(pathinfo($variables['file']->getFilename(), PATHINFO_EXTENSION));
+}
+
+/**
  * Implements hook_preprocess_views_view().
  */
 function acas_preprocess_views_view(&$variables) {
