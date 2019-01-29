@@ -53,29 +53,29 @@
   ]
 %}
 
-{%
-  set header_classes = [
-    'publication-title',
-    label_display == 'visually_hidden' ? 'sr-only',
-  ]
-%}
-
-<h3 {{attributes.addClass(header_classes)}}>
-
-{% if multiple %}
-  <div{{ attributes.addClass(classes, 'field--items') }}>
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field--items') }}>
+      {% for item in items %}
+        <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
     {% for item in items %}
-      <div{{ item.attributes.addClass('field--item') }}>
-        {{ item.content }}
-      </div>
+      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
     {% endfor %}
-  </div>
+  {% endif %}
 {% else %}
-  {% for item in items %}
-    <div{{ attributes.addClass(classes, 'field--item') }}>
-      {{ item.content }}
+  <div{{ attributes.addClass(classes) }}>
+    <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
+    {% if multiple %}
+      <div class="field--items">
+    {% endif %}
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+    {% endfor %}
+    {% if multiple %}
       </div>
-  {% endfor %}
+    {% endif %}
+  </div>
 {% endif %}
-
-</h3>

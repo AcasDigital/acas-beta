@@ -8,12 +8,12 @@ Drupal.behaviors.publications_page = {
       }
     });
     jQuery(context).find('.paragraph--type--document').once('processed').each(function() {
-      var href = jQuery(this).find('.file-link a').attr('href');
+      var href = jQuery(this).find('.file-link a').attr('href').replace('https://' + location.hostname, '');
       var ext = href.split('.');
       ext = ext[ext.length - 1].toUpperCase();
       jQuery(this).find('.file-link').replaceWith('<span class="file-ext">' + ext + '</span>,');
       var title = jQuery(this).find('.field--name-field-title').text();
-      jQuery(this).find('.field--name-field-title').replaceWith('<div class="field--name-field-title"><a href="' + href +'">' + title + '</a></div>');
+      jQuery(this).find('.field--name-field-title').replaceWith('<div class="field--name-field-title"><a href="' + href +'" rel="nofollow">' + title + '</a></div>');
     });
   }
 };

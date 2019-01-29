@@ -48,7 +48,7 @@ class RelatedContent extends BlockBase {
       $output .= '<div id="social-share">' . drupal_render($render) . '</div>';
     }
     if ($node->get('field_show_related_content')->value) {
-      if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page' || $node->getType() == 'publications_page') {
+      if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
         $html = '';
         $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
         $path = $url;
