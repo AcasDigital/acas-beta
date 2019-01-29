@@ -78,10 +78,10 @@ table {
 .text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, #social-share .text, form#user-login-form .description, .prescribed .guidance-text {
-  font-size: 0.85rem; }
+  font-size: 0.85em; }
 
 .text-tiny, .inset-text--beta, #footer__inner {
-  font-size: 0.75rem; }
+  font-size: 0.75em; }
 
 .clearfix:before, .clearfix:after {
   content: " ";
@@ -1114,7 +1114,7 @@ button,
 .btn-save {
   padding: 5px; }
 
-ul li, ol li, .eu-cookie-compliance-banner .eu-cookie-compliance-content, .block-in-this-section-block .section__wrapper ul li,
+ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 #footer__inner a,
 #social-share {
   padding-top: 5px; }
@@ -1150,7 +1150,7 @@ ul li, ol li, .eu-cookie-compliance-banner .eu-cookie-compliance-content, .block
 .invalid-feedback, .js-pager__items .pager__item a {
   padding: 10px; }
 
-.example-block,
+.eu-cookie-compliance-banner .eu-cookie-compliance-content, .example-block,
 .region.region-top-bar,
 .nav-related {
   padding-top: 10px; }
@@ -1328,7 +1328,7 @@ ul, ol, .webform-container-type-details .panel-body {
 main.main__content {
   margin-top: 40px; }
 
-.breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, form#user-login-form, #block-landingpagesblock,
+.breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, .field--name-field-publication-summary, form#user-login-form, #block-landingpagesblock,
 #block-landingpagebottomblock,
 main.main__content {
   margin-bottom: 40px; }
@@ -1516,6 +1516,8 @@ form#user-login-form [disabled]#edit-submit {
     width: 100%; }
     .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
       display: inline-block; }
+    .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
+      cursor: pointer; }
 
 .example-block {
   border-left: 10px solid #cacaca; }
@@ -1926,6 +1928,11 @@ select {
     #feedback-form .feedback-question-wrapper a,
     #feedback-form .feedback-close-wrapper a {
       color: #fff; }
+      #feedback-form .feedback-question-wrapper a:hover, #feedback-form .feedback-question-wrapper a:focus,
+      #feedback-form .feedback-close-wrapper a:hover,
+      #feedback-form .feedback-close-wrapper a:focus {
+        background: #fff;
+        color: #007C85; }
   #feedback-form .feedback-question-wrapper {
     width: 85%; }
   #feedback-form .feedback-close-wrapper {
@@ -2225,7 +2232,7 @@ article.teaser .article__content {
     color: #000; }
   .previous .title,
   .next .title {
-    font-size: 0.85rem; }
+    font-size: 0.85em; }
   .previous .text,
   .next .text {
     display: block;
@@ -2394,6 +2401,9 @@ article.teaser .article__content {
     display: table; }
   .print-download-email .btn-panel:after {
     clear: both; }
+
+.field--name-field-publication-summary {
+  font-size: 1.25em; }
 
 .nav-related {
   max-width: 20em; }
