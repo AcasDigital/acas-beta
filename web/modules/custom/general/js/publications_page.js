@@ -2,9 +2,9 @@ Drupal.behaviors.publications_page = {
   attach: function(context, settings) {
     jQuery(context).find('.paragraph--type--document .field--name-field-pages').once('processed').each(function() {
       if (jQuery(this).html() == 1) {
-        jQuery(this).html(',&nbsp;' +jQuery( this).text() + '&nbsp;page');
+        jQuery(this).html(jQuery( this).text() + 'page');
       }else{
-        jQuery(this).html(',&nbsp;' +jQuery(this).text() + '&nbsp;pages');
+        jQuery(this).html(jQuery(this).text() + 'pages');
       }
     });
     jQuery(context).find('.paragraph--type--document').once('processed').each(function() {
