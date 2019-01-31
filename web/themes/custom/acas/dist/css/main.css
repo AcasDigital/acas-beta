@@ -75,7 +75,7 @@ table {
 .invalid-feedback, .error-summary .error-summary__list {
   font: 500 1em "Open Sans Semibold", sans-serif; }
 
-.text-small, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
+.text-small, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, #social-share .text, form#user-login-form .description, .prescribed .guidance-text {
   font-size: 0.85em; }
@@ -249,11 +249,17 @@ table {
     clear: both; }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, article.teaser, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, article.teaser, .col-md-6, #block-currentwebsiteblock, .col-lg-6, .col-xs-7, .col-sm-7, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-xs-8, .col-sm-8, #block-searchblock form, .col-md-8, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-lg-8, .col-xs-9, .col-sm-9, header.block-page-title-block, article.page.full, .col-md-9, article.page.search-index, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
@@ -261,7 +267,9 @@ table {
   padding-right: 15px; }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   float: left; }
 
@@ -299,7 +307,9 @@ table {
   width: 91.66667%; }
 
 .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   width: 100%; }
 
@@ -578,7 +588,9 @@ table {
     margin-left: 100%; } }
 @media (min-width: 992px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, article.teaser, .col-md-5, .col-md-6, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-md-8, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-  .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+  .path-webform .webform-submission-form,
+  .path-webform .webform-confirmation,
+  .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
   #block-conciliationpreviewfootermessage, .col-md-9, article.page.search-index, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
@@ -604,7 +616,9 @@ table {
     width: 58.33333%; }
 
   .col-md-8, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-  .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+  .path-webform .webform-submission-form,
+  .path-webform .webform-confirmation,
+  .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
   #block-conciliationpreviewfootermessage {
     width: 66.66667%; }
 
@@ -738,7 +752,9 @@ table {
     margin-left: 100%; } }
 @media (min-width: 1200px) {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-  .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+  .path-webform .webform-submission-form,
+  .path-webform .webform-confirmation,
+  .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
   #block-conciliationpreviewfootermessage, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
 
@@ -761,7 +777,9 @@ table {
     width: 50%; }
 
   .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
-  .path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+  .path-webform .webform-submission-form,
+  .path-webform .webform-confirmation,
+  .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
   #block-conciliationpreviewfootermessage {
     width: 58.33333%; }
 
@@ -897,7 +915,9 @@ table {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 .col-centered, .alert, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   float: none !important;
   margin: 0 auto !important; }
@@ -928,6 +948,9 @@ ol {
 
 .breadcrumb, ul.breadcrumb--search, #footer__inner ul, .block-in-this-section-block .section__wrapper ul, .menu-primary, .menu-secondary, .nav-related .nav-related__list ul, #social-share ul {
   list-style-type: none; }
+
+.form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description {
+  color: #4d4d4d; }
 
 .breadcrumb li:after, ul.breadcrumb--search li:after, .phone-callout:after, .menu-primary__link:after, .btn-save:before, .print-download-email .modal .icon {
   background-size: 100% auto;
@@ -1016,7 +1039,9 @@ a {
   color: black; }
 
 .col-centered, .alert, .path-webform header#block-acas-page-title,
-.path-webform .webform-submission-form, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
+.path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .form-number::-webkit-inner-spin-button, .form-number::-webkit-outer-spin-button, .govuk-webform-elements--wrapper input[type=number]::-webkit-inner-spin-button,
 .govuk-webform-elements--wrapper input[type=number]::-webkit-outer-spin-button {
   margin: 0px; }
@@ -1025,11 +1050,13 @@ a {
 .page-node-type-support-page .teaser h2,
 .page-node-type-details-page .teaser h2,
 .page-node-type-secondary-page .teaser h2,
-.page-node-type-home-page .teaser h2, .page-node-type-page.has-chapters h2:first-of-type,
+.page-node-type-home-page .teaser h2,
+.page-node-type-publications-page .teaser h2, .page-node-type-page.has-chapters h2:first-of-type,
 .page-node-type-support-page.has-chapters h2:first-of-type,
 .page-node-type-details-page.has-chapters h2:first-of-type,
 .page-node-type-secondary-page.has-chapters h2:first-of-type,
 .page-node-type-home-page.has-chapters h2:first-of-type,
+.page-node-type-publications-page.has-chapters h2:first-of-type,
 .breadcrumb,
 ul.breadcrumb--search,
 #footer__inner ul,
@@ -1045,7 +1072,7 @@ button {
   margin-top: 0px; }
 
 ul p, ol p, .phone-callout p, .inset-text--beta p, .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .alert > p,
-.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, .print-download-email .modal .title, .print-download-email .modal .close, .chapters--search ul, .prescribed .region-navigation-collapsible p,
+.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, .print-download-email .modal .title, .print-download-email .modal .close, h3.publication-title, .chapters--search h2.publication-title, .chapters--search ul, .prescribed .region-navigation-collapsible p,
 .breadcrumb,
 ul.breadcrumb--search,
 #footer__inner ul,
@@ -1095,7 +1122,7 @@ button,
 .breadcrumb li, ul.breadcrumb--search li, #footer__inner ul li, .block-in-this-section-block .section__wrapper ul li, .menu-primary li, .menu-secondary li, .nav-related .nav-related__list ul li, #social-share ul li {
   padding: 0px; }
 
-.alert > p + p, .find-address-wrapper .find_address, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
+.alert > p + p, .find-address-wrapper .find_address, .paragraph--type--document .field--name-field-icon, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
   margin-top: 5px; }
@@ -1115,11 +1142,13 @@ button,
   padding: 5px; }
 
 ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
+.find-address-wrapper .find_address,
 #footer__inner a,
 #social-share {
   padding-top: 5px; }
 
 .example-block,
+.find-address-wrapper .find_address,
 #footer__inner a,
 #social-share {
   padding-bottom: 5px; }
@@ -1144,8 +1173,14 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 .invalid-feedback {
   margin-bottom: 10px; }
 
-#feedback-form .feedback-question a {
+#feedback-form .feedback-question a,
+.breadcrumb li:after,
+ul.breadcrumb--search li:after {
   margin-left: 10px; }
+
+.breadcrumb li:after,
+ul.breadcrumb--search li:after {
+  margin-right: 10px; }
 
 .invalid-feedback, .js-pager__items .pager__item a {
   padding: 10px; }
@@ -1173,17 +1208,14 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 #social-share {
   padding-right: 10px; }
 
-h4 {
+h4, .paragraph--type--document .field--name-field-icon, .field--name-field-media-file,
+.field--name-field-pages {
   margin-bottom: 15px; }
 
-.print-download-email .modal .x,
-.breadcrumb li:after,
-ul.breadcrumb--search li:after {
+.print-download-email .modal .x {
   margin-left: 15px; }
 
-.find-address-wrapper input, .find-address-wrapper a,
-.breadcrumb li:after,
-ul.breadcrumb--search li:after {
+.find-address-wrapper input, .find-address-wrapper a, .paragraph--type--document .field--name-field-icon {
   margin-right: 15px; }
 
 .guidance-text,
@@ -1230,13 +1262,15 @@ form#user-login-form #edit-submit,
 #social-share,
 .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare,
 .prescribed .btn-primary,
 .prescribed .btn-secondary,
 .prescribed .webform-button--preview,
 .prescribed .webform-wizard-pages-link {
   margin-top: 20px; }
 
-h3, .chapters--search h2, .example-block, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .fieldgroup .form-group, .webform-preview .form-group, .error-summary .error-summary__title, .js-pager__items, #block-searchblock, form#user-login-form .form-item, .page-node-type-details-page article, .page-node-type-support-page article,
+.form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, h3, .chapters--search h2, .example-block, .fieldgroup .form-group, .webform-preview .form-group, .error-summary .error-summary__title, .js-pager__items, .paragraph--type--document .document-wrapper, #block-searchblock, form#user-login-form .form-item, .page-node-type-details-page article, .page-node-type-support-page article,
 .btn-primary,
 .btn-secondary,
 .webform-button--preview,
@@ -1253,6 +1287,8 @@ form#user-login-form #edit-submit,
 #social-share,
 .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
+.path-webform .webform-confirmation,
+.path-webform .region-content .block--bare,
 .prescribed .btn-primary,
 .prescribed .btn-secondary,
 .prescribed .webform-button--preview,
@@ -1268,12 +1304,6 @@ form#user-login-form #edit-submit,
 
 .error-summary, #feedback-form-section form, #feedback-form form, .print-download-email .modal .title-wrapper, .print-download-email .btn-panel, .node-preview-container {
   padding: 20px; }
-
-.find-address-wrapper .find_address {
-  padding-top: 20px; }
-
-.find-address-wrapper .find_address {
-  padding-bottom: 20px; }
 
 #modal .title-wrapper,
 article.teaser .article__wrapper,
@@ -1299,10 +1329,12 @@ p, .guidance-text, .text--guidance, .prescribed .text--guidance {
   padding-right: 25px; }
 
 .print-download-email, ul.breadcrumb--search,
+main.main__content,
 .webform-container-type-details .panel-body {
   margin-top: 30px; }
 
-ul, ol, h2, .link--back, .back--link, .inset-text, .callout, #address_results, article.teaser, .secondary-page-navigation,
+ul, ol, h2, .inset-text, .callout, #address_results, article.teaser, .secondary-page-navigation,
+main.main__content,
 .webform-container-type-details .panel-body {
   margin-bottom: 30px; }
 
@@ -1324,13 +1356,11 @@ ul, ol, .webform-container-type-details .panel-body {
 .next .text {
   padding-right: 30px; }
 
-.inset-text--beta, .secondary-page-navigation,
-main.main__content {
+.inset-text--beta, .secondary-page-navigation {
   margin-top: 40px; }
 
-.breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, .field--name-field-publication-summary, form#user-login-form, #block-landingpagesblock,
-#block-landingpagebottomblock,
-main.main__content {
+.link--back, .back--link, .breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, .field--name-field-publication-summary, form#user-login-form, #block-landingpagesblock,
+#block-landingpagebottomblock {
   margin-bottom: 40px; }
 
 article.landing-page.full p {
@@ -1344,14 +1374,15 @@ h1, .block-in-this-section-block, #block-homepageblock,
 .page-node-type-support-page h2,
 .page-node-type-details-page h2,
 .page-node-type-secondary-page h2,
-.page-node-type-home-page h2 {
+.page-node-type-home-page h2,
+.page-node-type-publications-page h2 {
   margin-top: 60px; }
 
 /* Common */
 .link--back, .back--link {
   cursor: pointer;
   clear: both;
-  font-size: 1em;
+  font-size: 0.85em;
   position: relative;
   float: left;
   padding-left: 14px;
@@ -1372,7 +1403,7 @@ h1, .block-in-this-section-block, #block-homepageblock,
     margin-right: auto;
     content: "";
     position: absolute;
-    top: -1px;
+    top: 7px;
     bottom: 1px;
     left: 0; }
   .link--back:hover, .link--back:focus, .back--link:hover, .back--link:focus {
@@ -1405,7 +1436,7 @@ h1, .block-in-this-section-block, #block-homepageblock,
       height: 15px;
       position: relative;
       top: 0.25em;
-      width: 10px; }
+      width: 7px; }
     .breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
       display: none; }
 
@@ -1643,9 +1674,6 @@ select {
   line-height: 1.5;
   min-height: 40px;
   padding: .25em .5em; }
-
-.form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper {
-  color: #4d4d4d; }
 
 /* Form Upload */
 /**
@@ -2402,9 +2430,25 @@ article.teaser .article__content {
   .print-download-email .btn-panel:after {
     clear: both; }
 
+.paragraph--type--document .document-wrapper .details-wrapper {
+  overflow: auto; }
+.paragraph--type--document .field--name-field-icon:after {
+  clear: both; }
+.paragraph--type--document .field--name-field-file,
+.paragraph--type--document .field--name-field-pages {
+  display: inline-block; }
+
 .field--name-field-publication-summary {
   font-size: 1.25em; }
 
+.field--name-field-media-file,
+.field--name-field-pages {
+  color: #000;
+  font-size: 0.75em; }
+
+@media (min-width: 768px) {
+  .paragraph--type--document .field--name-field-icon {
+    float: left; } }
 .nav-related {
   max-width: 20em; }
   .nav-related .nav-related__list ul a {
@@ -2681,7 +2725,7 @@ form#user-login-form .description {
         cursor: not-allowed; }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: #F7F7F7;
-    border-color: #008C95; }
+    border-color: #007C85; }
   .nav .nav-divider {
     height: 1px;
     margin: .5em 0;
@@ -2839,11 +2883,17 @@ nav.tabs {
 
 .path-webform header#block-acas-page-title:before, .path-webform header#block-acas-page-title:after,
 .path-webform .webform-submission-form:before,
-.path-webform .webform-submission-form:after {
+.path-webform .webform-submission-form:after,
+.path-webform .webform-confirmation:before,
+.path-webform .webform-confirmation:after,
+.path-webform .region-content .block--bare:before,
+.path-webform .region-content .block--bare:after {
   content: " ";
   display: table; }
 .path-webform header#block-acas-page-title:after,
-.path-webform .webform-submission-form:after {
+.path-webform .webform-submission-form:after,
+.path-webform .webform-confirmation:after,
+.path-webform .region-content .block--bare:after {
   clear: both; }
 
 .prescribed h1, .prescribed h2, .prescribed h3, .prescribed .chapters--search h2, .chapters--search .prescribed h2, .prescribed h4, .prescribed h5, .prescribed h6 {

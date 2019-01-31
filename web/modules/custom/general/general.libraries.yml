@@ -27,9 +27,6 @@ details_page:
     - core/jquery.once
     
 publications_page:
-  css:
-    theme:
-      css/publications_page.css: {}
   js:
     js/publications_page.js: {}
   dependencies:
