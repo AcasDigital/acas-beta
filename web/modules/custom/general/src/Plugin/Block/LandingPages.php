@@ -40,7 +40,7 @@ class LandingPages extends BlockBase {
         $output .= drupal_render($view);
       }
     }
-    return ['#markup' => $output . $extra];
+    return ['#markup' => $output];
   }
   
   

@@ -75,7 +75,7 @@ table {
 .invalid-feedback, .error-summary .error-summary__list {
   font: 500 1em "Open Sans Semibold", sans-serif; }
 
-.text-small, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
+.text-small, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-name, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, form#user-login-form .description, .prescribed .guidance-text {
   font-size: 0.85em; }
@@ -595,12 +595,10 @@ p, .guidance-text, .text--guidance, .prescribed .text--guidance {
   padding-right: 25px; }
 
 .print-download-email, ul.breadcrumb--search,
-main.main__content,
 .webform-container-type-details .panel-body {
   margin-top: 30px; }
 
 ul, ol, h2, .inset-text, .callout, #address_results, article.teaser, .secondary-page-navigation,
-main.main__content,
 .webform-container-type-details .panel-body {
   margin-bottom: 30px; }
 
@@ -622,11 +620,13 @@ ul, ol, .webform-container-type-details .panel-body {
 .next .text {
   padding-right: 30px; }
 
-.inset-text--beta, .secondary-page-navigation {
+.inset-text--beta, .secondary-page-navigation,
+main.main__content {
   margin-top: 40px; }
 
 .link--back, .back--link, .breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, .field--name-field-publication-summary, form#user-login-form, #block-landingpagesblock,
-#block-landingpagebottomblock {
+#block-landingpagebottomblock,
+main.main__content {
   margin-bottom: 40px; }
 
 article.landing-page.full p {
@@ -1124,14 +1124,6 @@ select {
 
 .panel-body .webform-element {
   padding-right: 9em; }
-
-.form-progress, .text--progress {
-  clear: both;
-  color: #4d4d4d;
-  display: inline-block;
-  text-align: right; }
-  .form-progress p, .text--progress p {
-    margin-bottom: 0; }
 
 #overlay {
   position: fixed;
