@@ -198,7 +198,7 @@ class ProductionController extends ControllerBase {
   public function deploy_update() {
     $uuid = \Drupal::config('system.site')->get('uuid');
     if ($uuid == $_POST['UUID']) {
-      if ($data = json_decode(@$_POST['data'])) {
+      if (isset($_POST['data']) && $data = json_decode($_POST['data'])) {
         $nodeIds = [];
         foreach($data as $d) {
           if ($node = \Drupal\node\Entity\Node::load($d->nid)) {

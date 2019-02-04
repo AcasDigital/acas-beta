@@ -223,7 +223,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
             if ($key) {
               $p_nid = $nodeIds[$key - 1];
             }
-            if (@$nodeIds[$key + 1]) {
+            if (isset($nodeIds[$key + 1])) {
               $n_nid = $nodeIds[$key + 1];
             }
             break;
@@ -390,7 +390,7 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
     $form['keys']['#title_display'] = 'invisible';
     $form['#attributes']['onsubmit'] = 'return viewsExposedSubmitForm(this);';
     $form['#attached']['library'][] = 'general/views_exposed_form_submit';
-    if (@$form['op']) {
+    if (isset($form['op'])) {
       $form['#attached']['library'][] = 'general/views_exposed_form';
     }
   }
@@ -560,7 +560,7 @@ function general_page_attachments_alter(&$build) {
  * Implements hook_pathauto_alias_alter().
  */
 function general_pathauto_alias_alter(&$alias, array &$context) {
-  if ($entity = @$context['data']['node']) {
+  if ($entity = isset($context['data']['node'])) {
     if (($context['bundle'] === 'details_page' || $context['bundle'] === 'landing_page') && ($context['op'] == 'insert' || $context['op'] == 'update')) {
       $alias = '/' . general_taxonomy_path($entity->getTitle());
     }
@@ -695,7 +695,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
               'weight' => $weight,
             ]);
           }
-          if (@$second_level) {
+          if (isset($second_level)) {
             $second_level->save();
             $weight++;
             if ($node->getType() == 'details_page') {
@@ -718,7 +718,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
           */
         }
       }
-      if (@$second_level) {
+      if (isset($second_leve)) {
         general_menu_full_second_level($second_level, $key, $weight);
       }
     }
@@ -763,10 +763,10 @@ function general_menu_secondary_pages($first_level, $node, $weight) {
 function general_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   if (strpos($view->current_display, 'rest_export') !== FALSE) {
     $filters = $view->display_handler->getOption('filters');
-    if (@$_GET['start']) {
+    if (isset($_GET['start'])) {
       $query->addWhere(1, '.start_date', strtotime($_GET['start']), '=');
     }
-    if (@$_GET['end']) {
+    if (isset($_GET['end'])) {
       $query->addWhere(1, '.end_date', strtotime($_GET['end']), '=');
     }
   }
