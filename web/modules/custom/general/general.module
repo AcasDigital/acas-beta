@@ -560,7 +560,7 @@ function general_page_attachments_alter(&$build) {
  * Implements hook_pathauto_alias_alter().
  */
 function general_pathauto_alias_alter(&$alias, array &$context) {
-  if ($entity = isset($context['data']['node'])) {
+  if (isset($context['data']['node']) && $entity = $context['data']['node']) {
     if (($context['bundle'] === 'details_page' || $context['bundle'] === 'landing_page') && ($context['op'] == 'insert' || $context['op'] == 'update')) {
       $alias = '/' . general_taxonomy_path($entity->getTitle());
     }
