@@ -696,7 +696,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
               'weight' => $weight,
             ]);
           }
-          if (@$second_level) {
+          if (isset($second_level) && $second_level) {
             $second_level->save();
             $weight++;
             if ($node->getType() == 'details_page') {
@@ -719,7 +719,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
           */
         }
       }
-      if (@$second_level) {
+      if (isset($second_level) && $second_level) {
         general_menu_full_second_level($second_level, $key, $weight);
       }
     }

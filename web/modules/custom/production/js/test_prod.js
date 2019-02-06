@@ -4,7 +4,13 @@ var prod;
 
 Drupal.behaviors.test_prod = {
   attach: function(context, settings) {
-    jQuery.ajax({
+    jQuery("#test-target").html('Starting in 5 seconds');
+    setTimeout(startTest, 5000);
+  }
+};
+
+function startTest() {
+  jQuery.ajax({
       url: "/sync-prod-data",
       type: "GET",
       dataType: "json",
@@ -17,32 +23,9 @@ Drupal.behaviors.test_prod = {
         prod = data.prod
         nodes = data.nodes;
         getPage(nodes[i]);
-        /*
-        if (location.pathname.indexOf('sync-prod') != -1) {
-          jQuery("#test-target").html('<div class="target">Running git pull, composer update, clearing caches and rebuilding config on Production. Please wait...</div>');
-          jQuery.ajax({
-            url: prod + "/sync-cleanup",
-            type: "GET",
-            dataType: "json",
-            cache: false,
-            timeout: 180000,
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-              jQuery("#test-target").html('<div class="red">Clear cache error = ' + textStatus + '</div>');
-            },
-            success: function(data){
-              jQuery("#test-target").html('');
-              getPage(nodes[i]);
-            }
-          });
-        }else{
-          jQuery("#test-target").html('');
-          getPage(nodes[i]);
-        }
-        */
       }
     });
-  }
-};
+}
 
 function getPage(node) {
   jQuery.ajax({
