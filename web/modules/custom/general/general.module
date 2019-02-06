@@ -696,7 +696,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
               'weight' => $weight,
             ]);
           }
-          if (isset($second_level)) {
+          if (@$second_level) {
             $second_level->save();
             $weight++;
             if ($node->getType() == 'details_page') {
@@ -719,7 +719,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
           */
         }
       }
-      if (isset($second_leve)) {
+      if (@$second_level) {
         general_menu_full_second_level($second_level, $key, $weight);
       }
     }
@@ -757,6 +757,7 @@ function general_menu_secondary_pages($first_level, $node, $weight) {
     }
   }
 }
+
 
 /**
  * Implements hook_views_query_alter().
