@@ -566,8 +566,9 @@ function general_pathauto_alias_alter(&$alias, array &$context) {
     }
     elseif ($context['bundle'] === 'secondary_page') {
       if ($nid = _is_guide($entity)) {
-        $node = \Drupal\node\Entity\Node::load($nid);
-        $alias = '/' . general_taxonomy_path($node->getTitle()) . '/' . general_taxonomy_path($entity->getTitle());
+        if ($node = \Drupal\node\Entity\Node::load($nid)) {
+          $alias = '/' . general_taxonomy_path($node->getTitle()) . '/' . general_taxonomy_path($entity->getTitle());
+        }
       }
     }
   }
