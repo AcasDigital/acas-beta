@@ -3,3 +3,9 @@
   max-width: 10em;
   vertical-align: text-top;
 }
+article {
+	float: left;
+}
+#block-acas-breadcrumbs {
+  display: none;
+}
