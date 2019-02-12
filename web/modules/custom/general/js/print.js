@@ -3,8 +3,10 @@ var win;
 Drupal.behaviors.print = {
   attach: function(context, settings) {
     jQuery(".print-download-email .print").click(function() {
-      // Run in new thread. Attempt to keep main window active
-      setTimeout(printClicked, 10);
+      win = window.open(this.href);
+      jQuery(win.document).ready(function() {
+        setTimeout(doPrint, 2000);
+      });
       return false;
     });
     // Download page
@@ -18,7 +20,7 @@ Drupal.behaviors.print = {
 function printClicked() {
   win = window.open(this.href);
   jQuery(win.document).ready(function() {
-    setTimeout(doPrint, 2000);
+    //setTimeout(doPrint, 2000);
   });
 }
 
