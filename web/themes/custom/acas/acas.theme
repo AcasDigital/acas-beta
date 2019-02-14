@@ -229,6 +229,7 @@ function acas_theme_suggestions_input_alter(&$suggestions, array $variables) {
  */
 function acas_preprocess_file_link(&$variables) {
   $variables['ext'] = strtoupper(pathinfo($variables['file']->getFilename(), PATHINFO_EXTENSION));
+  $variables['file_size'] = str_replace(' ', '', $variables['file_size']);
 }
 
 /**
