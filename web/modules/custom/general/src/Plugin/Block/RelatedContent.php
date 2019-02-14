@@ -101,7 +101,7 @@ class RelatedContent extends BlockBase {
             </div>
           </nav>';
         }
-      }else if ($node->getType() == 'support_page') {
+      }else if ($node->getType() == 'support_page'|| $node->getType() == 'publications_page') {
         if ($node->hasField('field_related_content')) {
           $links = '';
           foreach($node->get('field_related_content') as $link) {
@@ -132,11 +132,9 @@ class RelatedContent extends BlockBase {
               <h3 id="nav-related__title">
                 Related content
               </h3>
-              <ul id="section-nav-list" tabindex="-1">
-                <li>
-                  <ul>' . $links . '</ul>
-                </li>
-              </ul>
+              <div class="nav-related__list" tabindex="-1">
+                <ul>' . $links . '</ul>
+              </div>
             </nav>';
           }
         }

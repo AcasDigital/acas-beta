@@ -92,7 +92,7 @@ function general_module_implements_alter(&$implementations, $hook) {
  * Implements hook_entity_view().
  */
 function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-  if ($view_mode == 'full' && $entity instanceof \Drupal\node\NodeInterface && ($entity->getType() == 'details_page' || $entity->getType() == 'support_page' || $entity->getType() == 'secondary_page')) {
+  if ($view_mode == 'full' && $entity instanceof \Drupal\node\NodeInterface && ($entity->getType() == 'details_page' || $entity->getType() == 'support_page' || $entity->getType() == 'secondary_page' || $entity->getType() == 'publications_page')) {
     if ($entity->getType() == 'details_page') {
       $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($entity->get('field_taxonomy')->target_id);
       $markup = '';
