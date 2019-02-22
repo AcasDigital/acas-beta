@@ -1,0 +1,31 @@
+#header-main {
+  border-bottom: 5px solid acas-color("lime");
+  #block-acas-main-menu {
+    clear: both;
+  }
+  #block-sitebranding {
+    img {
+      display: inline-block;
+      max-width: 10em;
+      vertical-align: text-top;
+    }
+    a {
+      @extend %link-no-focus;
+    }
+    .branding-block__logo {
+      display: block;
+    }
+  }
+  .region-branding-bar {
+    padding-top: 0.75em;
+    padding-bottom: 0.25em;
+  }
+}
+
+@include bp(md) {
+  #header-main {
+    .region-branding-bar {
+      padding-bottom: 0.75em;
+    }
+  }
+}

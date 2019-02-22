@@ -1,0 +1,16 @@
+.sitemap {
+  @extend .col-xs-12;
+  .sitemap-box {
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+       ul {
+        margin: 0;
+        padding-left: 1.5em;
+      }
+      > .expanded {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

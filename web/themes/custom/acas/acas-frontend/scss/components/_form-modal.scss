@@ -1,0 +1,50 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(acas-color("black"), 0.5);
+}
+
+#modal {
+  border: 3px solid acas-color("lime");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 300px;
+  margin-left: -160px;
+  margin-top: -150px;
+  background-color: acas-color("white");
+  z-index: 10;
+  .title-wrapper {
+    border-bottom: 3px solid acas-color("lime");
+    overflow: auto;
+    @extend %padding-horizontal-4x;
+    .title {
+      float: left;
+      @extend %margin-vertical-4x;
+    }
+  }
+  .spinner-wrapper {
+    text-align: center;
+    @extend %margin-vertical-4x;
+  } 
+  .modal-description {
+    text-align: center;
+  }
+}
+
+.prescribed {
+  #modal {
+    border: 3px solid acas-color("blue");
+    .title-wrapper {
+      border-bottom: 3px solid acas-color("blue");
+      h2 {
+        color: acas-color("maroon");
+      }
+    }
+  }
+}

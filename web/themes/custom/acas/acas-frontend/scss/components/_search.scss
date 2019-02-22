@@ -1,0 +1,137 @@
+#block-exposedformsolr-search-contentpage-1-3 {
+  @extend %margin-top-4x;
+  @extend %margin-bottom-2x;
+  display: none;
+}
+
+#block-searchblock {
+  @extend .row;
+  @extend %margin-bottom-4x;
+  @extend %margin-top-1x;
+  form {
+    @extend .col-xs-12;
+    @extend .col-sm-8;
+  }
+  clear: left;
+  display: block;
+}
+
+#views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form {
+  @extend %margin-top-1x;
+  input {
+    border: none;
+    height: 2.25em;
+    margin: 0;
+    padding: .25em .5em;
+    width: 100%;
+  }
+  button {
+    background-color: acas-color("gray-dark");
+    border: none;
+    color: acas-color("white");
+    height: 2.25em;
+    margin: 0;
+    min-width: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    img {
+      height: 1em;
+      margin-top: .25em;
+    }
+  }
+  .form-group {
+    clear: none;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  .form-item {
+    width: 85%;
+  }
+  .form-actions {
+    width: 15%;
+  }
+  .form-type-select {
+    display: none;
+  }
+  .form-inline, .form-item-edit-keys {
+    border: 1px solid acas-color("gray");
+    border-radius: 2px;
+    display: block;
+    &.active {
+      border-color: acas-color("teal");
+      #edit-submit-solr-search-content {
+        background-color: acas-color("teal");
+      }
+    }
+  }
+  &:active, &:focus, &:hover {
+    #edit-submit-solr-search-content,
+    #edit-submit-search-content,
+    #edit-submit-search {
+      background-color: acas-color("teal");
+    }
+    .form-inline {
+      border-color: acas-color("teal");
+    }
+  }
+}
+#search-form {
+  display: table;
+}
+.path-search {
+  .form-type-select {
+    display: block;
+  }
+}
+.page-node-type-page {
+  .views-exposed-form {
+    padding: 0;
+  }
+}
+
+@if $compile-IE {
+  #views-exposed-form-solr-search-content-page-1,
+  #views-exposed-form-search-content-page-1,
+  #search-form {
+    .form-item {
+      width: 75%;
+    }
+    .form-actions {
+      width: 25%;
+    }
+    .search-text {
+      display: block;
+    }
+  }
+  #edit-submit-solr-search-content,
+  #edit-submit-search-content,
+  #search-form {
+    img {
+      display: none;
+    }
+  }
+}
+
+@else {
+  .search-text {
+    display: none;
+  }
+}
+
+@include bp(md) {
+  #block-searchblock {
+    display: none;
+  }
+  #block-exposedformsolr-search-contentpage-1-3 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #header-front-page, #header-main {
+    #views-exposed-form-solr-search-content-page-1 {
+      float: right;
+    }
+  }
+}

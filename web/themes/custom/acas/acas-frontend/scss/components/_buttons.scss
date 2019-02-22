@@ -1,0 +1,47 @@
+.btn-primary {
+  @extend %margin-vertical-4x;
+  
+  cursor: pointer;
+  background: acas-color("teal-dark");
+  border: 1px solid acas-color("teal-dark");
+  color: acas-color("white");
+  display: inline-block;
+  font-size: $font-size-standard;
+  padding: .75em;
+  min-width: 7em;
+  text-align: center;
+  width: fit-content;
+  &:hover, &:focus {
+    background: acas-color("white");
+    border: 1px solid acas-color("teal-dark");
+    color: acas-color("teal-dark");
+  }
+}
+
+.btn-secondary {
+  @extend .btn-primary;
+  background: acas-color("white");
+  border: 1px solid acas-color("teal-dark");
+  color: acas-color("teal-dark");
+  &:hover, &:focus {
+    background: acas-color("teal-dark");
+    color: acas-color("white");
+  }
+}
+
+.btn-group {
+  .btn-cta {
+    display: inline-block;
+  }
+}
+
+.btn-primary[disabled="true"],
+.btn-primary[disabled] {
+  cursor: default;
+  opacity: 0.3;
+  &:hover, &:focus {
+    background-color: acas-color("teal-dark");
+    color: acas-color("white");
+    border: 1px solid acas-color("teal-dark");
+  }
+}

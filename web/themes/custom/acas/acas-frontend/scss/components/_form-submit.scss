@@ -1,0 +1,15 @@
+.webform-button--preview {
+  @extend .btn-primary;
+}
+
+.webform-button--previous,
+.webform-button--next {
+  &:not(.back--link) {
+    @extend .btn-primary;
+  }
+}
+
+.webform-wizard-pages-link {
+  @extend .btn-primary;
+}
+

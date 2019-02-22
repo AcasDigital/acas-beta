@@ -1,0 +1,14 @@
+.form-progress {
+  @extend .text-small;
+  clear: both;
+  color: acas-color("gray-dark");
+  display: inline-block;
+  text-align: right;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.text--progress {
+  @extend .form-progress;
+}

@@ -1,0 +1,22 @@
+.page-node-type-page,
+.page-node-type-support-page, 
+.page-node-type-details-page,
+.page-node-type-secondary-page, 
+.page-node-type-home-page,
+.page-node-type-publications-page {
+  h2 {
+    @extend %margin-top-12x;
+  }
+  .teaser {
+    h2 {
+      @extend %margin-top-0x;
+    }
+  }
+  &.has-chapters {
+    h2 {
+      &:first-of-type {
+        @extend %margin-top-0x;
+      }
+    }
+  }
+}

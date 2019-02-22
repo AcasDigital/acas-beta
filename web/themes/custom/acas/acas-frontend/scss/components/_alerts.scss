@@ -1,0 +1,84 @@
+//
+// Alerts
+// --------------------------------------------------
+
+// Base styles
+// -------------------------
+
+.alert {
+  @extend .col-xs-12;
+  @extend .col-centered;
+
+  @extend %margin-vertical-4x;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: .75em;
+  position: relative;
+
+  // Headings for larger alerts
+  h4 {
+    @extend %margin-top-0x;
+    // Specified for the h4 to prevent conflicts of changing $headings-color
+    color: inherit;
+  }
+
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: 400;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    @extend %margin-bottom-0x;
+  }
+
+  > p + p {
+    @extend %margin-top-1x;
+  }
+}
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissible {
+  // Adjust close link position
+  padding-right: 3em;
+  .close {
+    color: inherit;
+    font-size: $font-size-large;
+    position: absolute;
+    right: .5em;
+  }
+}
+
+// Alternate styles
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+}
+
+.alert-info {
+  @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
+}
+
+.alert-warning {
+  @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+}
+
+.alert-danger {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+}
+
+.form-group, .webform-options-display-one-column {
+  .form-item {
+    .invalid {
+      border: 4px solid acas-color("red");
+    }
+  }
+}
+

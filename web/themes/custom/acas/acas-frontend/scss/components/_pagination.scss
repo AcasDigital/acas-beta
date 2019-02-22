@@ -1,0 +1,134 @@
+.secondary-page-navigation {
+  @extend %margin-bottom-6x;
+  @extend %margin-top-8x;
+  overflow: auto;
+}
+
+.previous, 
+.next {
+  display: block;
+  width: 75%;
+  
+  &, &:focus {
+    color: acas-color("black");
+  }
+  
+  .details-wrapper {
+    @extend %padding-vertical-3x;
+    @extend %padding-horizontal-2x;
+  }
+
+  .title {
+    font-size: $font-size-small;
+  }
+
+  .text {
+    display: block;
+    font-family: $font-family-semibold;
+    position: relative;
+    width: fit-content;
+    &:before {
+      content: "";
+      background-repeat: no-repeat;
+      background-size: 1em auto;
+      background-position: 50% 50%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 1em;
+    }
+  }
+
+  &:hover, &:focus {
+    .details-wrapper {
+      background: acas-color("gray-light");
+    }
+  }
+
+}
+
+.previous {
+  .text {
+    @extend %padding-left-6x;
+    &:before {
+      background-image: url(../images/icons/icon-arrow-left.svg);
+      left: 0;
+    }
+  }
+}
+
+.next {
+  .text {
+    @extend %padding-right-6x;
+    &:before {
+      background-image: url(../images/icons/icon-arrow-right.svg);
+      right: 0;
+    }
+  }
+}
+
+.js-pager__items {
+  font-family: $font-family-headers;
+  @extend %margin-top-12x;
+  @extend %margin-bottom-4x;
+  text-align: center;
+  .pager__item {
+    display: inline-block;
+    text-align: center;
+    a {
+      @extend %padding-2x;
+      color: acas-color("teal-dark");
+      display: block;
+      height: 2.5em;
+      width: 2.5em;
+      &:focus, &:hover {
+        background: acas-color("teal-dark");
+        border-radius: 50%;
+        color: acas-color("white");
+      }
+    }
+    &.is-active {
+      a {
+        background: acas-color("teal-dark");
+        border-radius: 50%;
+        color: acas-color("white");
+      }
+    }
+    &.pager__item--next,
+    &.pager__item--last,
+    &.pager__item--previous,
+    &.pager__item--first {
+      a {
+        color: acas-color("teal-dark");
+        display: block;
+        height: auto;
+        padding: .5em 1em;
+        width: auto;
+        &:focus, &:hover {
+          background: acas-color("teal-dark");
+          border-radius: 0;
+          color: acas-color("white");
+        }
+      }
+    }
+  }
+}
+
+@include bp(sm) {
+  .secondary-page-navigation {
+    @include clearfix;
+  }
+  .previous, .next {
+    float: left;
+    width: 50%;
+    .text {
+      width: auto;
+    }
+  }
+  .next {
+    float: right;
+    .details-wrapper {
+      text-align: right;
+    }
+  } 
+}

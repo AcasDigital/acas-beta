@@ -1,0 +1,18 @@
+#print-preview,
+.path-guide-print,
+.path-page-print,
+.print {
+  #header-main {
+    display: none;
+  }
+  #block-sitebranding {
+    margin-bottom: 2em;
+  }
+  h1, h2 {
+    padding-left: 0;
+    border-left: none;
+  }
+  .btn-cta--helpline {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+.nav-related {
+  @extend %padding-vertical-2x;
+
+  max-width: 20em;
+  .nav-related__list {
+    @extend .text-small;
+    
+    ul {
+      @extend %list-no-format;
+      a {
+        @extend %margin-bottom-2x;
+        @extend %links-black;
+        
+        display: inline-block;
+      }
+    }
+  }
+}

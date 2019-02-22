@@ -1,0 +1,25 @@
+.error-summary {
+  @extend %padding-4x;
+  @extend %margin-bottom-8x;
+
+  border: 5px solid acas-color("red");
+
+  .error-summary__title {
+    @extend %margin-bottom-4x;
+
+    color: acas-color("black");
+    font-size: $font-size-large;
+  }
+  
+  .error-summary__list {
+    @extend %font-semibold;
+    
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0;
+    a {
+      @extend %links-black;
+      color: acas-color("red");
+    }
+  }
+}

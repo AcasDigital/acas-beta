@@ -1,0 +1,35 @@
+.eu-cookie-compliance-banner {
+
+  &, a {
+    color: acas-color("white");
+  }
+
+  background-color: acas-color("teal-dark");
+  overflow: auto;
+
+  .eu-cookie-compliance-content {
+    @extend .container;
+    @extend %padding-top-2x;
+    @extend %padding-bottom-2x;
+    max-width: 100%;
+  }
+
+  .eu-cookie-compliance-message {
+    @extend .text-small;
+
+    width: 100%;
+    
+    p {
+      @extend %margin-bottom-0x;
+    }
+
+    p, a {
+      display: inline-block;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+}
+

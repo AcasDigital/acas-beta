@@ -1,0 +1,24 @@
+.guidance-text {
+  @extend .text-small;
+  @extend %margin-bottom-5x;
+  @extend %padding-horizontal-5x;
+  @extend %padding-vertical-3x;
+  border: 4px solid acas-color("blue");
+  border-radius: 4px;
+  p {
+    margin-bottom: 0;
+  }
+  h2, h3 {
+    color: acas-color("black");
+    margin-top: 0;
+  }
+}
+
+.text--guidance {
+  @extend .guidance-text;
+}
+
+.guidance-text--light {
+  @extend .text-small;
+  color: acas-color("gray-medium");
+}

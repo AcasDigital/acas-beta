@@ -2,7 +2,8 @@
 
 module.exports = function (grunt) {
 
-  const acasdigital_frontend = './node_modules/@acas-digital-innovation/acas-frontend/';
+  //const acasdigital_frontend = './node_modules/@acas-digital-innovation/acas-frontend/';
+  const acasdigital_frontend = './acas-frontend/';
 
   grunt.initConfig({
     shell: {
@@ -10,6 +11,63 @@ module.exports = function (grunt) {
         command: 'drush cache-clear theme-registry'
       }
     },
+    
+    watch: {
+      options: {
+        livereload: true
+      },
+      sass: {
+        files: [acasdigital_frontend + 'scss/{,**/}*.{scss,sass}'],
+        tasks: ['compass:dev'],
+        options: {
+          livereload: false
+        }
+      },
+      registry: {
+        files: ['*.info', '{,**}/*.{php,inc}'],
+        tasks: ['shell'],
+        options: {
+          livereload: false
+        }
+      },
+      images: {
+        files: ['images/**']
+      },
+      css: {
+        files: ['css/{,**/}*.css']
+      },
+      js: {
+        files: [acasdigital_frontend + 'js/{,**/}*.js', '!js/{,**/}*.min.js'],
+        tasks: ['jshint', 'uglify:dev']
+      },
+      livereload: {
+        files: [
+          'dist/css/{,**/}*.css',
+          'dist/js/{,**/}*.js',
+          'dist/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
+      }
+    },
+    
+    compass: {
+      options: {
+        config: 'config.rb',
+        bundleExec: true,
+        force: true
+      },
+      dev: {
+        options: {
+          environment: 'development'
+        }
+      },
+      dist: {
+        options: {
+          environment: 'production'
+        }
+      }
+    },
+
+
 
     copy: {
       dist: {
@@ -100,6 +158,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');

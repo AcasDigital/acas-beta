@@ -1,0 +1,43 @@
+.link--back, .back--link {
+
+  @extend %margin-bottom-8x;
+
+  cursor: pointer;
+
+  clear: both;
+
+  font-size: $font-size-small;
+  position: relative;
+  float: left;
+  
+  // Allow space for the arrow
+  padding-left: 14px;
+
+  background: transparent;
+  border: none;
+  // Use border-bottom rather than text-decoration so that the arrow is
+  // underlined as well.
+  border-bottom: 1px solid acas-color("black");
+
+  // Underline is provided by a bottom border
+  @extend %link-no-decoration;
+
+  // Prepend left pointing arrow
+  &:before {
+    @include acas-shape-arrow($direction: left, $base: 10px, $height: 6px);
+    @include push--auto;
+    
+    content: "";
+
+    // Vertically align with the parent element
+    position: absolute;
+
+    top: 7px;
+    bottom: 1px;
+    left: 0;
+
+  }
+  &:hover, &:focus {
+    border-bottom: 1px solid transparent;
+  }
+}

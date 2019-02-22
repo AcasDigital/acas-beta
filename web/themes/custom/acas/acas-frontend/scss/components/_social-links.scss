@@ -1,0 +1,55 @@
+@if $compile-IE {
+  #social-share {
+    display: none;
+  }
+}
+
+@else {
+  #social-share {
+    @extend %margin-vertical-4x;
+    @extend %padding-horizontal-2x;
+    @extend %padding-vertical-1x;
+
+    background: acas-color("gray-light");
+
+    border-radius: 15px;
+
+    max-width: 20em;
+    overflow: hidden;
+ 
+    ul {
+      @extend %list-no-format;
+    }
+    
+    a {
+      @extend %link-no-focus;
+    }
+    .text {
+      @extend .text-small;
+      @extend %padding-left-1x;
+      
+      display: inline-block;
+    }
+
+    .social-media-sharing {
+      float: right;
+    }
+
+    li {
+      @extend %margin-horizontal-1x;
+      display: inline-block;
+    }
+    
+    img {
+      height: auto;
+      vertical-align: text-top;
+      width: 1.25em;
+    }
+  }
+}
+
+@include bp(md) {
+  #social-share {
+    margin-top: 0;
+  }
+}

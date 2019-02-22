@@ -1,0 +1,44 @@
+a {
+  color: acas-color("teal-dark");
+  text-decoration: underline;
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+  &:focus {
+    background: acas-color("teal-dark");
+    color: acas-color("white");
+  }
+}
+
+%link-no-decoration {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+%links-black {
+  color: acas-color("black");
+  &:focus {
+    color: acas-color("white");
+  }
+}
+
+%link-add-focus-hover {
+  &:hover  {
+    background: acas-color("teal-dark");
+    color: acas-color("white");
+  }
+}
+
+%link-no-focus {
+  &:hover, &:focus  {
+    background: transparent;
+  }
+}
+
+%link-focus-black {
+  &:hover, &:focus {
+    color: black;
+  }
+}

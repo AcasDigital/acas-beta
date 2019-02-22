@@ -1,0 +1,52 @@
+{
+  "_args": [
+    [
+      "@acas-digital-innovation/acas-frontend@1.1.4",
+      "/var/www/acas-notify/web/themes/custom/acas"
+    ]
+  ],
+  "_from": "@acas-digital-innovation/acas-frontend@1.1.4",
+  "_id": "@acas-digital-innovation/acas-frontend@1.1.4",
+  "_inBundle": false,
+  "_integrity": "sha512-myTgMHTWhDDoplBG5ryseIIu8wBcYwWUmqxKw78JjbftOMMfcH15S7C2+u7QnmdR0iS8C2G7TzRiud0s5SX44Q==",
+  "_location": "/@acas-digital-innovation/acas-frontend",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@acas-digital-innovation/acas-frontend@1.1.4",
+    "name": "@acas-digital-innovation/acas-frontend",
+    "escapedName": "@acas-digital-innovation%2facas-frontend",
+    "scope": "@acas-digital-innovation",
+    "rawSpec": "1.1.4",
+    "saveSpec": null,
+    "fetchSpec": "1.1.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@acas-digital-innovation/acas-frontend/-/acas-frontend-1.1.4.tgz",
+  "_spec": "1.1.4",
+  "_where": "/var/www/acas-notify/web/themes/custom/acas",
+  "author": {
+    "name": "“Acas Digi Innovation Team",
+    "email": "“digitalinnovation@acas.org.uk”",
+    "url": "“https://beta.acas.org.uk”"
+  },
+  "bugs": {
+    "url": "https://github.com/acasdigital/acasdigital-frontend/issues"
+  },
+  "description": "Acas front-end codebase",
+  "homepage": "https://github.com/acasdigital/acasdigital-frontend#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@acas-digital-innovation/acas-frontend",
+  "repository": {
+    "type": "git",
+    "url": "git+https://acasdigital@github.com/acasdigital/acasdigital-frontend.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.4"
+}

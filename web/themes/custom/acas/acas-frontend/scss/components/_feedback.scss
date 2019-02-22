@@ -1,0 +1,143 @@
+#feedback-form {
+  .webform-submission-form {
+    @extend .col-xs-12;
+  }
+}
+
+#feedback-form {
+  @extend .container, .text-small;
+  background: acas-color("teal-dark");
+  color: acas-color("white");
+
+  position: relative;
+
+  .feedback-question-wrapper, 
+  .feedback-close-wrapper {
+    @extend %margin-vertical-1x;
+    @extend .text-small;
+    float: left;
+
+    a {
+      color: acas-color("white");
+      &:hover, &:focus {
+        background: acas-color("white");
+        color: acas-color("teal-dark");
+      }
+    }
+    
+  }
+
+  .feedback-question-wrapper {
+    width: 85%;
+  }
+
+  .feedback-close-wrapper {
+    width: 15%;
+
+    cursor: pointer;
+  
+    display: none;
+    text-align: right;
+  }
+
+  .feedback-question {
+
+    span {
+      font-family: $font-family-semibold;
+    }
+
+    a {
+      @extend %margin-left-2x;
+
+      color: acas-color("white");
+      display: inline-block;
+    }
+
+  }
+}
+
+#feedback-form-section, #feedback-form {
+  overflow: hidden;
+  
+  form {
+    @extend %padding-4x;
+    background: acas-color("white");
+    color: acas-color("black");
+    clear: both;
+    display: none;
+
+    .form-submit {
+      @extend %margin-top-0x;
+    }
+
+    textarea {
+      height: 3.5em;
+    }
+
+    .help-block {
+      @extend .text-small;
+      color: acas-color("gray-dark");
+    }
+  }
+
+  .panel {
+    
+    @extend %padding-bottom-2x;
+
+    .control-label, .panel-title {
+      @extend %margin-bottom-2x;
+  
+      display: block;
+      font-family: $font-family-semibold;
+      font-size: $font-size-standard;
+    }
+
+    .panel-heading {
+      display: block;
+    }
+  
+    .panel-body {
+      .iradio_square-aero {
+        margin-right: .25em;
+      }
+    }
+    
+  }
+
+  /* Captcha input */
+  .form-type-email {
+    display: none;
+  }
+
+}
+
+@include bp(sm) {
+  #feedback-wrapper {
+    position: relative;
+  }
+  
+  #feedback-form {
+    max-width: 100%;
+  }
+
+  #feedback-form {
+    .feedback-question-wrapper {
+      width: 75%;
+    }
+  
+    .feedback-close-wrapper {
+      width: 25%;
+    }
+
+    form {
+      background: acas-color("white");
+      color: acas-color("black");
+      display: none;
+      clear: both;
+      textarea {
+        height: unset;
+      }
+    }
+  }
+  
+}

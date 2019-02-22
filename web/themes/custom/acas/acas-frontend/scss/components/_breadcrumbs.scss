@@ -1,0 +1,40 @@
+.breadcrumb {
+  @extend .text-small;
+  @extend %margin-bottom-8x;
+  @extend %list-no-format;
+  
+  padding: 0;
+  li {
+    display: inline-block;
+    position: relative;
+    a {
+      @extend %links-black;
+      position: relative;
+    }
+    &:after {
+      @extend %has-background-image;
+      @extend %margin-horizontal-2x;
+      
+      content: "";
+      
+      background-image: url(../images/icons/icon-chevron-teal-right.svg);
+
+      display: inline-block;
+      height: 15px;
+      position: relative;
+      top: 0.25em;
+      width: 7px;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+@if $compile-IE {
+  .breadcrumb {
+    display: none;
+  }
+}

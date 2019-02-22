@@ -1,0 +1,36 @@
+.footer {
+  border-top: 5px solid acas-color("teal-dark");
+  background: acas-color("gray-light");
+  padding: 2em 0;
+}
+
+.footer-logo {
+  @extend %link-no-focus;
+  
+  img {
+    max-width: 10rem;
+  }
+}
+
+#footer__inner {
+  @extend .text-tiny;
+  ul {
+    @extend %list-no-format;
+    @extend %margin-vertical-4x;
+    @extend %margin-horizontal-0x;
+  }
+  a {
+    @extend %padding-vertical-1x;
+    @extend %links-black;
+    
+    display: inline-block;
+  }
+}
+
+@include bp(md) {
+  #footer__inner {
+    ul {
+      margin: 0;
+    }
+  }
+}

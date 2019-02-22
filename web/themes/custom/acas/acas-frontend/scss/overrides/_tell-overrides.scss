@@ -1,0 +1,9 @@
+#print-preview, .path-guide-print, .print {
+  .btn-cta--helpline {
+    display: none;
+  }
+}
+
+.webform-composite-hidden-title {
+  @extend %margin-top-0x;
+}

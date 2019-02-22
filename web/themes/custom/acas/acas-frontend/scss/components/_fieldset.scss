@@ -1,0 +1,40 @@
+.form-group {
+  @extend %margin-bottom-8x;
+  clear: both;
+}
+
+.fieldgroup {
+  @extend %margin-bottom-8x;
+
+  padding: 0;
+  .form-group {
+    @include clearfix;
+    @extend %margin-bottom-4x;
+
+    &.form-title {
+      @extend %margin-right-4x;
+      display: inline-block;
+      @extend %margin-bottom-0x;
+    }
+    &.form-wrapper {
+      @extend %margin-bottom-0x;
+    }
+  }
+  legend {
+    @extend %margin-vertical-2x;
+    @extend %margin-horizontal-0x;
+    display: block;
+  }
+}
+
+.fieldset-legend {
+  @extend %margin-bottom-2x;
+  
+  display: block;
+  font-family: $font-family-semibold;
+  font-size: $font-size-standard;
+}
+
+.control-label {
+  @extend .fieldset-legend;
+}

@@ -1,0 +1,93 @@
+#guide_print_download_overlay {
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;  
+  width: 100%;
+  z-index: 10;
+}
+
+.print-download-email {
+  .modal {
+    background-color: acas-color("white");
+    border: 3px solid acas-color("lime");
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 580px;
+    height: 450px;
+    margin-left: -290px;
+    margin-top: -225px;
+    text-align: center;
+    z-index: 10;
+
+    /* Title Elements */
+    .action {
+      @extend %margin-horizontal-4x;
+      display: inline-block;
+      width: 40%;
+    }
+    .title-wrapper {
+      @extend %padding-4x;
+      border-bottom: 3px solid acas-color("lime");
+      overflow: auto;
+    }
+    .title {
+      @extend .h2;
+      @extend %margin-bottom-0x;
+      float: left;
+    }
+    .close {
+      @extend .h4;
+      @extend %margin-bottom-0x;
+      float: right;
+      cursor: pointer;
+    }
+    .x {
+      @extend %margin-left-3x;
+      font-size: $font-size-large;
+    }
+
+    /* Body Elements */
+    .body-wrapper {
+      @extend %margin-vertical-4x;
+    }
+    .icon {
+      @include push--auto;
+      @extend %margin-vertical-4x;
+      @extend %has-background-image;
+      height: 6em;
+      width: 4em;
+    }
+    .download-page {
+      .icon {
+        background-image: url(../images/icons/icon-download-page.svg);
+      }
+    }
+    .download-guide {
+      .icon {
+        background-image: url(../images/icons/icon-download-guide.svg);
+      }
+    }
+    .print-page {
+      .icon {
+        background-image: url(../images/icons/icon-print-page.svg);
+      }
+    }
+    .print-guide {
+      .icon {
+        background-image: url(../images/icons/icon-print-guide.svg);
+      }
+    }
+  }
+  .btn-panel {
+    @include clearfix;
+    @extend %padding-4x;
+    border: 3px solid acas-color("teal");
+    border-radius: 7px;
+    float: left;
+    min-height: 14em;
+    width: 100%;
+  }
+}

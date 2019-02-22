@@ -1,0 +1,7 @@
+.form-name {
+  @extend .container;
+  @extend .text-small;
+  color: acas-color("gray-dark");
+  padding-bottom: .75em;
+  padding-top: .75em;
+}

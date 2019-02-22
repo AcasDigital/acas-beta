@@ -1,0 +1,24 @@
+/**
+ * @file
+ * GOV.UK Webform date composite styles.
+ */
+
+ .govuk-webform-elements--wrapper .form-type-number {
+  @extend %margin-right-4x;
+  @extend %margin-bottom-0x;
+   display: inline-block;
+   max-width: 6em;
+ }
+ .govuk-webform-elements--wrapper .form-type-number:last-child {
+   max-width: 10em;
+   @extend %margin-right-0x;
+ }
+ .govuk-webform-elements--wrapper .form-type-number input {
+   width: 100%;
+   -moz-appearance:textfield;
+ }
+ .govuk-webform-elements--wrapper input[type=number]::-webkit-inner-spin-button,
+ .govuk-webform-elements--wrapper input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   @extend %margin-0x;
+ }

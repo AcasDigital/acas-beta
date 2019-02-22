@@ -1,0 +1,58 @@
+.btn-save--print, 
+.btn-save--download {
+  display: none;
+}
+
+.print-download-email {
+  @extend %margin-top-6x;
+}
+
+.btn-save {
+  @extend .text-small;
+  @extend %padding-1x;
+  color: acas-color("teal-dark");
+  display: block;
+
+  padding-left: 2em;
+  position: relative;
+
+  &:before {
+    content: "";
+    @extend %has-background-image;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1em;
+  }
+}
+
+.btn-save--print {
+  &:before {
+    background-image: url(../images/icons/icon-print.svg);
+  }
+  &:focus {
+    &:before {
+      background-image: url(../images/icons/icon-print-white.svg);
+    }
+  }
+}
+
+.btn-save--download {
+  &:before {
+    background-image: url(../images/icons/icon-download.svg);
+  }
+  &:focus {
+    &:before {
+      background-image: url(../images/icons/icon-download-white.svg);
+    }
+  }
+}
+
+@include bp(sm) {
+  .btn-save--print, 
+  .btn-save--download {
+    display: block;
+    width: fit-content;
+  }
+}

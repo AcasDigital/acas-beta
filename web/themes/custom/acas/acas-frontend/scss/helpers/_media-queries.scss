@@ -1,0 +1,20 @@
+// ----- Media-queries ----- //
+$breakpoints: sm $screen-sm-min, md $screen-md-min, lg $screen-lg-min, xl $screen-xl-min;
+
+@mixin bp($bp) {
+// If compile-IE is true (IE8 <=) then just use the desktop overrides and parse them without @media queries
+   @if $compile-IE {
+      @content;
+   }
+   // If compile-IE is false (modern browsers) then parse the @media queries
+   @else {
+      @each $breakpoint in $breakpoints {
+         @if $bp == nth($breakpoint, 1) {
+            @media (min-width: nth($breakpoint, 2)) {
+               @content;
+            }
+         }
+      }
+   }
+}
+ 

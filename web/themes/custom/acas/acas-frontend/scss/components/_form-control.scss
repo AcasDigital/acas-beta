@@ -1,0 +1,117 @@
+input, textarea, select, button {
+  @extend %margin-vertical-0x;
+  @extend %margin-horizontal-0x;
+  font-family: $font-family-base;
+  
+  color: initial;
+  display: inline-block;
+  font-size: $font-size-standard;
+  letter-spacing: normal;
+  text-align: start;
+  text-indent: 0px;
+  text-shadow: none;
+  text-rendering: auto;
+  text-transform: none;
+  word-spacing: normal;
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  max-width: 100%;
+}
+
+select {
+  background: acas-color("white");
+  height: 2.5em;
+}
+
+/* Ajax Loader */
+.ajax-progress.ajax-progress-throbber {
+  @extend %padding-bottom-6x;
+}
+
+/* Postal Code */
+.form-item-claimant-address-postal-code,
+.form-item-respondant-address-postal-code {
+  input {
+    max-width: 12em;
+  }
+}
+
+/* Monetary values: */
+.form-number {
+  max-width: 10em;
+  -moz-appearance:textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    @extend %margin-0x;
+  } 
+}
+
+/* Address finder */
+.find-address-wrapper {
+  input, a {
+    @extend %margin-right-3x;
+    display: inline-block;
+    max-width: 12em;
+  }
+  .find_address {
+    @extend %padding-horizontal-1x;
+    @extend %padding-vertical-1x;
+    @extend %margin-top-1x;
+  }
+}
+
+#address_results {
+  @extend %margin-bottom-6x;
+  select {
+    max-width: 100%;
+  }
+}
+
+/* Form control layout */
+.form-inline {
+  display: inline-block;
+  @include clearfix;
+}
+
+.form-control {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid acas-color("gray-dark");
+  border-radius: .25rem;
+  font-size: $font-size-standard;
+  line-height: 1.5;
+  min-height: 40px;
+  padding: .25em .5em;
+}
+
+
+.form-description {
+  @extend %description;
+}
+
+/* Form Upload */
+.upload-wrapper {
+  .description {
+    @extend .form-description;
+  }  
+}
+
+.fieldset-wrapper {
+  .description {
+    @extend .form-description;
+  }
+}
+
+.webform-element-description {
+  @extend .form-description;
+}
+
+.text-count-wrapper {
+  @extend .form-description;
+}

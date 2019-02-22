@@ -1,0 +1,48 @@
+.paragraph--type--document {
+  .document-wrapper {
+    @extend %margin-bottom-4x;
+    .details-wrapper {
+      overflow: auto;
+    }
+  }
+  .field--name-field-icon {
+    @extend %margin-right-3x;
+    @extend %margin-bottom-3x;
+    @extend %margin-top-1x;
+    &:after {
+      clear: both;
+    }
+  }
+  .field--name-field-file, 
+  .field--name-field-pages {
+    display: inline-block;
+  }
+}
+
+h3.publication-title {
+  @extend %margin-bottom-0x;
+}
+
+.field--name-field-publication-summary {
+  @extend %margin-bottom-8x;
+  font-size: $font-size-large;
+}
+
+.field--name-field-media-file,
+.field--name-field-pages {
+  @extend %margin-bottom-3x;
+  color: acas-color("black");
+  font-size: $font-size-tiny;
+}
+
+.field--name-field-description {
+  @extend %description;
+}
+
+@include bp(sm) {
+  .paragraph--type--document {
+    .field--name-field-icon {
+      float: left;
+    }
+  }  
+}

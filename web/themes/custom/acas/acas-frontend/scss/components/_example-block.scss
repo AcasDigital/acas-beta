@@ -1,0 +1,10 @@
+.example-block {
+  @extend %padding-top-2x;
+  @extend %padding-bottom-1x;
+  @extend %padding-left-2x;
+  @extend %margin-bottom-4x;
+  border-left: 10px solid acas-color("gray");
+  ul, p {
+    @extend %margin-bottom-2x;
+  }
+}
