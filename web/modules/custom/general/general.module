@@ -110,12 +110,28 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
     if ($entity->get('field_feedback_form')->value) {
       $current_path = \Drupal::service('path.current')->getPath();
       if (strpos($current_path, '/node/preview') === FALSE) {
-        $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
-        $build['yes_feedback_form'] = $form;
-        $build['yes_feedback_form']['#weight'] = 999;
-        $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
-        $build['no_feedback_form'] = $form;
-        $build['no_feedback_form']['#weight'] = 999;
+        if (preg_match('/MSIE\s(?P<v>\d+)/i', @$_SERVER['HTTP_USER_AGENT'], $B) && $B['v'] <= 8) {
+          $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
+          $build['yes_feedback_form'] = $form;
+          $build['yes_feedback_form']['#weight'] = 999;
+          $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\NoFeedback');
+          $build['no_feedback_form'] = $form;
+          $build['no_feedback_form']['#weight'] = 999;
+        }
+        else {
+          if ($form = \Drupal\webform\Entity\Webform::load('no_feedback')) {
+            $build['no_feedback_form'] = \Drupal::entityManager()
+              ->getViewBuilder('webform')
+              ->view($form);
+            $build['no_feedback_form']['#weight'] = 999;
+          }
+          if ($form = \Drupal\webform\Entity\Webform::load('yes_feedback')) {
+            $build['yes_feedback_form'] = \Drupal::entityManager()
+              ->getViewBuilder('webform')
+              ->view($form);
+            $build['yes_feedback_form']['#weight'] = 999;
+          }
+        }
       }
     }
     if ($entity->get('field_print_download')->value) {

@@ -78,6 +78,14 @@
       @extend .text-small;
       color: acas-color("gray-dark");
     }
+    
+    .webform-actions {
+      @extend %margin-bottom-0x;
+    }
+    
+    .webform-element-description {
+      @extend %margin-bottom-2x;
+    }
   }
 
   .panel {
@@ -102,6 +110,17 @@
       }
     }
     
+  }
+  
+  .fieldgroup {
+    
+    @extend %padding-bottom-2x;
+    
+    margin: 0;
+    
+    legend {
+      margin: 0;
+    }
   }
 
   /* Captcha input */

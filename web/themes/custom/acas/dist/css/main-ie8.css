@@ -3,6 +3,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+/* line 6, ../../acas-frontend/scss/settings/_reset.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, .chapters--search h2, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,105 +22,148 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
+/* line 27, ../../acas-frontend/scss/settings/_reset.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
+/* line 31, ../../acas-frontend/scss/settings/_reset.scss */
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
+/* line 34, ../../acas-frontend/scss/settings/_reset.scss */
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
+/* line 37, ../../acas-frontend/scss/settings/_reset.scss */
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
+/* line 40, ../../acas-frontend/scss/settings/_reset.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
+/* line 45, ../../acas-frontend/scss/settings/_reset.scss */
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 @font-face {
   font-family: 'Open Sans';
   src: url("../fonts/OpenSans-Regular-webfont.eot");
   src: url("../fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/OpenSans-Regular-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Open Sans Bold';
   src: url("../fonts/OpenSans-Bold-webfont.eot");
   src: url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Open Sans Semibold';
   src: url("../fonts/OpenSans-Semibold-webfont.eot");
   src: url("../fonts/OpenSans-Semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Semibold-webfont.woff") format("woff"), url("../fonts/OpenSans-Semibold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Semibold-webfont.svg#open_sanssemibold") format("svg");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: "Century Gothic";
   src: url("../fonts/bd45538f-4200-4946-b177-02de8337032d.eot?#iefix");
-  src: url("../fonts/bd45538f-4200-4946-b177-02de8337032d.eot?#iefix") format("eot"), url("../fonts/700cfd4c-3384-4654-abe1-aa1a6e8058e4.woff2") format("woff2"), url("../fonts/9908cdad-7524-4206-819e-4f345a666324.woff") format("woff"), url("../fonts/b710c26a-f1ae-4fb8-a9fe-570fd829cbf1.ttf") format("truetype"), url("../fonts/c9e387df-c0d3-42e1-8de6-78c41f68594c.svg#c9e387df-c0d3-42e1-8de6-78c41f68594c") format("svg"); }
+  src: url("../fonts/bd45538f-4200-4946-b177-02de8337032d.eot?#iefix") format("eot"), url("../fonts/700cfd4c-3384-4654-abe1-aa1a6e8058e4.woff2") format("woff2"), url("../fonts/9908cdad-7524-4206-819e-4f345a666324.woff") format("woff"), url("../fonts/b710c26a-f1ae-4fb8-a9fe-570fd829cbf1.ttf") format("truetype"), url("../fonts/c9e387df-c0d3-42e1-8de6-78c41f68594c.svg#c9e387df-c0d3-42e1-8de6-78c41f68594c") format("svg");
+}
 @font-face {
   font-family: "Century Gothic Bold";
   src: url("../fonts/b247e158-e647-4a3d-9637-944de5124043.eot?#iefix");
-  src: url("../fonts/b247e158-e647-4a3d-9637-944de5124043.eot?#iefix") format("eot"), url("../fonts/bc0668e2-e5c8-45ce-954d-3b998c6b6803.woff2") format("woff2"), url("../fonts/2ef5ecda-1772-45e2-843f-a13f5d76ed3a.woff") format("woff"), url("../fonts/33cf10ca-a6bb-4888-a320-d38720c9847b.ttf") format("truetype"), url("../fonts/3428a0e6-cb4d-408a-8331-cc78554ab49c.svg#3428a0e6-cb4d-408a-8331-cc78554ab49c") format("svg"); }
+  src: url("../fonts/b247e158-e647-4a3d-9637-944de5124043.eot?#iefix") format("eot"), url("../fonts/bc0668e2-e5c8-45ce-954d-3b998c6b6803.woff2") format("woff2"), url("../fonts/2ef5ecda-1772-45e2-843f-a13f5d76ed3a.woff") format("woff"), url("../fonts/33cf10ca-a6bb-4888-a320-d38720c9847b.ttf") format("truetype"), url("../fonts/3428a0e6-cb4d-408a-8331-cc78554ab49c.svg#3428a0e6-cb4d-408a-8331-cc78554ab49c") format("svg");
+}
+/* line 17, ../../acas-frontend/scss/settings/_typography.scss */
 .invalid-feedback, .error-summary .error-summary__list {
-  font: 500 1em "Open Sans Semibold", sans-serif; }
+  font: 500 1em "Open Sans Semibold", sans-serif;
+}
 
+/* line 29, ../../acas-frontend/scss/settings/_typography.scss */
 .text-small, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, form#user-login-form .description, .prescribed .guidance-text {
-  font-size: 0.85em; }
+  font-size: 0.85em;
+}
 
+/* line 33, ../../acas-frontend/scss/settings/_typography.scss */
 .text-tiny, .inset-text--beta, #footer__inner {
-  font-size: 0.75em; }
+  font-size: 0.75em;
+}
 
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .clearfix:before, .clearfix:after {
   content: " ";
-  display: table; }
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 @keyframes rotator {
   0% {
-    transform: rotate(0deg); }
+    transform: rotate(0deg);
+  }
   100% {
-    transform: rotate(270deg); } }
+    transform: rotate(270deg);
+  }
+}
+/* line 9, ../../acas-frontend/scss/helpers/_keyframes.scss */
 .path {
   stroke-dasharray: 187;
   stroke-dashoffset: 0;
   transform-origin: center;
-  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite; }
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
 
 @keyframes colors {
   0% {
-    stroke: #008C95; }
+    stroke: #008C95;
+  }
   25% {
-    stroke: #008C95; }
+    stroke: #008C95;
+  }
   50% {
-    stroke: #008C95; }
+    stroke: #008C95;
+  }
   75% {
-    stroke: #008C95; }
+    stroke: #008C95;
+  }
   100% {
-    stroke: #008C95; } }
+    stroke: #008C95;
+  }
+}
 @keyframes dash {
   0% {
-    stroke-dashoffset: 187; }
+    stroke-dashoffset: 187;
+  }
   50% {
     stroke-dashoffset: 46.75;
-    transform: rotate(135deg); }
+    transform: rotate(135deg);
+  }
   100% {
     stroke-dashoffset: 187;
-    transform: rotate(450deg); } }
+    transform: rotate(450deg);
+  }
+}
 /**
  * @file
  * Utility classes to hide elements in different ways.
@@ -132,8 +176,10 @@ table {
  * from a user. The effect of this class can be toggled with the jQuery show()
  * and hide() functions.
  */
+/* line 14, ../../acas-frontend/scss/helpers/_visually-hidden.scss */
 .hidden {
-  display: none; }
+  display: none;
+}
 
 /**
  * Hide elements visually, but keep them available for screen readers.
@@ -143,33 +189,40 @@ table {
  * manner should be kept concise, to avoid unnecessary burden on the user.
  * "!important" is used to prevent unintentional overrides.
  */
+/* line 26, ../../acas-frontend/scss/helpers/_visually-hidden.scss */
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
   height: 1px;
   width: 1px;
-  word-wrap: normal; }
+  word-wrap: normal;
+}
 
 /**
  * The .focusable class extends the .visually-hidden class to allow
  * the element to be focusable when navigated to via the keyboard.
  */
+/* line 39, ../../acas-frontend/scss/helpers/_visually-hidden.scss */
 .visually-hidden.focusable:active,
 .visually-hidden.focusable:focus {
   position: static !important;
   clip: auto;
   overflow: visible;
   height: auto;
-  width: auto; }
+  width: auto;
+}
 
 /**
  * Hide visually and from screen readers, but maintain layout.
  */
+/* line 51, ../../acas-frontend/scss/helpers/_visually-hidden.scss */
 .invisible {
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /* Screenreader Code */
+/* line 58, ../../acas-frontend/scss/helpers/_visually-hidden.scss */
 .screenreader, .sr-only {
   border: 0;
   clip: rect(0 0 0 0);
@@ -178,18 +231,24 @@ table {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px; }
+  width: 1px;
+}
 
+/* line 5, ../../acas-frontend/scss/helpers/_print.scss */
 #print-preview #header-main,
 .path-guide-print #header-main,
 .path-page-print #header-main,
 .print #header-main {
-  display: none; }
+  display: none;
+}
+/* line 8, ../../acas-frontend/scss/helpers/_print.scss */
 #print-preview #block-sitebranding,
 .path-guide-print #block-sitebranding,
 .path-page-print #block-sitebranding,
 .print #block-sitebranding {
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+}
+/* line 11, ../../acas-frontend/scss/helpers/_print.scss */
 #print-preview h1, #print-preview h2,
 .path-guide-print h1,
 .path-guide-print h2,
@@ -198,51 +257,77 @@ table {
 .print h1,
 .print h2 {
   padding-left: 0;
-  border-left: none; }
+  border-left: none;
+}
+/* line 15, ../../acas-frontend/scss/helpers/_print.scss */
 #print-preview .btn-cta--helpline,
 .path-guide-print .btn-cta--helpline,
 .path-page-print .btn-cta--helpline,
 .print .btn-cta--helpline {
-  display: none; }
+  display: none;
+}
 
+/* line 1, ../../acas-frontend/scss/core/_base.scss */
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+/* line 5, ../../acas-frontend/scss/core/_base.scss */
 html {
-  font-size: 19px; }
+  font-size: 19px;
+}
 
+/* line 9, ../../acas-frontend/scss/core/_base.scss */
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.5; }
+  line-height: 1.5;
+}
 
+/* line 16, ../../acas-frontend/scss/core/_base.scss */
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
+/* line 24, ../../acas-frontend/scss/core/_base.scss */
 strong, b {
-  font-family: "Open Sans Semibold", sans-serif; }
+  font-family: "Open Sans Semibold", sans-serif;
+}
 
+/* line 28, ../../acas-frontend/scss/core/_base.scss */
 ul {
-  list-style-type: disc; }
+  list-style-type: disc;
+}
 
+/* line 31, ../../acas-frontend/scss/core/_base.scss */
 ol {
-  list-style-type: decimal; }
+  list-style-type: decimal;
+}
 
+/* line 45, ../../acas-frontend/scss/core/_base.scss */
 .breadcrumb, ul.breadcrumb--search, #footer__inner ul, .block-in-this-section-block .section__wrapper ul, .menu-primary, .menu-secondary, .nav-related .nav-related__list ul {
-  list-style-type: none; }
+  list-style-type: none;
+}
 
+/* line 54, ../../acas-frontend/scss/core/_base.scss */
 .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description {
-  color: #4d4d4d; }
+  color: #4d4d4d;
+}
 
+/* line 61, ../../acas-frontend/scss/core/_base.scss */
 .breadcrumb li:after, ul.breadcrumb--search li:after, .phone-callout:after, .menu-primary__link:after, .btn-save:before, .print-download-email .modal .icon {
   background-size: 100% auto;
   background-position: 50% 50%;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+}
 
+/* line 67, ../../acas-frontend/scss/core/_base.scss */
 main.main__content {
-  display: block; }
+  display: block;
+}
 
+/* line 7, ../../acas-frontend/scss/core/_headers.scss */
 h1, h1 a, .h1, .h1 a,
 h2,
 h2 a, .h2, .print-download-email .modal .title, .h2 a, .print-download-email .modal .title a,
@@ -257,78 +342,120 @@ h5 a, .h5, .h5 a,
 h6,
 h6 a, .h6, .h6 a {
   color: #008C95;
-  font-family: "Century Gothic Bold", "AppleGothic", sans-serif; }
+  font-family: "Century Gothic Bold", "AppleGothic", sans-serif;
+}
 
+/* line 13, ../../acas-frontend/scss/core/_headers.scss */
 h1, .h1 {
   border-left: 5px solid #CEDC00;
   line-height: 1.25;
   position: relative;
-  padding-left: 15px; }
+  padding-left: 15px;
+}
 
+/* line 22, ../../acas-frontend/scss/core/_headers.scss */
 h1, h1 .h1 {
-  font-size: 1.68em; }
+  font-size: 1.68em;
+}
 
+/* line 29, ../../acas-frontend/scss/core/_headers.scss */
 h2, h2 .h2, h2 .print-download-email .modal .title, .print-download-email .modal h2 .title {
-  font-size: 1.36em; }
+  font-size: 1.36em;
+}
 
+/* line 36, ../../acas-frontend/scss/core/_headers.scss */
 h3, .chapters--search h2, h3 .h3, .chapters--search h2 .h3 {
-  font-size: 1em; }
+  font-size: 1em;
+}
 
+/* line 43, ../../acas-frontend/scss/core/_headers.scss */
 h4, h4 .h4, h4 .print-download-email .modal .close, .print-download-email .modal h4 .close {
-  font-size: 1em; }
+  font-size: 1em;
+}
 
+/* line 48, ../../acas-frontend/scss/core/_headers.scss */
 h5 {
-  font-size: 1em; }
+  font-size: 1em;
+}
 
+/* line 52, ../../acas-frontend/scss/core/_headers.scss */
 h6 {
-  font-size: 1em; }
+  font-size: 1em;
+}
 
+/* line 57, ../../acas-frontend/scss/core/_headers.scss */
 h1, .h1 {
-  font-size: 2.42em; }
+  font-size: 2.42em;
+}
 
+/* line 60, ../../acas-frontend/scss/core/_headers.scss */
 h2, .h2, .print-download-email .modal .title {
-  font-size: 1.68em; }
+  font-size: 1.68em;
+}
 
+/* line 64, ../../acas-frontend/scss/core/_headers.scss */
 .teaser h2 {
-  font-size: 1.36em; }
+  font-size: 1.36em;
+}
 
+/* line 1, ../../acas-frontend/scss/core/_links.scss */
 a {
   color: #007C85;
-  text-decoration: underline; }
-  a:hover, a:focus {
-    text-decoration: none; }
-  a:focus {
-    background: #007C85;
-    color: #fff; }
+  text-decoration: underline;
+}
+/* line 4, ../../acas-frontend/scss/core/_links.scss */
+a:hover, a:focus {
+  text-decoration: none;
+}
+/* line 7, ../../acas-frontend/scss/core/_links.scss */
+a:focus {
+  background: #007C85;
+  color: #fff;
+}
 
+/* line 13, ../../acas-frontend/scss/core/_links.scss */
 .link--back, .back--link {
-  text-decoration: none; }
-  .link--back:hover, .back--link:hover {
-    text-decoration: none; }
+  text-decoration: none;
+}
+/* line 15, ../../acas-frontend/scss/core/_links.scss */
+.link--back:hover, .back--link:hover {
+  text-decoration: none;
+}
 
+/* line 20, ../../acas-frontend/scss/core/_links.scss */
 .breadcrumb li a, ul.breadcrumb--search li a, .error-summary .error-summary__list a, #footer__inner a, .menu-secondary__link, .nav-related .nav-related__list ul a, .chapters--search a {
-  color: #000; }
-  .breadcrumb li a:focus, ul.breadcrumb--search li a:focus, .error-summary .error-summary__list a:focus, #footer__inner a:focus, .menu-secondary__link:focus, .nav-related .nav-related__list ul a:focus, .chapters--search a:focus {
-    color: #fff; }
+  color: #000;
+}
+/* line 22, ../../acas-frontend/scss/core/_links.scss */
+.breadcrumb li a:focus, ul.breadcrumb--search li a:focus, .error-summary .error-summary__list a:focus, #footer__inner a:focus, .menu-secondary__link:focus, .nav-related .nav-related__list ul a:focus, .chapters--search a:focus {
+  color: #fff;
+}
 
+/* line 35, ../../acas-frontend/scss/core/_links.scss */
 .footer-logo:hover, #header-main #block-sitebranding a:hover, .menu-primary__icon:hover, .menu-primary__link:hover,
 .menu-secondary__link:hover, .footer-logo:focus, #header-main #block-sitebranding a:focus, .menu-primary__icon:focus, .menu-primary__link:focus,
 .menu-secondary__link:focus {
-  background: transparent; }
+  background: transparent;
+}
 
+/* line 41, ../../acas-frontend/scss/core/_links.scss */
 .menu-primary__link:hover,
 .menu-secondary__link:hover, .menu-primary__link:focus,
 .menu-secondary__link:focus {
-  color: black; }
+  color: black;
+}
 
+/* line 15, ../../acas-frontend/scss/settings/_layout.scss */
 .form-number::-webkit-inner-spin-button, .form-number::-webkit-outer-spin-button, .govuk-webform-elements--wrapper input[type=number]::-webkit-inner-spin-button,
 .govuk-webform-elements--wrapper input[type=number]::-webkit-outer-spin-button, .col-centered, .alert, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  margin: 0px; }
+  margin: 0px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .alert h4, #feedback-form-section form .form-submit, #feedback-form form .form-submit, .webform-composite-hidden-title, .page-node-type-page .teaser h2,
 .page-node-type-support-page .teaser h2,
 .page-node-type-details-page .teaser h2,
@@ -351,10 +478,12 @@ input,
 textarea,
 select,
 button {
-  margin-top: 0px; }
+  margin-top: 0px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 ul p, ol p, .phone-callout p, .inset-text--beta p, .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .alert > p,
-.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, .print-download-email .modal .title, .print-download-email .modal .close, h3.publication-title, .chapters--search h2.publication-title, .chapters--search ul, .prescribed .region-navigation-collapsible p,
+.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, #feedback-form-section form .webform-actions, #feedback-form form .webform-actions, .print-download-email .modal .title, .print-download-email .modal .close, h3.publication-title, .chapters--search h2.publication-title, .chapters--search ul, .prescribed .region-navigation-collapsible p,
 .breadcrumb,
 ul.breadcrumb--search,
 #footer__inner ul,
@@ -366,8 +495,10 @@ input,
 textarea,
 select,
 button {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+}
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
 .content-moderation-entity-moderation-form .entity-moderation-form,
 .breadcrumb,
 ul.breadcrumb--search,
@@ -381,8 +512,10 @@ textarea,
 select,
 button,
 .fieldgroup legend {
-  margin-left: 0px; }
+  margin-left: 0px;
+}
 
+/* line 26, ../../acas-frontend/scss/settings/_layout.scss */
 .govuk-webform-elements--wrapper .form-type-number:last-child,
 .breadcrumb,
 ul.breadcrumb--search,
@@ -396,96 +529,138 @@ textarea,
 select,
 button,
 .fieldgroup legend {
-  margin-right: 0px; }
+  margin-right: 0px;
+}
 
+/* line 30, ../../acas-frontend/scss/settings/_layout.scss */
 .breadcrumb li, ul.breadcrumb--search li, #footer__inner ul li, .block-in-this-section-block .section__wrapper ul li, .menu-primary li, .menu-secondary li, .nav-related .nav-related__list ul li {
-  padding: 0px; }
+  padding: 0px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .alert > p + p, .find-address-wrapper .find_address, .paragraph--type--document .field--name-field-icon, #block-searchblock, #views-exposed-form-solr-search-content-page-1, #views-exposed-form-search-content-page-1, #block-exposedformsearch-contentpage-1, #search-form,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 .block-in-this-section-block h2, .nav-justified > li > a, .nav-tabs.nav-justified > li > a,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+}
 
+/* line 30, ../../acas-frontend/scss/settings/_layout.scss */
 .btn-save {
-  padding: 5px; }
+  padding: 5px;
+}
 
+/* line 32, ../../acas-frontend/scss/settings/_layout.scss */
 ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 .find-address-wrapper .find_address,
 #footer__inner a {
-  padding-top: 5px; }
+  padding-top: 5px;
+}
 
+/* line 35, ../../acas-frontend/scss/settings/_layout.scss */
 .example-block,
 .find-address-wrapper .find_address,
 #footer__inner a {
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 .find-address-wrapper .find_address,
 .menu-primary__icon,
 .view-solr-search-content .views-row {
-  padding-left: 5px; }
+  padding-left: 5px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 .find-address-wrapper .find_address,
 .menu-primary__icon,
 .view-solr-search-content .views-row {
-  padding-right: 5px; }
+  padding-right: 5px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .fieldgroup legend,
 .invalid-feedback {
-  margin-top: 10px; }
+  margin-top: 10px;
+}
 
-.example-block ul, .example-block p, .fieldset-legend, .control-label, #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title, .nav-related .nav-related__list ul a, .view-empty p, #block-exposedformsolr-search-contentpage-1-3,
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
+.example-block ul, .example-block p, .fieldset-legend, .control-label, #feedback-form-section form .webform-element-description, #feedback-form form .webform-element-description, #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title, .nav-related .nav-related__list ul a, .view-empty p, #block-exposedformsolr-search-contentpage-1-3,
 .fieldgroup legend,
 .invalid-feedback {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+}
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
 #feedback-form .feedback-question a,
 .breadcrumb li:after,
 ul.breadcrumb--search li:after {
-  margin-left: 10px; }
+  margin-left: 10px;
+}
 
+/* line 26, ../../acas-frontend/scss/settings/_layout.scss */
 .breadcrumb li:after,
 ul.breadcrumb--search li:after {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 
+/* line 30, ../../acas-frontend/scss/settings/_layout.scss */
 .invalid-feedback, .js-pager__items .pager__item a {
-  padding: 10px; }
+  padding: 10px;
+}
 
+/* line 32, ../../acas-frontend/scss/settings/_layout.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-content, .example-block,
 .region.region-top-bar,
 .nav-related {
-  padding-top: 10px; }
+  padding-top: 10px;
+}
 
-.eu-cookie-compliance-banner .eu-cookie-compliance-content, #feedback-form-section .panel, #feedback-form .panel,
+/* line 35, ../../acas-frontend/scss/settings/_layout.scss */
+.eu-cookie-compliance-banner .eu-cookie-compliance-content, #feedback-form-section .panel, #feedback-form .panel, #feedback-form-section .fieldgroup, #feedback-form .fieldgroup,
 .region.region-top-bar,
 .nav-related {
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 .example-block,
 .beta-icon,
 .previous .details-wrapper,
 .next .details-wrapper {
-  padding-left: 10px; }
+  padding-left: 10px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 .beta-icon,
 .previous .details-wrapper,
 .next .details-wrapper {
-  padding-right: 10px; }
+  padding-right: 10px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 h4, .paragraph--type--document .field--name-field-icon, .field--name-field-media-file,
 .field--name-field-pages {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
 .print-download-email .modal .x {
-  margin-left: 15px; }
+  margin-left: 15px;
+}
 
+/* line 26, ../../acas-frontend/scss/settings/_layout.scss */
 .find-address-wrapper input, .find-address-wrapper a, .paragraph--type--document .field--name-field-icon {
-  margin-right: 15px; }
+  margin-right: 15px;
+}
 
+/* line 32, ../../acas-frontend/scss/settings/_layout.scss */
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance,
@@ -494,8 +669,10 @@ article.teaser .article__wrapper,
 .menu-secondary__link,
 .previous .details-wrapper,
 .next .details-wrapper {
-  padding-top: 15px; }
+  padding-top: 15px;
+}
 
+/* line 35, ../../acas-frontend/scss/settings/_layout.scss */
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance,
@@ -504,15 +681,21 @@ article.teaser .article__wrapper,
 .menu-secondary__link,
 .previous .details-wrapper,
 .next .details-wrapper {
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 .invalid-feedback,
 #header-main #block-acas-main-menu {
-  padding-left: 15px; }
+  padding-left: 15px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 #header-main #block-acas-main-menu {
-  padding-right: 15px; }
+  padding-right: 15px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 #block-exposedformsolr-search-contentpage-1-3,
 .btn-primary,
 .btn-secondary,
@@ -535,8 +718,10 @@ form#user-login-form #edit-submit,
 .prescribed .btn-secondary,
 .prescribed .webform-button--preview,
 .prescribed .webform-wizard-pages-link {
-  margin-top: 20px; }
+  margin-top: 20px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, h3, .chapters--search h2, .example-block, .fieldgroup .form-group, .webform-preview .form-group, .error-summary .error-summary__title, .js-pager__items, .paragraph--type--document .document-wrapper, #block-searchblock, form#user-login-form .form-item, .page-node-type-details-page article, .page-node-type-support-page article,
 .btn-primary,
 .btn-secondary,
@@ -559,92 +744,134 @@ form#user-login-form #edit-submit,
 .prescribed .btn-secondary,
 .prescribed .webform-button--preview,
 .prescribed .webform-wizard-pages-link {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+}
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
 .print-download-email .modal .action {
-  margin-left: 20px; }
+  margin-left: 20px;
+}
 
+/* line 26, ../../acas-frontend/scss/settings/_layout.scss */
 .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .content-moderation-entity-moderation-form .entity-moderation-form li,
 .print-download-email .modal .action {
-  margin-right: 20px; }
+  margin-right: 20px;
+}
 
+/* line 30, ../../acas-frontend/scss/settings/_layout.scss */
 .error-summary, #feedback-form-section form, #feedback-form form, .print-download-email .modal .title-wrapper, .print-download-email .btn-panel, .node-preview-container {
-  padding: 20px; }
+  padding: 20px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 #modal .title-wrapper,
 article.teaser .article__wrapper,
 .menu-secondary__link {
-  padding-left: 20px; }
+  padding-left: 20px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 #modal .title-wrapper,
 article.teaser .article__wrapper,
 .menu-secondary__link {
-  padding-right: 20px; }
+  padding-right: 20px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 p, .guidance-text, .text--guidance, .prescribed .text--guidance {
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance {
-  padding-left: 25px; }
+  padding-left: 25px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 .guidance-text,
 .text--guidance,
 .prescribed .text--guidance {
-  padding-right: 25px; }
+  padding-right: 25px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .print-download-email, ul.breadcrumb--search,
 main.main__content,
 .webform-container-type-details .panel-body {
-  margin-top: 30px; }
+  margin-top: 30px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 ul, ol, h2, .inset-text, .callout, #address_results, article.teaser, .secondary-page-navigation,
 main.main__content,
 .webform-container-type-details .panel-body {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+}
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
 ul, ol, .webform-container-type-details .panel-body {
-  margin-left: 30px; }
+  margin-left: 30px;
+}
 
+/* line 32, ../../acas-frontend/scss/settings/_layout.scss */
 .view-solr-search-content .views-row,
 .view-empty {
-  padding-top: 30px; }
+  padding-top: 30px;
+}
 
+/* line 35, ../../acas-frontend/scss/settings/_layout.scss */
 .ajax-progress.ajax-progress-throbber,
 .view-solr-search-content .views-row,
 .view-empty {
-  padding-bottom: 30px; }
+  padding-bottom: 30px;
+}
 
+/* line 38, ../../acas-frontend/scss/settings/_layout.scss */
 .previous .text {
-  padding-left: 30px; }
+  padding-left: 30px;
+}
 
+/* line 41, ../../acas-frontend/scss/settings/_layout.scss */
 .next .text {
-  padding-right: 30px; }
+  padding-right: 30px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .inset-text--beta, .secondary-page-navigation {
-  margin-top: 40px; }
+  margin-top: 40px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 .link--back, .back--link, .breadcrumb, ul.breadcrumb--search, .form-group, .fieldgroup, .error-summary, .field--name-field-publication-summary, form#user-login-form, #block-landingpagesblock,
 #block-landingpagebottomblock {
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 article.landing-page.full p {
-  margin-bottom: 45px; }
+  margin-bottom: 45px;
+}
 
+/* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 h1, .block-in-this-section-block, #block-homepageblock,
 #block-block-landingpagesblock {
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+}
 
+/* line 17, ../../acas-frontend/scss/settings/_layout.scss */
 .js-pager__items, .page-node-type-page h2,
 .page-node-type-support-page h2,
 .page-node-type-details-page h2,
 .page-node-type-secondary-page h2,
 .page-node-type-home-page h2,
 .page-node-type-publications-page h2 {
-  margin-top: 60px; }
+  margin-top: 60px;
+}
 
 /* Common */
+/* line 1, ../../acas-frontend/scss/components/_back-link.scss */
 .link--back, .back--link {
   cursor: pointer;
   clear: both;
@@ -654,61 +881,85 @@ h1, .block-in-this-section-block, #block-homepageblock,
   padding-left: 14px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #000; }
-  .link--back:before, .back--link:before {
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: transparent;
-    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    border-width: 5px 6px 5px 0;
-    border-right-color: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    content: "";
-    position: absolute;
-    top: 7px;
-    bottom: 1px;
-    left: 0; }
-  .link--back:hover, .link--back:focus, .back--link:hover, .back--link:focus {
-    border-bottom: 1px solid transparent; }
+  border-bottom: 1px solid #000;
+}
+/* line 26, ../../acas-frontend/scss/components/_back-link.scss */
+.link--back:before, .back--link:before {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  border-width: 5px 6px 5px 0;
+  border-right-color: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  content: "";
+  position: absolute;
+  top: 7px;
+  bottom: 1px;
+  left: 0;
+}
+/* line 40, ../../acas-frontend/scss/components/_back-link.scss */
+.link--back:hover, .link--back:focus, .back--link:hover, .back--link:focus {
+  border-bottom: 1px solid transparent;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_beta-banner.scss */
 .region.region-top-bar {
   border-bottom: 1px solid #cacaca;
-  overflow: auto; }
+  overflow: auto;
+}
 
+/* line 8, ../../acas-frontend/scss/components/_beta-banner.scss */
 .block-beta-banner {
   color: #4d4d4d;
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 14, ../../acas-frontend/scss/components/_beta-banner.scss */
 .beta-icon {
   background: #008C95;
   color: #fff;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_breadcrumbs.scss */
 .breadcrumb, ul.breadcrumb--search {
-  padding: 0; }
-  .breadcrumb li, ul.breadcrumb--search li {
-    display: inline-block;
-    position: relative; }
-    .breadcrumb li a, ul.breadcrumb--search li a {
-      position: relative; }
-    .breadcrumb li:after, ul.breadcrumb--search li:after {
-      content: "";
-      background-image: url(../images/icons/icon-chevron-teal-right.svg);
-      display: inline-block;
-      height: 15px;
-      position: relative;
-      top: 0.25em;
-      width: 7px; }
-    .breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
-      display: none; }
+  padding: 0;
+}
+/* line 7, ../../acas-frontend/scss/components/_breadcrumbs.scss */
+.breadcrumb li, ul.breadcrumb--search li {
+  display: inline-block;
+  position: relative;
+}
+/* line 10, ../../acas-frontend/scss/components/_breadcrumbs.scss */
+.breadcrumb li a, ul.breadcrumb--search li a {
+  position: relative;
+}
+/* line 14, ../../acas-frontend/scss/components/_breadcrumbs.scss */
+.breadcrumb li:after, ul.breadcrumb--search li:after {
+  content: "";
+  background-image: url(../images/icons/icon-chevron-teal-right.svg);
+  display: inline-block;
+  height: 15px;
+  position: relative;
+  top: 0.25em;
+  width: 7px;
+}
+/* line 29, ../../acas-frontend/scss/components/_breadcrumbs.scss */
+.breadcrumb li:last-child:after, ul.breadcrumb--search li:last-child:after {
+  display: none;
+}
 
+/* line 37, ../../acas-frontend/scss/components/_breadcrumbs.scss */
 .breadcrumb, ul.breadcrumb--search {
-  display: none; }
+  display: none;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_buttons.scss */
 .btn-primary, .btn-secondary, .webform-button--preview, .webform-button--previous:not(.back--link),
 .webform-button--next:not(.back--link), .webform-wizard-pages-link, form#user-login-form #edit-submit {
   cursor: pointer;
@@ -720,25 +971,35 @@ h1, .block-in-this-section-block, #block-homepageblock,
   padding: .75em;
   min-width: 7em;
   text-align: center;
-  width: fit-content; }
-  .btn-primary:hover, .btn-secondary:hover, .webform-button--preview:hover, .webform-button--previous:hover:not(.back--link),
-  .webform-button--next:hover:not(.back--link), .webform-wizard-pages-link:hover, form#user-login-form #edit-submit:hover, .btn-primary:focus, .btn-secondary:focus, .webform-button--preview:focus, .webform-button--previous:focus:not(.back--link),
-  .webform-button--next:focus:not(.back--link), .webform-wizard-pages-link:focus, form#user-login-form #edit-submit:focus {
-    background: #fff;
-    border: 1px solid #007C85;
-    color: #007C85; }
+  width: fit-content;
+}
+/* line 14, ../../acas-frontend/scss/components/_buttons.scss */
+.btn-primary:hover, .btn-secondary:hover, .webform-button--preview:hover, .webform-button--previous:hover:not(.back--link),
+.webform-button--next:hover:not(.back--link), .webform-wizard-pages-link:hover, form#user-login-form #edit-submit:hover, .btn-primary:focus, .btn-secondary:focus, .webform-button--preview:focus, .webform-button--previous:focus:not(.back--link),
+.webform-button--next:focus:not(.back--link), .webform-wizard-pages-link:focus, form#user-login-form #edit-submit:focus {
+  background: #fff;
+  border: 1px solid #007C85;
+  color: #007C85;
+}
 
+/* line 21, ../../acas-frontend/scss/components/_buttons.scss */
 .btn-secondary {
   background: #fff;
   border: 1px solid #007C85;
-  color: #007C85; }
-  .btn-secondary:hover, .btn-secondary:focus {
-    background: #007C85;
-    color: #fff; }
+  color: #007C85;
+}
+/* line 26, ../../acas-frontend/scss/components/_buttons.scss */
+.btn-secondary:hover, .btn-secondary:focus {
+  background: #007C85;
+  color: #fff;
+}
 
+/* line 33, ../../acas-frontend/scss/components/_buttons.scss */
 .btn-group .btn-cta {
-  display: inline-block; }
+  display: inline-block;
+}
 
+/* line 38, ../../acas-frontend/scss/components/_buttons.scss */
 .btn-primary[disabled="true"], [disabled="true"].btn-secondary, [disabled="true"].webform-button--preview, [disabled="true"].webform-button--previous:not(.back--link),
 [disabled="true"].webform-button--next:not(.back--link), [disabled="true"].webform-wizard-pages-link, form#user-login-form [disabled="true"]#edit-submit,
 .btn-primary[disabled],
@@ -749,138 +1010,208 @@ h1, .block-in-this-section-block, #block-homepageblock,
 [disabled].webform-wizard-pages-link,
 form#user-login-form [disabled]#edit-submit {
   cursor: default;
-  opacity: 0.3; }
-  .btn-primary[disabled="true"]:hover, [disabled="true"].btn-secondary:hover, [disabled="true"].webform-button--preview:hover, [disabled="true"].webform-button--previous:hover:not(.back--link),
-  [disabled="true"].webform-button--next:hover:not(.back--link), [disabled="true"].webform-wizard-pages-link:hover, form#user-login-form [disabled="true"]#edit-submit:hover, .btn-primary[disabled="true"]:focus, [disabled="true"].btn-secondary:focus, [disabled="true"].webform-button--preview:focus, [disabled="true"].webform-button--previous:focus:not(.back--link),
-  [disabled="true"].webform-button--next:focus:not(.back--link), [disabled="true"].webform-wizard-pages-link:focus, form#user-login-form [disabled="true"]#edit-submit:focus,
-  .btn-primary[disabled]:hover,
-  [disabled].btn-secondary:hover,
-  [disabled].webform-button--preview:hover,
-  [disabled].webform-button--previous:hover:not(.back--link),
-  [disabled].webform-button--next:hover:not(.back--link),
-  [disabled].webform-wizard-pages-link:hover,
-  form#user-login-form [disabled]#edit-submit:hover,
-  .btn-primary[disabled]:focus,
-  [disabled].btn-secondary:focus,
-  [disabled].webform-button--preview:focus,
-  [disabled].webform-button--previous:focus:not(.back--link),
-  [disabled].webform-button--next:focus:not(.back--link),
-  [disabled].webform-wizard-pages-link:focus,
-  form#user-login-form [disabled]#edit-submit:focus {
-    background-color: #007C85;
-    color: #fff;
-    border: 1px solid #007C85; }
+  opacity: 0.3;
+}
+/* line 42, ../../acas-frontend/scss/components/_buttons.scss */
+.btn-primary[disabled="true"]:hover, [disabled="true"].btn-secondary:hover, [disabled="true"].webform-button--preview:hover, [disabled="true"].webform-button--previous:hover:not(.back--link),
+[disabled="true"].webform-button--next:hover:not(.back--link), [disabled="true"].webform-wizard-pages-link:hover, form#user-login-form [disabled="true"]#edit-submit:hover, .btn-primary[disabled="true"]:focus, [disabled="true"].btn-secondary:focus, [disabled="true"].webform-button--preview:focus, [disabled="true"].webform-button--previous:focus:not(.back--link),
+[disabled="true"].webform-button--next:focus:not(.back--link), [disabled="true"].webform-wizard-pages-link:focus, form#user-login-form [disabled="true"]#edit-submit:focus,
+.btn-primary[disabled]:hover,
+[disabled].btn-secondary:hover,
+[disabled].webform-button--preview:hover,
+[disabled].webform-button--previous:hover:not(.back--link),
+[disabled].webform-button--next:hover:not(.back--link),
+[disabled].webform-wizard-pages-link:hover,
+form#user-login-form [disabled]#edit-submit:hover,
+.btn-primary[disabled]:focus,
+[disabled].btn-secondary:focus,
+[disabled].webform-button--preview:focus,
+[disabled].webform-button--previous:focus:not(.back--link),
+[disabled].webform-button--next:focus:not(.back--link),
+[disabled].webform-wizard-pages-link:focus,
+form#user-login-form [disabled]#edit-submit:focus {
+  background-color: #007C85;
+  color: #fff;
+  border: 1px solid #007C85;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_callout.scss */
 .inset-text, .callout {
   border-left: 10px solid #CEDC00;
   color: #4d4d4d;
   font-size: 1.25em;
   max-width: 30em;
-  padding: .25em .75em; }
+  padding: .25em .75em;
+}
 
+/* line 15, ../../acas-frontend/scss/components/_callout.scss */
 .phone-callout {
   background-color: #007C85;
   display: block;
   min-width: 100%;
   padding: 1.25em 4em 1.25em 1.25em;
   position: relative;
-  text-align: left; }
-  .phone-callout, .phone-callout a {
-    color: #fff; }
-  .phone-callout a:hover, .phone-callout a:focus {
-    text-decoration: none; }
-  .phone-callout:hover, .phone-callout:focus {
-    cursor: pointer; }
-    .phone-callout:hover a, .phone-callout:focus a {
-      text-decoration: none; }
-  .phone-callout:after {
-    content: "";
-    background-image: url(../images/icons/icon-telephone.png);
-    height: 100%;
-    position: absolute;
-    right: .5em;
-    top: 0;
-    width: 3em; }
+  text-align: left;
+}
+/* line 23, ../../acas-frontend/scss/components/_callout.scss */
+.phone-callout, .phone-callout a {
+  color: #fff;
+}
+/* line 29, ../../acas-frontend/scss/components/_callout.scss */
+.phone-callout a:hover, .phone-callout a:focus {
+  text-decoration: none;
+}
+/* line 33, ../../acas-frontend/scss/components/_callout.scss */
+.phone-callout:hover, .phone-callout:focus {
+  cursor: pointer;
+}
+/* line 35, ../../acas-frontend/scss/components/_callout.scss */
+.phone-callout:hover a, .phone-callout:focus a {
+  text-decoration: none;
+}
+/* line 44, ../../acas-frontend/scss/components/_callout.scss */
+.phone-callout:after {
+  content: "";
+  background-image: url(../images/icons/icon-telephone.png);
+  height: 100%;
+  position: absolute;
+  right: .5em;
+  top: 0;
+  width: 3em;
+}
 
+/* line 58, ../../acas-frontend/scss/components/_callout.scss */
 .inset-text--beta {
-  margin-bottom: -30px; }
+  margin-bottom: -30px;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner {
   background-color: #007C85;
-  overflow: auto; }
-  .eu-cookie-compliance-banner, .eu-cookie-compliance-banner a {
-    color: #fff; }
-  .eu-cookie-compliance-banner .eu-cookie-compliance-content {
-    max-width: 100%; }
-  .eu-cookie-compliance-banner .eu-cookie-compliance-message {
-    width: 100%; }
-    .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
-      display: inline-block; }
-    .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
-      cursor: pointer; }
+  overflow: auto;
+}
+/* line 3, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+.eu-cookie-compliance-banner, .eu-cookie-compliance-banner a {
+  color: #fff;
+}
+/* line 10, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+.eu-cookie-compliance-banner .eu-cookie-compliance-content {
+  max-width: 100%;
+}
+/* line 17, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+.eu-cookie-compliance-banner .eu-cookie-compliance-message {
+  width: 100%;
+}
+/* line 26, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+.eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
+  display: inline-block;
+}
+/* line 30, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+.eu-cookie-compliance-banner .eu-cookie-compliance-message a {
+  cursor: pointer;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_example-block.scss */
 .example-block {
-  border-left: 10px solid #cacaca; }
+  border-left: 10px solid #cacaca;
+}
 
+/* line 8, ../../acas-frontend/scss/components/_alerts.scss */
 .alert {
   border: 1px solid transparent;
   border-radius: 5px;
   padding: .75em;
-  position: relative; }
-  .alert h4 {
-    color: inherit; }
-  .alert .alert-link {
-    font-weight: 400; }
+  position: relative;
+}
+/* line 20, ../../acas-frontend/scss/components/_alerts.scss */
+.alert h4 {
+  color: inherit;
+}
+/* line 27, ../../acas-frontend/scss/components/_alerts.scss */
+.alert .alert-link {
+  font-weight: 400;
+}
 
+/* line 46, ../../acas-frontend/scss/components/_alerts.scss */
 .alert-dismissable,
 .alert-dismissible {
-  padding-right: 3em; }
-  .alert-dismissable .close,
-  .alert-dismissible .close {
-    color: inherit;
-    font-size: 1.25em;
-    position: absolute;
-    right: .5em; }
+  padding-right: 3em;
+}
+/* line 50, ../../acas-frontend/scss/components/_alerts.scss */
+.alert-dismissable .close,
+.alert-dismissible .close {
+  color: inherit;
+  font-size: 1.25em;
+  position: absolute;
+  right: .5em;
+}
 
+/* line 61, ../../acas-frontend/scss/components/_alerts.scss */
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
-  color: #3c763d; }
-  .alert-success hr {
-    border-top-color: #c9e2b3; }
-  .alert-success .alert-link {
-    color: #2b542c; }
+  color: #3c763d;
+}
+/* line 6, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+/* line 9, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-success .alert-link {
+  color: #2b542c;
+}
 
+/* line 65, ../../acas-frontend/scss/components/_alerts.scss */
 .alert-info {
   background-color: #d9edf7;
   border-color: #bce8f1;
-  color: #31708f; }
-  .alert-info hr {
-    border-top-color: #a6e1ec; }
-  .alert-info .alert-link {
-    color: #245269; }
+  color: #31708f;
+}
+/* line 6, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+/* line 9, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-info .alert-link {
+  color: #245269;
+}
 
+/* line 69, ../../acas-frontend/scss/components/_alerts.scss */
 .alert-warning {
   background-color: #fcf8e3;
   border-color: #faebcc;
-  color: #8a6d3b; }
-  .alert-warning hr {
-    border-top-color: #f7e1b5; }
-  .alert-warning .alert-link {
-    color: #66512c; }
+  color: #8a6d3b;
+}
+/* line 6, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+/* line 9, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-warning .alert-link {
+  color: #66512c;
+}
 
+/* line 73, ../../acas-frontend/scss/components/_alerts.scss */
 .alert-danger {
   background-color: #f2dede;
   border-color: #ebccd1;
-  color: #a94442; }
-  .alert-danger hr {
-    border-top-color: #e4b9c0; }
-  .alert-danger .alert-link {
-    color: #843534; }
+  color: #a94442;
+}
+/* line 6, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+/* line 9, ../../acas-frontend/scss/helpers/_alerts.scss */
+.alert-danger .alert-link {
+  color: #843534;
+}
 
+/* line 79, ../../acas-frontend/scss/components/_alerts.scss */
 .form-group .form-item .invalid, .webform-options-display-one-column .form-item .invalid {
-  border: 4px solid #b10e1e; }
+  border: 4px solid #b10e1e;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_form-control.scss */
 input, textarea, select, button {
   font-family: "Open Sans", sans-serif;
   color: initial;
@@ -892,48 +1223,72 @@ input, textarea, select, button {
   text-shadow: none;
   text-rendering: auto;
   text-transform: none;
-  word-spacing: normal; }
+  word-spacing: normal;
+}
 
+/* line 18, ../../acas-frontend/scss/components/_form-control.scss */
 input {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 22, ../../acas-frontend/scss/components/_form-control.scss */
 textarea {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
+/* line 26, ../../acas-frontend/scss/components/_form-control.scss */
 select {
   background: #fff;
-  height: 2.5em; }
+  height: 2.5em;
+}
 
 /* Ajax Loader */
 /* Postal Code */
+/* line 39, ../../acas-frontend/scss/components/_form-control.scss */
 .form-item-claimant-address-postal-code input,
 .form-item-respondant-address-postal-code input {
-  max-width: 12em; }
+  max-width: 12em;
+}
 
 /* Monetary values: */
+/* line 45, ../../acas-frontend/scss/components/_form-control.scss */
 .form-number {
   max-width: 10em;
-  -moz-appearance: textfield; }
-  .form-number::-webkit-inner-spin-button, .form-number::-webkit-outer-spin-button {
-    -webkit-appearance: none; }
+  -moz-appearance: textfield;
+}
+/* line 48, ../../acas-frontend/scss/components/_form-control.scss */
+.form-number::-webkit-inner-spin-button, .form-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 
 /* Address finder */
+/* line 57, ../../acas-frontend/scss/components/_form-control.scss */
 .find-address-wrapper input, .find-address-wrapper a {
   display: inline-block;
-  max-width: 12em; }
+  max-width: 12em;
+}
 
+/* line 71, ../../acas-frontend/scss/components/_form-control.scss */
 #address_results select {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 /* Form control layout */
+/* line 77, ../../acas-frontend/scss/components/_form-control.scss */
 .form-inline {
-  display: inline-block; }
-  .form-inline:before, .form-inline:after {
-    content: " ";
-    display: table; }
-  .form-inline:after {
-    clear: both; }
+  display: inline-block;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.form-inline:before, .form-inline:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.form-inline:after {
+  clear: both;
+}
 
+/* line 82, ../../acas-frontend/scss/components/_form-control.scss */
 .form-control {
   background-color: #fff;
   background-clip: padding-box;
@@ -942,48 +1297,72 @@ select {
   font-size: 1em;
   line-height: 1.5;
   min-height: 40px;
-  padding: .25em .5em; }
+  padding: .25em .5em;
+}
 
 /* Form Upload */
 /**
  * @file
  * GOV.UK Webform date composite styles.
  */
+/* line 6, ../../acas-frontend/scss/components/_date-picker.scss */
 .govuk-webform-elements--wrapper .form-type-number {
   display: inline-block;
-  max-width: 6em; }
+  max-width: 6em;
+}
 
+/* line 12, ../../acas-frontend/scss/components/_date-picker.scss */
 .govuk-webform-elements--wrapper .form-type-number:last-child {
-  max-width: 10em; }
+  max-width: 10em;
+}
 
+/* line 16, ../../acas-frontend/scss/components/_date-picker.scss */
 .govuk-webform-elements--wrapper .form-type-number input {
   width: 100%;
-  -moz-appearance: textfield; }
+  -moz-appearance: textfield;
+}
 
+/* line 20, ../../acas-frontend/scss/components/_date-picker.scss */
 .govuk-webform-elements--wrapper input[type=number]::-webkit-inner-spin-button,
 .govuk-webform-elements--wrapper input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_fieldset.scss */
 .form-group {
-  clear: both; }
+  clear: both;
+}
 
+/* line 6, ../../acas-frontend/scss/components/_fieldset.scss */
 .fieldgroup {
-  padding: 0; }
-  .fieldgroup .form-group:before, .fieldgroup .form-group:after {
-    content: " ";
-    display: table; }
-  .fieldgroup .form-group:after {
-    clear: both; }
-  .fieldgroup .form-group.form-title {
-    display: inline-block; }
-  .fieldgroup legend {
-    display: block; }
+  padding: 0;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.fieldgroup .form-group:before, .fieldgroup .form-group:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.fieldgroup .form-group:after {
+  clear: both;
+}
+/* line 14, ../../acas-frontend/scss/components/_fieldset.scss */
+.fieldgroup .form-group.form-title {
+  display: inline-block;
+}
+/* line 23, ../../acas-frontend/scss/components/_fieldset.scss */
+.fieldgroup legend {
+  display: block;
+}
 
+/* line 30, ../../acas-frontend/scss/components/_fieldset.scss */
 .fieldset-legend, .control-label {
   display: block;
   font-family: "Open Sans Semibold", sans-serif;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
+/* line 2, ../../acas-frontend/scss/components/_radios.scss */
 .form-type-radio label {
   display: inline-block;
   margin-bottom: 0;
@@ -997,35 +1376,43 @@ select {
   min-height: 35px;
   margin-bottom: 10px;
   padding: 0px 0 0 40px;
-  clear: left; }
-  .form-type-radio label span {
-    float: left;
-    margin: 2px 0; }
-    .form-type-radio label span:before {
-      content: "";
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 26px;
-      height: 26px;
-      border: 2px solid currentColor;
-      border-radius: 50%;
-      background: transparent; }
-    .form-type-radio label span:after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      top: 5px;
-      left: 5px;
-      width: 0;
-      height: 0;
-      border: 8px solid #005EB8;
-      border-radius: 50%;
-      opacity: 0;
-      background: #005EB8; }
+  clear: left;
+}
+/* line 17, ../../acas-frontend/scss/components/_radios.scss */
+.form-type-radio label span {
+  float: left;
+  margin: 2px 0;
+}
+/* line 20, ../../acas-frontend/scss/components/_radios.scss */
+.form-type-radio label span:before {
+  content: "";
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+}
+/* line 33, ../../acas-frontend/scss/components/_radios.scss */
+.form-type-radio label span:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 5px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  border: 8px solid #005EB8;
+  border-radius: 50%;
+  opacity: 0;
+  background: #005EB8;
+}
+/* line 50, ../../acas-frontend/scss/components/_radios.scss */
 .form-type-radio input[type="radio"] {
   position: absolute;
   z-index: 1;
@@ -1035,12 +1422,18 @@ select {
   height: 25px;
   cursor: pointer;
   margin: 0;
-  opacity: 0; }
-  .form-type-radio input[type="radio"]:hover + span:before, .form-type-radio input[type="radio"]:focus + span:before {
-    box-shadow: 0 0 0 4px #008C95; }
+  opacity: 0;
+}
+/* line 61, ../../acas-frontend/scss/components/_radios.scss */
+.form-type-radio input[type="radio"]:hover + span:before, .form-type-radio input[type="radio"]:focus + span:before {
+  box-shadow: 0 0 0 4px #008C95;
+}
+/* line 67, ../../acas-frontend/scss/components/_radios.scss */
 .form-type-radio input:checked + span:after {
-  opacity: 1; }
+  opacity: 1;
+}
 
+/* line 2, ../../acas-frontend/scss/components/_checkboxes.scss */
 .webform-type-checkboxes label {
   display: inline-block;
   margin-bottom: 0;
@@ -1054,34 +1447,42 @@ select {
   min-height: 35px;
   margin-bottom: 10px;
   padding: 0px 0 0 40px;
-  clear: left; }
-  .webform-type-checkboxes label span {
-    float: left;
-    margin: 2px 0; }
-    .webform-type-checkboxes label span:before {
-      content: "";
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 26px;
-      height: 26px;
-      border: 2px solid currentColor;
-      border-radius: 2px;
-      background: transparent; }
-    .webform-type-checkboxes label span:after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      top: 5px;
-      left: 5px;
-      width: 0;
-      height: 0;
-      border: 8px solid #005EB8;
-      opacity: 0;
-      background: #005EB8; }
+  clear: left;
+}
+/* line 17, ../../acas-frontend/scss/components/_checkboxes.scss */
+.webform-type-checkboxes label span {
+  float: left;
+  margin: 2px 0;
+}
+/* line 20, ../../acas-frontend/scss/components/_checkboxes.scss */
+.webform-type-checkboxes label span:before {
+  content: "";
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+}
+/* line 33, ../../acas-frontend/scss/components/_checkboxes.scss */
+.webform-type-checkboxes label span:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 5px;
+  left: 5px;
+  width: 0;
+  height: 0;
+  border: 8px solid #005EB8;
+  opacity: 0;
+  background: #005EB8;
+}
+/* line 49, ../../acas-frontend/scss/components/_checkboxes.scss */
 .webform-type-checkboxes input[type="checkbox"] {
   position: absolute;
   z-index: 1;
@@ -1091,48 +1492,74 @@ select {
   height: 25px;
   cursor: pointer;
   margin: 0;
-  opacity: 0; }
-  .webform-type-checkboxes input[type="checkbox"]:hover + span:before, .webform-type-checkboxes input[type="checkbox"]:focus + span:before {
-    box-shadow: 0 0 0 4px #008C95; }
+  opacity: 0;
+}
+/* line 60, ../../acas-frontend/scss/components/_checkboxes.scss */
+.webform-type-checkboxes input[type="checkbox"]:hover + span:before, .webform-type-checkboxes input[type="checkbox"]:focus + span:before {
+  box-shadow: 0 0 0 4px #008C95;
+}
+/* line 66, ../../acas-frontend/scss/components/_checkboxes.scss */
 .webform-type-checkboxes input:checked + span:after {
-  opacity: 1; }
+  opacity: 1;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_form-name.scss */
 .form-name {
   color: #4d4d4d;
   padding-bottom: .75em;
-  padding-top: .75em; }
+  padding-top: .75em;
+}
 
+/* line 2, ../../acas-frontend/scss/components/_form-preview.scss */
 .webform-preview #check_employer, .webform-preview #acas_notification_form--find_address {
-  display: none; }
+  display: none;
+}
+/* line 5, ../../acas-frontend/scss/components/_form-preview.scss */
 .webform-preview .panel-heading {
   display: block;
   border-top: 1px solid #999;
-  padding-top: 10px; }
+  padding-top: 10px;
+}
 
+/* line 15, ../../acas-frontend/scss/components/_form-preview.scss */
 .webform-container-type-details {
-  position: relative; }
-  .webform-container-type-details .control-label {
-    margin: 1em 0 .5em; }
-  .webform-container-type-details .form-item-employer-name label {
-    font-size: 1em; }
+  position: relative;
+}
+/* line 17, ../../acas-frontend/scss/components/_form-preview.scss */
+.webform-container-type-details .control-label {
+  margin: 1em 0 .5em;
+}
+/* line 21, ../../acas-frontend/scss/components/_form-preview.scss */
+.webform-container-type-details .form-item-employer-name label {
+  font-size: 1em;
+}
 
+/* line 32, ../../acas-frontend/scss/components/_form-preview.scss */
 .webform-wizard-pages-link {
   min-width: 7em;
   position: absolute;
   right: .25em;
-  bottom: 0; }
+  bottom: 0;
+}
 
+/* line 39, ../../acas-frontend/scss/components/_form-preview.scss */
 .panel-body .webform-element {
-  padding-right: 9em; }
+  padding-right: 9em;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_form-progress.scss */
 .form-progress, .text--progress {
   clear: both;
   color: #4d4d4d;
   display: inline-block;
-  text-align: right; }
-  .form-progress p, .text--progress p {
-    margin-bottom: 0; }
+  text-align: right;
+}
+/* line 7, ../../acas-frontend/scss/components/_form-progress.scss */
+.form-progress p, .text--progress p {
+  margin-bottom: 0;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_form-modal.scss */
 #overlay {
   position: fixed;
   top: 0;
@@ -1140,8 +1567,10 @@ select {
   height: 100%;
   width: 100%;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
+/* line 11, ../../acas-frontend/scss/components/_form-modal.scss */
 #modal {
   border: 3px solid #CEDC00;
   position: fixed;
@@ -1152,280 +1581,450 @@ select {
   margin-left: -160px;
   margin-top: -150px;
   background-color: #fff;
-  z-index: 10; }
-  #modal .title-wrapper {
-    border-bottom: 3px solid #CEDC00;
-    overflow: auto; }
-    #modal .title-wrapper .title {
-      float: left; }
-  #modal .spinner-wrapper {
-    text-align: center; }
-  #modal .modal-description {
-    text-align: center; }
+  z-index: 10;
+}
+/* line 22, ../../acas-frontend/scss/components/_form-modal.scss */
+#modal .title-wrapper {
+  border-bottom: 3px solid #CEDC00;
+  overflow: auto;
+}
+/* line 26, ../../acas-frontend/scss/components/_form-modal.scss */
+#modal .title-wrapper .title {
+  float: left;
+}
+/* line 31, ../../acas-frontend/scss/components/_form-modal.scss */
+#modal .spinner-wrapper {
+  text-align: center;
+}
+/* line 35, ../../acas-frontend/scss/components/_form-modal.scss */
+#modal .modal-description {
+  text-align: center;
+}
 
+/* line 41, ../../acas-frontend/scss/components/_form-modal.scss */
 .prescribed #modal {
-  border: 3px solid #005EB8; }
-  .prescribed #modal .title-wrapper {
-    border-bottom: 3px solid #005EB8; }
-    .prescribed #modal .title-wrapper h2 {
-      color: #910048; }
+  border: 3px solid #005EB8;
+}
+/* line 43, ../../acas-frontend/scss/components/_form-modal.scss */
+.prescribed #modal .title-wrapper {
+  border-bottom: 3px solid #005EB8;
+}
+/* line 45, ../../acas-frontend/scss/components/_form-modal.scss */
+.prescribed #modal .title-wrapper h2 {
+  color: #910048;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_error-messages.scss */
 .invalid-feedback {
   border-left: 4px solid #b10e1e;
   color: #b10e1e;
   line-height: 1.25;
-  font-weight: 500; }
+  font-weight: 500;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_error-summary.scss */
 .error-summary {
-  border: 5px solid #b10e1e; }
-  .error-summary .error-summary__title {
-    color: #000;
-    font-size: 1.25em; }
-  .error-summary .error-summary__list {
-    list-style-type: none;
-    margin-left: 0;
-    margin-bottom: 0; }
-    .error-summary .error-summary__list a {
-      color: #b10e1e; }
+  border: 5px solid #b10e1e;
+}
+/* line 7, ../../acas-frontend/scss/components/_error-summary.scss */
+.error-summary .error-summary__title {
+  color: #000;
+  font-size: 1.25em;
+}
+/* line 14, ../../acas-frontend/scss/components/_error-summary.scss */
+.error-summary .error-summary__list {
+  list-style-type: none;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+/* line 20, ../../acas-frontend/scss/components/_error-summary.scss */
+.error-summary .error-summary__list a {
+  color: #b10e1e;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_warning-message.scss */
 .guidance-text, .text--guidance, .prescribed .text--guidance {
   border: 4px solid #005EB8;
-  border-radius: 4px; }
-  .guidance-text p, .text--guidance p, .prescribed .text--guidance p {
-    margin-bottom: 0; }
-  .guidance-text h2, .text--guidance h2, .prescribed .text--guidance h2, .guidance-text h3, .text--guidance h3, .prescribed .text--guidance h3, .guidance-text .chapters--search h2, .chapters--search .guidance-text h2, .text--guidance .chapters--search h2, .chapters--search .text--guidance h2 {
-    color: #000;
-    margin-top: 0; }
+  border-radius: 4px;
+}
+/* line 8, ../../acas-frontend/scss/components/_warning-message.scss */
+.guidance-text p, .text--guidance p, .prescribed .text--guidance p {
+  margin-bottom: 0;
+}
+/* line 11, ../../acas-frontend/scss/components/_warning-message.scss */
+.guidance-text h2, .text--guidance h2, .prescribed .text--guidance h2, .guidance-text h3, .text--guidance h3, .prescribed .text--guidance h3, .guidance-text .chapters--search h2, .chapters--search .guidance-text h2, .text--guidance .chapters--search h2, .chapters--search .text--guidance h2 {
+  color: #000;
+  margin-top: 0;
+}
 
+/* line 21, ../../acas-frontend/scss/components/_warning-message.scss */
 .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  color: #999; }
+  color: #999;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_footer.scss */
 .footer {
   border-top: 5px solid #007C85;
   background: #F7F7F7;
-  padding: 2em 0; }
+  padding: 2em 0;
+}
 
+/* line 10, ../../acas-frontend/scss/components/_footer.scss */
 .footer-logo img {
-  max-width: 10rem; }
+  max-width: 10rem;
+}
 
+/* line 22, ../../acas-frontend/scss/components/_footer.scss */
 #footer__inner a {
-  display: inline-block; }
+  display: inline-block;
+}
 
+/* line 32, ../../acas-frontend/scss/components/_footer.scss */
 #footer__inner ul {
-  margin: 0; }
+  margin: 0;
+}
 
+/* line 7, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form {
   background: #007C85;
   color: #fff;
-  position: relative; }
-  #feedback-form .feedback-question-wrapper,
-  #feedback-form .feedback-close-wrapper {
-    float: left; }
-    #feedback-form .feedback-question-wrapper a,
-    #feedback-form .feedback-close-wrapper a {
-      color: #fff; }
-      #feedback-form .feedback-question-wrapper a:hover, #feedback-form .feedback-question-wrapper a:focus,
-      #feedback-form .feedback-close-wrapper a:hover,
-      #feedback-form .feedback-close-wrapper a:focus {
-        background: #fff;
-        color: #007C85; }
-  #feedback-form .feedback-question-wrapper {
-    width: 85%; }
-  #feedback-form .feedback-close-wrapper {
-    width: 15%;
-    cursor: pointer;
-    display: none;
-    text-align: right; }
-  #feedback-form .feedback-question span {
-    font-family: "Open Sans Semibold", sans-serif; }
-  #feedback-form .feedback-question a {
-    color: #fff;
-    display: inline-block; }
+  position: relative;
+}
+/* line 14, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question-wrapper,
+#feedback-form .feedback-close-wrapper {
+  float: left;
+}
+/* line 20, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question-wrapper a,
+#feedback-form .feedback-close-wrapper a {
+  color: #fff;
+}
+/* line 22, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question-wrapper a:hover, #feedback-form .feedback-question-wrapper a:focus,
+#feedback-form .feedback-close-wrapper a:hover,
+#feedback-form .feedback-close-wrapper a:focus {
+  background: #fff;
+  color: #007C85;
+}
+/* line 30, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question-wrapper {
+  width: 85%;
+}
+/* line 34, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-close-wrapper {
+  width: 15%;
+  cursor: pointer;
+  display: none;
+  text-align: right;
+}
+/* line 45, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question span {
+  font-family: "Open Sans Semibold", sans-serif;
+}
+/* line 49, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form .feedback-question a {
+  color: #fff;
+  display: inline-block;
+}
 
+/* line 59, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form-section, #feedback-form {
   overflow: hidden;
-  /* Captcha input */ }
-  #feedback-form-section form, #feedback-form form {
-    background: #fff;
-    color: #000;
-    clear: both;
-    display: none; }
-    #feedback-form-section form textarea, #feedback-form form textarea {
-      height: 3.5em; }
-    #feedback-form-section form .help-block, #feedback-form form .help-block {
-      color: #4d4d4d; }
-  #feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title {
-    display: block;
-    font-family: "Open Sans Semibold", sans-serif;
-    font-size: 1em; }
-  #feedback-form-section .panel .panel-heading, #feedback-form .panel .panel-heading {
-    display: block; }
-  #feedback-form-section .panel .panel-body .iradio_square-aero, #feedback-form .panel .panel-body .iradio_square-aero {
-    margin-right: .25em; }
-  #feedback-form-section .form-type-email, #feedback-form .form-type-email {
-    display: none; }
+  /* Captcha input */
+}
+/* line 62, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section form, #feedback-form form {
+  background: #fff;
+  color: #000;
+  clear: both;
+  display: none;
+}
+/* line 73, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section form textarea, #feedback-form form textarea {
+  height: 3.5em;
+}
+/* line 77, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section form .help-block, #feedback-form form .help-block {
+  color: #4d4d4d;
+}
+/* line 95, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .panel .control-label, #feedback-form-section .panel .panel-title, #feedback-form .panel .control-label, #feedback-form .panel .panel-title {
+  display: block;
+  font-family: "Open Sans Semibold", sans-serif;
+  font-size: 1em;
+}
+/* line 103, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .panel .panel-heading, #feedback-form .panel .panel-heading {
+  display: block;
+}
+/* line 108, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .panel .panel-body .iradio_square-aero, #feedback-form .panel .panel-body .iradio_square-aero {
+  margin-right: .25em;
+}
+/* line 115, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .fieldgroup, #feedback-form .fieldgroup {
+  margin: 0;
+}
+/* line 121, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .fieldgroup legend, #feedback-form .fieldgroup legend {
+  margin: 0;
+}
+/* line 127, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form-section .form-type-email, #feedback-form .form-type-email {
+  display: none;
+}
 
+/* line 134, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-wrapper {
-  position: relative; }
+  position: relative;
+}
 
+/* line 138, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
+/* line 143, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form .feedback-question-wrapper {
-  width: 75%; }
+  width: 75%;
+}
+/* line 147, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form .feedback-close-wrapper {
-  width: 25%; }
+  width: 25%;
+}
+/* line 151, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form form {
   background: #fff;
   color: #000;
   display: none;
-  clear: both; }
-  #feedback-form form textarea {
-    height: unset; }
+  clear: both;
+}
+/* line 156, ../../acas-frontend/scss/components/_feedback.scss */
+#feedback-form form textarea {
+  height: unset;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_guide-navigation.scss */
 .block-in-this-section-block {
-  clear: left; }
-  .block-in-this-section-block .section__wrapper ul li {
-    padding-left: 25px; }
-    .block-in-this-section-block .section__wrapper ul li:before {
-      content: "— ";
-      margin-left: -25px;
-      padding-right: 5px; }
-  .block-in-this-section-block h2 {
-    border-left: none;
-    color: #4d4d4d;
-    font-family: "Open Sans", sans-serif;
-    padding-left: 0; }
-    .block-in-this-section-block h2:before {
-      display: none; }
+  clear: left;
+}
+/* line 10, ../../acas-frontend/scss/components/_guide-navigation.scss */
+.block-in-this-section-block .section__wrapper ul li {
+  padding-left: 25px;
+}
+/* line 13, ../../acas-frontend/scss/components/_guide-navigation.scss */
+.block-in-this-section-block .section__wrapper ul li:before {
+  content: "— ";
+  margin-left: -25px;
+  padding-right: 5px;
+}
+/* line 22, ../../acas-frontend/scss/components/_guide-navigation.scss */
+.block-in-this-section-block h2 {
+  border-left: none;
+  color: #4d4d4d;
+  font-family: "Open Sans", sans-serif;
+  padding-left: 0;
+}
+/* line 29, ../../acas-frontend/scss/components/_guide-navigation.scss */
+.block-in-this-section-block h2:before {
+  display: none;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_header.scss */
 #header-main {
-  border-bottom: 5px solid #CEDC00; }
-  #header-main #block-acas-main-menu {
-    clear: both; }
-  #header-main #block-sitebranding img {
-    display: inline-block;
-    max-width: 10em;
-    vertical-align: text-top; }
-  #header-main #block-sitebranding .branding-block__logo {
-    display: block; }
-  #header-main .region-branding-bar {
-    padding-top: 0.75em;
-    padding-bottom: 0.25em; }
-
+  border-bottom: 5px solid #CEDC00;
+}
+/* line 3, ../../acas-frontend/scss/components/_header.scss */
+#header-main #block-acas-main-menu {
+  clear: both;
+}
+/* line 7, ../../acas-frontend/scss/components/_header.scss */
+#header-main #block-sitebranding img {
+  display: inline-block;
+  max-width: 10em;
+  vertical-align: text-top;
+}
+/* line 15, ../../acas-frontend/scss/components/_header.scss */
+#header-main #block-sitebranding .branding-block__logo {
+  display: block;
+}
+/* line 19, ../../acas-frontend/scss/components/_header.scss */
 #header-main .region-branding-bar {
-  padding-bottom: 0.75em; }
+  padding-top: 0.75em;
+  padding-bottom: 0.25em;
+}
 
+/* line 27, ../../acas-frontend/scss/components/_header.scss */
+#header-main .region-branding-bar {
+  padding-bottom: 0.75em;
+}
+
+/* line 5, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser h2 {
-  font-size: 1em; }
+  font-size: 1em;
+}
+/* line 9, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser .article__wrapper {
   border: 4px solid #CEDC00;
   border-radius: 6px;
-  position: relative; }
-  article.teaser .article__wrapper:hover, article.teaser .article__wrapper:focus {
-    background: #F7F7F7; }
+  position: relative;
+}
+/* line 17, ../../acas-frontend/scss/components/_landing-page.scss */
+article.teaser .article__wrapper:hover, article.teaser .article__wrapper:focus {
+  background: #F7F7F7;
+}
+/* line 22, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser .article__content {
   color: #000;
-  width: 100%; }
-  article.teaser .article__content p {
-    margin-bottom: 0; }
+  width: 100%;
+}
+/* line 26, ../../acas-frontend/scss/components/_landing-page.scss */
+article.teaser .article__content p {
+  margin-bottom: 0;
+}
 
+/* line 34, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser .article__wrapper {
-  min-height: 12em; }
+  min-height: 12em;
+}
+/* line 37, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser .article__content {
   bottom: 1em;
   left: 0;
   overflow: hidden;
   padding: 0 20px;
-  position: absolute; }
+  position: absolute;
+}
 
+/* line 49, ../../acas-frontend/scss/components/_landing-page.scss */
 article.teaser .article__wrapper {
-  min-height: 11em; }
+  min-height: 11em;
+}
 
+/* line 2, ../../acas-frontend/scss/components/_navigation.scss */
 #header-main #block-acas-main-menu {
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+}
 
 /* Menu icon styles */
+/* line 9, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__icon {
   color: #4d4d4d;
   font-size: 2em;
   float: right;
   position: relative;
-  text-decoration: none; }
-  .menu-primary__icon:hover, .menu-primary__icon:focus {
-    color: #000; }
+  text-decoration: none;
+}
+/* line 20, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-primary__icon:hover, .menu-primary__icon:focus {
+  color: #000;
+}
 
 /* Menu List Styles */
+/* line 27, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary {
-  display: none; }
-  .menu-primary.menu-primary--active {
-    display: block; }
+  display: none;
+}
+/* line 30, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-primary.menu-primary--active {
+  display: block;
+}
 
+/* line 35, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary {
   display: none;
   left: 0;
   list-style: none;
   position: relative;
   width: 100%;
-  z-index: 1001; }
+  z-index: 1001;
+}
 
 /* Menu Item Styles */
+/* line 48, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item {
-  position: relative; }
+  position: relative;
+}
 
+/* line 52, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary__item {
-  width: 100%; }
+  width: 100%;
+}
 
 /* Menu Link Styles */
+/* line 57, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__link,
 .menu-secondary__link {
-  display: block; }
+  display: block;
+}
 
+/* line 65, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__link {
   font-family: "Century Gothic Bold", "AppleGothic", sans-serif;
   position: relative;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
+/* line 74, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary__link {
-  line-height: 1; }
+  line-height: 1;
+}
 
 /* Interactions and Dropdowns */
+/* line 84, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item--has-dropdown .menu-primary__link:after {
   content: "";
   background-image: url(../images/icons/icon-chevron-teal-right.svg);
   height: 12px;
   margin-left: 12px;
   display: inline-block;
-  width: 9px; }
+  width: 9px;
+}
 
+/* line 96, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item--active .menu-secondary {
-  display: block; }
+  display: block;
+}
+/* line 100, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item--active .menu-primary__link:after {
   content: "";
   background-image: url(../images/icons/icon-chevron-teal-down.svg);
-  width: 15px; }
+  width: 15px;
+}
 
 /* Menu List Styles */
+/* line 111, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary.menu-primary--active {
-  padding: 5px 15px; }
+  padding: 5px 15px;
+}
 
 /* Medium Screens and Up */
+/* line 119, ../../acas-frontend/scss/components/_navigation.scss */
 .region-navigation-collapsible {
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+}
 
+/* line 124, ../../acas-frontend/scss/components/_navigation.scss */
 #header-main #block-acas-main-menu {
-  padding: 0; }
+  padding: 0;
+}
 
 /* Menu icon styles */
+/* line 130, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__icon {
-  display: none; }
+  display: none;
+}
 
 /* Menu styles */
+/* line 135, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary {
   display: block;
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 140, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary {
   background: #fff;
   border-top: 10px solid #007C85;
@@ -1436,201 +2035,293 @@ article.teaser .article__wrapper {
   transition-delay: 0.5s;
   -webkit-box-shadow: 2px 2px 16px 0px #cccccc;
   -moz-box-shadow: 2px 2px 16px 0px #cccccc;
-  box-shadow: 2px 2px 16px 0px #cccccc; }
-  .menu-secondary h3, .menu-secondary .chapters--search h2, .chapters--search .menu-secondary h2 {
-    margin: 0; }
-  .menu-secondary:before {
-    content: "";
-    background-color: transparent;
-    display: block;
-    height: 1.5em;
-    position: absolute;
-    top: -1.5em;
-    width: 100%; }
-  .menu-secondary:after {
-    content: "";
-    margin-left: auto;
-    margin-right: auto;
-    border-bottom: 20px solid #007C85;
-    border-right: 20px solid transparent;
-    border-top: 20px solid transparent;
-    border-left: 20px solid transparent;
-    display: block;
-    height: 0px;
-    left: calc(50% - 1em);
-    position: absolute;
-    top: -40px;
-    width: 0px; }
+  box-shadow: 2px 2px 16px 0px #cccccc;
+}
+/* line 152, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-secondary h3, .menu-secondary .chapters--search h2, .chapters--search .menu-secondary h2 {
+  margin: 0;
+}
+/* line 156, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-secondary:before {
+  content: "";
+  background-color: transparent;
+  display: block;
+  height: 1.5em;
+  position: absolute;
+  top: -1.5em;
+  width: 100%;
+}
+/* line 166, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-secondary:after {
+  content: "";
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 20px solid #007C85;
+  border-right: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-left: 20px solid transparent;
+  display: block;
+  height: 0px;
+  left: calc(50% - 1em);
+  position: absolute;
+  top: -40px;
+  width: 0px;
+}
 
 /* Menu item styles */
+/* line 184, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item {
   float: left;
   padding: 0;
-  width: 25%; }
+  width: 25%;
+}
 
 /* Menu link styles */
+/* line 191, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__link {
-  padding: 10px 15px; }
+  padding: 10px 15px;
+}
 
+/* line 195, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary__link {
   display: block;
-  line-height: 1.5; }
+  line-height: 1.5;
+}
 
 /* Interactions and Dropdowns */
+/* line 204, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item[aria-expanded="true"] .menu-primary__link, .menu-primary__item:hover .menu-primary__link, .menu-primary__item:focus .menu-primary__link {
   background: #007C85;
-  color: #fff; }
-  .menu-primary__item[aria-expanded="true"] .menu-primary__link:before, .menu-primary__item:hover .menu-primary__link:before, .menu-primary__item:focus .menu-primary__link:before {
-    content: "";
-    background: #007C85;
-    display: block;
-    height: 5px;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    width: 100%; }
+  color: #fff;
+}
+/* line 207, ../../acas-frontend/scss/components/_navigation.scss */
+.menu-primary__item[aria-expanded="true"] .menu-primary__link:before, .menu-primary__item:hover .menu-primary__link:before, .menu-primary__item:focus .menu-primary__link:before {
+  content: "";
+  background: #007C85;
+  display: block;
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
 
+/* line 225, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item.menu-primary__item--has-dropdown .menu-primary__link:after {
-  display: none; }
+  display: none;
+}
+/* line 238, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item.menu-primary__item--has-dropdown .menu-primary__link:hover:after, .menu-primary__item.menu-primary__item--has-dropdown .menu-primary__link:focus:after {
-  display: none; }
+  display: none;
+}
+/* line 250, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item.menu-primary__item--has-dropdown[aria-expanded="false"] .menu-secondary {
-  display: none; }
+  display: none;
+}
+/* line 258, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item.menu-primary__item--has-dropdown[aria-expanded="true"] .menu-primary__link:after, .menu-primary__item.menu-primary__item--has-dropdown:hover .menu-primary__link:after, .menu-primary__item.menu-primary__item--has-dropdown:focus .menu-primary__link:after {
-  display: none; }
+  display: none;
+}
 
+/* line 273, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-secondary__link:hover, .menu-secondary__link:focus {
   background: #F7F7F7;
-  color: #000; }
+  color: #000;
+}
 
+/* line 282, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item {
-  width: 25%; }
+  width: 25%;
+}
 
+/* line 288, ../../acas-frontend/scss/components/_navigation.scss */
 .menu-primary__item--has-dropdown .menu-primary__link:after {
-  display: none; }
+  display: none;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_pagination.scss */
 .secondary-page-navigation {
-  overflow: auto; }
+  overflow: auto;
+}
 
+/* line 7, ../../acas-frontend/scss/components/_pagination.scss */
 .previous,
 .next {
   display: block;
-  width: 75%; }
-  .previous, .previous:focus,
-  .next,
-  .next:focus {
-    color: #000; }
-  .previous .title,
-  .next .title {
-    font-size: 0.85em; }
-  .previous .text,
-  .next .text {
-    display: block;
-    font-family: "Open Sans Semibold", sans-serif;
-    position: relative;
-    width: fit-content; }
-    .previous .text:before,
-    .next .text:before {
-      content: "";
-      background-repeat: no-repeat;
-      background-size: 1em auto;
-      background-position: 50% 50%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      width: 1em; }
-  .previous:hover .details-wrapper, .previous:focus .details-wrapper,
-  .next:hover .details-wrapper,
-  .next:focus .details-wrapper {
-    background: #F7F7F7; }
+  width: 75%;
+}
+/* line 12, ../../acas-frontend/scss/components/_pagination.scss */
+.previous, .previous:focus,
+.next,
+.next:focus {
+  color: #000;
+}
+/* line 21, ../../acas-frontend/scss/components/_pagination.scss */
+.previous .title,
+.next .title {
+  font-size: 0.85em;
+}
+/* line 25, ../../acas-frontend/scss/components/_pagination.scss */
+.previous .text,
+.next .text {
+  display: block;
+  font-family: "Open Sans Semibold", sans-serif;
+  position: relative;
+  width: fit-content;
+}
+/* line 30, ../../acas-frontend/scss/components/_pagination.scss */
+.previous .text:before,
+.next .text:before {
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 1em auto;
+  background-position: 50% 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+/* line 43, ../../acas-frontend/scss/components/_pagination.scss */
+.previous:hover .details-wrapper, .previous:focus .details-wrapper,
+.next:hover .details-wrapper,
+.next:focus .details-wrapper {
+  background: #F7F7F7;
+}
 
+/* line 53, ../../acas-frontend/scss/components/_pagination.scss */
 .previous .text:before {
   background-image: url(../images/icons/icon-arrow-left.svg);
-  left: 0; }
+  left: 0;
+}
 
+/* line 63, ../../acas-frontend/scss/components/_pagination.scss */
 .next .text:before {
   background-image: url(../images/icons/icon-arrow-right.svg);
-  right: 0; }
+  right: 0;
+}
 
+/* line 70, ../../acas-frontend/scss/components/_pagination.scss */
 .js-pager__items {
   font-family: "Century Gothic Bold", "AppleGothic", sans-serif;
-  text-align: center; }
-  .js-pager__items .pager__item {
-    display: inline-block;
-    text-align: center; }
-    .js-pager__items .pager__item a {
-      color: #007C85;
-      display: block;
-      height: 2.5em;
-      width: 2.5em; }
-      .js-pager__items .pager__item a:focus, .js-pager__items .pager__item a:hover {
-        background: #007C85;
-        border-radius: 50%;
-        color: #fff; }
-    .js-pager__items .pager__item.is-active a {
-      background: #007C85;
-      border-radius: 50%;
-      color: #fff; }
-    .js-pager__items .pager__item.pager__item--next a, .js-pager__items .pager__item.pager__item--last a, .js-pager__items .pager__item.pager__item--previous a, .js-pager__items .pager__item.pager__item--first a {
-      color: #007C85;
-      display: block;
-      height: auto;
-      padding: .5em 1em;
-      width: auto; }
-      .js-pager__items .pager__item.pager__item--next a:focus, .js-pager__items .pager__item.pager__item--next a:hover, .js-pager__items .pager__item.pager__item--last a:focus, .js-pager__items .pager__item.pager__item--last a:hover, .js-pager__items .pager__item.pager__item--previous a:focus, .js-pager__items .pager__item.pager__item--previous a:hover, .js-pager__items .pager__item.pager__item--first a:focus, .js-pager__items .pager__item.pager__item--first a:hover {
-        background: #007C85;
-        border-radius: 0;
-        color: #fff; }
+  text-align: center;
+}
+/* line 75, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item {
+  display: inline-block;
+  text-align: center;
+}
+/* line 78, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item a {
+  color: #007C85;
+  display: block;
+  height: 2.5em;
+  width: 2.5em;
+}
+/* line 84, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item a:focus, .js-pager__items .pager__item a:hover {
+  background: #007C85;
+  border-radius: 50%;
+  color: #fff;
+}
+/* line 91, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item.is-active a {
+  background: #007C85;
+  border-radius: 50%;
+  color: #fff;
+}
+/* line 101, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item.pager__item--next a, .js-pager__items .pager__item.pager__item--last a, .js-pager__items .pager__item.pager__item--previous a, .js-pager__items .pager__item.pager__item--first a {
+  color: #007C85;
+  display: block;
+  height: auto;
+  padding: .5em 1em;
+  width: auto;
+}
+/* line 107, ../../acas-frontend/scss/components/_pagination.scss */
+.js-pager__items .pager__item.pager__item--next a:focus, .js-pager__items .pager__item.pager__item--next a:hover, .js-pager__items .pager__item.pager__item--last a:focus, .js-pager__items .pager__item.pager__item--last a:hover, .js-pager__items .pager__item.pager__item--previous a:focus, .js-pager__items .pager__item.pager__item--previous a:hover, .js-pager__items .pager__item.pager__item--first a:focus, .js-pager__items .pager__item.pager__item--first a:hover {
+  background: #007C85;
+  border-radius: 0;
+  color: #fff;
+}
 
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .secondary-page-navigation:before, .secondary-page-navigation:after {
   content: " ";
-  display: table; }
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .secondary-page-navigation:after {
-  clear: both; }
+  clear: both;
+}
 
+/* line 121, ../../acas-frontend/scss/components/_pagination.scss */
 .previous, .next {
   float: left;
-  width: 50%; }
-  .previous .text, .next .text {
-    width: auto; }
+  width: 50%;
+}
+/* line 124, ../../acas-frontend/scss/components/_pagination.scss */
+.previous .text, .next .text {
+  width: auto;
+}
 
+/* line 128, ../../acas-frontend/scss/components/_pagination.scss */
 .next {
-  float: right; }
-  .next .details-wrapper {
-    text-align: right; }
+  float: right;
+}
+/* line 130, ../../acas-frontend/scss/components/_pagination.scss */
+.next .details-wrapper {
+  text-align: right;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--print,
 .btn-save--download {
-  display: none; }
+  display: none;
+}
 
+/* line 10, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save {
   color: #007C85;
   display: block;
   padding-left: 2em;
-  position: relative; }
-  .btn-save:before {
-    content: "";
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1em; }
+  position: relative;
+}
+/* line 19, ../../acas-frontend/scss/components/_print-download.scss */
+.btn-save:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1em;
+}
 
+/* line 31, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--print:before {
-  background-image: url(../images/icons/icon-print.svg); }
+  background-image: url(../images/icons/icon-print.svg);
+}
+/* line 35, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--print:focus:before {
-  background-image: url(../images/icons/icon-print-white.svg); }
+  background-image: url(../images/icons/icon-print-white.svg);
+}
 
+/* line 42, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--download:before {
-  background-image: url(../images/icons/icon-download.svg); }
+  background-image: url(../images/icons/icon-download.svg);
+}
+/* line 46, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--download:focus:before {
-  background-image: url(../images/icons/icon-download-white.svg); }
+  background-image: url(../images/icons/icon-download-white.svg);
+}
 
+/* line 53, ../../acas-frontend/scss/components/_print-download.scss */
 .btn-save--print,
 .btn-save--download {
   display: block;
-  width: fit-content; }
+  width: fit-content;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_print-download-modal.scss */
 #guide_print_download_overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
@@ -1638,8 +2329,10 @@ article.teaser .article__wrapper {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10; }
+  z-index: 10;
+}
 
+/* line 12, ../../acas-frontend/scss/components/_print-download-modal.scss */
 .print-download-email .modal {
   background-color: #fff;
   border: 3px solid #CEDC00;
@@ -1653,127 +2346,205 @@ article.teaser .article__wrapper {
   text-align: center;
   z-index: 10;
   /* Title Elements */
-  /* Body Elements */ }
-  .print-download-email .modal .action {
-    display: inline-block;
-    width: 40%; }
-  .print-download-email .modal .title-wrapper {
-    border-bottom: 3px solid #CEDC00;
-    overflow: auto; }
-  .print-download-email .modal .title {
-    float: left; }
-  .print-download-email .modal .close {
-    float: right;
-    cursor: pointer; }
-  .print-download-email .modal .x {
-    font-size: 1.25em; }
-  .print-download-email .modal .icon {
-    margin-left: auto;
-    margin-right: auto;
-    height: 6em;
-    width: 4em; }
-  .print-download-email .modal .download-page .icon {
-    background-image: url(../images/icons/icon-download-page.svg); }
-  .print-download-email .modal .download-guide .icon {
-    background-image: url(../images/icons/icon-download-guide.svg); }
-  .print-download-email .modal .print-page .icon {
-    background-image: url(../images/icons/icon-print-page.svg); }
-  .print-download-email .modal .print-guide .icon {
-    background-image: url(../images/icons/icon-print-guide.svg); }
+  /* Body Elements */
+}
+/* line 26, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .action {
+  display: inline-block;
+  width: 40%;
+}
+/* line 31, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .title-wrapper {
+  border-bottom: 3px solid #CEDC00;
+  overflow: auto;
+}
+/* line 36, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .title {
+  float: left;
+}
+/* line 41, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .close {
+  float: right;
+  cursor: pointer;
+}
+/* line 47, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .x {
+  font-size: 1.25em;
+}
+/* line 56, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .icon {
+  margin-left: auto;
+  margin-right: auto;
+  height: 6em;
+  width: 4em;
+}
+/* line 64, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .download-page .icon {
+  background-image: url(../images/icons/icon-download-page.svg);
+}
+/* line 69, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .download-guide .icon {
+  background-image: url(../images/icons/icon-download-guide.svg);
+}
+/* line 74, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .print-page .icon {
+  background-image: url(../images/icons/icon-print-page.svg);
+}
+/* line 79, ../../acas-frontend/scss/components/_print-download-modal.scss */
+.print-download-email .modal .print-guide .icon {
+  background-image: url(../images/icons/icon-print-guide.svg);
+}
+/* line 84, ../../acas-frontend/scss/components/_print-download-modal.scss */
 .print-download-email .btn-panel {
   border: 3px solid #008C95;
   border-radius: 7px;
   float: left;
   min-height: 14em;
-  width: 100%; }
-  .print-download-email .btn-panel:before, .print-download-email .btn-panel:after {
-    content: " ";
-    display: table; }
-  .print-download-email .btn-panel:after {
-    clear: both; }
+  width: 100%;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.print-download-email .btn-panel:before, .print-download-email .btn-panel:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.print-download-email .btn-panel:after {
+  clear: both;
+}
 
+/* line 4, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .document-wrapper .details-wrapper {
-  overflow: auto; }
+  overflow: auto;
+}
+/* line 12, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-icon:after {
-  clear: both; }
+  clear: both;
+}
+/* line 16, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-file,
 .paragraph--type--document .field--name-field-pages {
-  display: inline-block; }
+  display: inline-block;
+}
 
+/* line 26, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-publication-summary {
-  font-size: 1.25em; }
+  font-size: 1.25em;
+}
 
+/* line 31, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-media-file,
 .field--name-field-pages {
   color: #000;
-  font-size: 0.75em; }
+  font-size: 0.75em;
+}
 
+/* line 44, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-icon {
-  float: left; }
+  float: left;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_related.scss */
 .nav-related {
-  max-width: 20em; }
-  .nav-related .nav-related__list ul a {
-    display: inline-block; }
+  max-width: 20em;
+}
+/* line 10, ../../acas-frontend/scss/components/_related.scss */
+.nav-related .nav-related__list ul a {
+  display: inline-block;
+}
 
 /* Search */
+/* line 3, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .path-solr-search .field--name-field-rate-this-content, .path-solr-search .field--name-field-taxonomy, .path-solr-search .print__wrapper--pdf {
-  display: none; }
+  display: none;
+}
 
 /* Result Listings */
+/* line 9, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .view-solr-search-content {
-  padding-bottom: 2em; }
-  .view-solr-search-content .view-header {
-    padding: 1.5em 0 1em; }
-    .view-solr-search-content .view-header p {
-      margin-bottom: 0; }
-  .view-solr-search-content .views-row {
-    border-top: 1px solid #999;
-    overflow: auto; }
-    .view-solr-search-content .views-row:first-child {
-      border-top: none; }
+  padding-bottom: 2em;
+}
+/* line 12, ../../acas-frontend/scss/components/_search-result-listing.scss */
+.view-solr-search-content .view-header {
+  padding: 1.5em 0 1em;
+}
+/* line 14, ../../acas-frontend/scss/components/_search-result-listing.scss */
+.view-solr-search-content .view-header p {
+  margin-bottom: 0;
+}
+/* line 18, ../../acas-frontend/scss/components/_search-result-listing.scss */
+.view-solr-search-content .views-row {
+  border-top: 1px solid #999;
+  overflow: auto;
+}
+/* line 23, ../../acas-frontend/scss/components/_search-result-listing.scss */
+.view-solr-search-content .views-row:first-child {
+  border-top: none;
+}
 
 /* Did you mean... */
+/* line 30, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .search-alternative {
-  margin-top: 0; }
-  .search-alternative ul {
-    display: inline-block;
-    list-style: none;
-    margin-bottom: 0;
-    margin-left: .25em; }
+  margin-top: 0;
+}
+/* line 32, ../../acas-frontend/scss/components/_search-result-listing.scss */
+.search-alternative ul {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: 0;
+  margin-left: .25em;
+}
 
 /* Guide results with chapters */
+/* line 41, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .chapters--search {
-  padding-top: 1.25em; }
+  padding-top: 1.25em;
+}
 
 /* No results */
 /* Search Breadcrumbs */
+/* line 69, ../../acas-frontend/scss/components/_search-result-listing.scss */
 ul.breadcrumb--search li {
   display: inline-block;
-  padding: 0; }
-  ul.breadcrumb--search li:first-child {
-    display: none; }
-    ul.breadcrumb--search li:first-child:after {
-      display: none; }
+  padding: 0;
+}
+/* line 72, ../../acas-frontend/scss/components/_search-result-listing.scss */
+ul.breadcrumb--search li:first-child {
+  display: none;
+}
+/* line 74, ../../acas-frontend/scss/components/_search-result-listing.scss */
+ul.breadcrumb--search li:first-child:after {
+  display: none;
+}
 
+/* line 83, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .view-solr-search-content .field--name-field-summary {
-  max-width: 75%; }
+  max-width: 75%;
+}
+/* line 86, ../../acas-frontend/scss/components/_search-result-listing.scss */
 .view-solr-search-content .view-header {
-  max-width: 75%; }
+  max-width: 75%;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_search.scss */
 #block-exposedformsolr-search-contentpage-1-3 {
-  display: none; }
+  display: none;
+}
 
+/* line 7, ../../acas-frontend/scss/components/_search.scss */
 #block-searchblock {
   clear: left;
-  display: block; }
+  display: block;
+}
 
+/* line 21, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 input, #views-exposed-form-search-content-page-1 input, #block-exposedformsearch-contentpage-1 input, #search-form input {
   border: none;
   height: 2.25em;
   margin: 0;
   padding: .25em .5em;
-  width: 100%; }
+  width: 100%;
+}
+/* line 28, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 button, #views-exposed-form-search-content-page-1 button, #block-exposedformsearch-contentpage-1 button, #search-form button {
   background-color: #4d4d4d;
   border: none;
@@ -1783,29 +2554,47 @@ ul.breadcrumb--search li {
   min-width: 0;
   padding: 0;
   text-align: center;
-  width: 100%; }
-  #views-exposed-form-solr-search-content-page-1 button img, #views-exposed-form-search-content-page-1 button img, #block-exposedformsearch-contentpage-1 button img, #search-form button img {
-    height: 1em;
-    margin-top: .25em; }
+  width: 100%;
+}
+/* line 38, ../../acas-frontend/scss/components/_search.scss */
+#views-exposed-form-solr-search-content-page-1 button img, #views-exposed-form-search-content-page-1 button img, #block-exposedformsearch-contentpage-1 button img, #search-form button img {
+  height: 1em;
+  margin-top: .25em;
+}
+/* line 43, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-group, #views-exposed-form-search-content-page-1 .form-group, #block-exposedformsearch-contentpage-1 .form-group, #search-form .form-group {
   clear: none;
   float: left;
   overflow: hidden;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}
+/* line 49, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-item, #views-exposed-form-search-content-page-1 .form-item, #block-exposedformsearch-contentpage-1 .form-item, #search-form .form-item {
-  width: 85%; }
+  width: 85%;
+}
+/* line 52, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-actions, #views-exposed-form-search-content-page-1 .form-actions, #block-exposedformsearch-contentpage-1 .form-actions, #search-form .form-actions {
-  width: 15%; }
+  width: 15%;
+}
+/* line 55, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-type-select, #views-exposed-form-search-content-page-1 .form-type-select, #block-exposedformsearch-contentpage-1 .form-type-select, #search-form .form-type-select {
-  display: none; }
+  display: none;
+}
+/* line 58, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-inline, #views-exposed-form-solr-search-content-page-1 .form-item-edit-keys, #views-exposed-form-search-content-page-1 .form-inline, #views-exposed-form-search-content-page-1 .form-item-edit-keys, #block-exposedformsearch-contentpage-1 .form-inline, #block-exposedformsearch-contentpage-1 .form-item-edit-keys, #search-form .form-inline, #search-form .form-item-edit-keys {
   border: 1px solid #cacaca;
   border-radius: 2px;
-  display: block; }
-  #views-exposed-form-solr-search-content-page-1 .form-inline.active, #views-exposed-form-solr-search-content-page-1 .form-item-edit-keys.active, #views-exposed-form-search-content-page-1 .form-inline.active, #views-exposed-form-search-content-page-1 .form-item-edit-keys.active, #block-exposedformsearch-contentpage-1 .form-inline.active, #block-exposedformsearch-contentpage-1 .form-item-edit-keys.active, #search-form .form-inline.active, #search-form .form-item-edit-keys.active {
-    border-color: #008C95; }
-    #views-exposed-form-solr-search-content-page-1 .form-inline.active #edit-submit-solr-search-content, #views-exposed-form-solr-search-content-page-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #views-exposed-form-search-content-page-1 .form-inline.active #edit-submit-solr-search-content, #views-exposed-form-search-content-page-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #block-exposedformsearch-contentpage-1 .form-inline.active #edit-submit-solr-search-content, #block-exposedformsearch-contentpage-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #search-form .form-inline.active #edit-submit-solr-search-content, #search-form .form-item-edit-keys.active #edit-submit-solr-search-content {
-      background-color: #008C95; }
+  display: block;
+}
+/* line 62, ../../acas-frontend/scss/components/_search.scss */
+#views-exposed-form-solr-search-content-page-1 .form-inline.active, #views-exposed-form-solr-search-content-page-1 .form-item-edit-keys.active, #views-exposed-form-search-content-page-1 .form-inline.active, #views-exposed-form-search-content-page-1 .form-item-edit-keys.active, #block-exposedformsearch-contentpage-1 .form-inline.active, #block-exposedformsearch-contentpage-1 .form-item-edit-keys.active, #search-form .form-inline.active, #search-form .form-item-edit-keys.active {
+  border-color: #008C95;
+}
+/* line 64, ../../acas-frontend/scss/components/_search.scss */
+#views-exposed-form-solr-search-content-page-1 .form-inline.active #edit-submit-solr-search-content, #views-exposed-form-solr-search-content-page-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #views-exposed-form-search-content-page-1 .form-inline.active #edit-submit-solr-search-content, #views-exposed-form-search-content-page-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #block-exposedformsearch-contentpage-1 .form-inline.active #edit-submit-solr-search-content, #block-exposedformsearch-contentpage-1 .form-item-edit-keys.active #edit-submit-solr-search-content, #search-form .form-inline.active #edit-submit-solr-search-content, #search-form .form-item-edit-keys.active #edit-submit-solr-search-content {
+  background-color: #008C95;
+}
+/* line 70, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1:active #edit-submit-solr-search-content,
 #views-exposed-form-solr-search-content-page-1:active #edit-submit-search-content,
 #views-exposed-form-solr-search-content-page-1:active #edit-submit-search, #views-exposed-form-solr-search-content-page-1:focus #edit-submit-solr-search-content,
@@ -1831,83 +2620,131 @@ ul.breadcrumb--search li {
 #search-form:focus #edit-submit-search, #search-form:hover #edit-submit-solr-search-content,
 #search-form:hover #edit-submit-search-content,
 #search-form:hover #edit-submit-search {
-  background-color: #008C95; }
+  background-color: #008C95;
+}
+/* line 75, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1:active .form-inline, #views-exposed-form-solr-search-content-page-1:focus .form-inline, #views-exposed-form-solr-search-content-page-1:hover .form-inline, #views-exposed-form-search-content-page-1:active .form-inline, #views-exposed-form-search-content-page-1:focus .form-inline, #views-exposed-form-search-content-page-1:hover .form-inline, #block-exposedformsearch-contentpage-1:active .form-inline, #block-exposedformsearch-contentpage-1:focus .form-inline, #block-exposedformsearch-contentpage-1:hover .form-inline, #search-form:active .form-inline, #search-form:focus .form-inline, #search-form:hover .form-inline {
-  border-color: #008C95; }
+  border-color: #008C95;
+}
 
+/* line 80, ../../acas-frontend/scss/components/_search.scss */
 #search-form {
-  display: table; }
+  display: table;
+}
 
+/* line 84, ../../acas-frontend/scss/components/_search.scss */
 .path-search .form-type-select {
-  display: block; }
+  display: block;
+}
 
+/* line 89, ../../acas-frontend/scss/components/_search.scss */
 .page-node-type-page .views-exposed-form {
-  padding: 0; }
+  padding: 0;
+}
 
+/* line 98, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-item,
 #views-exposed-form-search-content-page-1 .form-item,
 #search-form .form-item {
-  width: 75%; }
+  width: 75%;
+}
+/* line 101, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .form-actions,
 #views-exposed-form-search-content-page-1 .form-actions,
 #search-form .form-actions {
-  width: 25%; }
+  width: 25%;
+}
+/* line 104, ../../acas-frontend/scss/components/_search.scss */
 #views-exposed-form-solr-search-content-page-1 .search-text,
 #views-exposed-form-search-content-page-1 .search-text,
 #search-form .search-text {
-  display: block; }
+  display: block;
+}
 
+/* line 111, ../../acas-frontend/scss/components/_search.scss */
 #edit-submit-solr-search-content img,
 #edit-submit-search-content img,
 #search-form img {
-  display: none; }
+  display: none;
+}
 
+/* line 124, ../../acas-frontend/scss/components/_search.scss */
 #block-searchblock {
-  display: none; }
+  display: none;
+}
 
+/* line 127, ../../acas-frontend/scss/components/_search.scss */
 #block-exposedformsolr-search-contentpage-1-3 {
   display: block;
   margin-top: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}
 
+/* line 133, ../../acas-frontend/scss/components/_search.scss */
 #header-front-page #views-exposed-form-solr-search-content-page-1, #header-main #views-exposed-form-solr-search-content-page-1 {
-  float: right; }
+  float: right;
+}
 
+/* line 4, ../../acas-frontend/scss/components/_sitemap.scss */
 .sitemap .sitemap-box ul {
   list-style-type: none;
-  padding-left: 0; }
-  .sitemap .sitemap-box ul ul {
-    margin: 0;
-    padding-left: 1.5em; }
-  .sitemap .sitemap-box ul > .expanded {
-    margin-bottom: 2rem; }
+  padding-left: 0;
+}
+/* line 7, ../../acas-frontend/scss/components/_sitemap.scss */
+.sitemap .sitemap-box ul ul {
+  margin: 0;
+  padding-left: 1.5em;
+}
+/* line 11, ../../acas-frontend/scss/components/_sitemap.scss */
+.sitemap .sitemap-box ul > .expanded {
+  margin-bottom: 2rem;
+}
 
+/* line 2, ../../acas-frontend/scss/components/_social-links.scss */
 #social-share {
-  display: none; }
+  display: none;
+}
 
+/* line 52, ../../acas-frontend/scss/components/_social-links.scss */
 #social-share {
-  margin-top: 0; }
+  margin-top: 0;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_table.scss */
 table {
-  margin: 1em 0 2em; }
-  table p {
-    margin-bottom: 0; }
-  table thead {
-    background: #007C85;
-    color: #fff;
-    font-family: "Open Sans Bold", sans-serif;
-    text-align: left; }
-    table thead a {
-      color: #fff; }
-  table td, table th {
-    border: 2px solid #fff;
-    padding: 0.5em 1em; }
-  table td {
-    background: #F7F7F7; }
+  margin: 1em 0 2em;
+}
+/* line 3, ../../acas-frontend/scss/components/_table.scss */
+table p {
+  margin-bottom: 0;
+}
+/* line 6, ../../acas-frontend/scss/components/_table.scss */
+table thead {
+  background: #007C85;
+  color: #fff;
+  font-family: "Open Sans Bold", sans-serif;
+  text-align: left;
+}
+/* line 11, ../../acas-frontend/scss/components/_table.scss */
+table thead a {
+  color: #fff;
+}
+/* line 15, ../../acas-frontend/scss/components/_table.scss */
+table td, table th {
+  border: 2px solid #fff;
+  padding: 0.5em 1em;
+}
+/* line 19, ../../acas-frontend/scss/components/_table.scss */
+table td {
+  background: #F7F7F7;
+}
 
+/* line 1, ../../acas-frontend/scss/components/_noscript.scss */
 noscript {
-  display: none; }
+  display: none;
+}
 
+/* line 10, ../../acas-frontend/scss/utilities/_grid.scss */
 .container, .eu-cookie-compliance-banner .eu-cookie-compliance-content, .form-name, #feedback-form {
   margin-right: auto;
   margin-left: auto;
@@ -1916,33 +2753,51 @@ noscript {
   width: 750px;
   width: 970px;
   width: 1200px;
-  width: 1396px; }
-  .container:before, .eu-cookie-compliance-banner .eu-cookie-compliance-content:before, .form-name:before, #feedback-form:before, .container:after, .eu-cookie-compliance-banner .eu-cookie-compliance-content:after, .form-name:after, #feedback-form:after {
-    content: " ";
-    display: table; }
-  .container:after, .eu-cookie-compliance-banner .eu-cookie-compliance-content:after, .form-name:after, #feedback-form:after {
-    clear: both; }
+  width: 1396px;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.container:before, .eu-cookie-compliance-banner .eu-cookie-compliance-content:before, .form-name:before, #feedback-form:before, .container:after, .eu-cookie-compliance-banner .eu-cookie-compliance-content:after, .form-name:after, #feedback-form:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.container:after, .eu-cookie-compliance-banner .eu-cookie-compliance-content:after, .form-name:after, #feedback-form:after {
+  clear: both;
+}
 
+/* line 33, ../../acas-frontend/scss/utilities/_grid.scss */
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
-  padding-right: 15px; }
-  .container-fluid:before, .container-fluid:after {
-    content: " ";
-    display: table; }
-  .container-fluid:after {
-    clear: both; }
+  padding-right: 15px;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.container-fluid:before, .container-fluid:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.container-fluid:after {
+  clear: both;
+}
 
+/* line 42, ../../acas-frontend/scss/utilities/_grid.scss */
 .row, #block-searchblock {
   margin-left: -15px;
-  margin-right: -15px; }
-  .row:before, #block-searchblock:before, .row:after, #block-searchblock:after {
-    content: " ";
-    display: table; }
-  .row:after, #block-searchblock:after {
-    clear: both; }
+  margin-right: -15px;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.row:before, #block-searchblock:before, .row:after, #block-searchblock:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.row:after, #block-searchblock:after {
+  clear: both;
+}
 
+/* line 11, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, article.teaser, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, article.teaser, .col-md-6, #block-currentwebsiteblock, .col-lg-6, .col-xs-7, .col-sm-7, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
@@ -1959,904 +2814,1473 @@ noscript {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
-  padding-right: 15px; }
+  padding-right: 15px;
+}
 
+/* line 27, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  float: left; }
+  float: left;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-1 {
-  width: 8.33333%; }
+  width: 8.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-2 {
-  width: 16.66667%; }
+  width: 16.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-3 {
-  width: 25%; }
+  width: 25%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-4 {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-5 {
-  width: 41.66667%; }
+  width: 41.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-6 {
-  width: 50%; }
+  width: 50%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-7 {
-  width: 58.33333%; }
+  width: 58.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-8 {
-  width: 66.66667%; }
+  width: 66.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-9 {
-  width: 75%; }
+  width: 75%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-10 {
-  width: 83.33333%; }
+  width: 83.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-11 {
-  width: 91.66667%; }
+  width: 91.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-12, .alert, #feedback-form .webform-submission-form, .view-solr-search-content, #block-searchblock form, .sitemap, form#user-login-form, header.block-page-title-block, article.page.full, article.landing-page, article.teaser, #block-404footer, #block-currentwebsiteblock, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 55, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-0 {
-  right: auto; }
+  right: auto;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-1 {
-  right: 8.33333%; }
+  right: 8.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-2 {
-  right: 16.66667%; }
+  right: 16.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-3 {
-  right: 25%; }
+  right: 25%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-4 {
-  right: 33.33333%; }
+  right: 33.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-5 {
-  right: 41.66667%; }
+  right: 41.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-6 {
-  right: 50%; }
+  right: 50%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-7 {
-  right: 58.33333%; }
+  right: 58.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-8 {
-  right: 66.66667%; }
+  right: 66.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-9 {
-  right: 75%; }
+  right: 75%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-10 {
-  right: 83.33333%; }
+  right: 83.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-11 {
-  right: 91.66667%; }
+  right: 91.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-pull-12 {
-  right: 100%; }
+  right: 100%;
+}
 
+/* line 45, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-0 {
-  left: auto; }
+  left: auto;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-1 {
-  left: 8.33333%; }
+  left: 8.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-2 {
-  left: 16.66667%; }
+  left: 16.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-3 {
-  left: 25%; }
+  left: 25%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-4 {
-  left: 33.33333%; }
+  left: 33.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-5 {
-  left: 41.66667%; }
+  left: 41.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-6 {
-  left: 50%; }
+  left: 50%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-7 {
-  left: 58.33333%; }
+  left: 58.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-8 {
-  left: 66.66667%; }
+  left: 66.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-9 {
-  left: 75%; }
+  left: 75%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-10 {
-  left: 83.33333%; }
+  left: 83.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-11 {
-  left: 91.66667%; }
+  left: 91.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-push-12 {
-  left: 100%; }
+  left: 100%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-0 {
-  margin-left: 0%; }
+  margin-left: 0%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-1 {
-  margin-left: 8.33333%; }
+  margin-left: 8.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-2 {
-  margin-left: 16.66667%; }
+  margin-left: 16.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-3 {
-  margin-left: 25%; }
+  margin-left: 25%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-4 {
-  margin-left: 33.33333%; }
+  margin-left: 33.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-5 {
-  margin-left: 41.66667%; }
+  margin-left: 41.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-6 {
-  margin-left: 50%; }
+  margin-left: 50%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-7 {
-  margin-left: 58.33333%; }
+  margin-left: 58.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-8 {
-  margin-left: 66.66667%; }
+  margin-left: 66.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-9 {
-  margin-left: 75%; }
+  margin-left: 75%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-10 {
-  margin-left: 83.33333%; }
+  margin-left: 83.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-11 {
-  margin-left: 91.66667%; }
+  margin-left: 91.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-xs-offset-12 {
-  margin-left: 100%; }
+  margin-left: 100%;
+}
 
+/* line 27, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, article.teaser, .col-sm-7, #block-currentwebsiteblock, .col-sm-8, #block-searchblock form, .col-sm-9, header.block-page-title-block, article.page.full, .col-sm-10, .col-sm-11, .col-sm-12 {
-  float: left; }
+  float: left;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-1 {
-  width: 8.33333%; }
+  width: 8.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-2 {
-  width: 16.66667%; }
+  width: 16.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-3 {
-  width: 25%; }
+  width: 25%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-4 {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-5 {
-  width: 41.66667%; }
+  width: 41.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-6, article.teaser {
-  width: 50%; }
+  width: 50%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-7, #block-currentwebsiteblock {
-  width: 58.33333%; }
+  width: 58.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-8, #block-searchblock form {
-  width: 66.66667%; }
+  width: 66.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-9, header.block-page-title-block, article.page.full {
-  width: 75%; }
+  width: 75%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-10 {
-  width: 83.33333%; }
+  width: 83.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-11 {
-  width: 91.66667%; }
+  width: 91.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-12 {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 55, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-0 {
-  right: auto; }
+  right: auto;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-1 {
-  right: 8.33333%; }
+  right: 8.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-2 {
-  right: 16.66667%; }
+  right: 16.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-3 {
-  right: 25%; }
+  right: 25%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-4 {
-  right: 33.33333%; }
+  right: 33.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-5 {
-  right: 41.66667%; }
+  right: 41.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-6 {
-  right: 50%; }
+  right: 50%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-7 {
-  right: 58.33333%; }
+  right: 58.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-8 {
-  right: 66.66667%; }
+  right: 66.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-9 {
-  right: 75%; }
+  right: 75%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-10 {
-  right: 83.33333%; }
+  right: 83.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-11 {
-  right: 91.66667%; }
+  right: 91.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-pull-12 {
-  right: 100%; }
+  right: 100%;
+}
 
+/* line 45, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-0 {
-  left: auto; }
+  left: auto;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-1 {
-  left: 8.33333%; }
+  left: 8.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-2 {
-  left: 16.66667%; }
+  left: 16.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-3 {
-  left: 25%; }
+  left: 25%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-4 {
-  left: 33.33333%; }
+  left: 33.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-5 {
-  left: 41.66667%; }
+  left: 41.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-6 {
-  left: 50%; }
+  left: 50%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-7 {
-  left: 58.33333%; }
+  left: 58.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-8 {
-  left: 66.66667%; }
+  left: 66.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-9 {
-  left: 75%; }
+  left: 75%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-10 {
-  left: 83.33333%; }
+  left: 83.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-11 {
-  left: 91.66667%; }
+  left: 91.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-push-12 {
-  left: 100%; }
+  left: 100%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-0 {
-  margin-left: 0%; }
+  margin-left: 0%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-1 {
-  margin-left: 8.33333%; }
+  margin-left: 8.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-2 {
-  margin-left: 16.66667%; }
+  margin-left: 16.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-3 {
-  margin-left: 25%; }
+  margin-left: 25%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-4 {
-  margin-left: 33.33333%; }
+  margin-left: 33.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-5 {
-  margin-left: 41.66667%; }
+  margin-left: 41.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-6 {
-  margin-left: 50%; }
+  margin-left: 50%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-7 {
-  margin-left: 58.33333%; }
+  margin-left: 58.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-8 {
-  margin-left: 66.66667%; }
+  margin-left: 66.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-9 {
-  margin-left: 75%; }
+  margin-left: 75%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-10 {
-  margin-left: 83.33333%; }
+  margin-left: 83.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-11 {
-  margin-left: 91.66667%; }
+  margin-left: 91.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-sm-offset-12 {
-  margin-left: 100%; }
+  margin-left: 100%;
+}
 
+/* line 27, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-1, .col-md-2, .col-md-3, .col-md-4, article.teaser, .col-md-5, .col-md-6, #block-currentwebsiteblock, .col-md-7, article.landing-page.full, #block-404footer, .col-md-8, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-md-9, article.page.search-index, .col-md-10, .col-md-11, .col-md-12 {
-  float: left; }
+  float: left;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-1 {
-  width: 8.33333%; }
+  width: 8.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-2 {
-  width: 16.66667%; }
+  width: 16.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-3 {
-  width: 25%; }
+  width: 25%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-4, article.teaser {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-5 {
-  width: 41.66667%; }
+  width: 41.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-6, #block-currentwebsiteblock {
-  width: 50%; }
+  width: 50%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-7, article.landing-page.full, #block-404footer {
-  width: 58.33333%; }
+  width: 58.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-8, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  width: 66.66667%; }
+  width: 66.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-9, article.page.search-index {
-  width: 75%; }
+  width: 75%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-10 {
-  width: 83.33333%; }
+  width: 83.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-11 {
-  width: 91.66667%; }
+  width: 91.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-12 {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 55, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-0 {
-  right: auto; }
+  right: auto;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-1 {
-  right: 8.33333%; }
+  right: 8.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-2 {
-  right: 16.66667%; }
+  right: 16.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-3 {
-  right: 25%; }
+  right: 25%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-4 {
-  right: 33.33333%; }
+  right: 33.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-5 {
-  right: 41.66667%; }
+  right: 41.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-6 {
-  right: 50%; }
+  right: 50%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-7 {
-  right: 58.33333%; }
+  right: 58.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-8 {
-  right: 66.66667%; }
+  right: 66.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-9 {
-  right: 75%; }
+  right: 75%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-10 {
-  right: 83.33333%; }
+  right: 83.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-11 {
-  right: 91.66667%; }
+  right: 91.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-pull-12 {
-  right: 100%; }
+  right: 100%;
+}
 
+/* line 45, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-0 {
-  left: auto; }
+  left: auto;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-1 {
-  left: 8.33333%; }
+  left: 8.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-2 {
-  left: 16.66667%; }
+  left: 16.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-3 {
-  left: 25%; }
+  left: 25%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-4 {
-  left: 33.33333%; }
+  left: 33.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-5 {
-  left: 41.66667%; }
+  left: 41.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-6 {
-  left: 50%; }
+  left: 50%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-7 {
-  left: 58.33333%; }
+  left: 58.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-8 {
-  left: 66.66667%; }
+  left: 66.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-9 {
-  left: 75%; }
+  left: 75%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-10 {
-  left: 83.33333%; }
+  left: 83.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-11 {
-  left: 91.66667%; }
+  left: 91.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-push-12 {
-  left: 100%; }
+  left: 100%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-0 {
-  margin-left: 0%; }
+  margin-left: 0%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-1 {
-  margin-left: 8.33333%; }
+  margin-left: 8.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-2 {
-  margin-left: 16.66667%; }
+  margin-left: 16.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-3 {
-  margin-left: 25%; }
+  margin-left: 25%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-4 {
-  margin-left: 33.33333%; }
+  margin-left: 33.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-5 {
-  margin-left: 41.66667%; }
+  margin-left: 41.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-6 {
-  margin-left: 50%; }
+  margin-left: 50%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-7 {
-  margin-left: 58.33333%; }
+  margin-left: 58.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-8 {
-  margin-left: 66.66667%; }
+  margin-left: 66.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-9 {
-  margin-left: 75%; }
+  margin-left: 75%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-10 {
-  margin-left: 83.33333%; }
+  margin-left: 83.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-11 {
-  margin-left: 91.66667%; }
+  margin-left: 91.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-md-offset-12 {
-  margin-left: 100%; }
+  margin-left: 100%;
+}
 
+/* line 27, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
-  float: left; }
+  float: left;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-1 {
-  width: 8.33333%; }
+  width: 8.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-2 {
-  width: 16.66667%; }
+  width: 16.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-3 {
-  width: 25%; }
+  width: 25%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-4 {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-5 {
-  width: 41.66667%; }
+  width: 41.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-6 {
-  width: 50%; }
+  width: 50%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-7, header.block-page-title-block, article.page.full, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
-  width: 58.33333%; }
+  width: 58.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-8 {
-  width: 66.66667%; }
+  width: 66.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-9 {
-  width: 75%; }
+  width: 75%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-10 {
-  width: 83.33333%; }
+  width: 83.33333%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-11 {
-  width: 91.66667%; }
+  width: 91.66667%;
+}
 
+/* line 35, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-12 {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 55, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-0 {
-  right: auto; }
+  right: auto;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-1 {
-  right: 8.33333%; }
+  right: 8.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-2 {
-  right: 16.66667%; }
+  right: 16.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-3 {
-  right: 25%; }
+  right: 25%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-4 {
-  right: 33.33333%; }
+  right: 33.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-5 {
-  right: 41.66667%; }
+  right: 41.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-6 {
-  right: 50%; }
+  right: 50%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-7 {
-  right: 58.33333%; }
+  right: 58.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-8 {
-  right: 66.66667%; }
+  right: 66.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-9 {
-  right: 75%; }
+  right: 75%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-10 {
-  right: 83.33333%; }
+  right: 83.33333%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-11 {
-  right: 91.66667%; }
+  right: 91.66667%;
+}
 
+/* line 50, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-pull-12 {
-  right: 100%; }
+  right: 100%;
+}
 
+/* line 45, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-0 {
-  left: auto; }
+  left: auto;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-1 {
-  left: 8.33333%; }
+  left: 8.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-2 {
-  left: 16.66667%; }
+  left: 16.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-3 {
-  left: 25%; }
+  left: 25%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-4 {
-  left: 33.33333%; }
+  left: 33.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-5 {
-  left: 41.66667%; }
+  left: 41.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-6 {
-  left: 50%; }
+  left: 50%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-7 {
-  left: 58.33333%; }
+  left: 58.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-8 {
-  left: 66.66667%; }
+  left: 66.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-9 {
-  left: 75%; }
+  left: 75%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-10 {
-  left: 83.33333%; }
+  left: 83.33333%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-11 {
-  left: 91.66667%; }
+  left: 91.66667%;
+}
 
+/* line 40, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-push-12 {
-  left: 100%; }
+  left: 100%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-0 {
-  margin-left: 0%; }
+  margin-left: 0%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-1 {
-  margin-left: 8.33333%; }
+  margin-left: 8.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-2 {
-  margin-left: 16.66667%; }
+  margin-left: 16.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-3 {
-  margin-left: 25%; }
+  margin-left: 25%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-4 {
-  margin-left: 33.33333%; }
+  margin-left: 33.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-5 {
-  margin-left: 41.66667%; }
+  margin-left: 41.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-6 {
-  margin-left: 50%; }
+  margin-left: 50%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-7 {
-  margin-left: 58.33333%; }
+  margin-left: 58.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-8 {
-  margin-left: 66.66667%; }
+  margin-left: 66.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-9 {
-  margin-left: 75%; }
+  margin-left: 75%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-10 {
-  margin-left: 83.33333%; }
+  margin-left: 83.33333%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-11 {
-  margin-left: 91.66667%; }
+  margin-left: 91.66667%;
+}
 
+/* line 60, ../../acas-frontend/scss/helpers/_grid-framework.scss */
 .col-lg-offset-12 {
-  margin-left: 100%; }
+  margin-left: 100%;
+}
 
+/* line 87, ../../acas-frontend/scss/utilities/_grid.scss */
 .col-centered, .alert, .path-webform header#block-acas-page-title,
 .path-webform .webform-submission-form,
 .path-webform .webform-confirmation,
 .path-webform .region-content .block--bare, .webform-submission-form, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage {
   float: none !important;
-  margin: 0 auto !important; }
+  margin: 0 auto !important;
+}
 
 @media screen and (min-width: 768px) {
+  /* line 137, ../../acas-frontend/scss/overrides/_admin.scss */
   .paragraph.paragraph--width--full > .paragraph__column, .paragraph.paragraph--width--medium > .paragraph__column, .paragraph.paragraph--width--narrow > .paragraph__column, .paragraph.paragraph--width--tiny > .paragraph__column, .paragraph.paragraph--width--wide > .paragraph__column, .paragraph > .paragraph__column {
     padding-left: 0;
-    padding-right: 0; } }
+    padding-right: 0;
+  }
+}
+/* line 143, ../../acas-frontend/scss/overrides/_admin.scss */
 code {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
+/* line 151, ../../acas-frontend/scss/overrides/_admin.scss */
 form#user-login-form .control-label {
   clear: left;
   display: block;
-  padding: .5em 0; }
+  padding: .5em 0;
+}
+/* line 159, ../../acas-frontend/scss/overrides/_admin.scss */
 form#user-login-form .description {
-  color: #4d4d4d; }
+  color: #4d4d4d;
+}
 
+/* line 169, ../../acas-frontend/scss/overrides/_admin.scss */
 .views-exposed-form .control-label {
-  display: none; }
+  display: none;
+}
+/* line 172, ../../acas-frontend/scss/overrides/_admin.scss */
 .views-exposed-form .form-type-textfield, .views-exposed-form .form-actions {
-  display: inline-block; }
+  display: inline-block;
+}
+/* line 175, ../../acas-frontend/scss/overrides/_admin.scss */
 .views-exposed-form .form-actions {
-  position: relative; }
+  position: relative;
+}
 
+/* line 180, ../../acas-frontend/scss/overrides/_admin.scss */
 .print__wrapper--pdf, .node_view {
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+}
 
+/* line 186, ../../acas-frontend/scss/overrides/_admin.scss */
 .page-node-type-home-page strong.node_view, .page-node-type-landing-page strong.node_view {
-  display: none; }
+  display: none;
+}
 
+/* line 192, ../../acas-frontend/scss/overrides/_admin.scss */
 .page-node-type-details-page .field--name-field-taxonomy, .page-node-type-details-page .taxonomy-parent, .page-node-type-support-page .field--name-field-taxonomy, .page-node-type-support-page .taxonomy-parent {
-  display: none; }
+  display: none;
+}
+/* line 198, ../../acas-frontend/scss/overrides/_admin.scss */
 .page-node-type-details-page .node_view ul.pre_link-colors li:first-child, .page-node-type-support-page .node_view ul.pre_link-colors li:first-child {
   background: none;
-  padding: 0; }
+  padding: 0;
+}
 
+/* line 204, ../../acas-frontend/scss/overrides/_admin.scss */
 .chosen-container {
   border: 0 !important;
   padding: 0 !important;
   height: auto !important;
   box-shadow: none !important;
-  -webkit-box-shadow: none !important; }
+  -webkit-box-shadow: none !important;
+}
 
+/* line 213, ../../acas-frontend/scss/overrides/_admin.scss */
 .field--name-field-rate-this-content .field--label, .field--name-field-rate-this-content .field--item, .field--name-field-rate-this-content .form-type-select, .field--name-field-rate-this-content .button {
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
+/* line 217, ../../acas-frontend/scss/overrides/_admin.scss */
 .field--name-field-rate-this-content .field--label {
   margin-top: 14px;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
+/* line 221, ../../acas-frontend/scss/overrides/_admin.scss */
 .field--name-field-rate-this-content .form-type-select {
   position: relative;
-  top: 7px; }
+  top: 7px;
+}
+/* line 225, ../../acas-frontend/scss/overrides/_admin.scss */
 .field--name-field-rate-this-content .useful-rating {
-  font-size: 2em; }
+  font-size: 2em;
+}
+/* line 228, ../../acas-frontend/scss/overrides/_admin.scss */
 .field--name-field-rate-this-content .select-wrapper:after {
-  display: none; }
+  display: none;
+}
 
 /* Navigation Tabs for Admin Backend */
+/* line 242, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav {
   margin-bottom: 0;
   padding-left: 0;
-  list-style: none; }
-  .nav:before, .nav:after {
-    content: " ";
-    display: table; }
-  .nav:after {
-    clear: both; }
-  .nav > li {
-    position: relative;
-    display: block; }
-    .nav > li > a {
-      position: relative;
-      display: block;
-      padding: 10px 15px; }
-      .nav > li > a:hover, .nav > li > a:focus {
-        text-decoration: none;
-        background-color: #F7F7F7; }
-    .nav > li.disabled > a {
-      color: #F7F7F7; }
-      .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
-        color: #F7F7F7;
-        text-decoration: none;
-        background-color: transparent;
-        cursor: not-allowed; }
-  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #F7F7F7;
-    border-color: #007C85; }
-  .nav .nav-divider {
-    height: 1px;
-    margin: .5em 0;
-    overflow: hidden;
-    background-color: #e5e5e5; }
-  .nav > li > a > img {
-    max-width: none; }
+  list-style: none;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.nav:before, .nav:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.nav:after {
+  clear: both;
+}
+/* line 248, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li {
+  position: relative;
+  display: block;
+}
+/* line 252, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+/* line 256, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #F7F7F7;
+}
+/* line 264, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li.disabled > a {
+  color: #F7F7F7;
+}
+/* line 267, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+  color: #F7F7F7;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+/* line 279, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #F7F7F7;
+  border-color: #007C85;
+}
+/* line 292, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav .nav-divider {
+  height: 1px;
+  margin: .5em 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+/* line 299, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav > li > a > img {
+  max-width: none;
+}
 
+/* line 309, ../../acas-frontend/scss/overrides/_admin.scss */
 nav.tabs {
-  clear: left; }
+  clear: left;
+}
 
+/* line 313, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-tabs {
-  border-bottom: 1px solid #ddd; }
-  .nav-tabs > li {
-    float: left;
-    margin-bottom: -1px; }
-    .nav-tabs > li > a {
-      margin-right: 2px;
-      line-height: 1.25;
-      border: 1px solid transparent;
-      border-radius: 4px 4px 0 0; }
-      .nav-tabs > li > a:hover {
-        border-color: #F7F7F7 #F7F7F7 #ddd; }
-    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #cacaca;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
-      cursor: default; }
+  border-bottom: 1px solid #ddd;
+}
+/* line 315, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+/* line 321, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.25;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+/* line 326, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs > li > a:hover {
+  border-color: #F7F7F7 #F7F7F7 #ddd;
+}
+/* line 333, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #cacaca;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
 
+/* line 355, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-pills > li {
-  float: left; }
-  .nav-pills > li > a {
-    border-radius: 4px; }
-  .nav-pills > li + li {
-    margin-left: 2px; }
-  .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    color: #000;
-    background-color: #cacaca; }
+  float: left;
+}
+/* line 359, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+/* line 362, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+/* line 368, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #000;
+  background-color: #cacaca;
+}
 
+/* line 381, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-stacked > li {
-  float: none; }
-  .nav-stacked > li + li {
-    margin-top: 2px;
-    margin-left: 0; }
+  float: none;
+}
+/* line 383, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-stacked > li + li {
+  margin-top: 2px;
+  margin-left: 0;
+}
 
+/* line 397, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-justified, .nav-tabs.nav-justified {
-  width: 100%; }
+  width: 100%;
+}
+/* line 400, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-justified > li, .nav-tabs.nav-justified > li {
+  float: none;
+}
+/* line 402, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-justified > li > a, .nav-tabs.nav-justified > li > a {
+  text-align: center;
+}
+/* line 408, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+@media (min-width: 768px) {
+  /* line 414, ../../acas-frontend/scss/overrides/_admin.scss */
   .nav-justified > li, .nav-tabs.nav-justified > li {
-    float: none; }
-    .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
-      text-align: center; }
-  .nav-justified > .dropdown .dropdown-menu {
-    top: auto;
-    left: auto; }
-  @media (min-width: 768px) {
-    .nav-justified > li, .nav-tabs.nav-justified > li {
-      display: table-cell;
-      width: 1%; }
-      .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
-        margin-bottom: 0; } }
+    display: table-cell;
+    width: 1%;
+  }
+  /* line 417, ../../acas-frontend/scss/overrides/_admin.scss */
+  .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
+    margin-bottom: 0;
+  }
+}
 
+/* line 427, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-tabs-justified, .nav-tabs.nav-justified {
-  border-bottom: 0; }
+  border-bottom: 0;
+}
+/* line 430, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+  margin-right: 0;
+  border-radius: 4px;
+}
+/* line 436, ../../acas-frontend/scss/overrides/_admin.scss */
+.nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
+.nav-tabs-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs-justified > .active > a:focus,
+.nav-tabs.nav-justified > .active > a:focus {
+  border: 1px solid #ddd;
+}
+@media (min-width: 768px) {
+  /* line 443, ../../acas-frontend/scss/overrides/_admin.scss */
   .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
-    margin-right: 0;
-    border-radius: 4px; }
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+  }
+  /* line 447, ../../acas-frontend/scss/overrides/_admin.scss */
   .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus,
   .nav-tabs.nav-justified > .active > a:focus {
-    border: 1px solid #ddd; }
-  @media (min-width: 768px) {
-    .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
-      border-bottom: 1px solid #ddd;
-      border-radius: 4px 4px 0 0; }
-    .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
-    .nav-tabs-justified > .active > a:hover,
-    .nav-tabs.nav-justified > .active > a:hover,
-    .nav-tabs-justified > .active > a:focus,
-    .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #fff; } }
+    border-bottom-color: #fff;
+  }
+}
 
+/* line 461, ../../acas-frontend/scss/overrides/_admin.scss */
 .tab-content > .tab-pane {
-  display: none; }
+  display: none;
+}
+/* line 464, ../../acas-frontend/scss/overrides/_admin.scss */
 .tab-content > .active {
-  display: block; }
+  display: block;
+}
 
+/* line 474, ../../acas-frontend/scss/overrides/_admin.scss */
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-right-radius: 0;
-  border-top-left-radius: 0; }
+  border-top-left-radius: 0;
+}
 
+/* line 2, ../../acas-frontend/scss/overrides/_print.scss */
 #print-preview .btn-cta--helpline, .path-guide-print .btn-cta--helpline, .print .btn-cta--helpline {
-  display: none; }
+  display: none;
+}
+/* line 5, ../../acas-frontend/scss/overrides/_print.scss */
 #print-preview .link-external, .path-guide-print .link-external, .print .link-external {
-  padding-right: 0; }
-  #print-preview .link-external:after, .path-guide-print .link-external:after, .print .link-external:after {
-    display: none; }
+  padding-right: 0;
+}
+/* line 7, ../../acas-frontend/scss/overrides/_print.scss */
+#print-preview .link-external:after, .path-guide-print .link-external:after, .print .link-external:after {
+  display: none;
+}
 
 /**
  * @file
  * Generic base styles for contextual module.
  */
+/* line 6, ../../acas-frontend/scss/overrides/_contextual-region.scss */
 .contextual-region {
   position: relative;
-  overflow: auto; }
-  .contextual-region:before, .contextual-region:after {
-    content: " ";
-    display: table; }
-  .contextual-region:after {
-    clear: both; }
+  overflow: auto;
+}
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.contextual-region:before, .contextual-region:after {
+  content: " ";
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
+.contextual-region:after {
+  clear: both;
+}
 
+/* line 11, ../../acas-frontend/scss/overrides/_contextual-region.scss */
 .contextual .trigger:focus {
   /* Override the .focusable position: static */
-  position: relative !important; }
+  position: relative !important;
+}
 
+/* line 15, ../../acas-frontend/scss/overrides/_contextual-region.scss */
 .contextual-links {
-  display: none; }
+  display: none;
+}
 
+/* line 18, ../../acas-frontend/scss/overrides/_contextual-region.scss */
 .contextual.open .contextual-links {
-  display: block; }
+  display: block;
+}
 
+/* line 38, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
 #block-landingpagesblock,
 #block-landingpagebottomblock {
-  clear: left; }
+  clear: left;
+}
 
+/* line 49, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
 #block-homepageblock,
 #block-block-landingpagesblock {
   clear: left;
-  overflow: auto; }
+  overflow: auto;
+}
 
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
 #block-currentwebsiteblock:before, #block-currentwebsiteblock:after {
   content: " ";
-  display: table; }
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
 #block-currentwebsiteblock:after {
-  clear: both; }
+  clear: both;
+}
 
+/* line 63, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
 .content-moderation-entity-moderation-form {
-  width: 115%; }
-  .content-moderation-entity-moderation-form #edit-submit {
-    position: relative;
-    top: -19px; }
-  .content-moderation-entity-moderation-form ul {
-    background: #F7F7F7; }
+  width: 115%;
+}
+/* line 71, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
+.content-moderation-entity-moderation-form #edit-submit {
+  position: relative;
+  top: -19px;
+}
+/* line 75, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
+.content-moderation-entity-moderation-form ul {
+  background: #F7F7F7;
+}
 
+/* line 80, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
 .node-preview-container {
-  background: #F7F7F7; }
-  .node-preview-container .form-type-select {
-    float: right; }
+  background: #F7F7F7;
+}
+/* line 83, ../../acas-frontend/scss/overrides/_bootstrap-content-overrides.scss */
+.node-preview-container .form-type-select {
+  float: right;
+}
 
+/* line 2, ../../acas-frontend/scss/overrides/_tell-overrides.scss */
 #print-preview .btn-cta--helpline, .path-guide-print .btn-cta--helpline, .print .btn-cta--helpline {
-  display: none; }
+  display: none;
+}
 
+/* line 14, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .path-webform header#block-acas-page-title:before, .path-webform header#block-acas-page-title:after,
 .path-webform .webform-submission-form:before,
 .path-webform .webform-submission-form:after,
@@ -2865,43 +4289,65 @@ nav.tabs {
 .path-webform .region-content .block--bare:before,
 .path-webform .region-content .block--bare:after {
   content: " ";
-  display: table; }
+  display: table;
+}
+/* line 19, ../../acas-frontend/scss/helpers/_clearfix.scss */
 .path-webform header#block-acas-page-title:after,
 .path-webform .webform-submission-form:after,
 .path-webform .webform-confirmation:after,
 .path-webform .region-content .block--bare:after {
-  clear: both; }
+  clear: both;
+}
 
+/* line 34, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed h1, .prescribed h2, .prescribed h3, .prescribed .chapters--search h2, .chapters--search .prescribed h2, .prescribed h4, .prescribed h5, .prescribed h6 {
-  color: #910048; }
+  color: #910048;
+}
+/* line 38, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed h1, .prescribed h2 {
   border-left: none;
-  padding-left: 0; }
+  padding-left: 0;
+}
+/* line 44, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed a:focus {
   background-color: #910048;
-  color: #fff; }
+  color: #fff;
+}
+/* line 50, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .beta-icon {
-  background: #910048; }
+  background: #910048;
+}
+/* line 54, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed #header-main {
-  border-bottom: none; }
+  border-bottom: none;
+}
+/* line 58, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .region-navigation-collapsible {
   background: #910048;
   color: white;
-  padding: 1em 0; }
+  padding: 1em 0;
+}
+/* line 67, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .guidance-text, .prescribed .text--guidance {
-  border-color: #4d4d4d; }
+  border-color: #4d4d4d;
+}
+/* line 76, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .btn-primary, .prescribed .btn-secondary, .prescribed .webform-button--preview, .prescribed .webform-button--previous:not(.back--link),
 .prescribed .webform-button--next:not(.back--link), .prescribed .webform-wizard-pages-link, .prescribed form#user-login-form #edit-submit, form#user-login-form .prescribed #edit-submit {
   cursor: pointer;
   background: #910048;
   border: 1px solid #910048;
-  color: #fff; }
-  .prescribed .btn-primary:hover, .prescribed .btn-secondary:hover, .prescribed .webform-button--preview:hover, .prescribed .webform-button--previous:hover:not(.back--link),
-  .prescribed .webform-button--next:hover:not(.back--link), .prescribed .webform-wizard-pages-link:hover, .prescribed form#user-login-form #edit-submit:hover, form#user-login-form .prescribed #edit-submit:hover, .prescribed .btn-primary:focus, .prescribed .btn-secondary:focus, .prescribed .webform-button--preview:focus, .prescribed .webform-button--previous:focus:not(.back--link),
-  .prescribed .webform-button--next:focus:not(.back--link), .prescribed .webform-wizard-pages-link:focus, .prescribed form#user-login-form #edit-submit:focus, form#user-login-form .prescribed #edit-submit:focus {
-    background: #fff;
-    border: 1px solid #910048;
-    color: #910048; }
+  color: #fff;
+}
+/* line 82, ../../acas-frontend/scss/overrides/_form-notify.scss */
+.prescribed .btn-primary:hover, .prescribed .btn-secondary:hover, .prescribed .webform-button--preview:hover, .prescribed .webform-button--previous:hover:not(.back--link),
+.prescribed .webform-button--next:hover:not(.back--link), .prescribed .webform-wizard-pages-link:hover, .prescribed form#user-login-form #edit-submit:hover, form#user-login-form .prescribed #edit-submit:hover, .prescribed .btn-primary:focus, .prescribed .btn-secondary:focus, .prescribed .webform-button--preview:focus, .prescribed .webform-button--previous:focus:not(.back--link),
+.prescribed .webform-button--next:focus:not(.back--link), .prescribed .webform-wizard-pages-link:focus, .prescribed form#user-login-form #edit-submit:focus, form#user-login-form .prescribed #edit-submit:focus {
+  background: #fff;
+  border: 1px solid #910048;
+  color: #910048;
+}
+/* line 89, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .btn-primary[disabled="true"], .prescribed [disabled="true"].btn-secondary, .prescribed [disabled="true"].webform-button--preview, .prescribed [disabled="true"].webform-button--previous:not(.back--link),
 .prescribed [disabled="true"].webform-button--next:not(.back--link), .prescribed [disabled="true"].webform-wizard-pages-link, .prescribed form#user-login-form [disabled="true"]#edit-submit, form#user-login-form .prescribed [disabled="true"]#edit-submit,
 .prescribed .btn-primary[disabled],
@@ -2913,37 +4359,44 @@ nav.tabs {
 .prescribed form#user-login-form [disabled]#edit-submit,
 form#user-login-form .prescribed [disabled]#edit-submit {
   cursor: default;
-  opacity: 0.3; }
-  .prescribed .btn-primary[disabled="true"]:hover, .prescribed [disabled="true"].btn-secondary:hover, .prescribed [disabled="true"].webform-button--preview:hover, .prescribed [disabled="true"].webform-button--previous:hover:not(.back--link),
-  .prescribed [disabled="true"].webform-button--next:hover:not(.back--link), .prescribed [disabled="true"].webform-wizard-pages-link:hover, .prescribed form#user-login-form [disabled="true"]#edit-submit:hover, form#user-login-form .prescribed [disabled="true"]#edit-submit:hover, .prescribed .btn-primary[disabled="true"]:focus, .prescribed [disabled="true"].btn-secondary:focus, .prescribed [disabled="true"].webform-button--preview:focus, .prescribed [disabled="true"].webform-button--previous:focus:not(.back--link),
-  .prescribed [disabled="true"].webform-button--next:focus:not(.back--link), .prescribed [disabled="true"].webform-wizard-pages-link:focus, .prescribed form#user-login-form [disabled="true"]#edit-submit:focus, form#user-login-form .prescribed [disabled="true"]#edit-submit:focus,
-  .prescribed .btn-primary[disabled]:hover,
-  .prescribed [disabled].btn-secondary:hover,
-  .prescribed [disabled].webform-button--preview:hover,
-  .prescribed [disabled].webform-button--previous:hover:not(.back--link),
-  .prescribed [disabled].webform-button--next:hover:not(.back--link),
-  .prescribed [disabled].webform-wizard-pages-link:hover,
-  .prescribed form#user-login-form [disabled]#edit-submit:hover,
-  form#user-login-form .prescribed [disabled]#edit-submit:hover,
-  .prescribed .btn-primary[disabled]:focus,
-  .prescribed [disabled].btn-secondary:focus,
-  .prescribed [disabled].webform-button--preview:focus,
-  .prescribed [disabled].webform-button--previous:focus:not(.back--link),
-  .prescribed [disabled].webform-button--next:focus:not(.back--link),
-  .prescribed [disabled].webform-wizard-pages-link:focus,
-  .prescribed form#user-login-form [disabled]#edit-submit:focus,
-  form#user-login-form .prescribed [disabled]#edit-submit:focus {
-    background-color: #910048;
-    color: #fff;
-    border: 1px solid #910048; }
+  opacity: 0.3;
+}
+/* line 93, ../../acas-frontend/scss/overrides/_form-notify.scss */
+.prescribed .btn-primary[disabled="true"]:hover, .prescribed [disabled="true"].btn-secondary:hover, .prescribed [disabled="true"].webform-button--preview:hover, .prescribed [disabled="true"].webform-button--previous:hover:not(.back--link),
+.prescribed [disabled="true"].webform-button--next:hover:not(.back--link), .prescribed [disabled="true"].webform-wizard-pages-link:hover, .prescribed form#user-login-form [disabled="true"]#edit-submit:hover, form#user-login-form .prescribed [disabled="true"]#edit-submit:hover, .prescribed .btn-primary[disabled="true"]:focus, .prescribed [disabled="true"].btn-secondary:focus, .prescribed [disabled="true"].webform-button--preview:focus, .prescribed [disabled="true"].webform-button--previous:focus:not(.back--link),
+.prescribed [disabled="true"].webform-button--next:focus:not(.back--link), .prescribed [disabled="true"].webform-wizard-pages-link:focus, .prescribed form#user-login-form [disabled="true"]#edit-submit:focus, form#user-login-form .prescribed [disabled="true"]#edit-submit:focus,
+.prescribed .btn-primary[disabled]:hover,
+.prescribed [disabled].btn-secondary:hover,
+.prescribed [disabled].webform-button--preview:hover,
+.prescribed [disabled].webform-button--previous:hover:not(.back--link),
+.prescribed [disabled].webform-button--next:hover:not(.back--link),
+.prescribed [disabled].webform-wizard-pages-link:hover,
+.prescribed form#user-login-form [disabled]#edit-submit:hover,
+form#user-login-form .prescribed [disabled]#edit-submit:hover,
+.prescribed .btn-primary[disabled]:focus,
+.prescribed [disabled].btn-secondary:focus,
+.prescribed [disabled].webform-button--preview:focus,
+.prescribed [disabled].webform-button--previous:focus:not(.back--link),
+.prescribed [disabled].webform-button--next:focus:not(.back--link),
+.prescribed [disabled].webform-wizard-pages-link:focus,
+.prescribed form#user-login-form [disabled]#edit-submit:focus,
+form#user-login-form .prescribed [disabled]#edit-submit:focus {
+  background-color: #910048;
+  color: #fff;
+  border: 1px solid #910048;
+}
+/* line 100, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed .btn-secondary {
   background: #fff;
   border: 1px solid #910048;
-  color: #910048; }
-  .prescribed .btn-secondary:hover, .prescribed .btn-secondary:focus {
-    background: #910048;
-    color: #fff; }
+  color: #910048;
+}
+/* line 104, ../../acas-frontend/scss/overrides/_form-notify.scss */
+.prescribed .btn-secondary:hover, .prescribed .btn-secondary:focus {
+  background: #910048;
+  color: #fff;
+}
+/* line 111, ../../acas-frontend/scss/overrides/_form-notify.scss */
 .prescribed input[type="checkbox"]:hover + span:before, .prescribed input[type="checkbox"]:focus + span:before, .prescribed input[type="radio"]:hover + span:before, .prescribed input[type="radio"]:focus + span:before {
-  box-shadow: 0 0 0 4px #910048; }
-
-/*# sourceMappingURL=main-ie8.css.map */
+  box-shadow: 0 0 0 4px #910048;
+}

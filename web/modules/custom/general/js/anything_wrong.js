@@ -44,8 +44,11 @@
           $("#feedback-form .webform-submission-form").slideUp();
           $("#feedback-form .feedback-question-wrapper a").show();
         });
-        $("#feedback-form .webform-button--submit").click(function() {
-          //$("#feedback-form .webform-submission-no-feedback-add-form").submit();
+        $("#feedback-form .webform-submission-no-feedback-add-form .webform-button--submit").click(function() {
+          $("#feedback-form .webform-submission-no-feedback-add-form").submit();
+        });
+        $("#feedback-form .webform-submission-yes-feedback-add-form .webform-button--submit").click(function() {
+          $("#feedback-form .webform-submission-yes-feedback-add-form").submit();
         });
         $("#feedback-form .webform-submission-no-feedback-form input[type='radio']").on('ifChanged', function (e) {
           setTimeout(function(){ $("#feedback-form .webform-submission-no-feedback-form textarea").focus(); }, 500);
@@ -61,6 +64,7 @@
         });
       }
       function showAnythingWrongRequest(formData, jqForm, options) {
+        debugger;
         $("#feedback-form .feedback-question-wrapper .feedback-question").html("Thank you. Your feedback will help us improve our advice.<br />Unfortunately we cannot respond to individual feedback. If you need help, call our helpline on 0300 123 1190.");
         $("#feedback-form .feedback-close-wrapper").hide();
         $("#feedback-form .webform-submission-form").slideUp();
