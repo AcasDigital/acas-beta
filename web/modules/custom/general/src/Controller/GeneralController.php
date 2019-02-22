@@ -177,4 +177,8 @@ class GeneralController extends ControllerBase {
       return 'What were you looking for?';
     }
   }
+  
+  public function feedback_email($webform_id, $sid) {
+    
+  }
 }

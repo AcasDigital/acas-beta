@@ -2415,30 +2415,37 @@ article.teaser .article__wrapper {
 /* line 4, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .document-wrapper .details-wrapper {
   overflow: auto;
+  margin-left: 15%;
 }
-/* line 12, ../../acas-frontend/scss/components/_publications.scss */
+/* line 9, ../../acas-frontend/scss/components/_publications.scss */
+.paragraph--type--document .field--name-field-icon {
+  width: 15%;
+  float: left;
+  min-width: 100px;
+}
+/* line 16, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-icon:after {
   clear: both;
 }
-/* line 16, ../../acas-frontend/scss/components/_publications.scss */
+/* line 20, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-file,
 .paragraph--type--document .field--name-field-pages {
   display: inline-block;
 }
 
-/* line 26, ../../acas-frontend/scss/components/_publications.scss */
+/* line 30, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-publication-summary {
   font-size: 1.25em;
 }
 
-/* line 31, ../../acas-frontend/scss/components/_publications.scss */
+/* line 35, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-media-file,
 .field--name-field-pages {
   color: #000;
   font-size: 0.75em;
 }
 
-/* line 44, ../../acas-frontend/scss/components/_publications.scss */
+/* line 48, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-icon {
   float: left;
 }

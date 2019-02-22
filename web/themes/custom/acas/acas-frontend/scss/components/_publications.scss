@@ -3,12 +3,16 @@
     @extend %margin-bottom-4x;
     .details-wrapper {
       overflow: auto;
+      margin-left: 15%;
     }
   }
   .field--name-field-icon {
     @extend %margin-right-3x;
     @extend %margin-bottom-3x;
     @extend %margin-top-1x;
+    width: 15%;
+    float: left;
+    min-width: 100px;
     &:after {
       clear: both;
     }
