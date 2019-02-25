@@ -13,12 +13,23 @@ use Dompdf\Dompdf;
 use Drupal\Component\Utility\Html;
 
 class GeneralController extends ControllerBase {
+  /**
+   * {@inheritdoc}
+   */
   public function searchheader() {
     return array('#markup' => '');
   }
+  
+  /**
+   * {@inheritdoc}
+   */
   public function health() {
     return array('#markup' => general_health());
   }
+  
+  /**
+   * {@inheritdoc}
+   */
   public function feedback($entity_id, $value) {
     if ($value == 'Yes') {
       $vote_value = 1;
@@ -55,6 +66,9 @@ class GeneralController extends ControllerBase {
     ]);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function feedback_results() {
     $connection = \Drupal::database();
     $query = $connection->query("SELECT DISTINCT entity_id FROM {votingapi_result} v WHERE v.entity_type = 'node' AND v.type = 'vote'");
@@ -76,6 +90,9 @@ class GeneralController extends ControllerBase {
     return new JsonResponse($return);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function anything_wrong_results() {
     $return = [];
     $connection = \Drupal::database();
@@ -104,14 +121,23 @@ class GeneralController extends ControllerBase {
     return new JsonResponse($return);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function guide_print_download($entity_id) {
     return general_guide_page($entity_id);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function guide_print($entity_id) {
     return general_guide_page($entity_id);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function page_print($entity_id) {
     $node = \Drupal\node\Entity\Node::load($entity_id);
     $buid = [];
@@ -126,6 +152,9 @@ class GeneralController extends ControllerBase {
     return $build;
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function guide_download($entity_id) {
     $node = \Drupal\node\Entity\Node::load($entity_id);
     $build = general_guide_page($entity_id);
@@ -140,6 +169,9 @@ class GeneralController extends ControllerBase {
     );
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function page_download($entity_id) {
     $node = \Drupal\node\Entity\Node::load($entity_id);
     $buid = [];
@@ -161,14 +193,23 @@ class GeneralController extends ControllerBase {
     );
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function freeze() {
     return array('#markup' => '<p>Content adding/editing is frozen on this site.</p><p>You can still add/edit content on the UAT site</p>');
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function feedback_page($type, $nid) {
     return general_feedback_page($type, $nid);
   }
   
+  /**
+   * {@inheritdoc}
+   */
   public function feedback_title($type, $nid) {
     if ($type == 'no') {
       return 'Please tell us why the information did not help.';
@@ -176,9 +217,5 @@ class GeneralController extends ControllerBase {
     else {
       return 'What were you looking for?';
     }
-  }
-  
-  public function feedback_email($webform_id, $sid) {
-    
   }
 }

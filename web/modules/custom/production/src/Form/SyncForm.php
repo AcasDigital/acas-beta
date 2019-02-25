@@ -37,7 +37,7 @@ class SyncForm extends ConfigFormBase {
     $config = $this->config('acas.settings');
     $form['cloudfront'] = array(
       '#type' => 'checkbox',
-      '#default_value' => TRUE,
+      '#default_value' => FALSE,
       '#title' => t('Clear CloudFront cache'),
       '#description' => t('When checked the CloudFront cache will be cleared for updated content (if sync type is for database). If un-checked eg. for testing, you will have to manually clear the cache'),
     );

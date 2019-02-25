@@ -94,14 +94,6 @@ general.feedback-page:
   requirements:
     _permission: 'access content'
     
-general.feedback_email:
-  path: '/feedback-email/{webform_id}/{sid}'
-  defaults:
-    _controller: '\Drupal\general\Controller\GeneralController::feedback_email'
-    _title: 'Feedback'
-  requirements:
-    _permission: 'access content'
-    
 general.feedback_forms:
   path: '/admin/reports/feedback'
   defaults:
