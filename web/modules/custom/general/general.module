@@ -17,6 +17,7 @@ use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Link;
 use Drupal\Core\Access\AccessResult;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_help().
@@ -452,6 +453,27 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   }
   if (strpos($form_id, '_feedback') !== FALSE) {
     $form['#validate'][] = 'general_feedback_form_validate';
+  }
+  
+  if ($form_id == 'redirect_redirect_form' || $form_id == 'redirect_redirect_edit_form') {
+    $form['#submit'][] = 'general_redirect_form_submit';
+    $form['actions']['submit']['#submit'][] = 'general_redirect_form_submit';
+  }
+}
+
+function general_redirect_form_submit(&$form, &$form_state) {
+  $source = $form_state->getValue('redirect_source')[0]['path'];
+  if ($params = Url::fromUri("internal:/" . $source)->getRouteParameters()) {
+    $entity_type = key($params);
+    if ($entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type])) {
+      if (!$entity->isPublished()) {
+        $db = \Drupal::database();
+        $db->update('url_alias')
+          ->fields(['alias' => '/archived/' . $source])
+          ->condition('source', '/' . $entity_type . '/' . $params[$entity_type] , '=')
+          ->execute();
+      }
+    }
   }
 }
 
