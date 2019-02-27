@@ -8,7 +8,9 @@ Drupal.behaviors.acas = {
     document.body.style.display="block";
     jQuery('a').each(function() {
       if (jQuery(this).attr('href')) {
-        if (jQuery(this).attr('href').indexOf('http') != -1) {
+        if (jQuery(this).attr('href').indexOf('http') != -1 && !jQuery(this).hasClass('processed')) {
+          jQuery(this).addClass('processed');
+          jQuery(this).attr('target', '_blank');
           jQuery(this).append('<span class="visually-hidden">this link opens in a new window</span>');
         }
       }
