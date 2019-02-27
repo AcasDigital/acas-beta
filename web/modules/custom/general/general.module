@@ -456,11 +456,16 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   }
   
   if ($form_id == 'redirect_redirect_form' || $form_id == 'redirect_redirect_edit_form') {
-    $form['#submit'][] = 'general_redirect_form_submit';
     $form['actions']['submit']['#submit'][] = 'general_redirect_form_submit';
   }
 }
 
+/**
+ * Implements general_redirect_form_submit()
+ * When a redirect is saved, check if source is a unpublished node.
+ * If so then update the alias to "/archived/" + source
+ * As the redirect only works if the alias does not exist
+ */
 function general_redirect_form_submit(&$form, &$form_state) {
   $source = $form_state->getValue('redirect_source')[0]['path'];
   if ($params = Url::fromUri("internal:/" . $source)->getRouteParameters()) {
@@ -470,7 +475,7 @@ function general_redirect_form_submit(&$form, &$form_state) {
         $db = \Drupal::database();
         $db->update('url_alias')
           ->fields(['alias' => '/archived/' . $source])
-          ->condition('source', '/' . $entity_type . '/' . $params[$entity_type] , '=')
+          ->condition('source', '/' . $entity_type . '/' . $params[$entity_type], '=')
           ->execute();
       }
     }
