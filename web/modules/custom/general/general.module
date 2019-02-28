@@ -720,13 +720,15 @@ function general_taxonomy_term_update($term) {
  */
 function general_menu_full_second_level($first_level, $tid, &$weight) {
   if ($children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($tid)) {
+    // Need to sort by weight
+    usort($children, function($a, $b){ return strcmp($a->getWeight(), $b->getWeight()); });
     foreach ($children as $key => $value) {
       if ($value->get('field_enabled')->value) {
         // See if have node
         $query = \Drupal::database()->select('taxonomy_index', 'ti');
         $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
         $query->fields('ti', array('nid'));
-        $query->condition('ti.tid', $key, '=');
+        $query->condition('ti.tid', $value->id(), '=');
         $result = $query->execute();
         if ($nid = $result->fetchCol()) {
           $node = \Drupal\node\Entity\Node::load($nid[0]);
@@ -763,7 +765,7 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
         }
       }
       if (isset($second_level) && $second_level) {
-        general_menu_full_second_level($second_level, $key, $weight);
+        general_menu_full_second_level($second_level, $value->id(), $weight);
       }
     }
   }
