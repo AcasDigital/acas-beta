@@ -63,3 +63,8 @@
     @extend %margin-bottom-0x;
   }
 }
+#block-currentwebsiteblock {
+  .inset-text--beta {
+    margin-bottom: 0;
+  }
+}

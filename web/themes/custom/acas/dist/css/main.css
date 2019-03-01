@@ -2272,6 +2272,11 @@ form#user-login-form [disabled]#edit-submit:focus {
   margin-bottom: -30px;
 }
 
+/* line 67, ../../acas-frontend/scss/components/_callout.scss */
+#block-currentwebsiteblock .inset-text--beta {
+  margin-bottom: 0;
+}
+
 /* line 1, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner {
   background-color: #007C85;

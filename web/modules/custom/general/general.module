@@ -720,7 +720,7 @@ function general_taxonomy_term_update($term) {
  */
 function general_menu_full_second_level($first_level, $tid, &$weight) {
   if ($children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($tid)) {
-    // Need to sort by weight
+    // Need to sort by weight as not working in D8.6
     usort($children, function($a, $b){ return strcmp($a->getWeight(), $b->getWeight()); });
     foreach ($children as $key => $value) {
       if ($value->get('field_enabled')->value) {
