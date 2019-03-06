@@ -2926,7 +2926,6 @@ select {
 /* line 59, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form-section, #feedback-form {
   overflow: hidden;
-  /* Captcha input */
 }
 /* line 62, ../../acas-frontend/scss/components/_feedback.scss */
 #feedback-form-section form, #feedback-form form {
@@ -2965,38 +2964,34 @@ select {
 #feedback-form-section .fieldgroup legend, #feedback-form .fieldgroup legend {
   margin: 0;
 }
-/* line 127, ../../acas-frontend/scss/components/_feedback.scss */
-#feedback-form-section .form-type-email, #feedback-form .form-type-email {
-  display: none;
-}
 
 @media (min-width: 768px) {
-  /* line 134, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 129, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-wrapper {
     position: relative;
   }
 
-  /* line 138, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 133, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-form {
     max-width: 100%;
   }
 
-  /* line 143, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 138, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-form .feedback-question-wrapper {
     width: 75%;
   }
-  /* line 147, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 142, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-form .feedback-close-wrapper {
     width: 25%;
   }
-  /* line 151, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 146, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-form form {
     background: #fff;
     color: #000;
     display: none;
     clear: both;
   }
-  /* line 156, ../../acas-frontend/scss/components/_feedback.scss */
+  /* line 151, ../../acas-frontend/scss/components/_feedback.scss */
   #feedback-form form textarea {
     height: unset;
   }

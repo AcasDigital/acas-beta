@@ -493,7 +493,20 @@ function general_feedback_form_validate(&$form, &$form_state) {
     $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Do not enter anything in the Email field!');
   }
   else {
-    $form_state->clearErrors();
+    // Check for multiple submissions from same IP address
+    $db = \Drupal::database();
+    $result = $db->select('webform_submission', 'w')
+      ->fields('w', ['remote_addr'])
+      ->condition('w.remote_addr', $_SERVER['REMOTE_ADDR'], '=')
+      ->condition('w.created', time() - 60, '>=')
+      ->execute()
+      ->fetchAll();
+    if (count($result)) {
+      $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Multiple submissions');
+    }
+    else {
+      $form_state->clearErrors();
+    }
   }
 }
 
