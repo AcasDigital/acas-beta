@@ -307,6 +307,11 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         unset($build['field_taxonomy']);
       }
     }
+    if ($entity->getType() == 'publications_page') {
+      if (!$build['field_summary'][0]['#text']) {
+        unset($build['field_header']);
+      }
+    }
   }
   elseif ($view_mode == 'search_index' && $entity instanceof \Drupal\node\NodeInterface) {
     if ($entity->hasField('field_taxonomy')) {

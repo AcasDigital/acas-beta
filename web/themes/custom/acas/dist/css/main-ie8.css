@@ -1114,6 +1114,7 @@ form#user-login-form [disabled]#edit-submit:focus {
 /* line 30, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
   cursor: pointer;
+  margin-left: 20px;
 }
 
 /* line 1, ../../acas-frontend/scss/components/_example-block.scss */
@@ -2749,6 +2750,15 @@ table td {
 /* line 1, ../../acas-frontend/scss/components/_noscript.scss */
 noscript {
   display: none;
+}
+
+/* line 2, ../../acas-frontend/scss/components/_chapter-page.scss */
+.page-type-chapter-page .article__content h2:first-of-type, .page-type-guide-page .article__content h2:first-of-type {
+  line-height: 1em;
+}
+/* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
+.page-type-chapter-page .article__content h2:first-of-type, .page-type-guide-page .article__content h2:first-of-type {
+  font-size: 2.42em;
 }
 
 /* line 10, ../../acas-frontend/scss/utilities/_grid.scss */
