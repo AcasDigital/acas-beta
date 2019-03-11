@@ -1091,27 +1091,33 @@ form#user-login-form [disabled]#edit-submit:focus {
 }
 
 /* line 1, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+#sliding-popup {
+  width: 100%;
+  height: auto;
+}
+
+/* line 5, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner {
   background-color: #007C85;
   overflow: auto;
 }
-/* line 3, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+/* line 7, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner, .eu-cookie-compliance-banner a {
   color: #fff;
 }
-/* line 10, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+/* line 14, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-content {
   max-width: 100%;
 }
-/* line 17, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+/* line 21, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-message {
   width: 100%;
 }
-/* line 26, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+/* line 30, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
   display: inline-block;
 }
-/* line 30, ../../acas-frontend/scss/components/_cookie-compliance.scss */
+/* line 34, ../../acas-frontend/scss/components/_cookie-compliance.scss */
 .eu-cookie-compliance-banner .eu-cookie-compliance-message a {
   cursor: pointer;
   margin-left: 20px;
