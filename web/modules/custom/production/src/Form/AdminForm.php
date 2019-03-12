@@ -23,7 +23,7 @@ class AdminForm extends ConfigFormBase {
   protected function getEditableConfigNames() {
     return [
       'acas.settings',
-      'cloudfront.settings'
+      'acas.cloudfront'
     ];
   }
   
@@ -32,7 +32,7 @@ class AdminForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('acas.settings');
-    $cloudfront_config = $this->config('cloudfront.settings');
+    $cloudfront_config = $this->config('acas.cloudfront');
     $form['enable_feedback_email'] = array(
       '#type' => 'checkbox',
       '#default_value' => $config->get('enable_feedback_email'),
@@ -146,7 +146,7 @@ class AdminForm extends ConfigFormBase {
     ->set('feedback_email', $form_state->getValue('feedback_email'))
     ->save();
     
-    \Drupal::configFactory()->getEditable('cloudfront.settings')
+    \Drupal::configFactory()->getEditable('acas.cloudfront')
     ->set('id', $form_state->getValue('id'))
     ->set('key', $form_state->getValue('key'))
     ->set('secret', $form_state->getValue('secret'))

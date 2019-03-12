@@ -29,7 +29,7 @@ class FeedbackForm extends FormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'feedback.settings'
+      'acas.feedback'
     ];
   }
 
@@ -37,7 +37,7 @@ class FeedbackForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('feedback.settings');
+    $config = $this->config('acas.feedback');
     $form['filters'] = [
       '#type' => 'fieldset',
       '#title' => t('Filters'),
@@ -136,7 +136,7 @@ class FeedbackForm extends FormBase {
     $query = \Drupal::database()->select('webform_submission', 'ws');
     $query->fields('ws', ['sid', 'created', 'uri', 'webform_id', 'entity_id']);
     if (!$values = $form_state->getValues()) {
-      $config = $this->config('feedback.settings');
+      $config = $this->config('acas.feedback');
       $values = $config->get();
     }
     if ($values) {
@@ -187,7 +187,7 @@ class FeedbackForm extends FormBase {
             if ($v->name == 'answer') {
               $text = $v->value;
             }
-            if ($v->name == 'radios' && $v->value) {
+            if ($v->name == 'radios' && $v->value && isset($options[$v->value])) {
               $issue = $options[$v->value];
               $iid = $v->value;
             }
@@ -279,7 +279,7 @@ class FeedbackForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    \Drupal::configFactory()->getEditable('feedback.settings')
+    \Drupal::configFactory()->getEditable('acas.feedback')
     ->set('from_date', $form_state->getValue('from_date'))
     ->set('to_date', $form_state->getValue('to_date'))
     ->set('url', $form_state->getValue('url'))
@@ -292,7 +292,7 @@ class FeedbackForm extends FormBase {
   }
   
   public function submitFormReset(array &$form, FormStateInterface $form_state) {
-    \Drupal::configFactory()->getEditable('feedback.settings')
+    \Drupal::configFactory()->getEditable('acas.feedback')
     ->set('from_date', '')
     ->set('to_date', '')
     ->set('url', '')

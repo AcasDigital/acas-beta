@@ -293,7 +293,7 @@ class ProductionController extends ControllerBase {
   private function production_cloudfront_invalidate($all = FALSE, $nodeIds = FALSE) {
     \Drupal::logger('acas_sync')->notice('Cloudfront invalidate. all = ' . $all);
     $config_factory = \Drupal::configFactory();
-    $config = $config_factory->getEditable('cloudfront.settings');
+    $config = $config_factory->getEditable('acas.cloudfront');
     $paths = '';
     if ((!$last = $config->get('last_sync')) || $all) {
       $last = 0;

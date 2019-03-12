@@ -23,7 +23,7 @@ class CloudFrontForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'cloudfront.settings'
+      'acas.cloudfront'
     ];
   }
   
@@ -31,7 +31,7 @@ class CloudFrontForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('cloudfront.settings');
+    $config = $this->config('acas.cloudfront');
     $form['all'] = array(
       '#type' => 'checkbox',
       '#default_value' => 1,
