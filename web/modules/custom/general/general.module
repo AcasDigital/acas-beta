@@ -219,6 +219,12 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           '#weight' => 991,
         ];
       }
+      if (_is_guide($entity) && $entity->get('field_overview_title')->value) {
+        $build['chapter_title'] = [
+          '#markup' => '<h1 class="chapter-title">' . $entity->get('field_overview_title')->value . '</h1>',
+          '#weight' => -10,
+        ];
+      }
     }
     if ($entity->getType() == 'secondary_page') {
       //$term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($entity->get('field_taxonomy')->target_id);
@@ -306,6 +312,18 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         ];
         unset($build['field_taxonomy']);
       }
+      
+      $build['chapter_title'] = [
+        '#markup' => '<h1 class="chapter-title">' . $entity->getTitle() . '</h1>',
+        '#weight' => -10,
+      ];
+      /*
+      // Change 1st H2 in field_summary to a H1
+      $a = explode("\r\n\r\n", $build['field_summary'][0]['#text']);
+      $a[0] = str_replace('<h2', '<h1 class="chapter-title"', $a[0]);
+      $a[0] = str_replace('</h2>', '</h1>', $a[0]);
+      $build['field_summary'][0]['#text'] = implode("\r\n\r\n", $a);
+      */
     }
     if ($entity->getType() == 'publications_page') {
       if (!$build['field_summary'][0]['#text']) {

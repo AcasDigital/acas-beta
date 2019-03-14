@@ -1524,7 +1524,7 @@ h1, .h1 {
 }
 
 /* line 22, ../../acas-frontend/scss/core/_headers.scss */
-h1, h1 .h1 {
+h1, h1 .h1, .h1, .h1 .h1 {
   font-size: 1.68em;
 }
 
@@ -2047,7 +2047,7 @@ article.landing-page.full p {
 }
 
 /* line 20, ../../acas-frontend/scss/settings/_layout.scss */
-h1, .block-in-this-section-block, #block-homepageblock,
+h1, .h1, .block-in-this-section-block, #block-homepageblock,
 #block-block-landingpagesblock {
   margin-bottom: 50px;
 }
@@ -3967,15 +3967,10 @@ noscript {
   display: none;
 }
 
-/* line 2, ../../acas-frontend/scss/components/_chapter-page.scss */
-.page-type-chapter-page .article__content h2:first-of-type, .page-type-guide-page .article__content h2:first-of-type {
-  line-height: 1em;
-}
-@media (min-width: 992px) {
-  /* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
-  .page-type-chapter-page .article__content h2:first-of-type, .page-type-guide-page .article__content h2:first-of-type {
-    font-size: 2.42em;
-  }
+/* line 1, ../../acas-frontend/scss/components/_chapter-page.scss */
+.chapter-title {
+  border: none;
+  padding-left: 0;
 }
 
 @media screen and (min-width: 768px) {

@@ -9,6 +9,17 @@
 
 use Drupal\Core\Link;
 
+function acas_preprocess_page_title(&$variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if (is_numeric($node)) {
+      $node = \Drupal\node\Entity\Node::load($node);
+    }
+    if (($node->getType() == 'details_page' || $node->getType() == 'secondary_page') && _is_guide($node)) {
+      $variables['no_h1'] = TRUE;
+    }
+  }
+}
+
 /**
  * Implements hook_preprocess_page().
  */

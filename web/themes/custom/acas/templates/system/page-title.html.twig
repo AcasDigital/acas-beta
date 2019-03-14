@@ -17,5 +17,9 @@
  */
 #}
 {% if title %}
-  <h1{{ title_attributes.addClass('page-header') }}>{{ title }}</h1>
+	{% if no_h1 %}
+		<div class="h1">{{ title }}</div>
+	{% else %}
+		<h1{{ title_attributes.addClass('page-header') }}>{{ title }}</h1>
+	{% endif %}
 {% endif %}

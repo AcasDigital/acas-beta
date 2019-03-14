@@ -1,10 +1,4 @@
-.page-type-chapter-page, .page-type-guide-page {
-  .article__content h2:first-of-type {
-    line-height: 1em;
-  }
-  @include bp(md) {
-    .article__content h2:first-of-type {
-      font-size: 2.42em;
-    }
-  }
+.chapter-title {
+  border: none;
+  padding-left: 0;
 }
