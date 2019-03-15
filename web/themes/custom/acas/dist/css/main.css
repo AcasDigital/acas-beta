@@ -2264,7 +2264,7 @@ form#user-login-form [disabled]#edit-submit:focus {
   position: absolute;
   right: .5em;
   top: 0;
-  width: 3em;
+  width: 2em;
 }
 
 /* line 58, ../../acas-frontend/scss/components/_callout.scss */
@@ -3973,8 +3973,13 @@ noscript {
   padding-left: 0;
 }
 
+/* line 5, ../../acas-frontend/scss/components/_chapter-page.scss */
+.page-node-type-secondary-page.has-chapters, .page-node-type-details-page.has-chapters h2:first-of-type {
+  margin-top: 60px;
+}
+
 @media (min-width: 992px) {
-  /* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
+  /* line 9, ../../acas-frontend/scss/components/_chapter-page.scss */
   .chapter-title {
     font-size: 2.1em;
   }
