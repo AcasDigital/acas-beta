@@ -1,14 +1,16 @@
 .chapter-title {
   border: none;
   padding-left: 0;
-}
-.page-node-type-secondary-page.has-chapters .field--type-text-with-summary, .page-node-type-details-page.has-chapters .field--type-text-with-summary {
-  h2:first-of-type {
-    margin-top: 60px;
-  }
+  margin-bottom: 30px;
 }
 @include bp(md) {
   .chapter-title {
     font-size: 2.1em;
+  }
+}
+.page-node-type-secondary-page.has-chapters .field--type-text-with-summary,
+.page-node-type-details-page.has-chapters .field--type-text-with-summary {
+  h2:first-of-type {
+    @extend %margin-top-12x;
   }
 }

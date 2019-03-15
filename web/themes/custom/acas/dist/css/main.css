@@ -2053,7 +2053,8 @@ h1, .h1, .block-in-this-section-block, #block-homepageblock,
 }
 
 /* line 17, ../../acas-frontend/scss/settings/_layout.scss */
-.js-pager__items, .page-node-type-page h2,
+.js-pager__items, .page-node-type-secondary-page.has-chapters .field--type-text-with-summary h2:first-of-type,
+.page-node-type-details-page.has-chapters .field--type-text-with-summary h2:first-of-type, .page-node-type-page h2,
 .page-node-type-support-page h2,
 .page-node-type-details-page h2,
 .page-node-type-secondary-page h2,
@@ -3971,15 +3972,11 @@ noscript {
 .chapter-title {
   border: none;
   padding-left: 0;
-}
-
-/* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
-.page-node-type-secondary-page.has-chapters .field--type-text-with-summary h2:first-of-type, .page-node-type-details-page.has-chapters .field--type-text-with-summary h2:first-of-type {
-  margin-top: 60px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 992px) {
-  /* line 11, ../../acas-frontend/scss/components/_chapter-page.scss */
+  /* line 7, ../../acas-frontend/scss/components/_chapter-page.scss */
   .chapter-title {
     font-size: 2.1em;
   }
