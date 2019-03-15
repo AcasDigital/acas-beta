@@ -12,11 +12,4 @@
       @extend %margin-top-0x;
     }
   }
-  &.has-chapters {
-    h2 {
-      &:first-of-type {
-        @extend %margin-top-0x;
-      }
-    }
-  }
 }

@@ -461,12 +461,7 @@ a:focus {
 .page-node-type-details-page .teaser h2,
 .page-node-type-secondary-page .teaser h2,
 .page-node-type-home-page .teaser h2,
-.page-node-type-publications-page .teaser h2, .page-node-type-page.has-chapters h2:first-of-type,
-.page-node-type-support-page.has-chapters h2:first-of-type,
-.page-node-type-details-page.has-chapters h2:first-of-type,
-.page-node-type-secondary-page.has-chapters h2:first-of-type,
-.page-node-type-home-page.has-chapters h2:first-of-type,
-.page-node-type-publications-page.has-chapters h2:first-of-type,
+.page-node-type-publications-page .teaser h2,
 .breadcrumb,
 ul.breadcrumb--search,
 #footer__inner ul,
@@ -2764,12 +2759,7 @@ noscript {
   padding-left: 0;
 }
 
-/* line 5, ../../acas-frontend/scss/components/_chapter-page.scss */
-.page-node-type-secondary-page.has-chapters, .page-node-type-details-page.has-chapters h2:first-of-type {
-  margin-top: 60px;
-}
-
-/* line 9, ../../acas-frontend/scss/components/_chapter-page.scss */
+/* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
 .chapter-title {
   font-size: 2.1em;
 }

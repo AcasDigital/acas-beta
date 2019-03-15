@@ -2,9 +2,6 @@
   border: none;
   padding-left: 0;
 }
-.page-node-type-secondary-page.has-chapters, .page-node-type-details-page.has-chapters h2:first-of-type {
-  margin-top: 60px;
-}
 @include bp(md) {
   .chapter-title {
     font-size: 2.1em;
