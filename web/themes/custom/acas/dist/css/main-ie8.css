@@ -2764,6 +2764,11 @@ noscript {
   padding-left: 0;
 }
 
+/* line 6, ../../acas-frontend/scss/components/_chapter-page.scss */
+.chapter-title {
+  font-size: 2.1em;
+}
+
 /* line 10, ../../acas-frontend/scss/utilities/_grid.scss */
 .container, .eu-cookie-compliance-banner .eu-cookie-compliance-content, .form-name, #feedback-form {
   margin-right: auto;
