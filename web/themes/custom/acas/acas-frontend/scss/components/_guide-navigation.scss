@@ -1,4 +1,4 @@
- .block-in-this-section-block {
+.block-in-this-section-block {
   @extend %margin-bottom-10x;
 
   clear: left;
@@ -19,7 +19,7 @@
     }
   }
 
-  h2 {
+  .title {
     @extend %margin-bottom-1x;
     @extend .text-small;
     border-left: none;
@@ -30,5 +30,5 @@
       display: none;
     }
   }
-  
+
 }

@@ -99,7 +99,7 @@ table {
 /* line 29, ../../acas-frontend/scss/settings/_typography.scss */
 .text-small, .form-description, .upload-wrapper .description, .fieldset-wrapper .description, .webform-element-description, .text-count-wrapper, .field--name-field-description, .block-beta-banner, .breadcrumb, ul.breadcrumb--search, .eu-cookie-compliance-banner .eu-cookie-compliance-message, .form-name, .form-progress, .text--progress, .guidance-text, .text--guidance, .prescribed .text--guidance, .guidance-text--light, #block-prescribed-notificationpreviewfootermessage,
 #block-conciliationpreviewfootermessage, #feedback-form, #feedback-form .feedback-question-wrapper,
-#feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block h2, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, form#user-login-form .description, .prescribed .guidance-text {
+#feedback-form .feedback-close-wrapper, #feedback-form-section form .help-block, #feedback-form form .help-block, .block-in-this-section-block .section__wrapper ul, .block-in-this-section-block .title, article.teaser .article__content, .btn-save, .nav-related .nav-related__list, form#user-login-form .description, .prescribed .guidance-text {
   font-size: 0.85em;
 }
 
@@ -545,7 +545,7 @@ button,
 }
 
 /* line 20, ../../acas-frontend/scss/settings/_layout.scss */
-.block-in-this-section-block h2, .nav-justified > li > a, .nav-tabs.nav-justified > li > a,
+.block-in-this-section-block .title, .nav-justified > li > a, .nav-tabs.nav-justified > li > a,
 #feedback-form .feedback-question-wrapper,
 #feedback-form .feedback-close-wrapper {
   margin-bottom: 5px;
@@ -1829,14 +1829,14 @@ select {
   padding-right: 5px;
 }
 /* line 22, ../../acas-frontend/scss/components/_guide-navigation.scss */
-.block-in-this-section-block h2 {
+.block-in-this-section-block .title {
   border-left: none;
   color: #4d4d4d;
   font-family: "Open Sans", sans-serif;
   padding-left: 0;
 }
 /* line 29, ../../acas-frontend/scss/components/_guide-navigation.scss */
-.block-in-this-section-block h2:before {
+.block-in-this-section-block .title:before {
   display: none;
 }
 
