@@ -37,7 +37,7 @@ class LandingPages extends BlockBase {
       $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
       foreach($nodes as $node) {
         $view = $view_builder->view($node, 'teaser');
-        $output .= drupal_render($view);
+        $output .= \Drupal::service('renderer')->render($view);
       }
     }
     return ['#markup' => $output];

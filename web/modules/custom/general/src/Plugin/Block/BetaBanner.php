@@ -17,18 +17,7 @@ class BetaBanner extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $output = '<span class="beta-icon">BETA</span> This is a new service - your <a href="/report-a-problem-with-the-beta-website">feedback</a> will help us to improve it.';
-    $site = '';
-    $a = explode('.', $_SERVER['HTTP_HOST']);
-    if (strpos($a[0], 'dev') !== FALSE) {
-      $site .= 'DEV ';
-    }
-    elseif (strpos($a[0], 'uat') !== FALSE) {
-      $site .= 'UAT ';
-    }
-    if ($site) {
-      $site = '<strong>' . $site . '</strong>';
-    }
-    return ['#markup' => $site . $output];
+    $output = '<span class="beta-icon">' . t('BETA') . '</span> ' . t('This is a new service - your <a href="@url">feedback</a> will help us to improve it.', ['@url' => '/report-a-problem-with-the-beta-website']);
+    return ['#markup' => $output];
   }
 }

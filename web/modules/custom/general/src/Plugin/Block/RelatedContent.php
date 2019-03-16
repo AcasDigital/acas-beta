@@ -45,7 +45,7 @@ class RelatedContent extends BlockBase {
         '#markup' => '<div class="text">Share this page</div>',
         '#weight' => -1,
       ];
-      $output .= '<div id="social-share">' . drupal_render($render) . '</div>';
+      $output .= '<div id="social-share">' . \Drupal::service('renderer')->render($render) . '</div>';
     }
     if ($node->get('field_show_related_content')->value) {
       if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
@@ -59,9 +59,6 @@ class RelatedContent extends BlockBase {
               $url = '/' . general_taxonomy_path($term->name);
               if ($node->get('field_taxonomy')->target_id != $term->tid || $node->getType() == 'publications_page') {
                 $html .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
-              }
-              else {
-                //$html .= '<li class="active">' . $term->name . '</li>';
               }
             }
           }
@@ -93,9 +90,7 @@ class RelatedContent extends BlockBase {
         }
         if ($html) {
           $output .= '<nav class="nav-related" aria-labelledby="nav-related__title">
-            <h3 id="nav-related__title">
-              Related content
-            </h3>
+            <h3 id="nav-related__title">' . t('Related content') . '</h3>
             <div class="nav-related__list" tabindex="-1">
                 <ul>' . $html . '</ul>
             </div>
@@ -129,9 +124,7 @@ class RelatedContent extends BlockBase {
           }
           if ($links) {
             $output .= '<nav class="nav-related" aria-labelledby="nav-related__title">
-              <h3 id="nav-related__title">
-                Related content
-              </h3>
+              <h3 id="nav-related__title">' . t('Related content') . '</h3>
               <div class="nav-related__list" tabindex="-1">
                 <ul>' . $links . '</ul>
               </div>

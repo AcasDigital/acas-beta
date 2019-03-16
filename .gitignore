@@ -14,6 +14,7 @@ composer.lock
 DEV
 UAT
 PROD
+composer.phar
 
 # Prevent amazon keys in git
 /config/sync/

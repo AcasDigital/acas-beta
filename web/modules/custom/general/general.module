@@ -8,13 +8,10 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Site\Settings;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
-use \CloudConvert\Api;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\Core\Breadcrumb\Breadcrumb;
-use Drupal\Core\Link;
 use Drupal\Core\Access\AccessResult;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Url;
@@ -97,7 +94,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
     if ($entity->getType() == 'details_page') {
       $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($entity->get('field_taxonomy')->target_id);
       $markup = '';
-      $section = '<ul class="section"><li>In:</li>';
+      $section = '<ul class="section"><li>' . t('In:') . '</li>';
       foreach($parents as $parent) {
         $markup .= '<span class="parent-name">' . $parent->getName() . '</span><span class="parent-description">' . $parent->getDescription() . '</span>';
         $section .= '<li>' . $parent->getName() . '</li>';
@@ -121,13 +118,13 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         }
         else {
           if ($form = \Drupal\webform\Entity\Webform::load('no_feedback')) {
-            $build['no_feedback_form'] = \Drupal::entityManager()
+            $build['no_feedback_form'] = \Drupal::entityTypeManager()
               ->getViewBuilder('webform')
               ->view($form);
             $build['no_feedback_form']['#weight'] = 999;
           }
           if ($form = \Drupal\webform\Entity\Webform::load('yes_feedback')) {
-            $build['yes_feedback_form'] = \Drupal::entityManager()
+            $build['yes_feedback_form'] = \Drupal::entityTypeManager()
               ->getViewBuilder('webform')
               ->view($form);
             $build['yes_feedback_form']['#weight'] = 999;
@@ -141,39 +138,39 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       if ($parent = _is_guide($entity)) {
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
-            <a class="btn-save btn-save--print print-opener" href="/guide-print/' . $parent . '"><span>Print</span></a>
-            <a class="btn-save btn-save--download download-opener" href="/guide-download/' . $parent . '"><span>Download</span></a>
+            <a class="btn-save btn-save--print print-opener" href="/guide-print/' . $parent . '"><span>' . t('Print') . '</span></a>
+            <a class="btn-save btn-save--download download-opener" href="/guide-download/' . $parent . '"><span>' . t('Download') . '</span></a>
             <div id="guide_print_download_overlay" class="hidden"></div>
             <div id="guide_print_modal" class="modal hidden">
-              <div class="title-wrapper"><span class="title">Print</span><span class="close">close<span class="x">X</span></span></div>
+              <div class="title-wrapper"><span class="title">' . t('Print') . '</span><span class="close">' . t('close') . '<span class="x">X</span></span></div>
               <div class="body-wrapper">
                 <div class="action print-page">
                   <a class="btn-panel btn-panel--print-page" nid="' . $parent . '" href="/page-print/' . $entity->id() . '">
                     <div class="icon"></div>
-                    <span>Print this page</span>
+                    <span>' . t('Print this page') . '</span>
                   </a>
                 </div>
                 <div class="action print-guide">
                   <a class="btn-panel btn-panel--print-guide" nid="' . $parent . '" href="/guide-print/' . $parent . '">
                     <div class="icon"></div>
-                    <span>Print entire guide</span>
+                    <span>' . t('Print entire guide') . '</span>
                   </a>
                 </div>
               </div>
             </div>
             <div id="guide_download_modal" class="modal hidden">
-              <div class="title-wrapper"><span class="title">Download</span><span class="close">close<span class="x">X</span></span></div>
+              <div class="title-wrapper"><span class="title">' . t('Download') . '</span><span class="close">' . t('close') . '<span class="x">X</span></span></div>
               <div class="body-wrapper">
                 <div class="action download-page">
                   <a class="btn-panel btn-panel--download-page" nid="' . $parent . '" href="/page-download/' . $entity->id() . '?' . time() . '">
                     <div class="icon"></div>
-                    <span>Download this page</span>
+                    <span>' . t('Download this page') . '</span>
                   </a>
                 </div>
                 <div class="action download-guide">
                   <a class="btn-panel btn-panel--download-guide" nid="' . $parent . '" href="/guide-download/' . $parent . '?' . time() . '">
                     <div class="icon"></div>
-                    <span>Download entire guide</span>
+                    <span>' . t('Download entire guide') . '</span>
                   </a>
                 </div>
               </div>
@@ -186,8 +183,8 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       else {
         $build['print_download_email'] = [
           '#markup' => '<div class="print-download-email">
-            <a class="btn-save btn-save--print print" href="/page-print/' . $entity->id() . '"><span>Print</span></a>
-            <a class="btn-save btn-save--download" href="/page-download/' . $entity->id() . '"><span>Download</span></a>
+            <a class="btn-save btn-save--print print" href="/page-print/' . $entity->id() . '"><span>' . t('Print') . '</span></a>
+            <a class="btn-save btn-save--download" href="/page-download/' . $entity->id() . '"><span>' . t('Download') . '</span></a>
           </div>',
           '#weight' => 992,
         ];
@@ -209,7 +206,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         $next = '<a class="next" href="' . $node->toUrl()->toString() . '">
             <div class="details-wrapper">
               <div class="details">
-                <div class="text">Next</div>
+                <div class="text">' . t('Next') . '</div>
                 <div class="title">' . $node->getTitle() . '</div>
               </div>
             </div>
@@ -227,8 +224,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       }
     }
     if ($entity->getType() == 'secondary_page') {
-      //$term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($entity->get('field_taxonomy')->target_id);
-     // $entity->setTitle($term->getName());
       $query = \Drupal::database()->select('taxonomy_index', 'ti');
       $query->join('taxonomy_term_field_data', 'fd', 'fd.tid = ti.tid');
       $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
@@ -263,7 +258,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
             $previous = '<a class="previous ' . $class . '" href="' . $node->toUrl()->toString() . '">
               <div class="details-wrapper">
                 <div class="details">
-                  <div class="text">Previous</div>
+                  <div class="text">' . t('Previous') . '</div>
                   <div class="title">' . $node->getTitle() . '</div>
                 </div>
               </div>
@@ -283,7 +278,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
               $previous = '<a class="previous" href="' . $node2->toUrl()->toString() . '">
                 <div class="details-wrapper">
                   <div class="details">
-                    <div class="text">Previous</div>
+                    <div class="text">' . t('Previous') . '</div>
                     <div class="title">' . $node2->get('field_overview_title')->value . '</div>
                   </div>
                 </div>
@@ -300,7 +295,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           $next = '<a class="next ' . $class . '" href="' . $node->toUrl()->toString() . '">
             <div class="details-wrapper">
               <div class="details">
-                <div class="text">Next</div>
+                <div class="text">' . t('Next') . '</div>
                 <div class="title">' . $node->getTitle() . '</div>
               </div>
             </div>
@@ -317,13 +312,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         '#markup' => '<h1 class="chapter-title">' . $entity->getTitle() . '</h1>',
         '#weight' => -10,
       ];
-      /*
-      // Change 1st H2 in field_summary to a H1
-      $a = explode("\r\n\r\n", $build['field_summary'][0]['#text']);
-      $a[0] = str_replace('<h2', '<h1 class="chapter-title"', $a[0]);
-      $a[0] = str_replace('</h2>', '</h1>', $a[0]);
-      $build['field_summary'][0]['#text'] = implode("\r\n\r\n", $a);
-      */
     }
     if ($entity->getType() == 'publications_page') {
       if (!$build['field_summary'][0]['#text']) {
@@ -335,7 +323,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
     if ($entity->hasField('field_taxonomy')) {
       $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadAllParents($entity->get('field_taxonomy')->target_id);
       $parents = array_reverse($parents, TRUE);
-      $section = '<ul class="breadcrumb--search"><li>In:</li>';
+      $section = '<ul class="breadcrumb--search"><li>' . t('In:') . '</li>';
       $url = '';
       foreach ($parents as $parent) {
         if ($entity->getType() == 'secondary_page') {
@@ -367,7 +355,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       $result = $query->execute();
       if($nodeIds = $result->fetchCol()) {
         $nodes = \Drupal\node\Entity\Node::loadMultiple($nodeIds);
-        $output = '<div class="chapters--search"><h2>Chapters</h2><ul><li><a href="' . $entity->toUrl()->toString() . '">' . $entity->get('field_overview_title')->value . '</a></li>';
+        $output = '<div class="chapters--search"><h2>' . t('Chapters') . '</h2><ul><li><a href="' . $entity->toUrl()->toString() . '">' . $entity->get('field_overview_title')->value . '</a></li>';
         foreach($nodes as $n) {
           $output .= '<li><a href="' . $n->toUrl()->toString() . '">' . $n->getTitle() . '</a></li>';
         }
@@ -489,7 +477,7 @@ function general_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
  * If so then update the alias to "/archived/" + source
  * As the redirect only works if the alias does not exist
  */
-function general_redirect_form_submit(&$form, &$form_state) {
+function general_redirect_form_submit(&$form, FormStateInterface &$form_state) {
   $source = $form_state->getValue('redirect_source')[0]['path'];
   if ($params = Url::fromUri("internal:/" . $source)->getRouteParameters()) {
     $entity_type = key($params);
@@ -511,9 +499,9 @@ function general_redirect_form_submit(&$form, &$form_state) {
  * There is a hidden, required email field that a bot would
  * complete. If this field has a value then likely submitted by a bot.
  */
-function general_feedback_form_validate(&$form, &$form_state) {
+function general_feedback_form_validate(&$form, FormStateInterface &$form_state) {
   if ($email = $form_state->getValue('email')) {
-    $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Do not enter anything in the Email field!');
+    $form_state->setErrorByName('email', t('Possible submission by a Bot detected. Do not enter anything in the Email field!'));
   }
   else {
     // Check for multiple submissions from same IP address
@@ -525,7 +513,7 @@ function general_feedback_form_validate(&$form, &$form_state) {
       ->execute()
       ->fetchAll();
     if (count($result)) {
-      $form_state->setErrorByName('email', 'Possible submission by a Bot detected. Multiple submissions');
+      $form_state->setErrorByName('email', t('Possible submission by a Bot detected. Multiple submissions'));
     }
     else {
       $form_state->clearErrors();
@@ -672,7 +660,7 @@ function general_taxonomy_path($name) {
  * 
  * If the Acas vocabulary, rebuild the naviagation menu
  */
-function general_taxonomy_overview_terms_submit($form, &$form_state) {
+function general_taxonomy_overview_terms_submit($form, FormStateInterface &$form_state) {
   $args = $form_state->getBuildInfo()['args'];
   if ($args[0]->id() == 'acas') {
     general_menu_full_first_level();
@@ -684,7 +672,7 @@ function general_taxonomy_overview_terms_submit($form, &$form_state) {
  * 
  * Assign the weights of chapter pages of this guide page
  */
-function general_node_details_page_edit_form_submit($form, &$form_state) {
+function general_node_details_page_edit_form_submit($form, FormStateInterface &$form_state) {
   $rows = $form_state->getValue('table-row');
   foreach ($rows as $key => $value) {
     $node = \Drupal\node\Entity\Node::load($key);
@@ -785,20 +773,6 @@ function general_menu_full_second_level($first_level, $tid, &$weight) {
             }
           }
         }
-        elseif ($first_level) {
-          /*
-          // No node. See if have link to external site
-          $second_level = MenuLinkContent::create([
-            'title' => $value->getName(),
-            'link' => ['uri' => 'internal:' . $value->toUrl()->toString()],
-            'parent' => $first_level->getPluginId(),
-            'expanded' => TRUE,
-            'weight' => $weight,
-          ]);
-          $second_level->save();
-          $weight++;
-          */
-        }
       }
       if (isset($second_level) && $second_level) {
         general_menu_full_second_level($second_level, $value->id(), $weight);
@@ -853,26 +827,6 @@ function general_views_query_alter(ViewExecutable $view, QueryPluginBase $query)
       $query->addWhere(1, '.end_date', strtotime($_GET['end']), '=');
     }
   }
-}
-
-/**
- * Implements hook_views_pre_render().
- */
-function general_views_pre_render(\Drupal\views\ViewExecutable $view) {
-
-}
-
-/**
- * Implements hook_system_breadcrumb_alter().
- */
-function general_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
-  /*
-  $links = $breadcrumb->getLinks();
-  if (count($links) < 3) {
-    $link = Link::createFromRoute('Home', '<front>');
-    $breadcrumb->links[0] = $link;
-  }
-  */
 }
 
 /**
@@ -978,7 +932,7 @@ function _is_site($site = 'beta') {
  * else if a guide page and has chapters, return the NID
  * else return FALSE
  */
-function _is_guide($entity) {
+function _is_guide(Drupal\Core\Entity\EntityInterface $entity) {
   if ($entity->getType() == 'secondary_page') {
     // Get the parent details page
     $query = \Drupal::database()->select('taxonomy_index', 'ti');
@@ -1013,7 +967,7 @@ function _is_guide($entity) {
  * 
  * Redirect the user to their workbench after login
  */
-function general_user_login_submit($form, &$form_state) {
+function general_user_login_submit($form, FormStateInterface &$form_state) {
   $form_state->setRedirect('workbench.content');
 }
 
@@ -1034,14 +988,14 @@ function general_mail($key, &$message, $params) {
  * 
  * Add the changed content URL to the notification email
  */
-function general_content_moderation_notification_mail_data_alter($entity, &$data) {
+function general_content_moderation_notification_mail_data_alter(Drupal\Core\Entity\EntityInterface $entity, &$data) {
   $data['params']['message'] .= '<a href="' . $entity->toUrl('canonical', ['absolute' => TRUE])->toString() . '">' . $entity->getTitle() . '</a>';
-  $vids = \Drupal::entityManager()->getStorage('node')->revisionIds($entity);
+  $vids = \Drupal::entityTypeManager()->getStorage('node')->revisionIds($entity);
   $vid = array_pop($vids);
   $node_revision = \Drupal::entityTypeManager()
     ->getStorage('node')
     ->loadRevision($vid);
-  $data['params']['message'] .= '<br /><p>Last log message: <b>' . $node_revision->get('revision_log')->value . '</b></p>';
+  $data['params']['message'] .= '<br /><p>' . t('Last log message:') . ' <b>' . $node_revision->get('revision_log')->value . '</b></p>';
 }
 
 function general_download_html_alter($html) {
@@ -1101,17 +1055,6 @@ function general_library_info_alter(&$libraries, $extension) {
       }
     }
   }
-  /*
-  if ($extension === 'core') {
-    if (!$user->id()) {
-      $lib = &$libraries['drupal.states'];
-      $js_options = end($lib['js']);
-      if (is_array($js_options)) {
-        $lib['js'] = ['/' . drupal_get_path('module', 'general') . '/js/states.js' => $js_options];
-      }
-    }
-  }
-  */
 }
 
 /**
@@ -1168,5 +1111,5 @@ function general_feedback_page($type, $nid) {
  * Called by health checks
  */
 function general_health() {
-  return '<div class="clearfix" style="clear: both; padding-left: 15px;"><p>All checks passed</p></div>';
+  return '<div class="clearfix" style="clear: both; padding-left: 15px;"><p>' . t('All checks passed') . '</p></div>';
 }

@@ -59,17 +59,10 @@ class InThisSection extends BlockBase {
             $output .= '<li><a href="' . $n->toUrl()->toString() . '">' . $n->getTitle() . '</a></li>';
           }
         }
-        /*
-        $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
-        foreach($nodes as $node) {
-          $view = $view_builder->view($node, 'teaser');
-          $output .= drupal_render($view);
-        }
-        */
       }
     }
     if ($output) {
-      $output = '<h2>Chapters</h2><ul>' . $output . '</ul>';
+      $output = '<h2>' . t('Chapters') . '</h2><ul>' . $output . '</ul>';
     }
     return ['#markup' => $output];
   }

@@ -20,6 +20,6 @@ class Search extends BlockBase {
     $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\SearchForm');
     unset($form['form_build_id']);
     unset($form['form_id']);
-    return ['#markup' => drupal_render($form)];
+    return ['#markup' => \Drupal::service('renderer')->render($form)];
   }
 }

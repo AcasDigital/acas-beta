@@ -26,7 +26,7 @@ class YesFeedback extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['email'] = [
       '#type' => 'email',
-      '#title' => 'Email address',
+      '#title' => $this->t('Email address'),
       '#required' => TRUE,
     ];
     $form['nid'] = [
@@ -34,13 +34,13 @@ class YesFeedback extends FormBase {
     ];
     $form['answer'] = [
       '#type' => 'textarea',
-      '#title' => 'What were you looking for?',
-      '#description' => 'Please do not include any personal information, for example email address or phone number. Unfortunately we cannot respond to individual requests for information. If you need help, call our helpline on 0300 123 1190<br/><br/>',
+      '#title' => $this->t('What were you looking for?'),
+      '#description' => $this->t('Please do not include any personal information, for example email address or phone number. Unfortunately we cannot respond to individual requests for information. If you need help, call our helpline on 0300 123 1190<br/><br/>'),
       '#description_display' => 'before',
     ];
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => 'Send',
+      '#value' => $this->t('Send'),
     ];
     $form['#attributes']['class'][] = 'webform-submission-form webform-submission-yes-feedback-form webform-submission-yes-feedback-add-form';
     $form['#attributes']['novalidate'] = 'novalidate';

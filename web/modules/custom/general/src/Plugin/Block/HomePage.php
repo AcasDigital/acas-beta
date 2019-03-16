@@ -29,7 +29,7 @@ class HomePage extends BlockBase {
         $entity_type = key($params);
         $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);
         $view = $view_builder->view($entity, 'teaser');
-        $output .= drupal_render($view);
+        $output .= \Drupal::service('renderer')->render($view);
       }
     }
     return ['#markup' => $output];

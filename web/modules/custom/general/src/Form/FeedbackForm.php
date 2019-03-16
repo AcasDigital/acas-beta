@@ -40,44 +40,34 @@ class FeedbackForm extends FormBase {
     $config = $this->config('acas.feedback');
     $form['filters'] = [
       '#type' => 'fieldset',
-      '#title' => t('Filters'),
+      '#title' => $this->t('Filters'),
       '#collapsible' => TRUE,
     ];
     $form['filters']['from_date'] = [
       '#type' => 'date',
-      '#title' => 'From date',
+      '#title' => $this->t('From date'),
       '#default_value' => $config->get('from_date') ?: '',
     ];
     $form['filters']['to_date'] = [
       '#type' => 'date',
-      '#title' => 'To date',
+      '#title' => $this->t('To date'),
       '#default_value' => $config->get('to_date') ?: '',
     ];
     $form['filters']['url'] = [
       '#type' => 'textfield',
-      '#title' => 'Filter by URL',
+      '#title' => $this->t('Filter by URL'),
       '#default_value' => $config->get('url') ?: '',
     ];
-    /*
-    $node = \Drupal::service('entity_type.manager')->getStorage('node')->create(array('type' => 'page'));
-    $entity_form_display = \Drupal::service('entity_type.manager')->getStorage('entity_form_display')->load('node.page.default');
-    if ($widget = $entity_form_display->getRenderer('field_test')) { //Returns the widget class
-      $items = $node->get('field_test'); //Returns the FieldItemsList interface
-      $items->filterEmptyItems();
-      $form['#parents'] = [];
-      $form['filters']['url'] = $widget->form($items, $form, $form_state); //Builds the widget form and attach it to your form
-    }
-    */
     $form['filters']['type'] = [
       '#type' => 'radios',
-      '#title' => 'Feedback',
-      '#options' => [1 => 'Yes', 2 => 'No', 3 => 'Both'],
+      '#title' => $this->t('Feedback'),
+      '#options' => [1 => $this->t('Yes'), 2 => $this->t('No'), 3 => $this->t('Both')],
       '#default_value' => $config->get('type') ?: 3,
     ];
-    $options = [1 => 'I do not understand the information', 2 => 'I cannot find the information I\'m looking for', 3 => 'I cannot work out what to do next', 4 => 'Other'];
+    $options = [1 => $this->t('I do not understand the information'), 2 => $this->t('I cannot find the information I\'m looking for'), 3 => $this->t('I cannot work out what to do next'), 4 => $this->t('Other')];
     $form['filters']['issues'] = [
       '#type' => 'checkboxes',
-      '#title' => 'Filter by feedback issue',
+      '#title' => $this->t('Filter by feedback issue'),
       '#options' => $options,
     ];
     if ($config->get('issues')) {
@@ -85,12 +75,12 @@ class FeedbackForm extends FormBase {
     }
     $form['filters']['text'] = [
       '#type' => 'textfield',
-      '#title' => 'Filter by additional text',
+      '#title' => $this->t('Filter by additional text'),
       '#default_value' => $config->get('text') ?: '',
     ];
     $manager = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $tree = $manager->loadTree('acas', 0, 2, TRUE);
-    $result = [0 => '--Select--'];
+    $result = [0 => $this->t('--Select--')];
     foreach ($tree as $term) {
       if (!empty($manager->loadParents($term->id()))) {
         $result[$term->id()] = $term->getName();
@@ -98,7 +88,7 @@ class FeedbackForm extends FormBase {
     }
     $form['filters']['taxonomy'] = [
       '#type' => 'select',
-      '#title' => 'Filter by topic',
+      '#title' => $this->t('Filter by topic'),
       '#options' => $result,
       '#default_value' => $config->get('taxonomy') ?: '',
     ];
@@ -155,12 +145,6 @@ class FeedbackForm extends FormBase {
       elseif ($values['type'] == 2) {
         $query->condition('ws.webform_id', 'no_feedback');
       }
-      /*
-      if ($values['field_test'][0]['uri']) {
-        $a = explode('node/', $values['field_test'][0]['uri']);
-        $query->condition('ws.entity_id', $a[1]);
-      }
-      */
       if ($values['url']) {
         $query->condition('ws.uri', "%" . trim($values['url']) . "%", 'LIKE');
       }
@@ -270,7 +254,7 @@ class FeedbackForm extends FormBase {
       $build['pager'] = array(
         '#type' => 'pager'
       );
-      return drupal_render($build);
+      return \Drupal::service('renderer')->render($build);
     }
   }
 

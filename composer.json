@@ -256,6 +256,7 @@
         "mikehaertl/phpwkhtmltopdf": "^2.3",
         "monolog/monolog": "^1.23",
         "paragonie/random_compat": "~2.0",
+        "squizlabs/php_codesniffer": "3.4.0",
         "tecnickcom/tcpdf": "~6",
         "wa72/html-pretty-min": "^0.2.0",
         "wa72/htmlpagedom": " 1.3.*",
