@@ -28,6 +28,13 @@
   }
 }
 
+.node-preview-form-select {
+  width: 100%;
+  .form-type-select {
+    @extend %margin-bottom-0x;
+  }
+}
+
 @include bp(md) {
   .webform-wizard-pages-link {
     min-width: 7em;

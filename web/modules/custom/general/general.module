@@ -91,6 +91,7 @@ function general_module_implements_alter(&$implementations, $hook) {
  */
 function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
   if ($view_mode == 'full' && $entity instanceof \Drupal\node\NodeInterface && ($entity->getType() == 'details_page' || $entity->getType() == 'support_page' || $entity->getType() == 'secondary_page' || $entity->getType() == 'publications_page')) {
+    $current_path = \Drupal::service('path.current')->getPath();
     if ($entity->getType() == 'details_page') {
       $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($entity->get('field_taxonomy')->target_id);
       $markup = '';
@@ -106,7 +107,6 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
       ];
     }
     if ($entity->get('field_feedback_form')->value) {
-      $current_path = \Drupal::service('path.current')->getPath();
       if (strpos($current_path, '/node/preview') === FALSE) {
         if (preg_match('/MSIE\s(?P<v>\d+)/i', @$_SERVER['HTTP_USER_AGENT'], $B) && $B['v'] <= 8) {
           $form = \Drupal::formBuilder()->getForm('Drupal\general\Form\YesFeedback');
@@ -216,7 +216,7 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
           '#weight' => 991,
         ];
       }
-      if (_is_guide($entity) && $entity->get('field_overview_title')->value) {
+      if (_is_guide($entity) && $entity->get('field_overview_title')->value && strpos($current_path, '/node/preview') === FALSE) {
         $build['chapter_title'] = [
           '#markup' => '<h1 class="chapter-title">' . $entity->get('field_overview_title')->value . '</h1>',
           '#weight' => -10,
@@ -307,11 +307,12 @@ function general_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface 
         ];
         unset($build['field_taxonomy']);
       }
-      
-      $build['chapter_title'] = [
-        '#markup' => '<h1 class="chapter-title">' . $entity->getTitle() . '</h1>',
-        '#weight' => -10,
-      ];
+      if (strpos($current_path, '/node/preview') === FALSE) {
+        $build['chapter_title'] = [
+          '#markup' => '<h1 class="chapter-title">' . $entity->getTitle() . '</h1>',
+          '#weight' => -10,
+        ];
+      }
     }
     if ($entity->getType() == 'publications_page') {
       if (!$build['field_summary'][0]['#text']) {

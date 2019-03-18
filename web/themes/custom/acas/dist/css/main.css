@@ -1655,7 +1655,7 @@ button {
 
 /* line 20, ../../acas-frontend/scss/settings/_layout.scss */
 ul p, ol p, .phone-callout p, .inset-text--beta p, .eu-cookie-compliance-banner .eu-cookie-compliance-message p, .alert > p,
-.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, #feedback-form-section form .webform-actions, #feedback-form form .webform-actions, .print-download-email .modal .title, .print-download-email .modal .close, h3.publication-title, .chapters--search h2.publication-title, .chapters--search ul, .prescribed .region-navigation-collapsible p,
+.alert > ul, .govuk-webform-elements--wrapper .form-type-number, .fieldgroup .form-group.form-title, .fieldgroup .form-group.form-wrapper, .node-preview-form-select .form-type-select, #feedback-form-section form .webform-actions, #feedback-form form .webform-actions, .print-download-email .modal .title, .print-download-email .modal .close, h3.publication-title, .chapters--search h2.publication-title, .chapters--search ul, .prescribed .region-navigation-collapsible p,
 .breadcrumb,
 ul.breadcrumb--search,
 #footer__inner ul,
@@ -2734,8 +2734,13 @@ select {
   font-size: 1em;
 }
 
+/* line 31, ../../acas-frontend/scss/components/_form-preview.scss */
+.node-preview-form-select {
+  width: 100%;
+}
+
 @media (min-width: 992px) {
-  /* line 32, ../../acas-frontend/scss/components/_form-preview.scss */
+  /* line 39, ../../acas-frontend/scss/components/_form-preview.scss */
   .webform-wizard-pages-link {
     min-width: 7em;
     position: absolute;
@@ -2743,7 +2748,7 @@ select {
     bottom: 0;
   }
 
-  /* line 39, ../../acas-frontend/scss/components/_form-preview.scss */
+  /* line 46, ../../acas-frontend/scss/components/_form-preview.scss */
   .panel-body .webform-element {
     padding-right: 9em;
   }
