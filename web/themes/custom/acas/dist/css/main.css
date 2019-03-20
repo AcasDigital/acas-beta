@@ -2226,7 +2226,7 @@ form#user-login-form [disabled]#edit-submit:focus {
 /* line 1, ../../acas-frontend/scss/components/_callout.scss */
 .inset-text, .callout {
   border-left: 7px solid #cacaca;
-  color: #F7F7F7;
+  color: #666;
   font-size: 1.25em;
   max-width: 30em;
   padding: .25em .75em;
