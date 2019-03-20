@@ -50,15 +50,25 @@ class RelatedContent extends BlockBase {
     if ($node->get('field_show_related_content')->value) {
       if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
         $html = '';
-        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
-        $path = $url;
-        foreach($terms as $term) {
-          if (!$term->depth) {
-            $t = \Drupal\taxonomy\Entity\Term::load($term->tid);
-            if ($t->get('field_enabled')->value) {
-              $url = '/' . general_taxonomy_path($term->name);
-              if ($node->get('field_taxonomy')->target_id != $term->tid || $node->getType() == 'publications_page') {
-                $html .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
+        if (!$node->hasField('field_hide_automatic_related_con') || !$node->get('field_hide_automatic_related_con')->value) {
+          $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
+          $path = $url;
+          foreach($terms as $term) {
+            if (!$term->depth) {
+              $t = \Drupal\taxonomy\Entity\Term::load($term->tid);
+              if ($t->get('field_enabled')->value) {
+                $url = '/' . general_taxonomy_path($term->name);
+                if ($node->get('field_taxonomy')->target_id != $term->tid || $node->getType() == 'publications_page') {
+                  // Test that node is published (or even exists).
+                  $query = \Drupal::database()->select('taxonomy_index', 'ti');
+                  $query->join('node_field_data', 'nfd', 'nfd.nid = ti.nid');
+                  $query->fields('nfd', array('status'));
+                  $query->condition('ti.tid', $term->tid, '=');
+                  $result = (boolean) $query->execute()->fetchField();
+                  if ($result) {
+                    $html .= '<li><a href="' . $url . '">' . $term->name . '</a></li>';
+                  }
+                }
               }
             }
           }
