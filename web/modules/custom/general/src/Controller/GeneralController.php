@@ -218,4 +218,14 @@ class GeneralController extends ControllerBase {
       return 'What were you looking for?';
     }
   }
+  
+  /**
+   * {@inheritdoc}
+   * Delete file from the Files view
+   */
+  public function delete_file($fid) {
+    file_delete($fid);
+    $url_object = \Drupal::service('path.validator')->getUrlIfValid('/admin/content/files');
+    return $this->redirect($url_object->getRouteName(), $url_object->getrouteParameters());
+  }
 }

@@ -101,4 +101,11 @@ general.feedback_forms:
     _title: 'Feedback'
   requirements:
     _permission: 'feedback report'
-    
+  
+general.delete_file:
+  path: '/general-delete-file/{fid}'
+  defaults:
+    _title: 'Content freeze'
+    _controller: '\Drupal\general\Controller\GeneralController::delete_file'
+  requirements:
+    _permission: 'administer site configuration'
