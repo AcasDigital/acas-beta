@@ -3986,6 +3986,15 @@ noscript {
     font-size: 2.1em;
   }
 }
+/* line 2, ../../acas-frontend/scss/components/_delete-form.scss */
+.path-general-delete-file .block-page-title-block {
+  float: none;
+}
+/* line 5, ../../acas-frontend/scss/components/_delete-form.scss */
+.path-general-delete-file .button {
+  margin-right: 20px;
+}
+
 @media screen and (min-width: 768px) {
   /* line 137, ../../acas-frontend/scss/overrides/_admin.scss */
   .paragraph.paragraph--width--full > .paragraph__column, .paragraph.paragraph--width--medium > .paragraph__column, .paragraph.paragraph--width--narrow > .paragraph__column, .paragraph.paragraph--width--tiny > .paragraph__column, .paragraph.paragraph--width--wide > .paragraph__column, .paragraph > .paragraph__column {
