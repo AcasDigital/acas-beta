@@ -50,7 +50,7 @@ class RelatedContent extends BlockBase {
     if ($node->get('field_show_related_content')->value) {
       if ($node->getType() == 'details_page' || $node->getType() == 'secondary_page') {
         $html = '';
-        if (!$node->hasField('field_hide_automatic_related_con') || !$node->get('field_hide_automatic_related_con')->value) {
+        if (!$node->hasField('field_include_automated_related_') || $node->get('field_include_automated_related_')->value) {
           $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($parent->getVocabularyId(), $parent->id());
           $path = $url;
           foreach($terms as $term) {
