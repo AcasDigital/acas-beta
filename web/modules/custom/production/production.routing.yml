@@ -59,7 +59,7 @@ production.deploy:
     _form: '\Drupal\production\Form\DeployForm'
     _title: 'Deploy content to Production'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'sync to prod'
     
 production.deploy_update:
   path: '/deploy-update'
