@@ -1,11 +1,12 @@
 var i = 0;
 var nodes;
 var prod;
+var count = 15;
 
 Drupal.behaviors.test_prod = {
   attach: function(context, settings) {
-    jQuery("#test-target").html('Starting in 5 seconds');
-    setTimeout(startTest, 5000);
+    jQuery("#test-target").html('Starting in 15 seconds');
+    setTimeout(startTest, 15000);
   }
 };
 
@@ -46,6 +47,7 @@ function getPage(node) {
       }else{
         jQuery("#test-target").html(jQuery("#test-target").html() + '<div class="result"><span class="title">' + node.title + '</span>&nbsp;<span class="red">BAD</span></div>');
       }
+      window.scrollTo(0,document.body.scrollHeight);
       i++
       if (i < nodes.length) {
         getPage(nodes[i]);
