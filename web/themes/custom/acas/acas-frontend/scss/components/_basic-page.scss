@@ -1,0 +1,5 @@
+.page-type-basic-page {
+	h2:first-of-type {
+    @extend %margin-top-0x;
+  }
+}

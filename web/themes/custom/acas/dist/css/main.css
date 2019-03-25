@@ -1627,7 +1627,7 @@ a:focus {
 }
 
 /* line 17, ../../acas-frontend/scss/settings/_layout.scss */
-.alert h4, #feedback-form-section form .form-submit, #feedback-form form .form-submit, .webform-composite-hidden-title, .page-node-type-page .teaser h2,
+.alert h4, #feedback-form-section form .form-submit, #feedback-form form .form-submit, .page-type-basic-page h2:first-of-type, .webform-composite-hidden-title, .page-node-type-page .teaser h2,
 .page-node-type-support-page .teaser h2,
 .page-node-type-details-page .teaser h2,
 .page-node-type-secondary-page .teaser h2,
@@ -1786,7 +1786,6 @@ ul li, ol li, .block-in-this-section-block .section__wrapper ul li,
 }
 
 /* line 23, ../../acas-frontend/scss/settings/_layout.scss */
-#feedback-form .feedback-question a,
 .breadcrumb li:after,
 ul.breadcrumb--search li:after {
   margin-left: 10px;
@@ -2003,7 +2002,7 @@ main.main__content,
 }
 
 /* line 23, ../../acas-frontend/scss/settings/_layout.scss */
-ul, ol, .webform-container-type-details .panel-body {
+ul, ol, .webform-container-type-details .panel-body, #feedback-form .feedback-question a {
   margin-left: 30px;
 }
 
