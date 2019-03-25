@@ -2467,7 +2467,12 @@ article.teaser .article__wrapper {
 .nav-related {
   max-width: 20em;
 }
-/* line 10, ../../acas-frontend/scss/components/_related.scss */
+/* line 5, ../../acas-frontend/scss/components/_related.scss */
+.nav-related .nav-related__list {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+/* line 11, ../../acas-frontend/scss/components/_related.scss */
 .nav-related .nav-related__list ul a {
   display: inline-block;
 }
