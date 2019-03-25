@@ -2472,7 +2472,12 @@ article.teaser .article__wrapper {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
 }
-/* line 11, ../../acas-frontend/scss/components/_related.scss */
+/* line 9, ../../acas-frontend/scss/components/_related.scss */
+.nav-related .nav-related__list ul {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+/* line 13, ../../acas-frontend/scss/components/_related.scss */
 .nav-related .nav-related__list ul a {
   display: inline-block;
 }

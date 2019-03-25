@@ -8,6 +8,8 @@
     -webkit-tap-highlight-color: transparent;
     ul {
       @extend %list-no-format;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+      -webkit-tap-highlight-color: transparent;
       a {
         @extend %margin-bottom-2x;
         @extend %links-black;
