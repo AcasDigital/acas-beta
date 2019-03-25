@@ -3978,10 +3978,11 @@ noscript {
   border: none;
   padding-left: 0;
   margin-bottom: 30px;
+  font-size: 1.53em;
 }
 
 @media (min-width: 992px) {
-  /* line 7, ../../acas-frontend/scss/components/_chapter-page.scss */
+  /* line 8, ../../acas-frontend/scss/components/_chapter-page.scss */
   .chapter-title {
     font-size: 2.1em;
   }
