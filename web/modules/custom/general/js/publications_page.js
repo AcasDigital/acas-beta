@@ -15,7 +15,9 @@ Drupal.behaviors.publications_page = {
       var title = jQuery(this).find('.field--name-field-title').text();
       jQuery(this).find('.field--name-field-title').replaceWith('<div class="field--name-field-title"><a href="' + href +'" rel="nofollow">' + title + '</a></div>');
       jQuery(this).find('img').wrap('<a href="' + href +'" rel="nofollow" title="' + title + '" />');
-      jQuery(this).find('.file-size').text(jQuery(this).find('.file-size').text() + ',');
+      if (jQuery(this).find('.field--name-field-pages').length) {
+        jQuery(this).find('.file-size').text(jQuery(this).find('.file-size').text() + ',');
+      }
       if (isIE () == 8) {
         jQuery(this).find('img').removeAttr('width');
         jQuery(this).find('img').removeAttr('height');

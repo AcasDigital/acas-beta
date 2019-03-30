@@ -21,6 +21,10 @@
   .field--name-field-pages {
     display: inline-block;
   }
+  .field--name-field-pages,
+  .file-size {
+    @extend %margin-left-1x; 
+  }
 }
 
 h3.publication-title {

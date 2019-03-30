@@ -1727,6 +1727,8 @@ button,
 }
 
 /* line 23, ../../acas-frontend/scss/settings/_layout.scss */
+.paragraph--type--document .field--name-field-pages,
+.paragraph--type--document .file-size,
 #social-share li {
   margin-left: 5px;
 }
@@ -3650,12 +3652,12 @@ article.teaser .article__content p {
   display: inline-block;
 }
 
-/* line 30, ../../acas-frontend/scss/components/_publications.scss */
+/* line 34, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-publication-summary {
   font-size: 1.25em;
 }
 
-/* line 35, ../../acas-frontend/scss/components/_publications.scss */
+/* line 39, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-media-file,
 .field--name-field-pages {
   color: #000;
@@ -3663,7 +3665,7 @@ article.teaser .article__content p {
 }
 
 @media (min-width: 768px) {
-  /* line 48, ../../acas-frontend/scss/components/_publications.scss */
+  /* line 52, ../../acas-frontend/scss/components/_publications.scss */
   .paragraph--type--document .field--name-field-icon {
     float: left;
   }

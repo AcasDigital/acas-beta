@@ -21,9 +21,9 @@
   <div class ="popup-content info eu-cookie-compliance-content">
     <div id="popup-text" class="eu-cookie-compliance-message">
       {{ message }}
-      <a class="agree-button eu-cookie-compliance-agree-button">{{ agree_button }}</a>
-      {% if disagree_button %}
-        <a type="button" class="find-more-button eu-cookie-compliance-more-button">{{ disagree_button }}</a>
+      <a tabindex="0" title="I agree to cookies" role="button" class="agree-button eu-cookie-compliance-agree-button">{{ agree_button }}</a>
+      {% if disagree_button %} 
+        <a tabindex="0" title="Learn more about cookies" role="button" class="find-more-button eu-cookie-compliance-more-button">{{ disagree_button }}</a>
       {% endif %}
     </div>
   </div>

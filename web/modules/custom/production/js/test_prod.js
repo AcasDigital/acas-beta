@@ -5,10 +5,20 @@ var count = 15;
 
 Drupal.behaviors.test_prod = {
   attach: function(context, settings) {
-    jQuery("#test-target").html('Starting in 15 seconds');
-    setTimeout(startTest, 15000);
+    jQuery("#test-target").html('Starting in <b><span id="count">' + count + '</span></b> seconds');
+    setTimeout(countDown, 1000);
   }
 };
+
+function countDown() {
+  count--;
+  jQuery('#count').text(count);
+  if (count === 0) {
+    startTest();
+  }else{
+    setTimeout(countDown, 1000);
+  }
+}
 
 function startTest() {
   jQuery.ajax({

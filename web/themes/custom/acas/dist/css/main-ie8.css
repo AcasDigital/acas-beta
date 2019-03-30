@@ -551,6 +551,12 @@ button,
   margin-bottom: 5px;
 }
 
+/* line 23, ../../acas-frontend/scss/settings/_layout.scss */
+.paragraph--type--document .field--name-field-pages,
+.paragraph--type--document .file-size {
+  margin-left: 5px;
+}
+
 /* line 30, ../../acas-frontend/scss/settings/_layout.scss */
 .btn-save {
   padding: 5px;
@@ -2445,19 +2451,19 @@ article.teaser .article__wrapper {
   display: inline-block;
 }
 
-/* line 30, ../../acas-frontend/scss/components/_publications.scss */
+/* line 34, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-publication-summary {
   font-size: 1.25em;
 }
 
-/* line 35, ../../acas-frontend/scss/components/_publications.scss */
+/* line 39, ../../acas-frontend/scss/components/_publications.scss */
 .field--name-field-media-file,
 .field--name-field-pages {
   color: #000;
   font-size: 0.75em;
 }
 
-/* line 48, ../../acas-frontend/scss/components/_publications.scss */
+/* line 52, ../../acas-frontend/scss/components/_publications.scss */
 .paragraph--type--document .field--name-field-icon {
   float: left;
 }
